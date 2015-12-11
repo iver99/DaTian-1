@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
     <wb-module deploy-name="NewDaTian">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="context-root" value="NewDaTian"/>
         <property name="java-output-path" value="/NewDaTian/build/classes"/>
+=======
+    <wb-module deploy-name="DaTian">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="DaTian"/>
+        <property name="java-output-path" value="/DaTian/build/classes"/>
+>>>>>>> 81b24728f2bf4c0f7625614c3f6d7a4c753e896f
     </wb-module>
 </project-modules>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>NewDaTian</name>
+=======
+	<name>DaTian</name>
+>>>>>>> 81b24728f2bf4c0f7625614c3f6d7a4c753e896f
 	<comment></comment>
 	<projects>
 	</projects>
