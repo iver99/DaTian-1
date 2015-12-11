@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-2-24 14:27:00 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.edu.bjtu.vo.Comment" table="comment" catalog="datian">
+        <id name="id" type="string">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="clientId" type="string">
+            <column name="clientId" />
+        </property>
+        <property name="relDate" type="date">
+            <column name="relDate" length="10" />
+        </property>
+        <property name="orderId" type="string">
+            <column name="orderId" />
+        </property>
+        <property name="orderNum" type="string">
+            <column name="orderNum" />
+        </property>
+        <property name="serviceAttitude" type="string">
+            <column name="serviceAttitude" />
+        </property>
+        <property name="transportEfficiency" type="string">
+            <column name="transportEfficiency" />
+        </property>
+        <property name="cargoSafety" type="string">
+            <column name="cargoSafety" />
+        </property>
+        <property name="totalMoney" type="string">
+            <column name="totalMoney" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" />
+        </property>
+        <property name="linetransportId" type="string">
+            <column name="linetransportId" />
+        </property>
+        <property name="citylineId" type="string">
+            <column name="citylineId" />
+        </property>
+        <property name="carId" type="string">
+            <column name="carId" />
+        </property>
+        <property name="warehouseId" type="string">
+            <column name="warehouseId" />
+        </property>
+        <property name="carrierId" type="string">
+            <column name="carrierId" />
+        </property>
+    </class>
+</hibernate-mapping>
