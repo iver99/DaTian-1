@@ -3,7 +3,7 @@ package cn.edu.bjtu.bean.page;
 import java.util.Date;
 
 /**
- * 投诉功能的页面pageBean
+ * 投诉功能的页面Bean
  * @author RussWest0
  * @date   2015年6月9日 下午11:01:47
  */
