@@ -42,9 +42,9 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/datian"></property> <!-- change port -->
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3506/datian"></property> <!-- change port -->
 		<property name="user" value="root"></property>
-		<property name="password" value="solitude1"></property> <!-- change password -->
+		<property name="password" value="bjtusofta03"></property> <!-- change password -->
 		<property name="initialPoolSize" value="1"></property>
 		<property name="maxIdleTime" value="20"></property>
 		<property name="maxPoolSize" value="50"></property>
