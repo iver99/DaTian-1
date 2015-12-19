@@ -51,6 +51,13 @@ public class DriverServiceImpl implements DriverService{
 	}
 	
 	@Override
+	public Driverinfo getDriverByPhone(String phone) {
+		// TODO 自动生成的方法存根
+	
+		return driverDao.getDriverInfoByPhone(phone);
+	}
+	
+	@Override
 	/**
 	 * 通过carid找到driverinfo
 	 */
@@ -188,5 +195,7 @@ public class DriverServiceImpl implements DriverService{
 		return count.intValue();
 		
 	}
+
+	
 	
 }

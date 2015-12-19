@@ -416,6 +416,30 @@ public class Orderform implements java.io.Serializable {
 	}
 
 
+	/* £¨·Ç Javadoc£©
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Orderform [id=" + id + ", orderNum=" + orderNum + ", goodsName=" + goodsName + ", carrierId="
+				+ carrierId + ", expectedPrice=" + expectedPrice + ", actualPrice=" + actualPrice + ", submitTime="
+				+ submitTime + ", state=" + state + ", deliveryAddr=" + deliveryAddr + ", deliveryName=" + deliveryName
+				+ ", deliveryPhone=" + deliveryPhone + ", recieverAddr=" + recieverAddr + ", recieverName="
+				+ recieverName + ", recieverPhone=" + recieverPhone + ", warehouseId=" + warehouseId + ", citylineId="
+				+ citylineId + ", linetransportId=" + linetransportId + ", remarks=" + remarks + ", insurance="
+				+ insurance + ", clientId=" + clientId + ", goodsWeight=" + goodsWeight + ", goodsVolume=" + goodsVolume
+				+ ", contractId=" + contractId + ", resourceType=" + resourceType + ", acceptPicture=" + acceptPicture
+				+ ", explainReason=" + explainReason + ", carNum=" + carNum + ", driver=" + driver + ", commentId="
+				+ commentId + ", declaredPrice=" + declaredPrice + ", hasCarrierContract=" + hasCarrierContract
+				+ ", clientName=" + clientName + ", cancelReason=" + cancelReason + ", settlementState="
+				+ settlementState + ", isLinkToClientWayBill=" + isLinkToClientWayBill + ", clientWayBillNum="
+				+ clientWayBillNum + ", resourceName=" + resourceName + ", companyName=" + companyName + ", finishTime="
+				+ finishTime + "]";
+	}
+	
+	
+
+
 	
 
 }

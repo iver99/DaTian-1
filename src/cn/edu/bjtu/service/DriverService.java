@@ -17,6 +17,9 @@ public interface DriverService {
 	public Driverinfo getDriverInfo(String driverId);
 	
 	public Driverinfo getDriverByCarId(String carId);
+	
+	//add by solitudeycq at 2015-12-19 14:48
+	public Driverinfo getDriverByPhone(String phone);
 
 	public List getAllDriverName(String carrierId);
 	public List getAllDriver(String carrierId);

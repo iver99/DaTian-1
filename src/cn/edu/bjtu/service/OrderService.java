@@ -16,12 +16,19 @@ public interface OrderService {
 	public OrderCarrierView getSendOrderDetail(String id);
 
 	public Orderform getRecieveOrderDetail(String id);
+	
+	//add by solitudeycq at 2015-12-19 17:21
+	//获取订单
+	public List<Orderform> getOrderByDriverName(String driver);
 
 	public Orderform getOrderByOrderNum(String orderNum);
 
 	public OrderCarrierView getOrderByOrderId(String orderId);
 
 	public boolean acceptOrder(String orderId);
+	
+	//add by solitudeycq at 2015-12-18 22:21 为订单分配司机
+	public boolean setDriver(String orderId,String driver);
 
 	public float getExpectedMoney(String orderId);
 

@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.engine.HibernateIterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -63,6 +68,19 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		return true;
 
 	}
+	
+	@Override
+	/**
+	 * 为订单分配司机
+	 */
+	public boolean setDriver(String orderId,String driver){
+		Orderform order = this.get(Orderform.class, orderId);
+		order.setDriver(driver);
+		
+		this.update(order);
+		return true;
+	}
+	
 
 	@Override
 	public float getExpectedMoney(String orderId) {
@@ -173,6 +191,15 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		
 		this.save(order);
 		return true;
+		
+	}
+
+	@Override
+	public List<Orderform> getOrderByDriverName(String driver) {
+		String hql="from Orderform where driver=:driver";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("driver", driver);
+		return this.find(hql, params);
 		
 	}
 	

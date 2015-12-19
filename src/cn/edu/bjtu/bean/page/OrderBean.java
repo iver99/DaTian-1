@@ -56,8 +56,24 @@ public class OrderBean {
 	private String reciever_info;
 	private String sender_info;
 	
+	//add by 杨昌庆 at 2015年12月18日，下午9:11
+	//add driver---安卓客户端会用到。
+	private String driver;
 	
 	
+	
+	/**
+	 * @return driver
+	 */
+	public String getDriver() {
+		return driver;
+	}
+	/**
+	 * @param driver 要设置的 driver
+	 */
+	public void setDriver(String driver) {
+		this.driver = driver;
+	}
 	/**
 	 * @return the reciever_info
 	 */

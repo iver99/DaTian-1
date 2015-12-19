@@ -77,6 +77,12 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDao.acceptOrder(orderId);
 	}
+	
+	@Override
+	public boolean setDriver(String orderId,String driver){
+		
+		return orderDao.setDriver(orderId, driver);
+	}
 
 	@Override
 	/**
@@ -409,6 +415,15 @@ public class OrderServiceImpl implements OrderService {
 		Long count=orderDao.count(hql, params);
 		
 		return count.intValue();
+	}
+     
+    /*
+     * 根据司机名字获取订单
+     */
+	@Override
+	public List<Orderform> getOrderByDriverName(String driver) {
+		// TODO 自动生成的方法存根
+		return orderDao.getOrderByDriverName(driver);
 	}
 	
 	

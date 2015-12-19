@@ -86,7 +86,7 @@ public class GoodsInfoController {
 	 */
 	@RequestMapping(value="/goodsform",params="flag=1")
 	public String getMyInfoGoods() {
-			return"mgmt_r_cargo";
+			return "mgmt_r_cargo";
 	}
 
 	@RequestMapping("/goodsdetail")

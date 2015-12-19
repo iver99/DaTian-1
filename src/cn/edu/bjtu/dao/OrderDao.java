@@ -16,9 +16,15 @@ public interface OrderDao extends BaseDao<Orderform> {
 	 */
 	public Orderform getOrderByOrderNum(String orderNum);
 	
+	public List<Orderform> getOrderByDriverName(String driver);
+	
 	public OrderCarrierView getOrderByOrderId(String orderId);
 	
 	public boolean acceptOrder(String orderId);
+	
+	
+	//add by solitudeycq at 2015-12-18 22:09 修改订单里的司机
+	public boolean setDriver(String orderId,String driver);
 	
 	public float getExpectedMoney(String orderId);
 	
