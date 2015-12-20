@@ -1,7 +1,5 @@
 package cn.edu.bjtu.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,7 +27,6 @@ import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.ResponseService;
 import cn.edu.bjtu.util.Constant;
-import cn.edu.bjtu.util.JSON;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.util.UploadPath;
@@ -673,15 +670,7 @@ public class OrderController {
 	 */
 	@RequestMapping("createneworder")
 	public String createNewOrder(HttpSession session,OrderBean orderBean){
-		JSON json=new JSON();
-		boolean flag=orderService.createOrder(session,orderBean);
-		if(flag==true){
-			json.setMsg("sucess");
-			json.setSuccess(true);
-		}else{
-			json.setMsg("fail");
-			json.setSuccess(false);
-		}
+		orderService.createOrder(session,orderBean);
 		
 		return "redirect:turnToOrderPage";
 	}

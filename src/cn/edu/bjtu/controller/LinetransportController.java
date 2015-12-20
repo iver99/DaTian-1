@@ -1,8 +1,5 @@
 ﻿package cn.edu.bjtu.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -28,7 +25,6 @@ import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.DataModel;
 import cn.edu.bjtu.util.DownloadFile;
-import cn.edu.bjtu.util.JSON;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadPath;
 import cn.edu.bjtu.vo.Carrierinfo;
@@ -146,16 +142,11 @@ public class LinetransportController {
 			HttpSession session, HttpServletResponse response,HttpServletRequest request) {
 		DataModel dataModel = linetransportService.getSelectedLineNew(
 				linetransportbean,page,session);
-		/*response.setCharacterEncoding("UTF-8");  
-	    response.setContentType("application/json; charset=utf-8"); */
 		JSONArray jsonArray=new JSONArray();
 		for(int i=0;i<dataModel.getRows().size();i++){
 			JSONObject jsonObject=(JSONObject)JSONObject.toJSON(dataModel.getRows().get(i));
 			jsonArray.add(jsonObject);
 		}
-		//request.setAttribute("count", 66);
-		//dataModel.setTotal(66L);
-		//return dataModel;
 		return jsonArray.toString();
 	}
 	
