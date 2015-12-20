@@ -25,7 +25,7 @@ public class DriverLoginController {
 	@Autowired
 	Driverinfo driverinfo;
 	
-	@RequestMapping("/driverlogin")
+	@RequestMapping(value="/driverlogin",produces="text/html;charset=UTF-8")
 	@ResponseBody
 	public String driverlogin(@RequestParam(value="phone",required=false) String phone,@RequestParam(value="passwd",required=false) String passwd) throws JSONException{
 		

@@ -26,7 +26,7 @@ public class ShowDriverTaskController {
 	@Autowired
 	OrderService orderService;
 	
-	@RequestMapping("/showdrivertask")
+	@RequestMapping(value="/showdrivertask",produces="text/html;charset=UTF-8")
 	@ResponseBody
 	public String showTask(@RequestParam(value="phone",required=false) String phone){
 		
