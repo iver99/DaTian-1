@@ -15,8 +15,24 @@ public class Track implements java.io.Serializable {
 	private String id;
 	private String orderNum;
 	private String carNum;
-	private Double locLongitude;
-	private Double locLatitude;
+	private Double locLongitude;//经度
+	private Double locLatitude;//纬度
+	//add by solitudeycq at 2015-12-21 19:50 增加时间
+	private Date time;
+
+	/**
+	 * @return time
+	 */
+	public Date getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time 要设置的 time
+	 */
+	public void setTime(Date time) {
+		this.time = time;
+	}
 
 	public Track() {
 	}
