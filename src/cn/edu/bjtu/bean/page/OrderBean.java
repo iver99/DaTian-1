@@ -59,9 +59,22 @@ public class OrderBean {
 	//add by 杨昌庆 at 2015年12月18日，下午9:11
 	//add driver---安卓客户端会用到。
 	private String driver;
+	private String confirm;
 	
 	
 	
+	/**
+	 * @return confirm
+	 */
+	public String getConfirm() {
+		return confirm;
+	}
+	/**
+	 * @param confirm 要设置的 confirm
+	 */
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
 	/**
 	 * @return driver
 	 */
