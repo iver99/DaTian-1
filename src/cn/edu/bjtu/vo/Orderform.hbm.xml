@@ -97,6 +97,9 @@
         <property name="driver" type="string">
             <column name="driver" />
         </property>
+        <property name="confirm" type="string">
+            <column name="confirm" />
+        </property>
         <property name="commentId" type="string">
             <column name="commentId" />
         </property>

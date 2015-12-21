@@ -43,11 +43,29 @@ public class Orderform implements java.io.Serializable {
 	private String explainReason;
 	private String carNum;
 	private String driver;
+	//add by solitudeycq at 2015-12-21 22:36标示司机是否确认
+	private String confirm;
 	private String commentId;
 	
 	private float declaredPrice;
 	private String hasCarrierContract;
 	private String clientName;
+	/**
+	 * @return confirm
+	 */
+	public String getConfirm() {
+		return confirm;
+	}
+
+
+	/**
+	 * @param confirm 要设置的 confirm
+	 */
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
+
+
 	//private String carrierName;
 	private String cancelReason;
 	
@@ -429,17 +447,12 @@ public class Orderform implements java.io.Serializable {
 				+ citylineId + ", linetransportId=" + linetransportId + ", remarks=" + remarks + ", insurance="
 				+ insurance + ", clientId=" + clientId + ", goodsWeight=" + goodsWeight + ", goodsVolume=" + goodsVolume
 				+ ", contractId=" + contractId + ", resourceType=" + resourceType + ", acceptPicture=" + acceptPicture
-				+ ", explainReason=" + explainReason + ", carNum=" + carNum + ", driver=" + driver + ", commentId="
-				+ commentId + ", declaredPrice=" + declaredPrice + ", hasCarrierContract=" + hasCarrierContract
-				+ ", clientName=" + clientName + ", cancelReason=" + cancelReason + ", settlementState="
-				+ settlementState + ", isLinkToClientWayBill=" + isLinkToClientWayBill + ", clientWayBillNum="
-				+ clientWayBillNum + ", resourceName=" + resourceName + ", companyName=" + companyName + ", finishTime="
-				+ finishTime + "]";
+				+ ", explainReason=" + explainReason + ", carNum=" + carNum + ", driver=" + driver + ", confirm="
+				+ confirm + ", commentId=" + commentId + ", declaredPrice=" + declaredPrice + ", hasCarrierContract="
+				+ hasCarrierContract + ", clientName=" + clientName + ", cancelReason=" + cancelReason
+				+ ", settlementState=" + settlementState + ", isLinkToClientWayBill=" + isLinkToClientWayBill
+				+ ", clientWayBillNum=" + clientWayBillNum + ", resourceName=" + resourceName + ", companyName="
+				+ companyName + ", finishTime=" + finishTime + "]";
 	}
 	
-	
-
-
-	
-
 }
