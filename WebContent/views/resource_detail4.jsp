@@ -22,11 +22,6 @@
 <script type="text/javascript" src="js/search_resource.js"></script><!-- 搜索资源 -->
 <!-- 引入工具js -->
 <%@ include file="jsTool.jsp" %>
-<!-- <script type="text/javascript"> 
-	$(function() {
-		$('input, textarea').placeholder(); 
-	});
-</script> -->
 </head>
 
 <body onload="OnLoad()">
@@ -57,7 +52,7 @@
             	所属公司：${carrierInfo.companyName }
             
                 <br />
-                联系电话：${carrierInfo.phone }
+              <%--   联系电话：${carrierInfo.phone } --%>
                 <hr class="hr_1" />
                 <input type="button" value="0" style="display:none" id="i"></input>
                 <c:forEach var="focus" items="${focusList }">
@@ -73,6 +68,7 @@
 					else
 						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${warehouseInfo.id }');hidefav(this);\" />" );
 				</script>
+				<input type="button" id="btn2" value="查看联系方式" class="input_detail2" hidefocus="true" onclick="viewContact('view_contact');">
             </td>
 		</tr>
     </table>
@@ -119,6 +115,32 @@
 </div>
 
 <%@ include  file="popup1.jsp"%>
+<!-- 查看联系人详情 -->
+<div id="view_contact" class="popup">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="510"><div class="div_popup_title1">联系方式</div></td>
+            <td>
+                <div style="cursor:pointer;" onclick="hideContact('view_contact');"><img src="images/btn_cancel1.png" title="关闭本窗口" /></div>
+            </td>
+        </tr>
+    </table>
+    <table width="540" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #ddd;">
+        <tr>
+            <td width="120" height="50" class="td_mgmt_right3_td1b_1">联系人姓名：</td>
+            <td class="td_mgmt_right3_td1b_2">${warehouseInfo.contact }</td>
+        </tr>
+        <tr>
+            <td height="50" class="td_mgmt_right3_td1b_1">手机号：</td>
+            <td class="td_mgmt_right3_td1b_2">${warehouseInfo.phone }</td>
+        </tr>
+    </table>
+    <table width="540" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="10"></td>
+        </tr>
+    </table>
+</div>
 
 <div id="footer_frame">
 	<iframe allowtransparency="true" width="100%" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0" src="footer.jsp"></iframe>
