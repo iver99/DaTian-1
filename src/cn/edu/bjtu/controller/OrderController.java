@@ -215,6 +215,9 @@ public class OrderController {
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List<Driverinfo> driverList=driverService.getAllDriver(carrierId);
 		mv.addObject("driverList",driverList);
+		//需要查出公司车牌号列表add by solitudeycq at 2015-12-24 0:46
+		List<Carinfo> carNumList=carService.getAllcarNum(carrierId);
+		mv.addObject("carNumList", carNumList);
 		// 需要获取车牌号和司机名
 		mv.addObject("orderId", orderid);
 

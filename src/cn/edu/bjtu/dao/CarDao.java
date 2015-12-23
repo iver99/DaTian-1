@@ -7,7 +7,5 @@ import cn.edu.bjtu.vo.Carteam;
 import cn.edu.bjtu.vo.Driverinfo;
 
 public interface CarDao extends BaseDao<Carinfo>{
-	
-	
-	
+	public List<Carinfo> getAllcarNum(String carrierId);
 }

@@ -346,6 +346,12 @@ public class CarServiceImpl implements CarService {
 
 		return jsonArray.toString();
 	}
+
+	@Override
+	public List<Carinfo> getAllcarNum(String carrierId) {
+		// TODO 自动生成的方法存根
+		return carDao.getAllcarNum(carrierId);
+	}
 	
 	
 	

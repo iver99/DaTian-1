@@ -82,11 +82,19 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">受理：</td>
                                     <td>
                                     	<select class="input_mgmt2a" name="driver" id="driver" required>
-											<option value="" selected="selected">选择车牌号</option>
+											<option value="" selected="selected">随车司机</option>
 											 <c:forEach var="driver" items="${driverList }">
 												 <option value="${driver.driverName }">${driver.driverName }</option>
 											</c:forEach>
-                                        </select><span class="span_mgmt_dynamic1"></span><!-- <input type="text" class="input_mgmt2" value="随车司机" readonly="readonly" />
+                                        </select>
+                                        <span class="span_mgmt_dynamic1">--</span>
+                                        <select class="input_mgmt2a" name="carNum" id="carNum" required>
+                                            <option value="" selected="selected">车牌号</option>
+                                            <c:forEach var="car" items="${carNumList }">
+                                                <option value="${car.carNum }">${car.carNum }</option>
+                                            </c:forEach>
+                                        </select>
+                                        <!-- <input type="text" class="input_mgmt2" value="随车司机" readonly="readonly" />
                                         <img src="images/btn_add2.png" hidefocus="true" style="cursor:pointer;" title="添加" onclick="additem();" /> -->
                                     </td>
                                 </tr>

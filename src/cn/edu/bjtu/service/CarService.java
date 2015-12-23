@@ -86,4 +86,11 @@ public interface CarService {
 	 */
 	public String getCompanyCarAjax(String carrierId);
 	
+	//add by solitudeycq at 2015-12-24 at 0:49
+	/**
+	 * 获取公司车辆车牌号
+	 * @param carrierId
+	 * @return
+	 */
+	public List<Carinfo> getAllcarNum(String carrierId);
 }
