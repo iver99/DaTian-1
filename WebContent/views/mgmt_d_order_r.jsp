@@ -208,6 +208,17 @@ function getUserOrderResource(display,currentPage,orderNum){
 							str+="</div></div></div></li></ul></div></td>";
 							body.append(str);
 							}
+						else if(data[i].state == '已受理'){
+							var str="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 204;\">";
+							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
+							str+="<div class=\"menu\">";
+							str+="<a href=\"getOrderDetail?orderid="+data[i].id+"\" class=\"menuhd\" hidefocus=\"true\">查看</a>";
+							str+="<div class=\"menubd\">";
+							str+="<div class=\"menubdpanel\">";
+							str+="<a href=\"getOrderCancelOrder?orderid="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消</a>";
+							str+="</div></div></div></li></ul></div></td>";
+							body.append(str);
+							}
                         
 						else if(data[i].state == '待收货'){
 							var str="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 202;\">";
