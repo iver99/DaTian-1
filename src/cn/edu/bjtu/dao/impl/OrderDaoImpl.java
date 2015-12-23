@@ -66,7 +66,7 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		if(t.equals(order.getConfirm())){
 		order.setState("待收货");// 修改状态
 		}else{
-			order.setState("已确认");
+			order.setState("已受理");
 		}
 		this.update(order);
 		return true;
