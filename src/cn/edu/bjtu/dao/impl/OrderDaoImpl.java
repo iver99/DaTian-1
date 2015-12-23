@@ -85,6 +85,17 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		return true;
 	}
 	
+	@Override
+	/**
+	 * 司机确认
+	 */
+	public boolean setConfirm(String orderId) {
+		String t = "true";
+		Orderform order = this.get(Orderform.class, orderId);
+		order.setConfirm(t);
+		return true;
+	}
+	
 
 	@Override
 	public float getExpectedMoney(String orderId) {
@@ -205,8 +216,5 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		params.put("driver", driver);
 		return this.find(hql, params);
 		
-	}
-	
-
-	
+	}	
 }

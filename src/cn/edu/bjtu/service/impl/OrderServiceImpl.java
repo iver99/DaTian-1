@@ -83,6 +83,12 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDao.setDriver(orderId, driver);
 	}
+	
+	@Override
+	public boolean setConfirm(String orderId){
+		
+		return orderDao.setConfirm(orderId);	
+	}
 
 	@Override
 	/**
