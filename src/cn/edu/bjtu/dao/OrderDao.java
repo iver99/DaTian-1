@@ -26,6 +26,9 @@ public interface OrderDao extends BaseDao<Orderform> {
 	//add by solitudeycq at 2015-12-18 22:09 修改订单里的司机
 	public boolean setDriver(String orderId,String driver);
 	
+	//add by solitudeycq at 2015-12-24 1:54 修改订单里的carNum
+	public boolean setcarNum(String orderId,String carNum);
+	
 	//add by solitudeycq at 2015-12-23 14:07 司机确认
 	public boolean setConfirm(String orderId);
 	

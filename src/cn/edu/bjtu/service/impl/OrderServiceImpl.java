@@ -85,6 +85,12 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
+	public boolean setcarNum(String orderId, String carNum) {
+		// TODO 自动生成的方法存根
+		return orderDao.setcarNum(orderId, carNum);
+	}
+	
+	@Override
 	public boolean setConfirm(String orderId){
 		
 		return orderDao.setConfirm(orderId);	
@@ -431,9 +437,4 @@ public class OrderServiceImpl implements OrderService {
 		// TODO 自动生成的方法存根
 		return orderDao.getOrderByDriverName(driver);
 	}
-	
-	
-	
-	
-
 }

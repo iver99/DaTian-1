@@ -86,6 +86,16 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 	}
 	
 	@Override
+	public boolean setcarNum(String orderId, String carNum) {
+		// TODO 自动生成的方法存根
+		Orderform order = this.get(Orderform.class, orderId);
+		order.setCarNum(carNum);
+		
+		this.update(order);
+		return true;
+	}	
+	
+	@Override
 	/**
 	 * 司机确认
 	 */
@@ -216,5 +226,7 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		params.put("driver", driver);
 		return this.find(hql, params);
 		
-	}	
+	}
+
+	
 }

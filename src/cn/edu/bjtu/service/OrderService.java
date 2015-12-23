@@ -29,6 +29,8 @@ public interface OrderService {
 	
 	//add by solitudeycq at 2015-12-18 22:21 为订单分配司机
 	public boolean setDriver(String orderId,String driver);
+	//add by solitudeycq at 2015-12-24 1:52 为订单分配车牌号
+	public boolean setcarNum(String orderId,String carNum);
 	
 	//add by solitudeycq at 2015-12-23 14:12司机确认
 	public boolean setConfirm(String orderId);
