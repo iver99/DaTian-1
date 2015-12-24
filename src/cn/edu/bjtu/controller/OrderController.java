@@ -210,6 +210,8 @@ public class OrderController {
 	@RequestMapping("acceptOrderForm")
 	public ModelAndView getAcceptOrderForm(String orderid,
 			HttpServletRequest request, HttpServletResponse response) {
+		
+		String carState = "停歇";
 
 		// 需要查出公司司机列表 add by RussWest0 at 2015年6月7日,下午7:56:32 
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
@@ -217,6 +219,13 @@ public class OrderController {
 		mv.addObject("driverList",driverList);
 		//需要查出公司车牌号列表add by solitudeycq at 2015-12-24 0:46
 		List<Carinfo> carNumList=carService.getAllcarNum(carrierId);
+		for(int i=0;i<carNumList.size();i++){
+			Carinfo carinfo = (Carinfo)carNumList.get(i);
+			if(!(carState.equals(carinfo.getCarState()))){
+				carNumList.remove(i);
+				i=i-1;
+			}
+		}
 		mv.addObject("carNumList", carNumList);
 		// 需要获取车牌号和司机名
 		mv.addObject("orderId", orderid);
