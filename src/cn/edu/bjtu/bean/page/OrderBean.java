@@ -61,8 +61,36 @@ public class OrderBean {
 	private String driver;
 	private String confirm;
 	
+	//add by solitudeycq at 2015-12-24 18:25 应安卓端需求增加两个字段
+	private String takeoverNumber;    //开始运输任务时司机扫码所得的数字
+	private String completeNumber;    //结束运输任务时司机扫码所得的数字
 	
 	
+	
+	/**
+	 * @return takeoverNumber
+	 */
+	public String getTakeoverNumber() {
+		return takeoverNumber;
+	}
+	/**
+	 * @param takeoverNumber 要设置的 takeoverNumber
+	 */
+	public void setTakeoverNumber(String takeoverNumber) {
+		this.takeoverNumber = takeoverNumber;
+	}
+	/**
+	 * @return completeNumber
+	 */
+	public String getCompleteNumber() {
+		return completeNumber;
+	}
+	/**
+	 * @param completeNumber 要设置的 completeNumber
+	 */
+	public void setCompleteNumber(String completeNumber) {
+		this.completeNumber = completeNumber;
+	}
 	/**
 	 * @return confirm
 	 */
