@@ -15,3 +15,4 @@
 <script type="text/javascript" src="js/messages_zh.js"></script>
 <!-- 仓库详情，查看联系人 -->
 <script type="text/javascript" src="js/viewContact.js"></script>
+<script type="text/javascript" src="js/renderTime.js"></script>

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String date=(String)request.getParameter("date");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -64,7 +67,7 @@
 			</td>
 			<td class="td_leftnav_top">
             	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2">
-                    <tr>
+                   <tr>
                     	<td>
                         	<span class="span_mgmt_right2_text1">财务指标</span>
                             <div class="div_mgmt_s1">
@@ -85,36 +88,29 @@
 				<input id="kind" value="focus" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
                 <table id="list" width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
                     <!-- <tr>
-                        <td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
-                        <td class="td_mgmt_right3_head">时间</td>
-                        <td width="100" class="td_mgmt_right3_head">运费收入(元)</td>
-                        <td width="100" class="td_mgmt_right3_head">保险费收入(元)</td>
-                        <td width="100" class="td_mgmt_right3_head">合计收入(元)</td>
-                        <td width="100" class="td_mgmt_right3_head">操作</td>
-                    </tr>
+                        <td width="20" height="40" class="td_mgmt_right3_head">&nbsp;</td>
+                        <td width="100" class="td_mgmt_right3_head">意向编号</td>
+                        <td width="70" class="td_mgmt_right3_head">类别</td>
+                        <td width="120" class="td_mgmt_right3_head">名称</td>
+                        <td class="td_mgmt_right3_head">承运方</td>
+                        <td width="88" class="td_mgmt_right3_head">意向提交时间</td>
+                        <td class="td_mgmt_right3_head">运费收入(元)</td>
+                        <td class="td_mgmt_right3_head">保险费收入(元)</td>
+                        <td class="td_mgmt_right3_head">合计收入(元)</td>
+                        <td width="80" class="td_mgmt_right3_head">操作</td>
+					</tr>
                     <tr>
                         <td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
-                        <td class="td_mgmt_right3_td1">5月11日</td>
-                        <td class="td_mgmt_right3_td1">283390</td>
+                        <td class="td_mgmt_right3_td1">Y001001001</td>
+                        <td class="td_mgmt_right3_td1">整车</td>
+                        <td class="td_mgmt_right3_td1">北京→上海</td>
+                        <td class="td_mgmt_right3_td1">北京畅通达物流</td>
+                        <td class="td_mgmt_right3_td1">2014-02-21<br />
+                            10:44:28</td>
+                        <td class="td_mgmt_right3_td1">12000</td>
                         <td class="td_mgmt_right3_td1">1000</td>
-                        <td class="td_mgmt_right3_td1">284390</td>
-                        <td class="td_mgmt_right3_td3"><a href="mgmt_s_fin2.htm" hidefocus="true">查看</a></td>
-                    </tr> -->
-                    <!-- <tr>
-                        <td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
-                        <td class="td_mgmt_right3_td1">5月12日</td>
-                        <td class="td_mgmt_right3_td1">42328</td>
-                        <td class="td_mgmt_right3_td1">2000</td>
-                        <td class="td_mgmt_right3_td1">44328</td>
-                        <td class="td_mgmt_right3_td3"><a href="javascript:;" hidefocus="true">查看</a></td>
-                    </tr>
-                    <tr>
-                        <td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
-                        <td class="td_mgmt_right3_td1">5月13日</td>
-                        <td class="td_mgmt_right3_td1">7837700</td>
-                        <td class="td_mgmt_right3_td1">7000</td>
-                        <td class="td_mgmt_right3_td1">784400</td>
-                        <td class="td_mgmt_right3_td3"><a href="javascript:;" hidefocus="true">查看</a></td>
+                        <td class="td_mgmt_right3_td1">13000</td>
+                        <td class="td_mgmt_right3_td3"><a href="javascript:;" class="a_top3" hidefocus="true">查看</a></td>
                     </tr> -->
                 </table>
 				<table border="0" cellpadding="0" cellspacing="0" class="table_recordnumber">
@@ -148,21 +144,23 @@
 	function OnLoad() {
 		loadFocus();
 		//var search_content=$("#search_focus").val();
+		var date="<%=date %>";
 		var startDate=$("#startDate").val();
 		var endDate=$("#endDate").val();
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		getFinancialInfo(startDate,endDate,display,currentPage);
+		viewFinancialDetails(date,startDate,endDate,display,currentPage);
 		//总数
 		//getFinancialInfoTotalRowsAjax(startDate,endDate,display,currentPage);
 	}
 	
 	//获取财务指标猎豹
-	function getFinancialInfo(startDate,endDate,display,currentPage){
-		var url="getFinancialInfoAjax";
+	function viewFinancialDetails(date,startDate,endDate,display,currentPage){
+		var url="viewFinancialDetailsAjax";
 		$.ajax({
 			url:url,
 			data:{
+				date:date,
 				startDate:startDate,
 				endDate:endDate,
 				display:display,
@@ -175,23 +173,32 @@
 				body.empty();
 				var str="";
 				str+="<tr>";
-				str+="<td width=\"20\" height=\"40\" class=\"td_mgmt_right3_head1\">&nbsp;</td>";
-				str+="<td class=\"td_mgmt_right3_head\">时间</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">运费收入(元)</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">保险费收入(元)</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">合计收入(元)</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">操作</td>";
+				str+="<td width=\"20\" height=\"40\" class=\"td_mgmt_right3_head\">&nbsp;</td>";
+				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">意向编号</td>";
+				str+="<td width=\"70\" class=\"td_mgmt_right3_head\">类别</td>";
+				str+="<td width=\"120\" class=\"td_mgmt_right3_head\">名称</td>";
+				str+="<td class=\"td_mgmt_right3_head\">承运方</td>";
+				str+="<td width=\"88\" class=\"td_mgmt_right3_head\">意向提交时间</td>";
+				str+="<td class=\"td_mgmt_right3_head\">运费收入(元)</td>";
+				str+="<td class=\"td_mgmt_right3_head\">保险费收入(元)</td>";
+				str+="<td class=\"td_mgmt_right3_head\">合计收入(元)</td>";
+				str+="<td width=\"80\" class=\"td_mgmt_right3_head\">操作</td>";
 				str+="</tr>";
+				
 				body.append(str);
 				str="";
 				for(var i=0;i<data.length;i++){
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].date+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].transportFee+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalInsurance+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalFee+"</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"FinancialDetailsPage?date="+data[i].date+"\" hidefocus=\"true\">查看</a></td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].orderNum+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\"></td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceName+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].clientName+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].submitTime)+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].actualPrice+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].insurance+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+(data[i].actualPrice+data[i].insurance)+"</td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"javascript:;\" class=\"a_top3\" hidefocus=\"true\">查看</a></td>";
 					str+="</tr>";
 				}
 				body.append(str);

@@ -2,16 +2,23 @@ package cn.edu.bjtu.bean.page;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 财务分析pagebean
  * @author iver
  * @date   2015年12月23日 下午8:51:29
  */
 public class FinancialBean {
-	Date date;
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	Date date;//时间yyyy-mm-dd
 	Double transportFee;//运费收入
 	Double totalInsurance;//保险费收入
 	Double totalFee;//合计
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	Date startDate;
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	Date endDate;
 	/**
 	 * @return the date
 	 */

@@ -17,6 +17,7 @@ import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.FinancialService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.vo.Orderform;
 @Service
 @Transactional
 public class FinancialServiceImpl implements FinancialService{
@@ -66,6 +67,26 @@ public class FinancialServiceImpl implements FinancialService{
 		Long count=orderDao.countBySql(sql, params);
 		return count;
 	}
+	/**
+	 * 查看某一天 所有订单
+	 */
+	@Override
+	public List<Orderform> viewFinancialDetails(HttpSession session,FinancialBean financialBean) {
+		String userId=(String)session.getAttribute(Constant.USER_ID);
+		String hql="from Orderform t "
+				+ "where t.carrierId=:carrierId "
+				+ "and date(t.submitTime)=:submitTime "
+				+ "order by t.submitTime desc";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("carrierId", userId);
+		params.put("submitTime", financialBean.getDate());
+		List<Orderform> list=orderDao.find(hql, params);
+		
+		return list;
+		
+	}
+	
+	
 	
 
 }

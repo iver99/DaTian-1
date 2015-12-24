@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.service.FinancialService;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.vo.Orderform;
 
 @Controller
 /**
@@ -55,5 +56,27 @@ public class FinancialController {
 	@ResponseBody
 	public Long getFinancialInfoTotalRows(FinancialBean financialBean,PageUtil pageUtil,HttpSession session){
 		return financialService.getAccountFinancialInfoTotalRows(financialBean,pageUtil,session);
+	}
+	
+	/**
+	 * 获取某一天的所有订单列表页面
+	 * @param date
+	 * @return
+	 */
+	@RequestMapping("FinancialDetailsPage")
+	public String FinancialDetailsPage(){
+		return "mgmt_s_fin2";
+	}
+	
+	/**
+	 * 点击查看时，返回某一天的订单
+	 * @param session
+	 * @param financialBean
+	 * @return
+	 */
+	@RequestMapping("viewFinancialDetailsAjax")
+	@ResponseBody
+	public List<Orderform> viewFinancialDetailsPage(HttpSession session,FinancialBean financialBean){
+		return financialService.viewFinancialDetails(session, financialBean);
 	}
 }

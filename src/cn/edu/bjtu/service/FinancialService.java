@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.vo.Orderform;
 
 public interface FinancialService {
 	/**
@@ -21,4 +22,11 @@ public interface FinancialService {
 	 * @return
 	 */
 	public Long getAccountFinancialInfoTotalRows(FinancialBean financialBean,PageUtil pageUtil,HttpSession session);
+	
+	/**
+	 * 获取某一天的所有订单
+	 * @param date
+	 * @return
+	 */
+	public List<Orderform> viewFinancialDetails(HttpSession session,FinancialBean financialBean);
 }
