@@ -8,5 +8,5 @@ import cn.edu.bjtu.vo.Driverinfo;
 
 public interface CarDao extends BaseDao<Carinfo>{
 	public List<Carinfo> getAllcarNum(String carrierId);
-	public boolean setcarState(String carNum);
+	public boolean setcarState(String carNum,String carState);
 }

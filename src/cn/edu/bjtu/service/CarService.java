@@ -19,7 +19,7 @@ public interface CarService {
 	
 	public Carinfo getCarInfo(String carid);
 	
-	public boolean setcarState(String carNum);
+	public boolean setcarState(String carNum,String carState);
 
 	public boolean insertNewCar(Carinfo car,HttpServletRequest request);
 	public boolean updateNewCar(Carinfo car,HttpServletRequest request);

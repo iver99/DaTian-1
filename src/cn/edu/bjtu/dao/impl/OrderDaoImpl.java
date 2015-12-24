@@ -96,6 +96,28 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 	}	
 	
 	@Override
+	public boolean settakeoverNumber(String orderId, String takeoverNumber) {
+		// TODO 自动生成的方法存根
+		Orderform order = this.get(Orderform.class, orderId);
+		order.setTakeoverNumber(takeoverNumber);
+		
+		this.update(order);
+		return true;
+	}
+	
+	@Override
+	public boolean setcompleteNumber(String orderId, String completeNumber, Float price) {
+		// TODO 自动生成的方法存根
+		Orderform order = this.get(Orderform.class, orderId);
+		order.setActualPrice(price);
+		order.setCompleteNumber(completeNumber);
+		order.setState("已完成");
+		
+		this.update(order);
+		return true;
+	}
+
+	@Override
 	/**
 	 * 司机确认
 	 */
@@ -103,6 +125,8 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		String t = "true";
 		Orderform order = this.get(Orderform.class, orderId);
 		order.setConfirm(t);
+		
+		this.update(order);
 		return true;
 	}
 	

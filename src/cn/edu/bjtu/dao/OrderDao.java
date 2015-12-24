@@ -32,6 +32,10 @@ public interface OrderDao extends BaseDao<Orderform> {
 	//add by solitudeycq at 2015-12-23 14:07 司机确认
 	public boolean setConfirm(String orderId);
 	
+	public boolean settakeoverNumber(String orderId,String takeoverNumber);
+	
+	public boolean setcompleteNumber(String orderId, String completeNumber, Float price);
+	
 	public float getExpectedMoney(String orderId);
 	
 	

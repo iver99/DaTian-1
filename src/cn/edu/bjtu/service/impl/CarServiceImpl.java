@@ -354,9 +354,9 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public boolean setcarState(String carNum) {
+	public boolean setcarState(String carNum,String carState) {
 		// TODO 自动生成的方法存根
-		return carDao.setcarState(carNum);
+		return carDao.setcarState(carNum, carState);
 	}
 	
 	

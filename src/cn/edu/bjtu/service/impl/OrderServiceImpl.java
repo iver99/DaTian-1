@@ -95,6 +95,18 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDao.setConfirm(orderId);	
 	}
+	
+	@Override
+	public boolean settakeoverNumber(String orderId, String takeoverNumber) {
+		// TODO 自动生成的方法存根
+		return orderDao.settakeoverNumber(orderId, takeoverNumber);
+	}
+	
+	@Override
+	public boolean setcompleteNumber(String orderId, String completeNumber, Float price) {
+		// TODO 自动生成的方法存根
+		return orderDao.setcompleteNumber(orderId, completeNumber, price);
+	}
 
 	@Override
 	/**
@@ -437,4 +449,8 @@ public class OrderServiceImpl implements OrderService {
 		// TODO 自动生成的方法存根
 		return orderDao.getOrderByDriverName(driver);
 	}
+
+	
+
+	
 }
