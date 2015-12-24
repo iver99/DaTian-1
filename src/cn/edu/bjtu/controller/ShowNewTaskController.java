@@ -31,7 +31,7 @@ public class ShowNewTaskController {
 	public String showNewTask(@RequestParam(value="phone",required=false) String phone){
 		
 		String f = "true";
-		String s = "待收货";
+		String s = "已受理";
 		//获取司机名字，以便搜索订单表
 		driverinfo = driverService.getDriverByPhone(phone);
 		String name = driverinfo.getDriverName();
