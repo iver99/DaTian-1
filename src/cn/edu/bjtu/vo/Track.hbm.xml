@@ -23,5 +23,8 @@
         <property name="time" type="timestamp">
             <column name="time" length="19" />
         </property>
+        <property name="address" type="string">
+            <column name="address" />
+        </property>
     </class>
 </hibernate-mapping>

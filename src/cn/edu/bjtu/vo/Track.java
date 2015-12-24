@@ -19,6 +19,22 @@ public class Track implements java.io.Serializable {
 	private Double locLatitude;//纬度
 	//add by solitudeycq at 2015-12-21 19:50 增加时间
 	private Date time;
+	
+	private String address;
+
+	/**
+	 * @return address
+	 */
+	public String getAddress() {
+		return address;
+	}
+
+	/**
+	 * @param address 要设置的 address
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	/**
 	 * @return time
