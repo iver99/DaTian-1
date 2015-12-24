@@ -20,6 +20,19 @@ public class CarDaoImpl extends BaseDaoImpl<Carinfo> implements CarDao{
 		// TODO 自动生成的方法存根
 		return this.find("from Carinfo where carrierId='"+carrierId+"'");
 	}
+
+	@Override
+	public boolean setcarState(String carNum) {
+		// TODO 自动生成的方法存根
+		String carState = "在途";
+		String hql = "from Carinfo where carNum='"+carNum+"'";
+		List<Carinfo> car = this.find(hql);
+		Carinfo carinfo = car.get(0);
+		carinfo.setCarState(carState);
+		
+		this.update(carinfo);
+		return true;
+	}
 	
 	
 }

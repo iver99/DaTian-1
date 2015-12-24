@@ -352,6 +352,12 @@ public class CarServiceImpl implements CarService {
 		// TODO 自动生成的方法存根
 		return carDao.getAllcarNum(carrierId);
 	}
+
+	@Override
+	public boolean setcarState(String carNum) {
+		// TODO 自动生成的方法存根
+		return carDao.setcarState(carNum);
+	}
 	
 	
 	

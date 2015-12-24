@@ -252,6 +252,7 @@ public class OrderController {
 		//获取到车牌号，将车牌号写入订单carNum字段add by solitudeycq at 2015-12-24 1:51
 		orderService.setDriver(orderid, driver);
 		orderService.setcarNum(orderid, carNum);
+		carService.setcarState(carNum);
 		orderService.acceptOrder(orderid);
 		return "redirect:recieveorderinfo";
 	}
