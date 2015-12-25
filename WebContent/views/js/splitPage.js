@@ -171,6 +171,14 @@ function ChangeTo(page){
 			getUserComplainResource(display,currentPage,theme);
 			getUserComplainResourceTotalRows(display,currentPage,theme);
 		}
+		//财务指标
+		if($("#kind").val() == 'financial'){
+			var startDate=$("#startDate").val();
+			var endDate=$("#endDate").val();
+			getFinancialInfo(startDate,endDate,display,currentPage);
+			//总数
+			getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
+		}
 
 		
 

@@ -56,12 +56,17 @@ public class FinancialServiceImpl implements FinancialService{
 	@Override
 	public Long getAccountFinancialInfoTotalRows(FinancialBean financialBean,PageUtil pageUtil,HttpSession session) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
-		//按天计算 
-		String sql="select count(*) from (select date(submitTime) as date,"
+		//按天计算
+		/**不使用这么多层的嵌套查询，报
+		 * [DaTian]org.hibernate.util.JDBCExceptionReporter WARN   - SQL Error: 0, SQLState: S0022
+		   [DaTian]org.hibernate.util.JDBCExceptionReporter ERROR  - Column '' not found.
+		 * 的错误
+		 */
+		String sql="select * from (select count(*) from (select date(submitTime) as date,"
 				+ "sum(actualPrice) as transportFee,"
 				+ "sum(insurance) as totalInsurance"
 				+ " from orderform where carrierId=:userId "
-				+ " group by date(submitTime) order by date(submitTime) desc ) as t";
+				+ " group by date(submitTime) order by date(submitTime) desc ) as t) as r";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("userId", userId);
 		Long count=orderDao.countBySql(sql, params);
