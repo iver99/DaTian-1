@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.edu.bjtu.dao.TrackDao;
 import cn.edu.bjtu.dao.impl.BaseDaoImpl;
 import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.OrderService;
@@ -59,7 +57,7 @@ public class UploadController extends BaseDaoImpl<Track> {
 	}
 	
 	//安卓端上传地理位置信息
-	@RequestMapping("Location")
+	@RequestMapping(value="Location",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadLocation(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		String orderId = request.getParameter("orderId");
