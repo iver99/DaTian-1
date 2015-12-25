@@ -21,6 +21,7 @@ public class UploadController {
 	@Autowired
 	CarService carService;
 	
+	//安卓端上传收货订单号，即开始任务
 	@RequestMapping(value="TakeoverNumber",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadtakeoverNumber(HttpServletRequest request,HttpServletResponse response){
@@ -30,6 +31,7 @@ public class UploadController {
 		orderService.settakeoverNumber(orderId, takeoverNumber);
 	}
 	
+	//安卓端上传送达订单号，即结束任务
 	@RequestMapping(value="CompleteNumber",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadcompleteNumber(HttpServletRequest request,HttpServletResponse response){
