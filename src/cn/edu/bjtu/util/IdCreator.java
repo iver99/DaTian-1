@@ -164,5 +164,13 @@ public class IdCreator {
 	public static String createSettlementId(){
 		return "SE"+(int )(Math.random()*100000000);
 	}
+	
+	/**
+	 * ·µ»Øtrack±íid
+	 * @return
+	 */
+	public static String createTrackId(){
+		return "T"+(int )(Math.random()*100000000);
+	}
 
 }
