@@ -8,8 +8,8 @@
             <column name="id" />
             <generator class="assigned" />
         </id>
-        <property name="orderNum" type="string">
-            <column name="orderNum" />
+        <property name="orderId" type="string">
+            <column name="orderId" />
         </property>
         <property name="carNum" type="string">
             <column name="carNum" />

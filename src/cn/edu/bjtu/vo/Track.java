@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class Track implements java.io.Serializable {
 
 	private String id;
-	private String orderNum;
+	private String orderId;
 	private String carNum;
 	private Double locLongitude;//¾­¶È
 	private Double locLatitude;//Î³¶È
@@ -57,10 +57,10 @@ public class Track implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Track(String id, String orderNum, String carNum,
+	public Track(String id, String orderId, String carNum,
 			Double locLongitude, Double locLatitude) {
 		this.id = id;
-		this.orderNum = orderNum;
+		this.orderId = orderId;
 		this.carNum = carNum;
 		this.locLongitude = locLongitude;
 		this.locLatitude = locLatitude;
@@ -74,13 +74,13 @@ public class Track implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public String getOrderNum() {
-		return orderNum;
+	public String getOrderId() {
+		return orderId;
 	}
 
 
-	public void setOrderNum(String orderNum) {
-		this.orderNum = orderNum;
+	public void setOrderNum(String orderId) {
+		this.orderId = orderId;
 	}
 
 
