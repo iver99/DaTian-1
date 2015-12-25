@@ -79,7 +79,7 @@ public class Track implements java.io.Serializable {
 	}
 
 
-	public void setOrderNum(String orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 
