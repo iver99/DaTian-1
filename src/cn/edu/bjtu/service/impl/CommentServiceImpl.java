@@ -125,7 +125,7 @@ public class CommentServiceImpl implements CommentService{
 		params.put("orderId", orderId);
 		List<Comment> commentList=commentDao.find(hql, params);
 		
-		if(commentList!=null){
+		if((commentList.size())!=0){
 			return commentList.get(0);
 		}
 		return null;
