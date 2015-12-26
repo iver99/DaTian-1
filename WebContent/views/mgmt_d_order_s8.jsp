@@ -94,11 +94,11 @@
                                     <div id="rating3" style="float:left;"></div>
                                     <div class="div_rating_right"><input id="hint3" type="text" class="input_rating" name="rate3"/></div>
                                 </div>
-                                <div class="div_rating_sub">
+                                <!-- <div class="div_rating_sub">
                                     <div class="div_rating_left">总体费用</div>
                                     <div id="rating4" style="float:left;"></div>
                                     <div class="div_rating_right"><input id="hint4" type="text" class="input_rating" name="rate4"/></div>
-                                </div>
+                                </div> -->
                                 <div class="div_rating_sub">
                                 	<textarea class="textarea_rating" placeholder="请输入补充内容..." name="remarks" required></textarea>
                                 </div>

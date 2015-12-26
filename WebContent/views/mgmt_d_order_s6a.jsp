@@ -295,7 +295,7 @@
                                     </c:choose>
                                     <div class="div_rating_right"><input id="hint3" type="text" value="${comment.cargoSafety }" class="input_rating" /></div>
                                 </div>
-                                <div class="div_rating_sub">
+                                <%-- <div class="div_rating_sub">
                                     <div class="div_rating_left">总体费用</div>
                                     <c:choose>
                                     	<c:when test="${comment.totalMoney == '很好'}">
@@ -315,7 +315,7 @@
                                     	</c:when>
                                     </c:choose>
                                     <div class="div_rating_right"><input id="hint4" type="text" value="${comment.totalMoney }" class="input_rating" /></div>
-                                </div>
+                                </div> --%>
                                 <div class="div_rating_sub">
                                 	补充：${comment.comment }
                                 </div>
