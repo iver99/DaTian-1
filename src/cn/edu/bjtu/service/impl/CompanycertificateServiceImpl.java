@@ -33,10 +33,9 @@ public class CompanycertificateServiceImpl implements CompanycertificateService{
 	
 	@Override
 	public boolean validateCompany(String userId, String companyName,
-			String divisionCode, String legalName, String legalIDCard,
-			String companyAddr, String companyType, String companyScale,
-			String invoiceKind, String serviceIndustry, String businessKind,
-			String companyContact, String phone, String basicSituation,
+			String divisionCode, String companyAddr, String companyType, 
+			String companyScale,String businessKind,
+			String companyContact, String phone,
 			String path, String fileName){
 		
 		//更新carrierinfo  add by RussWest0 at 2015年6月6日,下午2:49:21 
@@ -58,7 +57,7 @@ public class CompanycertificateServiceImpl implements CompanycertificateService{
 		carrierinfo.setRelDate(new Date());
 //		carrierinfo.setRemarks(remarks);
 //		carrierinfo.setResourceRate(resourceRate);
-		carrierinfo.setServiceIndustry(serviceIndustry);
+//		carrierinfo.setServiceIndustry(serviceIndustry);
 //		carrierinfo.setStatus(status);
 //		carrierinfo.setWarehouse(warehouse);
 		
@@ -76,17 +75,17 @@ public class CompanycertificateServiceImpl implements CompanycertificateService{
 				//companycertificate.setId(userId);
 				companycertificate.setCompanyName(companyName);	
 				companycertificate.setDivisionCode(divisionCode);
-				companycertificate.setLegalName(legalName);
-				companycertificate.setLegalIDCard(legalIDCard);
+		//		companycertificate.setLegalName(legalName);
+		//		companycertificate.setLegalIDCard(legalIDCard);
 				companycertificate.setCompanyAddr(companyAddr);
 				companycertificate.setCompanyType(companyType);
 				companycertificate.setCompanyScale(companyScale);
-				companycertificate.setInvoiceKind(invoiceKind);
-				companycertificate.setServiceIndustry(serviceIndustry);
+		//		companycertificate.setInvoiceKind(invoiceKind);
+		//		companycertificate.setServiceIndustry(serviceIndustry);
 				companycertificate.setBusinessKind(businessKind);
 				companycertificate.setCompanyContact(companyContact);
 				companycertificate.setPhone(phone);
-				companycertificate.setBasicSituation(basicSituation);
+		//		companycertificate.setBasicSituation(basicSituation);
 				// 保存文件路径
 						if (path != null && fileName != null) {
 							String fileLocation = path + "//" + fileName;
@@ -111,14 +110,13 @@ public class CompanycertificateServiceImpl implements CompanycertificateService{
 
 	@Override
 	public boolean companycertificateUpdate(String userId, String companyName,
-			String divisionCode, String legalName, String legalIDCard,
+			String divisionCode, 
 			String companyAddr, String companyType, String companyScale,
-			String invoiceKind, String serviceIndustry, String businessKind,
-			String companyContact, String phone, String basicSituation,
+			String businessKind,
+			String companyContact, String phone,
 			String path, String fileName) {
-		return companycertificateDao.companycertificateUpdate(userId,companyName,divisionCode,legalName,
-				legalIDCard,companyAddr,companyType,companyScale,invoiceKind,serviceIndustry,
-				businessKind,companyContact,phone,basicSituation, path, fileName);
+		return companycertificateDao.companycertificateUpdate(userId,companyName,divisionCode,companyAddr,companyType,companyScale,
+				businessKind,companyContact,phone,path, fileName);
 	}
 	
 }

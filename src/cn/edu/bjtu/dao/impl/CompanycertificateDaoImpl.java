@@ -30,27 +30,27 @@ public class CompanycertificateDaoImpl extends BaseDaoImpl<Companycertificate> i
 
 	@Override
 	public boolean companycertificateUpdate(String userId, String companyName,
-			String divisionCode, String legalName, String legalIDCard,
+			String divisionCode, 
 			String companyAddr, String companyType, String companyScale,
-			String invoiceKind, String serviceIndustry, String businessKind,
-			String companyContact, String phone, String basicSituation,
+			 String businessKind,
+			String companyContact, String phone, 
 			String path, String fileName) {
 		
 		Companycertificate companycertificate=new Companycertificate();
 		companycertificate = getCompanycertificate(userId);// 根据id查找到车辆信息
 		companycertificate.setCompanyName(companyName);	
 		companycertificate.setDivisionCode(divisionCode);
-		companycertificate.setLegalName(legalName);
-		companycertificate.setLegalIDCard(legalIDCard);
+	//	companycertificate.setLegalName(legalName);
+	//	companycertificate.setLegalIDCard(legalIDCard);
 		companycertificate.setCompanyAddr(companyAddr);
 		companycertificate.setCompanyType(companyType);
 		companycertificate.setCompanyScale(companyScale);
-		companycertificate.setInvoiceKind(invoiceKind);
-		companycertificate.setServiceIndustry(serviceIndustry);
+	//	companycertificate.setInvoiceKind(invoiceKind);
+	//	companycertificate.setServiceIndustry(serviceIndustry);
 		companycertificate.setBusinessKind(businessKind);
 		companycertificate.setCompanyContact(companyContact);
 		companycertificate.setPhone(phone);
-		companycertificate.setBasicSituation(basicSituation);
+	//	companycertificate.setBasicSituation(basicSituation);
 		// 保存文件路径
 				if (path != null && fileName != null) {
 					String fileLocation = path + "//" + fileName;

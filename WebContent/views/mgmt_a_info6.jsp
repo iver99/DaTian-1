@@ -84,14 +84,14 @@
 									<td height="40" class="td_mgmt_right3_td1b">组织机构代码：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="${detailCompanyCertificate.divisionCode }" name="divisionCode" required/></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">法人姓名：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="${detailCompanyCertificate.legalName }" name="legalName" required/></td>
 								</tr>
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">法人身份证号：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="${detailCompanyCertificate.legalIDCard }" name="legalIDCard" required/></td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">公司地址：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="${detailCompanyCertificate.companyAddr }" name="companyAddr" required/></td>
@@ -121,7 +121,7 @@
 									</td>
 								</tr>
 
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">发票种类：</td>
 									<td>
 										<select style="width:120px;" name="invoiceKind" required>
@@ -141,16 +141,20 @@
                                         <input type="checkbox" name="serviceIndustry" id="checkbox" value="汽车"/>
                                         汽车
                                     </td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">业务种类：</td>
 									<td>
-                                        <input type="checkbox" name="businessKind" id="checkbox2" value="干线运输线路"/>
-                                        干线运输线路&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" name="businessKind" id="checkbox2" value="城市配送网络"/>
-                                        城市配送网络&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" name="businessKind" id="checkbox2" value="仓储"/>
-                                        仓储
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="整车"/>
+                                        整车&nbsp;&nbsp;&nbsp;
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="零担"/>
+                                        零担&nbsp;&nbsp;&nbsp;
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="落地配"/>
+                                        落地配&nbsp;&nbsp;&nbsp;
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="仓储"/>
+                                        仓储&nbsp;&nbsp;&nbsp;
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="国内空运"/>
+                                        国内空运
 									</td>
 								</tr>
 								<tr>
@@ -161,12 +165,12 @@
 									<td height="40" class="td_mgmt_right3_td1b">手机号：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="${detailCompanyCertificate.phone }" name="phone" required/></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">公司基本情况：</td>
 									<td>
                                     	<textarea class="textarea_rating" placeholder="请输入内容..." name="basicSituation" required>${detailCompanyCertificate.basicSituation }</textarea>
                                     </td>
-								</tr>								
+								</tr>			 -->					
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">相关资质材料：</td>
 									<td>

@@ -83,14 +83,14 @@
 									<td height="40" class="td_mgmt_right3_td1b">组织机构代码：</td>
 									<td>${detailCompanyCertificate.divisionCode }</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">法人姓名：</td>
 									<td>${detailCompanyCertificate.legalName }</td>
 								</tr>
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">法人身份证号：</td>
 									<td>${detailCompanyCertificate.legalIDCard }</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">公司地址：</td>
 									<td>${detailCompanyCertificate.companyAddr }</td>
@@ -104,14 +104,14 @@
 									<td>${detailCompanyCertificate.companyScale }</td>
 								</tr>
 
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">发票种类：</td>
 									<td>${detailCompanyCertificate.invoiceKind }</td>
 								</tr>
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">服务行业：</td>
                                     <td>${detailCompanyCertificate.serviceIndustry }</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">业务种类：</td>
 									<td>${detailCompanyCertificate.businessKind }</td>
@@ -124,12 +124,12 @@
 									<td height="40" class="td_mgmt_right3_td1b">手机号：</td>
 									<td>${detailCompanyCertificate.phone }</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">公司基本情况：</td>
 									<td>
                                     	${detailCompanyCertificate.basicSituation }
                                     </td>
-								</tr>								<tr>
+								</tr>		 -->						<tr>
 									<td height="40" class="td_mgmt_right3_td1b">相关资质材料：</td>
 									<td><a href="downloadcompanycertificatematerial?id=${detailCompanyCertificate.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a></td>
 								</tr>

@@ -145,15 +145,15 @@
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">业务种类：</td>
 									<td>
-                                        <input type="checkbox" name="businessKind" id="businessKind" value="干线运输线路"/>
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="整车"/>
                                         整车&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" name="businessKind" id="businessKind" value="干线运输线路"/>
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="零担"/>
                                         零担&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" name="businessKind" id="businessKind" value="干线运输线路"/>
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="落地配"/>
                                         落地配&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" name="businessKind" id="businessKind" value="城市配送网络"/>
-                                        仓储&nbsp;&nbsp;&nbsp;
                                         <input type="checkbox" name="businessKind" id="businessKind" value="仓储"/>
+                                        仓储&nbsp;&nbsp;&nbsp;
+                                        <input type="checkbox" name="businessKind" id="businessKind" value="国内空运"/>
                                         国内空运
 									</td>
 								</tr>

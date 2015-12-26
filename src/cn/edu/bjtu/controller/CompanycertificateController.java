@@ -47,12 +47,9 @@ public class CompanycertificateController {
 	public ModelAndView companycertificate(
 			@RequestParam(required = false) MultipartFile file,
 			@RequestParam(required = false) String companyName, @RequestParam(required = false) String divisionCode,
-			@RequestParam(required = false) String legalName, @RequestParam(required = false) String legalIDCard,
 			@RequestParam(required = false) String companyAddr, @RequestParam(required = false) String companyType,
-			@RequestParam(required = false) String companyScale, @RequestParam(required = false) String invoiceKind,
-			@RequestParam(required = false) String serviceIndustry, @RequestParam(required = false) String businessKind,
+			@RequestParam(required = false) String companyScale,  @RequestParam(required = false) String businessKind,
 			@RequestParam(required = false) String companyContact, @RequestParam(required = false) String phone,
-			@RequestParam(required = false) String basicSituation,
 			HttpServletRequest request,	HttpServletResponse response) {
 		String userId=(String)request.getSession().getAttribute(Constant.USER_ID);
 		
@@ -72,9 +69,8 @@ public class CompanycertificateController {
 				}
 				// 没有上传文件的情况path 和 filenName默认为null
 
-		boolean flag=companycertificateService.validateCompany(userId,companyName,divisionCode,legalName,
-				legalIDCard,companyAddr,companyType,companyScale,invoiceKind,serviceIndustry,
-				businessKind,companyContact,phone,basicSituation,path,fileName);
+		boolean flag=companycertificateService.validateCompany(userId,companyName,divisionCode,companyAddr,companyType,companyScale,
+				businessKind,companyContact,phone,path,fileName);
 		if(flag==true){
 			try {
 				response.sendRedirect("accountinfo");
@@ -158,9 +154,9 @@ public class CompanycertificateController {
 
 				// ////////////////////////////////////////////
 		
-		boolean flag=companycertificateService.companycertificateUpdate(userId,companyName,divisionCode,legalName,
-				legalIDCard,companyAddr,companyType,companyScale,invoiceKind,serviceIndustry,
-				businessKind,companyContact,phone,basicSituation,path,fileName);
+		boolean flag=companycertificateService.companycertificateUpdate(userId,companyName,divisionCode,
+				companyAddr,companyType,companyScale,
+				businessKind,companyContact,phone,path,fileName);
 		if(flag==true){
 			try {
 				response.sendRedirect("accountinfo");
