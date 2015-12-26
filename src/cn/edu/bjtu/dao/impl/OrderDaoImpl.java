@@ -111,7 +111,7 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		Orderform order = this.get(Orderform.class, orderId);
 		order.setActualPrice(price);
 		order.setCompleteNumber(completeNumber);
-		order.setState("已完成");
+		order.setState("待评价");
 		
 		this.update(order);
 		return true;
