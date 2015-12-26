@@ -12,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mchange.v2.encounter.WeakEqualityEncounterCounter;
+
 import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.FinancialService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.util.ParseDate;
 import cn.edu.bjtu.vo.Orderform;
 @Service
 @Transactional
@@ -31,14 +34,15 @@ public class FinancialServiceImpl implements FinancialService{
 	public List<FinancialBean> getAccountFinancialInfo(FinancialBean financialBean,PageUtil pageUtil,HttpSession session) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		//按天计算 
-		String sql="select * from (select date(submitTime) as date,"
-				+ "sum(actualPrice) as transportFee,"
-				+ "sum(insurance) as totalInsurance"
-				+ " from orderform where carrierId=:userId "
-				+ " group by date(submitTime) order by date(submitTime) desc ) as t";
 		Map<String,Object> params=new HashMap<String,Object>();
-		params.put("userId", userId);
-		List<Object[]> objList=orderDao.findBySql(sql, params);
+		String sql="select * from (select date(t.submitTime) as date,"
+				+ "sum(t.actualPrice) as transportFee,"
+				+ "sum(t.insurance) as totalInsurance"
+				+ " from orderform t "+whereSql(userId,financialBean,params);
+		sql+=" group by date(t.submitTime) order by date(t.submitTime) desc ) as t2";
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Object[]> objList=orderDao.findBySql(sql, params,page,display);
 		List<FinancialBean> beanList=new ArrayList<FinancialBean>();
 		for(Object[] obj:objList){
 			FinancialBean bean=new FinancialBean();
@@ -50,11 +54,29 @@ public class FinancialServiceImpl implements FinancialService{
 		}
 		return beanList;
 	}
+	private String whereSql(String userId,FinancialBean financialBean,Map<String,Object> params){
+		
+		String wheresql="where t.carrierId=:userId ";
+		params.put("userId", userId);
+		String startDate=financialBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(financialBean.getStartDate());
+		String endDate=financialBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(financialBean.getStartDate());
+		if(!"1970-01-01".equals(startDate)){
+			wheresql+=" and t.submitTime>=:startDate";
+			params.put("startDate", financialBean.getStartDate());
+		}
+		if(!"1970-01-01".equals(endDate)){
+			//这里的时间需要加一天，加到下一天的0点时间才能使结果更换准确
+			wheresql+=" and t.submitTime<=:endDate";
+			params.put("endDate", financialBean.getEndDate());
+		}
+		
+		return wheresql;
+	}
 	/**
 	 * 财务指标总记录数
 	 */
 	@Override
-	public Long getAccountFinancialInfoTotalRows(FinancialBean financialBean,PageUtil pageUtil,HttpSession session) {
+	public Long getAccountFinancialInfoTotalRows(FinancialBean financialBean,HttpSession session) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		//按天计算
 		/**不使用这么多层的嵌套查询，报
@@ -62,13 +84,13 @@ public class FinancialServiceImpl implements FinancialService{
 		   [DaTian]org.hibernate.util.JDBCExceptionReporter ERROR  - Column '' not found.
 		 * 的错误
 		 */
-		String sql="select * from (select count(*) from (select date(submitTime) as date,"
-				+ "sum(actualPrice) as transportFee,"
-				+ "sum(insurance) as totalInsurance"
-				+ " from orderform where carrierId=:userId "
-				+ " group by date(submitTime) order by date(submitTime) desc ) as t) as r";
 		Map<String,Object> params=new HashMap<String,Object>();
-		params.put("userId", userId);
+		String sql="select * from (select count(*) from (select date(t.submitTime) as date,"
+				+ "sum(t.actualPrice) as transportFee,"
+				+ "sum(t.insurance) as totalInsurance"
+				+ " from orderform t "+whereSql(userId,financialBean,params);
+		sql+=" group by date(t.submitTime) order by date(t.submitTime) desc ) as t2) as t3";
+		
 		Long count=orderDao.countBySql(sql, params);
 		return count;
 	}
@@ -76,20 +98,60 @@ public class FinancialServiceImpl implements FinancialService{
 	 * 查看某一天 所有订单
 	 */
 	@Override
-	public List<Orderform> viewFinancialDetails(HttpSession session,FinancialBean financialBean) {
+	public List<Orderform> viewFinancialDetails(HttpSession session,FinancialBean financialBean,PageUtil pageUtil) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
-		String hql="from Orderform t "
-				+ "where t.carrierId=:carrierId "
-				+ "and date(t.submitTime)=:submitTime "
-				+ "order by t.submitTime desc";
 		Map<String,Object> params=new HashMap<String,Object>();
-		params.put("carrierId", userId);
-		params.put("submitTime", financialBean.getDate());
-		List<Orderform> list=orderDao.find(hql, params);
+		String hql="from Orderform t "+whereHql(userId,financialBean,params);
+		hql+=" order by t.submitTime desc";
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Orderform> list=orderDao.find(hql, params,page,display);
 		
 		return list;
 		
 	}
+	/**
+	 * 获取莫一天的所有订单的总记录数
+	 * @param session
+	 * @param financialBean
+	 * @return
+	 */
+	@Override
+	public Long viewFinancialDetailsTotalRows(HttpSession session,
+			FinancialBean financialBean) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		String userId=(String)session.getAttribute(Constant.USER_ID);
+		String hql="select count(*) from Orderform t "+whereHql(userId, financialBean, params);
+		hql+= " order by t.submitTime desc";
+		
+		return orderDao.count(hql,params);
+		
+	}
+	
+	private String whereHql(String userId,FinancialBean financialBean,Map<String,Object> params){
+		String wherehql="where t.carrierId=:userId ";
+		params.put("userId", userId);
+		String startDate=financialBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(financialBean.getStartDate());
+		String endDate=financialBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(financialBean.getEndDate());
+		if(!"1970-01-01".equals(startDate)){
+			wherehql+=" and t.submitTime>=:startDate ";
+			params.put("startDate", financialBean.getStartDate());
+		}
+		if(!"1970-01-01".equals(endDate)){
+			//这里的时间需要加一天，加到下一天的0点时间才能使结果更换准确
+			wherehql+=" and t.submitTime<=:endDate ";
+			params.put("endDate", financialBean.getEndDate());
+		}
+		//如果没有开始和结束时间则查出某一天的订单
+		if("1970-01-01".equals(startDate) && "1970-01-01".equals(endDate)){
+			wherehql+=" and date(t.submitTime)=:submitTime ";
+			params.put("submitTime", financialBean.getDate());
+		}
+		
+		return wherehql;
+	}
+	
+	
 	
 	
 	

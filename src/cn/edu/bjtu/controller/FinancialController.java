@@ -36,6 +36,8 @@ public class FinancialController {
 	
 	/**
 	 * 财务指数列表
+	 * @param financialBean
+	 * @param pageUtil
 	 * @param session
 	 * @return
 	 */
@@ -48,14 +50,14 @@ public class FinancialController {
 	}
 	
 	/**
-	 * 总记录数 
+	 * 财务指标总记录数 
 	 * @param session
 	 * @return
 	 */
 	@RequestMapping("getFinalcialInfoTotalRowsAjax")
 	@ResponseBody
-	public Long getFinancialInfoTotalRows(FinancialBean financialBean,PageUtil pageUtil,HttpSession session){
-		return financialService.getAccountFinancialInfoTotalRows(financialBean,pageUtil,session);
+	public Long getFinancialInfoTotalRows(FinancialBean financialBean,HttpSession session){
+		return financialService.getAccountFinancialInfoTotalRows(financialBean,session);
 	}
 	
 	/**
@@ -76,7 +78,19 @@ public class FinancialController {
 	 */
 	@RequestMapping("viewFinancialDetailsAjax")
 	@ResponseBody
-	public List<Orderform> viewFinancialDetailsPage(HttpSession session,FinancialBean financialBean){
-		return financialService.viewFinancialDetails(session, financialBean);
+	public List<Orderform> viewFinancialDetailsPage(HttpSession session,FinancialBean financialBean,PageUtil pageUtil){
+		return financialService.viewFinancialDetails(session, financialBean,pageUtil);
+	}
+	
+	/**
+	 * 财务指标，查看页面的总记录数
+	 * @param session
+	 * @param financialBean
+	 * @return
+	 */
+	@RequestMapping("viewFinancialDetailsTotalRowsAjax")
+	@ResponseBody
+	public Long viewFinancialDetailsTotalRows(HttpSession session,FinancialBean financialBean){
+		return financialService.viewFinancialDetailsTotalRows(session, financialBean);
 	}
 }

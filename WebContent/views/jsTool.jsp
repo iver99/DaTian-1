@@ -16,3 +16,6 @@
 <!-- 仓库详情，查看联系人 -->
 <script type="text/javascript" src="js/viewContact.js"></script>
 <script type="text/javascript" src="js/renderTime.js"></script>
+<!-- 选择日期控件 -->
+<script type="text/javascript" src="js/calendar.js"></script>
+

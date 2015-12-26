@@ -175,9 +175,33 @@ function ChangeTo(page){
 		if($("#kind").val() == 'financial'){
 			var startDate=$("#startDate").val();
 			var endDate=$("#endDate").val();
+			if(startDate == '意向开始时间'){
+				startDate='1970-01-01';
+			}
+			if(endDate == '意向结束时间'){
+				endDate='1970-01-01';
+			}
 			getFinancialInfo(startDate,endDate,display,currentPage);
 			//总数
 			getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
+		}
+		
+		//财务指标-查看页面
+		if($("#kind").val() == 'viewFinancialDetails'){
+			//从url中获取日期
+			var url=window.location.href;
+			var date=url.split("?")[1].split("=")[1];
+			var startDate=$("#startDate").val();
+			var endDate=$("#endDate").val();
+			if(startDate == '意向开始时间'){
+				startDate='1970-01-01';
+			}
+			if(endDate == '意向结束时间'){
+				endDate='1970-01-01';
+			}
+			viewFinancialDetails(date,startDate,endDate,display,currentPage);
+			//总数
+			viewFinancialDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage);
 		}
 
 		

@@ -11,14 +11,14 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class FinancialBean {
 	@DateTimeFormat( pattern = "yyyy-MM-dd" )
-	Date date;//时间yyyy-mm-dd
-	Double transportFee;//运费收入
-	Double totalInsurance;//保险费收入
-	Double totalFee;//合计
+	private Date date;//时间yyyy-mm-dd
+	private Double transportFee;//运费收入
+	private Double totalInsurance;//保险费收入
+	private Double totalFee;//合计
 	@DateTimeFormat( pattern = "yyyy-MM-dd" )
-	Date startDate;
+	private Date startDate;
 	@DateTimeFormat( pattern = "yyyy-MM-dd" )
-	Date endDate;
+	private Date endDate;
 	/**
 	 * @return the date
 	 */
@@ -67,5 +67,31 @@ public class FinancialBean {
 	public void setTotalFee(Double totalFee) {
 		this.totalFee = totalFee;
 	}
+	/**
+	 * @return the startDate
+	 */
+	public Date getStartDate() {
+		return startDate;
+	}
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	/**
+	 * @return the endDate
+	 */
+	public Date getEndDate() {
+		return endDate;
+	}
+	/**
+	 * @param endDate the endDate to set
+	 */
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	
+	
 	
 }

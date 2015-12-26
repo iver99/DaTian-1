@@ -71,7 +71,7 @@
                                 <input type="text" id="startDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
                                 &nbsp;&nbsp;至&nbsp;&nbsp;
                                 <input type="text" id="endDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
-                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" />
+                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" onclick="OnLoad()"/>
                             </div>
 
                         </td>
@@ -119,6 +119,13 @@
 		//var search_content=$("#search_focus").val();
 		var startDate=$("#startDate").val();
 		var endDate=$("#endDate").val();
+		if(startDate == '意向开始时间'){
+			startDate='1970-01-01';
+		}
+		if(endDate == '意向结束时间'){
+			endDate='1970-01-01';
+		}
+
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
 		getFinancialInfo(startDate,endDate,display,currentPage);
@@ -201,6 +208,12 @@
 			var currentPage=$("#currentPage").val();
 			var startDate=$("#startDate").val();
 			var endDate=$("#endDate").val();
+			if(startDate == '意向开始时间'){
+				startDate='1970-01-01';
+			}
+			if(endDate == '意向结束时间'){
+				endDate='1970-01-01';
+			}
 			getFinancialInfo(startDate,endDate,display,currentPage);
 			//总数
 			getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);

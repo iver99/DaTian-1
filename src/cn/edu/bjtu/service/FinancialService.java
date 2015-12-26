@@ -21,12 +21,21 @@ public interface FinancialService {
 	 * @param session
 	 * @return
 	 */
-	public Long getAccountFinancialInfoTotalRows(FinancialBean financialBean,PageUtil pageUtil,HttpSession session);
+	public Long getAccountFinancialInfoTotalRows(FinancialBean financialBean,HttpSession session);
 	
 	/**
 	 * 获取某一天的所有订单
 	 * @param date
 	 * @return
 	 */
-	public List<Orderform> viewFinancialDetails(HttpSession session,FinancialBean financialBean);
+	public List<Orderform> viewFinancialDetails(HttpSession session,FinancialBean financialBean,PageUtil pageUtil);
+	
+	/**
+	 * 获取莫一天的所有订单的总记录数
+	 * @param session
+	 * @param financialBean
+	 * @param pageUtil
+	 * @return
+	 */
+	public Long viewFinancialDetailsTotalRows(HttpSession session,FinancialBean financialBean);
 }

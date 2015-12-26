@@ -71,10 +71,10 @@
                     	<td>
                         	<span class="span_mgmt_right2_text1">财务指标</span>
                             <div class="div_mgmt_s1">
-                                <input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
+                                <input type="text" id="startDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
                                 &nbsp;&nbsp;至&nbsp;&nbsp;
-                                <input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
-                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" />
+                                <input type="text" id="endDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
+                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" onclick="OnLoad()"/>
                             </div>
 
                         </td>
@@ -85,33 +85,8 @@
 				<input id="display" value="10" type="hidden" /> <!-- 每页展示的数量 -->
 				<input id="currentPage" value="1" type="hidden" /><!-- 当前页 -->
 				<input id="is_resource_page" value="0" type="hidden"/><!-- 是否为资源页，资源页需要模拟click按钮 -->
-				<input id="kind" value="focus" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
+				<input id="kind" value="viewFinancialDetails" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
                 <table id="list" width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
-                    <!-- <tr>
-                        <td width="20" height="40" class="td_mgmt_right3_head">&nbsp;</td>
-                        <td width="100" class="td_mgmt_right3_head">意向编号</td>
-                        <td width="70" class="td_mgmt_right3_head">类别</td>
-                        <td width="120" class="td_mgmt_right3_head">名称</td>
-                        <td class="td_mgmt_right3_head">承运方</td>
-                        <td width="88" class="td_mgmt_right3_head">意向提交时间</td>
-                        <td class="td_mgmt_right3_head">运费收入(元)</td>
-                        <td class="td_mgmt_right3_head">保险费收入(元)</td>
-                        <td class="td_mgmt_right3_head">合计收入(元)</td>
-                        <td width="80" class="td_mgmt_right3_head">操作</td>
-					</tr>
-                    <tr>
-                        <td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
-                        <td class="td_mgmt_right3_td1">Y001001001</td>
-                        <td class="td_mgmt_right3_td1">整车</td>
-                        <td class="td_mgmt_right3_td1">北京→上海</td>
-                        <td class="td_mgmt_right3_td1">北京畅通达物流</td>
-                        <td class="td_mgmt_right3_td1">2014-02-21<br />
-                            10:44:28</td>
-                        <td class="td_mgmt_right3_td1">12000</td>
-                        <td class="td_mgmt_right3_td1">1000</td>
-                        <td class="td_mgmt_right3_td1">13000</td>
-                        <td class="td_mgmt_right3_td3"><a href="javascript:;" class="a_top3" hidefocus="true">查看</a></td>
-                    </tr> -->
                 </table>
 				<table border="0" cellpadding="0" cellspacing="0" class="table_recordnumber">
                     <tr>
@@ -147,11 +122,17 @@
 		var date="<%=date %>";
 		var startDate=$("#startDate").val();
 		var endDate=$("#endDate").val();
+		if(startDate == '意向开始时间'){
+			startDate='1970-01-01';
+		}
+		if(endDate == '意向结束时间'){
+			endDate='1970-01-01';
+		}
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
 		viewFinancialDetails(date,startDate,endDate,display,currentPage);
 		//总数
-		//getFinancialInfoTotalRowsAjax(startDate,endDate,display,currentPage);
+		viewFinancialDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage);
 	}
 	
 	//获取财务指标猎豹
@@ -208,11 +189,12 @@
 		});
 	}
 	//总记录数
-	function getUserFocusTotalRowsAjax(search_content,display,currentPage){
-		var url="getUserFocusTotalRowsAjax";
+	function viewFinancialDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage){
+		var url="viewFinancialDetailsTotalRowsAjax";
 		$.ajax({
 			url:url,
 			data:{
+				date:date,
 				startDate:startDate,
 				endDate:endDate,
 				display:display,
@@ -229,34 +211,26 @@
 		});
 	}
 	
-	//搜素关注
-	function searchFocus(){
-		$("#result_body").empty();
-		var search_content=$("#search_focus").val();
-		//reset page
-		$("#display").val(1);
-		$("#currentPage").val(1);
-		
-		var display=$("#display").val();
-		var currentPage=$("#currentPage").val();
-		getUserFocusAjax(search_content,display,currentPage);
-		//总数
-		getUserFocusTotalRowsAjax(search_content,display,currentPage);
-		
-	}
-	
 	//变更每页展示数量
 	function changeDisplay(){
 		//修改隐藏字段，每页数量
 		$("#display").val($("#Display").val());
 		//当前页归1
 		$("#currentPage").val(1);
-			var display=$("#display").val();
-			var currentPage=$("#currentPage").val();
-			var search_content=$("#search_focus").val();
-			getUserFocusAjax(search_content,display,currentPage);
-			//总数
-			getUserFocusTotalRowsAjax(search_content,display,currentPage);
+		var date="<%=date %>";
+		var startDate=$("#startDate").val();
+		var endDate=$("#endDate").val();
+		if(startDate == '意向开始时间'){
+			startDate='1970-01-01';
+		}
+		if(endDate == '意向结束时间'){
+			endDate='1970-01-01';
+		}
+		var display=$("#display").val();
+		var currentPage=$("#currentPage").val();
+		viewFinancialDetails(date,startDate,endDate,display,currentPage);
+		//总数
+		viewFinancialDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage);
 	}
 </script>
 </html>
