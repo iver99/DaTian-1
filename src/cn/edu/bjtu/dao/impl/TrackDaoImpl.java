@@ -1,6 +1,9 @@
 package cn.edu.bjtu.dao.impl;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +28,15 @@ public class TrackDaoImpl extends BaseDaoImpl<Track> implements TrackDao {
 		this.save(track);
 		
 		return true;
+	}
+
+	@Override
+	public List<Track> getTrackByOrderId(String orderId) {
+		// TODO 自动生成的方法存根
+		String hql="from Track where orderId=:orderId";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("orderId", orderId);
+		return this.find(hql, params);
 	}
 
 }
