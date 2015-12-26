@@ -90,15 +90,15 @@
                                         </select>
 									</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">身份证号码：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="" name="IDCard" id="IDCard" required/></td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">联系电话：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="" name="phone" id="phone" required/></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td height="40" class="td_mgmt_right3_td1b">身份证扫描件：</td>
 											<td>
                                     	<div style="position:relative;">
@@ -107,7 +107,7 @@
       										<input id="file" type="file" name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" required/>
                                         </div>
                           			          </td>
-										</tr>
+										</tr> -->
 								<tr>
 									<td width="120" height="40" class="td_mgmt_right3_td1b">&nbsp;</td>
 									<td><input type="submit" id="btn1" value="提交" class="btn_mgmt1" hidefocus="true"/><input type="reset" id="btn1" value="重填" class="btn_mgmt2" hidefocus="true" /></td>

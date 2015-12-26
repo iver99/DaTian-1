@@ -119,7 +119,7 @@
 							</c:choose>
 
 						</tr>
-						<% if((Integer)session.getAttribute("userKind") ==2){ %>
+						<%  if((Integer)session.getAttribute("userKind") ==2){ %>
 						<tr>
 							<td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
 							<td class="td_mgmt_right3_td1">
@@ -159,8 +159,8 @@
 								</c:when>
 							</c:choose>
 
-						</tr>
-						<%} 
+						</tr> 
+						<%}  
 							if((Integer)session.getAttribute("userKind") ==3){
 						%>
 						<tr>
