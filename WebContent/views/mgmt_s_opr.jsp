@@ -66,12 +66,12 @@
             	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2">
                     <tr>
                     	<td>
-                        	<span class="span_mgmt_right2_text1">运输准时率&nbsp;&nbsp;/&nbsp;&nbsp;<a href="mgmt_s_opr3.htm" hidefocus="true">客户满意度</a></span>
+                        	<span class="span_mgmt_right2_text1">运输准时率&nbsp;&nbsp;/&nbsp;&nbsp;<a href="getClientConsentPage" hidefocus="true">客户满意度</a></span>
                             <div class="div_mgmt_s1">
-                                <input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
+                                <input type="text" class="input_date1" id="startDate" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
                                 &nbsp;&nbsp;至&nbsp;&nbsp;
-                                <input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
-                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" />
+                                <input type="text" class="input_date1" id="endDate" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
+                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" onclick="OnLoad();"/>
                             </div>
 
                         </td>
@@ -82,24 +82,8 @@
 				<input id="display" value="10" type="hidden" /> <!-- 每页展示的数量 -->
 				<input id="currentPage" value="1" type="hidden" /><!-- 当前页 -->
 				<input id="is_resource_page" value="0" type="hidden"/><!-- 是否为资源页，资源页需要模拟click按钮 -->
-				<input id="kind" value="financial" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
+				<input id="kind" value="OpAccuracy" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
                 <table id="list" width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
-					<tr>
-                        <td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
-                        <td class="td_mgmt_right3_head">时间</td>
-                        <td width="100" class="td_mgmt_right3_head">准时率</td>
-                        <td width="100" class="td_mgmt_right3_head">准时意向数</td>
-                        <td width="100" class="td_mgmt_right3_head">总意向数</td>
-                        <td width="100" class="td_mgmt_right3_head">操作</td>
-                    </tr>
-                    <tr>
-                        <td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
-                        <td class="td_mgmt_right3_td1">5月11日</td>
-                        <td class="td_mgmt_right3_td1">100%</td>
-                        <td class="td_mgmt_right3_td1">80</td>
-                        <td class="td_mgmt_right3_td1">80</td>
-                        <td class="td_mgmt_right3_td3"><a href="mgmt_s_opr2.htm" hidefocus="true">查看</a></td>
-                    </tr>
                 </table>
 				<table border="0" cellpadding="0" cellspacing="0" class="table_recordnumber">
                     <tr>
@@ -143,14 +127,14 @@
 
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		//getFinancialInfo(startDate,endDate,display,currentPage);
+		getOperationInfo(startDate,endDate,display,currentPage);
 		//总数
-		//getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
+		getOperationInfoRowsAjax(startDate,endDate,display,currentPage);
 	}
 	
-	//获取财务指标猎豹
-	function getFinancialInfo(startDate,endDate,display,currentPage){
-		var url="getFinancialInfoAjax";
+	//获取运营指标
+	function getOperationInfo(startDate,endDate,display,currentPage){
+		var url="getTransportAccuracyListAjax";
 		$.ajax({
 			url:url,
 			data:{
@@ -168,9 +152,9 @@
 				str+="<tr>";
 				str+="<td width=\"20\" height=\"40\" class=\"td_mgmt_right3_head1\">&nbsp;</td>";
 				str+="<td class=\"td_mgmt_right3_head\">时间</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">运费收入(元)</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">保险费收入(元)</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">合计收入(元)</td>";
+				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">准时率</td>";
+				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">准时意向数</td>";
+				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">总意向数</td>";
 				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">操作</td>";
 				str+="</tr>";
 				body.append(str);
@@ -179,10 +163,10 @@
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].date+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].transportFee+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalInsurance+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalFee+"</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"FinancialDetailsPage?date="+data[i].date+"\" hidefocus=\"true\">查看</a></td>";
+					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"mgmt_s_opr2.htm\" hidefocus=\"true\">查看</a></td>";
 					str+="</tr>";
 				}
 				body.append(str);
@@ -192,8 +176,8 @@
 		});
 	}
 	//总记录数
-	function getFinancialInfoRowsAjax(startDate,endDate,display,currentPage){
-		var url="getFinalcialInfoTotalRowsAjax";
+	function getOperationInfoRowsAjax(startDate,endDate,display,currentPage){
+		var url="getTransportAccuracyTotalRowsAjax";
 		$.ajax({
 			url:url,
 			data:{
@@ -219,8 +203,6 @@
 		$("#display").val($("#Display").val());
 		//当前页归1
 		$("#currentPage").val(1);
-			var display=$("#display").val();
-			var currentPage=$("#currentPage").val();
 			var startDate=$("#startDate").val();
 			var endDate=$("#endDate").val();
 			if(startDate == '意向开始时间'){
@@ -229,9 +211,12 @@
 			if(endDate == '意向结束时间'){
 				endDate='1970-01-01';
 			}
-			getFinancialInfo(startDate,endDate,display,currentPage);
+	
+			var display=$("#display").val();
+			var currentPage=$("#currentPage").val();
+			getOperationInfo(startDate,endDate,display,currentPage);
 			//总数
-			getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
+			getOperationInfoRowsAjax(startDate,endDate,display,currentPage);
 	}
 </script>
 </html>

@@ -32,15 +32,27 @@ public class OperationController {
 	public String getTransportAccuracyPage(){
 		return "mgmt_s_opr";
 	}
-	
+	/**
+	 * 统计分析-运营指标-运输准确率列表
+	 * @param operationBean
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
 	@RequestMapping("getTransportAccuracyListAjax")
 	@ResponseBody
-	public List getTransportAccuracyListAjax(OperationBean operationBean,HttpSession session,PageUtil pageUtil){
+	public List<OperationBean> getTransportAccuracyListAjax(OperationBean operationBean,HttpSession session,PageUtil pageUtil){
 		return operationService.getTransportAccuracyList(operationBean,session,pageUtil);
 	}
-	
+	/**
+	 * 统计分析-运营指标-运输准确率总记录数
+	 * @param operationBean
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
 	@ResponseBody
-	@RequestMapping("")
+	@RequestMapping("getTransportAccuracyTotalRowsAjax")
 	public Long getTransportAccuracyListTotalRowsAjax(OperationBean operationBean,HttpSession session,PageUtil pageUtil){
 		return operationService.getTransportAccuracyListTotalRows(operationBean,session,pageUtil);
 	}
@@ -55,5 +67,27 @@ public class OperationController {
 	public String getClientConsentPage(){
 		return "mgmt_s_opr3";
 	}
+	/**
+	 * 统计分析-运营指标-客户满意度list
+	 * @param operationBean
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
+	public List<OperationBean> getClientConsentList(OperationBean operationBean,HttpSession session,PageUtil pageUtil){
+		return operationService.getClientConsentList(operationBean,session,pageUtil);
+	}
+	
+	/**
+	 * 统计分析-运营指标-客户满意度总记录书数
+	 * @param operationBean
+	 * @param session
+	 * @return
+	 */
+	public Long getClientConsentTotalRows(OperationBean operationBean,HttpSession session){
+		return operationService.getClientConsentTotalRows(operationBean,session);
+	}
+	
+	
 	
 }

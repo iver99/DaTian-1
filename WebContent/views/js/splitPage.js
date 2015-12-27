@@ -203,6 +203,22 @@ function ChangeTo(page){
 			//总数
 			viewFinancialDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage);
 		}
+		//运营指标-运输准确率
+		if($("#kind").val() == 'OpAccuracy'){
+			var startDate=$("#startDate").val();
+			var endDate=$("#endDate").val();
+			if(startDate == '意向开始时间'){
+				startDate='1970-01-01';
+			}
+			if(endDate == '意向结束时间'){
+				endDate='1970-01-01';
+			}
+			var display=$("#display").val();
+			var currentPage=$("#currentPage").val();
+			getOperationInfo(startDate,endDate,display,currentPage);
+			//总数
+			getOperationInfoRowsAjax(startDate,endDate,display,currentPage);
+		}
 
 		
 

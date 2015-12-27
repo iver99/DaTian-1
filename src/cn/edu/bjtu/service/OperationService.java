@@ -25,5 +25,21 @@ public interface OperationService {
 	 * @param pageUtil
 	 * @return
 	 */
-	public List getTransportAccuracyList(OperationBean operationBean,HttpSession session, PageUtil pageUtil);
+	public List<OperationBean> getTransportAccuracyList(OperationBean operationBean,HttpSession session, PageUtil pageUtil);
+
+	/**
+	 * 统计分析-运营指标-客户满意度list
+	 * @param operationBean
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
+	public List<OperationBean> getClientConsentList(OperationBean operationBean,HttpSession session, PageUtil pageUtil);
+	/**
+	 * 统计分析-运营指标-客户满意度总记录数 
+	 * @param operationBean
+	 * @param session
+	 * @return
+	 */
+	public Long getClientConsentTotalRows(OperationBean operationBean,HttpSession session);
 }

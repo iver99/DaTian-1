@@ -63,12 +63,12 @@
             	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2">
                     <tr>
                     	<td>
-                        	<span class="span_mgmt_right2_text1"><a href="mgmt_s_opr.htm" hidefocus="true">运输准时率</a>&nbsp;&nbsp;/&nbsp;&nbsp;客户满意度</a></span>
+                        	<span class="span_mgmt_right2_text1"><a href="getTransportAccuracyPage" hidefocus="true">运输准时率</a>&nbsp;&nbsp;/&nbsp;&nbsp;客户满意度</a></span>
                             <div class="div_mgmt_s1">
-                                <input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
+                                <input type="text" id="startDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
                                 &nbsp;&nbsp;至&nbsp;&nbsp;
-                                <input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
-                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" />
+                                <input type="text" id="endDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
+                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" onclick="OnLoad();" />
                             </div>
 
                         </td>
@@ -79,9 +79,9 @@
 				<input id="display" value="10" type="hidden" /> <!-- 每页展示的数量 -->
 				<input id="currentPage" value="1" type="hidden" /><!-- 当前页 -->
 				<input id="is_resource_page" value="0" type="hidden"/><!-- 是否为资源页，资源页需要模拟click按钮 -->
-				<input id="kind" value="financial" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
+				<input id="kind" value="OpClientConsent" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
                 <table id="list" width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
-					<tr>
+					<!-- <tr>
                         <td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
                         <td class="td_mgmt_right3_head">时间</td>
                         <td width="100" class="td_mgmt_right3_head">客户满意度</td>
@@ -92,7 +92,7 @@
                         <td class="td_mgmt_right3_td1">5月11日</td>
                         <td class="td_mgmt_right3_td1">100%</td>
                         <td class="td_mgmt_right3_td3"><a href="mgmt_s_opr4.htm" hidefocus="true">查看</a></td>
-                    </tr>
+                    </tr> -->
                 </table>
 				<table border="0" cellpadding="0" cellspacing="0" class="table_recordnumber">
                     <tr>
@@ -124,7 +124,6 @@
 <script type="text/javascript">
 	function OnLoad() {
 		loadFocus();
-		//var search_content=$("#search_focus").val();
 		var startDate=$("#startDate").val();
 		var endDate=$("#endDate").val();
 		if(startDate == '意向开始时间'){
@@ -136,9 +135,9 @@
 
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		//getFinancialInfo(startDate,endDate,display,currentPage);
+		getFinancialInfo(startDate,endDate,display,currentPage);
 		//总数
-		//getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
+		getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
 	}
 	
 	//获取财务指标猎豹

@@ -8,14 +8,18 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.bean.page.OperationBean;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.OperationService;
+import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.ParseDate;
 import cn.edu.bjtu.vo.Orderform;
-
+@Service
+@Transactional
 public class OperationServiceImpl implements OperationService{
 	
 	@Autowired
@@ -25,17 +29,20 @@ public class OperationServiceImpl implements OperationService{
 	 * 财务分析-运营指标列表
 	 */
 	@Override
-	public List getTransportAccuracyList(OperationBean operationBean,
+	public List<OperationBean> getTransportAccuracyList(OperationBean operationBean,
 			HttpSession session, PageUtil pageUtil) {
 		Map<String,Object> params=new HashMap<String,Object>();
-		String hql="select date(t.submitTime) from Orderform t "+whereHql(operationBean,session,params);
+		String hql="from Orderform t "+whereHql(operationBean,session,params);
 		hql+=" group by date(t.submitTime) order by t.submitTime desc";
-		
-		List<Orderform> list=orderDao.find(hql, params);
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Orderform> list=orderDao.find(hql, params,page,display);
 		List<OperationBean> opList=new ArrayList<OperationBean>();
 		//目前系统中没有关于准确率和准确意向的数据 FIXME
 		for(Orderform order:list){
-			
+			OperationBean opBean=new OperationBean();
+			opBean.setDate(order.getSubmitTime());
+			opList.add(opBean);
 		}
 		
 		return opList;
@@ -47,13 +54,18 @@ public class OperationServiceImpl implements OperationService{
 	@Override
 	public Long getTransportAccuracyListTotalRows(OperationBean operationBean,
 			HttpSession session, PageUtil pageUtil) {
-		return 0L;//FIXME
+		Map<String,Object> params=new HashMap<String,Object>();
+		String hql="select count(*) from (select * from Orderform t "+whereHql(operationBean,session,params);
+		hql+=" group by date(t.submitTime) order by t.submitTime desc) as t2";
+		return orderDao.count(hql, params);
 		
 	}
 	
 	private String whereHql(OperationBean operationBean,
 			HttpSession session, Map<String,Object> params){
+		String userId=(String)session.getAttribute(Constant.USER_ID);
 		String whereHql=" where t.carrierId=:carrierId ";
+		params.put("carrierId", userId);
 		String startDate=operationBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getStartDate());
 		String endDate=operationBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getEndDate());
 		if(!"1970-01-01".equals(startDate)){
@@ -66,6 +78,31 @@ public class OperationServiceImpl implements OperationService{
 			params.put("endDate", operationBean.getEndDate());
 		}
 		return whereHql;
+	}
+
+	/**
+	 * 统计分析-运营指标-客户满意度list
+	 * @param operationBean
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
+	@Override
+	public List<OperationBean> getClientConsentList(
+			OperationBean operationBean, HttpSession session, PageUtil pageUtil) {
+		return null;
+	}
+
+	/**
+	 * 统计分析-运营指标-客户满意度总记录数 
+	 * @param operationBean
+	 * @param session
+	 * @return
+	 */
+	@Override
+	public Long getClientConsentTotalRows(OperationBean operationBean,
+			HttpSession session) {
+		return 0l;
 	}
 
 	
