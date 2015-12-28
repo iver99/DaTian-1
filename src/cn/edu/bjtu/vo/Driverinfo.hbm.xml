@@ -47,5 +47,8 @@
         <property name="idscans" type="string">
             <column name="idscans" />
         </property>
+        <property name="passwd" type="string">
+            <column name="passwd" />
+        </property>
     </class>
 </hibernate-mapping>

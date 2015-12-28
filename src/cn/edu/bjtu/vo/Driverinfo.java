@@ -28,6 +28,21 @@ public class Driverinfo implements java.io.Serializable {
 	private String remarks;
 	private String carId;
 	private String idscans;
+	private String passwd;
+
+	/**
+	 * @return passwd
+	 */
+	public String getPasswd() {
+		return passwd;
+	}
+
+	/**
+	 * @param passwd ÒªÉèÖÃµÄ passwd
+	 */
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
 
 	public String getIdscans() {
 		return idscans;
