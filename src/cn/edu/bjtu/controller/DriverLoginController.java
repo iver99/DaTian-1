@@ -31,14 +31,19 @@ public class DriverLoginController {
 		
 		//目前使用司机手机号直接登录，密码随意.
 		//String passwd = driver.getString("passwd");---司机登录密码---手机端---目前暂不使用
+		String successJson = "{\"logBean\":\"success\"}";
+		JSONObject success = new JSONObject(successJson);
+		
+		String failJson = "{\"logBean\":\"fail\"}";
+		JSONObject fail = new JSONObject(failJson);
+		if(!(phone.equals(passwd))){
+			return fail.toString();
+		}
+		
 		Driverinfo driverinfo = driverloginService.checkLogin(phone);
 		if(driverinfo!=null){
-			String successJson = "{\"logBean\":\"success\"}";
-			JSONObject success = new JSONObject(successJson);
 			return success.toString();
 		}else{
-			String failJson = "{\"logBean\":\"fail\"}";
-			JSONObject fail = new JSONObject(failJson);
 			return fail.toString();
 		}
 	}
