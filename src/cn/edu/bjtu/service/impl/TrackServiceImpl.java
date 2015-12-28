@@ -20,10 +20,10 @@ public class TrackServiceImpl implements TrackService {
 	TrackDao trackDao;
 
 	@Override
-	public boolean createNewTrack(String id, String orderId, String carNum, Double locLongitude, Double locLatitude,
+	public boolean createNewTrack(String id, String orderId,String orderNum, String carNum, Double locLongitude, Double locLatitude,
 			Date time, String address) {
 		// TODO 自动生成的方法存根
-		return trackDao.createNewTrack(id, orderId, carNum, locLongitude, locLatitude, time, address);
+		return trackDao.createNewTrack(id, orderId, orderNum,carNum, locLongitude, locLatitude, time, address);
 	}
 
 	@Override

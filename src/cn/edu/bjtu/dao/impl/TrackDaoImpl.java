@@ -14,7 +14,7 @@ import cn.edu.bjtu.vo.Track;
 public class TrackDaoImpl extends BaseDaoImpl<Track> implements TrackDao {
 
 	@Override
-	public boolean createNewTrack(String id, String orderId, String carNum, Double locLongitude, Double locLatitude,
+	public boolean createNewTrack(String id, String orderId, String orderNum,String carNum, Double locLongitude, Double locLatitude,
 			Date time, String address) {
 		// TODO 自动生成的方法存根
 		Track track = new Track();
@@ -25,6 +25,7 @@ public class TrackDaoImpl extends BaseDaoImpl<Track> implements TrackDao {
 		track.setLocLongitude(locLongitude);
 		track.setOrderId(orderId);
 		track.setTime(time);
+		track.setOrderNum(orderNum);
 		this.save(track);
 		
 		return true;

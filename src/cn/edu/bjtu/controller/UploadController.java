@@ -23,7 +23,7 @@ import cn.edu.bjtu.vo.Track;
 
 @Controller
 @RequestMapping("/upload")
-public class UploadController extends BaseDaoImpl<Track> {
+public class UploadController {
 	@Autowired
 	OrderService orderService;
 	@Autowired
@@ -35,8 +35,10 @@ public class UploadController extends BaseDaoImpl<Track> {
 	@ResponseBody
 	public void uploadtakeoverNumber(HttpServletRequest request,HttpServletResponse response){
 		
-		String orderId = request.getParameter("orderId");
+		String orderNum = request.getParameter("orderNum");
 		String takeoverNumber = request.getParameter("TakeoverNumber");
+		Orderform order = orderService.getOrderByOrderNum(orderNum);
+		String orderId = order.getId();
 		orderService.settakeoverNumber(orderId, takeoverNumber);
 	}
 	
@@ -45,13 +47,14 @@ public class UploadController extends BaseDaoImpl<Track> {
 	@ResponseBody
 	public void uploadcompleteNumber(HttpServletRequest request,HttpServletResponse response){
 		String carState = "停歇";
-		String orderId = request.getParameter("orderId");
+		String orderNum = request.getParameter("orderNum");
 		String completeNumber = request.getParameter("CompleteNumber");
 		Float price = Float.valueOf(request.getParameter("price"));
-		//此处已修改订单状态为已完成
+		Orderform order = orderService.getOrderByOrderNum(orderNum);
+		String orderId = order.getId();
+		//此处已修改订单状态为待评价
 		orderService.setcompleteNumber(orderId, completeNumber, price);
 		//同时修改汽车状态为“停歇”
-		Orderform order = orderService.getOrderInfo(orderId);
 		String carNum = order.getCarNum();
 		carService.setcarState(carNum, carState);	
 	}
@@ -60,7 +63,7 @@ public class UploadController extends BaseDaoImpl<Track> {
 	@RequestMapping(value="Location",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadLocation(HttpServletRequest request,HttpServletResponse response) throws ParseException{
-		String orderId = request.getParameter("orderId");
+		String orderNum = request.getParameter("orderNum");
 		String carNum = request.getParameter("carNum");
 		String address = request.getParameter("address");
 		String orgintime = request.getParameter("time");
@@ -71,8 +74,10 @@ public class UploadController extends BaseDaoImpl<Track> {
 		Double locLongtitude = Double.parseDouble(longtitude);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time = formatter.parse(orgintime);
+		Orderform order = orderService.getOrderByOrderNum(orderNum);
+		String orderId = order.getId();
 		
-		trackService.createNewTrack(id, orderId, carNum, locLongtitude, locLatitude, time, address);
+		trackService.createNewTrack(id, orderId,orderNum, carNum, locLongtitude, locLatitude, time, address);
 		
 	}
 
