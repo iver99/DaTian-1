@@ -11,6 +11,9 @@
         <property name="orderId" type="string">
             <column name="orderId" />
         </property>
+        <property name="orderNum" type="string">
+            <column name="orderNum" />
+        </property>
         <property name="carNum" type="string">
             <column name="carNum" />
         </property>

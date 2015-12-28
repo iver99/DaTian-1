@@ -21,6 +21,21 @@ public class Track implements java.io.Serializable {
 	private Date time;
 	
 	private String address;
+	private String orderNum;
+
+	/**
+	 * @return orderNum
+	 */
+	public String getOrderNum() {
+		return orderNum;
+	}
+
+	/**
+	 * @param orderNum ÒªÉèÖÃµÄ orderNum
+	 */
+	public void setOrderNum(String orderNum) {
+		this.orderNum = orderNum;
+	}
 
 	/**
 	 * @return address
@@ -57,13 +72,16 @@ public class Track implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Track(String id, String orderId, String carNum,
-			Double locLongitude, Double locLatitude) {
+	public Track(String id, String orderId, String orderNum,String carNum,
+			Double locLongitude, Double locLatitude,Date time,String address) {
 		this.id = id;
 		this.orderId = orderId;
 		this.carNum = carNum;
 		this.locLongitude = locLongitude;
 		this.locLatitude = locLatitude;
+		this.orderNum = orderNum;
+		this.time = time;
+		this.address = address;
 	}
 
 	public String getId() {
