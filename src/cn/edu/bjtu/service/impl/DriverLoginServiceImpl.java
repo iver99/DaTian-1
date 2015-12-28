@@ -18,11 +18,11 @@ public class DriverLoginServiceImpl implements DriverLoginService {
 	private DriverLoginDao driverLoginDao;
 	
 	@Override
-	public Driverinfo checkLogin(String phone) {
+	public Driverinfo checkLogin(String phone,String passwd) {
 		
 		
 		
-		return driverLoginDao.checkLogin(phone); 
+		return driverLoginDao.checkLogin(phone,passwd); 
 	}
 
 }

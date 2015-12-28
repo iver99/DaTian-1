@@ -17,12 +17,13 @@ public class DriverLoginDaoImpl extends BaseDaoImpl<Driverinfo> implements Drive
 	Driverinfo driverinfo;
 
 	@Override
-	public Driverinfo checkLogin(String phone) {
+	public Driverinfo checkLogin(String phone,String passwd) {
 		
 		//ÐèÒªÐÞ¸Ä 
-		String hql="from Driverinfo where phone=:phone";
+		String hql="from Driverinfo where phone=:phone and passwd=:passwd";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("phone", phone);
+		params.put("passwd", passwd);
 		
 		return this.get(hql, params);
 	}

@@ -22,9 +22,6 @@ public class DriverLoginController {
 	@Autowired
 	DriverLoginService driverloginService;
 	
-	@Autowired
-	Driverinfo driverinfo;
-	
 	@RequestMapping(value="/driverlogin",produces="text/html;charset=UTF-8")
 	@ResponseBody
 	public String driverlogin(@RequestParam(value="phone",required=false) String phone,@RequestParam(value="passwd",required=false) String passwd) throws JSONException{
@@ -36,11 +33,8 @@ public class DriverLoginController {
 		
 		String failJson = "{\"logBean\":\"fail\"}";
 		JSONObject fail = new JSONObject(failJson);
-		if(!(phone.equals(passwd))){
-			return fail.toString();
-		}
 		
-		Driverinfo driverinfo = driverloginService.checkLogin(phone);
+		Driverinfo driverinfo = driverloginService.checkLogin(phone,passwd);
 		if(driverinfo!=null){
 			return success.toString();
 		}else{

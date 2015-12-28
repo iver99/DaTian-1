@@ -4,6 +4,6 @@ import cn.edu.bjtu.vo.Driverinfo;
 
 public interface DriverLoginService {
 	
-	public Driverinfo checkLogin(String phone);
+	public Driverinfo checkLogin(String phone,String passwd);
 
 }
