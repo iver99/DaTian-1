@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.bjtu.service.OrderService;
+import cn.edu.bjtu.vo.Orderform;
 
 @Controller
 public class DriverConfirmController {
@@ -16,8 +17,9 @@ public class DriverConfirmController {
 	
 	@RequestMapping("/driverconfirm")
 	@ResponseBody
-	public void driverConfirm(@RequestParam(value="orderid",required=false) String orderid){
-		
+	public void driverConfirm(@RequestParam(value="orderNum",required=false) String orderNum){
+		Orderform order = orderService.getOrderByOrderNum(orderNum);
+		String orderid = order.getId();
 		orderService.setConfirm(orderid);
 		orderService.acceptOrder(orderid);
 		System.out.println("ÐÞ¸Ä³É¹¦");
