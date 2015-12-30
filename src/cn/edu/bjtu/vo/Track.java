@@ -18,7 +18,7 @@ public class Track implements java.io.Serializable {
 	private Double locLongitude;//经度
 	private Double locLatitude;//纬度
 	//add by solitudeycq at 2015-12-21 19:50 增加时间
-	private Date time;
+	private String time;
 	
 	private String address;
 	private String orderNum;
@@ -51,20 +51,6 @@ public class Track implements java.io.Serializable {
 		this.address = address;
 	}
 
-	/**
-	 * @return time
-	 */
-	public Date getTime() {
-		return time;
-	}
-
-	/**
-	 * @param time 要设置的 time
-	 */
-	public void setTime(Date time) {
-		this.time = time;
-	}
-
 	public Track() {
 	}
 
@@ -73,7 +59,7 @@ public class Track implements java.io.Serializable {
 	}
 
 	public Track(String id, String orderId, String orderNum,String carNum,
-			Double locLongitude, Double locLatitude,Date time,String address) {
+			Double locLongitude, Double locLatitude,String time,String address) {
 		this.id = id;
 		this.orderId = orderId;
 		this.carNum = carNum;
@@ -82,6 +68,20 @@ public class Track implements java.io.Serializable {
 		this.orderNum = orderNum;
 		this.time = time;
 		this.address = address;
+	}
+
+	/**
+	 * @return time
+	 */
+	public String getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time 要设置的 time
+	 */
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public String getId() {

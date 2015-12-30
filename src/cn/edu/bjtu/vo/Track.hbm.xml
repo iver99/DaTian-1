@@ -23,7 +23,7 @@
         <property name="locLatitude" type="java.lang.Double">
             <column name="locLatitude" precision="12" scale="8" />
         </property>
-        <property name="time" type="timestamp">
+        <property name="time" type="string">
             <column name="time" length="19" />
         </property>
         <property name="address" type="string">
