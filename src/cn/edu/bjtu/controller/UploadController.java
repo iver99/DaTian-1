@@ -63,14 +63,12 @@ public class UploadController {
 		String orderNum = request.getParameter("orderNum");
 		String carNum = request.getParameter("carNum");
 		String address = request.getParameter("address");
-		String orgintime = request.getParameter("time");
+		String time = request.getParameter("time");
 		String latitude = request.getParameter("latitude");
 		String longtitude = request.getParameter("longtitude");
 		String id = IdCreator.createTrackId();
 		Double locLatitude = Double.parseDouble(latitude);
 		Double locLongtitude = Double.parseDouble(longtitude);
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date time = formatter.parse(orgintime);
 		Orderform order = orderService.getOrderByOrderNum(orderNum);
 		String orderId = order.getId();
 		

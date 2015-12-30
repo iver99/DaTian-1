@@ -21,7 +21,7 @@ public class TrackServiceImpl implements TrackService {
 
 	@Override
 	public boolean createNewTrack(String id, String orderId,String orderNum, String carNum, Double locLongitude, Double locLatitude,
-			Date time, String address) {
+			String time, String address) {
 		// TODO 自动生成的方法存根
 		return trackDao.createNewTrack(id, orderId, orderNum,carNum, locLongitude, locLatitude, time, address);
 	}
