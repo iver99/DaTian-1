@@ -4,7 +4,6 @@ import java.util.List;
 
 import cn.edu.bjtu.vo.OrderCarrierView;
 import cn.edu.bjtu.vo.Orderform;
-import cn.edu.bjtu.vo.Track;
 
 public interface OrderDao extends BaseDao<Orderform> {
 	public OrderCarrierView getSendOrderDetail(String id);
@@ -32,9 +31,9 @@ public interface OrderDao extends BaseDao<Orderform> {
 	//add by solitudeycq at 2015-12-23 14:07 司机确认
 	public boolean setConfirm(String orderId);
 	
-	public boolean settakeoverNumber(String orderId,String takeoverNumber);
+	public boolean setState(String orderId,String state);
 	
-	public boolean setcompleteNumber(String orderId, String completeNumber, Float price);
+	public boolean setcompleteNumber(String orderId, Float price);
 	
 	public float getExpectedMoney(String orderId);
 	

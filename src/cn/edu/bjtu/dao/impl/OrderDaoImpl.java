@@ -5,11 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.engine.HibernateIterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -61,13 +56,10 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 	 */
 	public boolean acceptOrder(String orderId) {
 		
-		String t = "true";
+		
 		Orderform order = this.get(Orderform.class, orderId);
-		if(t.equals(order.getConfirm())){
-		order.setState("待收货");// 修改状态
-		}else{
-			order.setState("已受理");
-		}
+		order.setState("已受理");
+
 		this.update(order);
 		return true;
 
@@ -96,22 +88,19 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 	}	
 	
 	@Override
-	public boolean settakeoverNumber(String orderId, String takeoverNumber) {
-		// TODO 自动生成的方法存根
+	public boolean setcompleteNumber(String orderId, Float price) {
 		Orderform order = this.get(Orderform.class, orderId);
-		order.setTakeoverNumber(takeoverNumber);
+		order.setActualPrice(price);
+		order.setState("待评价");
 		
 		this.update(order);
 		return true;
 	}
 	
 	@Override
-	public boolean setcompleteNumber(String orderId, String completeNumber, Float price) {
-		// TODO 自动生成的方法存根
+	public boolean setState(String orderId, String state) {
 		Orderform order = this.get(Orderform.class, orderId);
-		order.setActualPrice(price);
-		order.setCompleteNumber(completeNumber);
-		order.setState("待评价");
+		order.setState(state);
 		
 		this.update(order);
 		return true;
@@ -125,6 +114,7 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		String t = "true";
 		Orderform order = this.get(Orderform.class, orderId);
 		order.setConfirm(t);
+		order.setState("已确认");
 		
 		this.update(order);
 		return true;
@@ -251,6 +241,8 @@ public class OrderDaoImpl extends BaseDaoImpl<Orderform> implements OrderDao {
 		return this.find(hql, params);
 		
 	}
+
+	
 
 	
 }

@@ -21,8 +21,6 @@ public class DriverConfirmController {
 		Orderform order = orderService.getOrderByOrderNum(orderNum);
 		String orderid = order.getId();
 		orderService.setConfirm(orderid);
-		orderService.acceptOrder(orderid);
-		System.out.println("ÐÞ¸Ä³É¹¦");
 		
 	}
 

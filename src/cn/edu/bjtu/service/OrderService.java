@@ -35,9 +35,9 @@ public interface OrderService {
 	//add by solitudeycq at 2015-12-23 14:12司机确认
 	public boolean setConfirm(String orderId);
 	
-	public boolean settakeoverNumber(String orderId,String takeoverNumber);
+	public boolean setState(String orderId,String state);
 	
-	public boolean setcompleteNumber(String orderId,String completeNumber,Float price);
+	public boolean setcompleteNumber(String orderId,Float price);
 
 	public float getExpectedMoney(String orderId);
 
