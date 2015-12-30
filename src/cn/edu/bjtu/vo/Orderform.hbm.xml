@@ -134,11 +134,5 @@
         <property name="finishTime" type="timestamp">
             <column name="finishTime" length="19" />
         </property>
-        <property name="takeoverNumber" type="string">
-            <column name="takeoverNumber" />
-        </property>
-        <property name="completeNumber" type="string">
-            <column name="completeNumber" />
-        </property>
     </class>
 </hibernate-mapping>
