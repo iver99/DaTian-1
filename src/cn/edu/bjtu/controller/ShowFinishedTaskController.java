@@ -31,6 +31,7 @@ public class ShowFinishedTaskController {
 	public String showFinishedTask(@RequestParam(value="phone",required=false) String phone){
 		
 		String f = "已完成";
+		String d = "待评价";
 		//获取司机名字，以便搜索订单表
 		driverinfo = driverService.getDriverByPhone(phone);
 		String name = driverinfo.getDriverName();
@@ -41,7 +42,7 @@ public class ShowFinishedTaskController {
 		//筛选符合要求的任务
 		for(int i=0;i < l.size(); i++){
 			Orderform o = (Orderform)l.get(i);
-			if(!(f.equals(o.getState()))){
+			if((!(f.equals(o.getState())))&&(!(d.equals(o.getState())))){
 				l.remove(i);
 				i=i-1;
 			}

@@ -30,8 +30,8 @@ public class ShowCurrentTaskController {
 	@ResponseBody
 	public String showCurrentTask(@RequestParam(value="phone",required=false) String phone){
 		
-		String f = "false";
 		String s = "待收货";
+		String c = "已确认";
 		//获取司机名字，以便搜索订单表
 		//System.out.println(phone);
 		driverinfo = driverService.getDriverByPhone(phone);
@@ -43,7 +43,7 @@ public class ShowCurrentTaskController {
 		//筛选符合要求的任务
 		for(int i=0;i < l.size(); i++){
 			Orderform o = (Orderform)l.get(i);
-			if((f.equals(o.getConfirm()))||(!(s.equals(o.getState())))){
+			if((!(s.equals(o.getState())))&&(!(c.equals(o.getState())))){
 				l.remove(i);
 				i=i-1;
 			}
