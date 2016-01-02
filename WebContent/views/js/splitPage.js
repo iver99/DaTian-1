@@ -219,6 +219,23 @@ function ChangeTo(page){
 			//总数
 			getOperationInfoRowsAjax(startDate,endDate,display,currentPage);
 		}
+		//运营指标-运输准确率
+		if($("#kind").val() == 'OpClientConsent'){
+			var startDate=$("#startDate").val();
+			var endDate=$("#endDate").val();
+			if(startDate == '意向开始时间'){
+				startDate='1970-01-01';
+			}
+			if(endDate == '意向结束时间'){
+				endDate='1970-01-01';
+			}
+			var display=$("#display").val();
+			var currentPage=$("#currentPage").val();
+			getClientConsentInfo(startDate,endDate,display,currentPage);
+			//总数
+			getClientConsendInfoTotalRowsAjax(startDate,endDate,display,currentPage);
+		}
+		
 
 		
 

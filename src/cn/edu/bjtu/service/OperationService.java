@@ -16,7 +16,7 @@ public interface OperationService {
 	 * @param pageUtil
 	 * @return
 	 */
-	public Long getTransportAccuracyListTotalRows(OperationBean operationBean,HttpSession session, PageUtil pageUtil);
+	public Long getTransportAccuracyListTotalRows(OperationBean operationBean,HttpSession session);
 
 	/**
 	 * 返回运输准确率列表

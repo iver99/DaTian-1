@@ -53,8 +53,8 @@ public class OperationController {
 	 */
 	@ResponseBody
 	@RequestMapping("getTransportAccuracyTotalRowsAjax")
-	public Long getTransportAccuracyListTotalRowsAjax(OperationBean operationBean,HttpSession session,PageUtil pageUtil){
-		return operationService.getTransportAccuracyListTotalRows(operationBean,session,pageUtil);
+	public Long getTransportAccuracyListTotalRowsAjax(OperationBean operationBean,HttpSession session){
+		return operationService.getTransportAccuracyListTotalRows(operationBean,session);
 	}
 	
 	
@@ -74,6 +74,8 @@ public class OperationController {
 	 * @param pageUtil
 	 * @return
 	 */
+	@RequestMapping("getClientConsentInfoAjax")
+	@ResponseBody
 	public List<OperationBean> getClientConsentList(OperationBean operationBean,HttpSession session,PageUtil pageUtil){
 		return operationService.getClientConsentList(operationBean,session,pageUtil);
 	}
@@ -84,6 +86,8 @@ public class OperationController {
 	 * @param session
 	 * @return
 	 */
+	@RequestMapping("getClientConsentTotalRowsAjax")
+	@ResponseBody
 	public Long getClientConsentTotalRows(OperationBean operationBean,HttpSession session){
 		return operationService.getClientConsentTotalRows(operationBean,session);
 	}

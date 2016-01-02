@@ -162,7 +162,7 @@
 				for(var i=0;i<data.length;i++){
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].date+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].date)+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";

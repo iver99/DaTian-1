@@ -135,14 +135,14 @@
 
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		getFinancialInfo(startDate,endDate,display,currentPage);
+		getClientConsentInfo(startDate,endDate,display,currentPage);
 		//总数
-		getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
+		getClientConsendInfoTotalRowsAjax(startDate,endDate,display,currentPage);
 	}
 	
-	//获取财务指标猎豹
-	function getFinancialInfo(startDate,endDate,display,currentPage){
-		var url="getFinancialInfoAjax";
+	//获取op客户满意度指标猎豹
+	function getClientConsentInfo(startDate,endDate,display,currentPage){
+		var url="getClientConsentInfoAjax";
 		$.ajax({
 			url:url,
 			data:{
@@ -160,22 +160,21 @@
 				str+="<tr>";
 				str+="<td width=\"20\" height=\"40\" class=\"td_mgmt_right3_head1\">&nbsp;</td>";
 				str+="<td class=\"td_mgmt_right3_head\">时间</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">运费收入(元)</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">保险费收入(元)</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">合计收入(元)</td>";
+				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">客户满意度</td>";
 				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">操作</td>";
 				str+="</tr>";
+            
 				body.append(str);
 				str="";
 				for(var i=0;i<data.length;i++){
+					
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].date+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].transportFee+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalInsurance+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalFee+"</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"FinancialDetailsPage?date="+data[i].date+"\" hidefocus=\"true\">查看</a></td>";
-					str+="</tr>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].date)+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"mgmt_s_opr4.htm\" hidefocus=\"true\">查看</a></td>";
+					str+=" </tr>";
+					
 				}
 				body.append(str);
 				}
@@ -184,8 +183,8 @@
 		});
 	}
 	//总记录数
-	function getFinancialInfoRowsAjax(startDate,endDate,display,currentPage){
-		var url="getFinalcialInfoTotalRowsAjax";
+	function getClientConsendInfoTotalRowsAjax(startDate,endDate,display,currentPage){
+		var url="getClientConsentTotalRowsAjax";
 		$.ajax({
 			url:url,
 			data:{
