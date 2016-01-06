@@ -68,7 +68,14 @@
 					else
 						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${warehouseInfo.id }');hidefav(this);\" />" );
 				</script>
-				<input type="button" id="btn2" value="查看联系方式" class="input_detail2" hidefocus="true" onclick="viewContact('view_contact');">
+				<c:choose>
+                     <c:when test="${sessionScope.username!=null }">
+                         <input type="button" id="btn2" value="查看联系方式" class="input_detail2" hidefocus="true" onclick="viewContact('view_contact');">
+                     </c:when>
+                     <c:otherwise>
+                         <input type="button" id="btn2" value="登陆后查看联系方式" class="input_detail2" hidefocus="true" onclick="window.location.href='login'" />
+                     </c:otherwise>
+                </c:choose>
             </td>
 		</tr>
     </table>

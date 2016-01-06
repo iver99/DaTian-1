@@ -50,7 +50,7 @@
                 <br />
                 浏览次数：309
                 <br />
-                联系电话：${carrierinfo.phone }
+                <%-- 联系电话：${carrierinfo.phone } --%>
                 <hr class="hr_1" />
                 <input type="button" value="0" style="display:none" id="i"></input>
                 <c:forEach var="focus" items="${focusList }">
@@ -66,8 +66,15 @@
 					else
 						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${carrierinfo.id }');hidefav(this);\" />" );
 				</script>
-				<input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${carrierinfo.id}&flag=4'" />
-				
+				<%-- <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${carrierinfo.id}&flag=4'" /> --%>
+				<c:choose>
+                     <c:when test="${sessionScope.username!=null }">
+                         <input type="button" id="btn2" value="查看联系方式" class="input_detail2" hidefocus="true" onclick="showid('popup1');" />
+                     </c:when>
+                     <c:otherwise>
+                         <input type="button" id="btn2" value="登陆后查看联系方式" class="input_detail2" hidefocus="true" onclick="window.location.href='login'" />
+                     </c:otherwise>
+                </c:choose>
             </td>
 		</tr>
     </table>
@@ -188,7 +195,36 @@
     </table>
 </div>
 
-<%@ include  file="popup1.jsp"%>
+<%-- <%@ include  file="popup1.jsp"%> --%>
+<div id="popup1" class="popup" style="display:none;">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="510"><div class="div_popup_title1">联系方式</div></td>
+            <td>
+                <div style="cursor:pointer;" onclick="hideid('popup1');">
+                    <img src="images/btn_cancel1.png" title="关闭本窗口" />
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table width="540" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #ddd;">
+        <tr>
+            <td width="120" height="50" class="td_mgmt_right3_td1b_1">联系人姓名：</td>
+            <td class="td_mgmt_right3_td1b_2">${carrierInfo.companyContact }</td>
+        </tr>
+        <tr>
+            <td height="50" class="td_mgmt_right3_td1b_1">手机号：</td>
+            <td class="td_mgmt_right3_td1b_2">${carrierInfo.phone }</td>
+        </tr>
+    </table>
+    <table width="540" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="100" align="center">
+                <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${carrierinfo.id}&flag=4'" />
+            </td>
+        </tr>
+    </table>
+</div>
 
 <div id="footer_frame">
 	<iframe allowtransparency="true" width="100%" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0" src="footer.jsp"></iframe>

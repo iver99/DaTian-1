@@ -348,7 +348,7 @@
                 <br />
                 浏览次数：309
                 <br />
-                联系电话：${goodsformInfo.phone }
+                <%-- 联系电话：${goodsformInfo.phone } --%>
                 <hr class="hr_1" />
                 <% if((Integer)session.getAttribute("userKind") ==null ) {%><!-- 企业用户 -->
                 <input type="button" id="btn2" value="提交反馈" class="input_detail1" hidefocus="true" onclick="window.location.href='getresponseform?goodsid=${goodsformInfo.id}'" />
