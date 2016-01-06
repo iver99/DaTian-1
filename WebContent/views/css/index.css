@@ -881,6 +881,17 @@ a.a_pagenumber:hover {
 	text-align:center;
 	cursor:pointer;
 	}
+.input_detail2a {
+	font-size:16px;
+	width:220px;
+	height:40px;
+	line-height:40px;
+	border:none;
+	color:#fff;
+	background:#f39725;
+	text-align:center;
+	cursor:pointer;
+	}
 .input_detail3 {
 	font-size:16px;
 	width:200px;
@@ -2596,3 +2607,9 @@ a.a_register {
 	color:#f39725;
 	font-weight:bold;
 	}
+.td_mgmt_right3_td1b_2 {
+	font-size:16px;
+	color:#f39725;
+	font-weight:bold;
+	}
+

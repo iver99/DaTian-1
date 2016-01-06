@@ -75,3 +75,8 @@ function showid(idname) {
 
 
 }
+function hideid(idname){
+	var newbox=document.getElementById(idname);
+	newbox.style.display="none";
+	document.body.removeChild(layer);
+}
