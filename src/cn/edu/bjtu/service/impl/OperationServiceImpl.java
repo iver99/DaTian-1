@@ -53,11 +53,12 @@ public class OperationServiceImpl implements OperationService{
 	 */
 	@Override
 	public Long getTransportAccuracyListTotalRows(OperationBean operationBean,
-			HttpSession session, PageUtil pageUtil) {
+			HttpSession session) {
 		Map<String,Object> params=new HashMap<String,Object>();
-		String hql="select count(*) from (select * from Orderform t "+whereHql(operationBean,session,params);
-		hql+=" group by date(t.submitTime) order by t.submitTime desc) as t2";
-		return orderDao.count(hql, params);
+		//hql不支持嵌套查询，所以采用sql查询
+		String sql="select * from (select count(*) from (select * from Orderform t "+whereHql(operationBean,session,params);
+		sql+=" group by date(t.submitTime) order by t.submitTime desc) as t2) as t3";
+		return orderDao.countBySql(sql, params);
 		
 	}
 	
@@ -90,7 +91,9 @@ public class OperationServiceImpl implements OperationService{
 	@Override
 	public List<OperationBean> getClientConsentList(
 			OperationBean operationBean, HttpSession session, PageUtil pageUtil) {
-		return null;
+
+		//目前和运输准确率逻辑一样，故直接调用
+		return getTransportAccuracyList(operationBean,session,pageUtil);
 	}
 
 	/**
@@ -102,7 +105,8 @@ public class OperationServiceImpl implements OperationService{
 	@Override
 	public Long getClientConsentTotalRows(OperationBean operationBean,
 			HttpSession session) {
-		return 0l;
+		//目前逻辑和运输准确率一样，所以直接调用
+		return getTransportAccuracyListTotalRows(operationBean,session);
 	}
 
 	
