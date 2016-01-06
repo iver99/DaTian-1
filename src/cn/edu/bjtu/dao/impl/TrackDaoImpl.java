@@ -34,7 +34,7 @@ public class TrackDaoImpl extends BaseDaoImpl<Track> implements TrackDao {
 	@Override
 	public List<Track> getTrackByOrderId(String orderId) {
 		// TODO 自动生成的方法存根
-		String hql="from Track where orderId=:orderId";
+		String hql="from Track where orderId=:orderId order by time desc";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("orderId", orderId);
 		return this.find(hql, params);
