@@ -22,8 +22,6 @@ public class ShowFinishedTaskController {
 	@Autowired
 	DriverService driverService;
 	@Autowired
-	Driverinfo driverinfo;
-	@Autowired
 	OrderService orderService;
 	
 	@RequestMapping(value="/showfinishedtask",produces="text/html;charset=UTF-8")
@@ -33,7 +31,7 @@ public class ShowFinishedTaskController {
 		String f = "已完成";
 		String d = "待评价";
 		//获取司机名字，以便搜索订单表
-		driverinfo = driverService.getDriverByPhone(phone);
+		Driverinfo driverinfo = driverService.getDriverByPhone(phone);
 		String name = driverinfo.getDriverName();
 		
 		//将List集合转化为JSONArray.

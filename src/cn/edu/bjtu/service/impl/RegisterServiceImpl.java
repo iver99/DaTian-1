@@ -37,13 +37,7 @@ public class RegisterServiceImpl implements RegisterService{
 	CompanyDao companyDao;	
 	@Autowired
 	CompanycertificateDao companyCertificateDao;
-	@Resource
-	Carrierinfo carrierinfo;
-	@Autowired
-	Companycertificate companyCertificate;
 	
-	@Resource
-	Clientinfo clientInfo;
 	@Resource
 	RegisterDao registerDao;
 	@Override
@@ -65,6 +59,7 @@ public class RegisterServiceImpl implements RegisterService{
 		userinfoDao.save(userInfo);//保存实体
 		
 		if(userKind == 2){//个人用户
+			Clientinfo clientInfo=new Clientinfo();
 		clientInfo.setId(userInfo.getId());//同时在信息表中保存实体
 		//clientInfo.setCarrierId(carrierId);
 		clientInfo.setCreateDate(new Date());
@@ -74,11 +69,12 @@ public class RegisterServiceImpl implements RegisterService{
 		}
 		else //企业用户，目前维护两个公司表，以后重构成一个
 		{
+			Companycertificate companyCertificate=new Companycertificate();
 			companyCertificate.setId(userInfo.getId());
 			companyCertificate.setPhone(phone);
 			companyCertificateDao.save(companyCertificate);
 			
-			
+			Carrierinfo carrierinfo=new Carrierinfo();
 			carrierinfo.setPhone(phone);
 			carrierinfo.setId(userInfo.getId());
 			carrierinfo.setStatus("未验证");

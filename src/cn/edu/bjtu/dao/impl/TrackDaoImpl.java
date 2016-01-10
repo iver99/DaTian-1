@@ -16,7 +16,6 @@ public class TrackDaoImpl extends BaseDaoImpl<Track> implements TrackDao {
 	@Override
 	public boolean createNewTrack(String id, String orderId, String orderNum,String carNum, Double locLongitude, Double locLatitude,
 			String time, String address) {
-		// TODO 自动生成的方法存根
 		Track track = new Track();
 		track.setAddress(address);
 		track.setCarNum(carNum);
@@ -33,7 +32,6 @@ public class TrackDaoImpl extends BaseDaoImpl<Track> implements TrackDao {
 
 	@Override
 	public List<Track> getTrackByOrderId(String orderId) {
-		// TODO 自动生成的方法存根
 		String hql="from Track where orderId=:orderId order by time desc";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("orderId", orderId);

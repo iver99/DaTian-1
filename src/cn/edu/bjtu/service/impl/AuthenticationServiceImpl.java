@@ -18,8 +18,6 @@ import cn.edu.bjtu.vo.Userinfo;
 @Service("authenticationServiceImpl")
 public class AuthenticationServiceImpl implements AuthenticationService{
 	
-	@Resource
-	Userinfo userinfo;
 	@Autowired
 	AuthenticationDao authenticationDao;
 	@Autowired
@@ -62,7 +60,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	  */
 	public boolean updateAuthenticStatus(String feedback, String clientId,String status) {
 			
-		userinfo = getMyUserDetail(clientId);
+		Userinfo userinfo = getMyUserDetail(clientId);
 		userinfo.setFeedback(feedback);
 		userinfo.setStatus(status);
 		authenticationDao.update(userinfo);//±£¥Ê µÃÂ

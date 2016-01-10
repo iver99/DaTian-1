@@ -19,7 +19,6 @@ import cn.edu.bjtu.vo.Contract;
 public class ContractDaoImpl extends BaseDaoImpl<Contract> implements ContractDao{
 
 	
-	Contract contract=null;
 	@Override
 	/**
 	 * 返回公司合同
@@ -49,7 +48,7 @@ public class ContractDaoImpl extends BaseDaoImpl<Contract> implements ContractDa
 	 */
 	public boolean shutdownContract(String contractId, String reason) {
 		
-		contract=this.get(Contract.class, contractId);
+		Contract contract=this.get(Contract.class, contractId);
 		contract.setState("已终止");//更新状态
 		contract.setReason(reason);
 		/*baseDao.update(contract);		*/

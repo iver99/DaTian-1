@@ -26,8 +26,6 @@ public class CarTeamServiceImpl implements CarTeamService{
 	
 	@Autowired
 	CarTeamDao carTeamDao;
-	@Autowired
-	Carteam carteam;
 
 	@Override
 	public List<Carteam> getCarteam(String carrierId) {
@@ -47,6 +45,7 @@ public class CarTeamServiceImpl implements CarTeamService{
 	@Override
 	public boolean insertCarteam(String teamName, String carCount,
 			String chief, String phone, String explaination, String carrierId) {
+		Carteam carteam=new Carteam();
 		carteam.setTeamName(teamName);
 		carteam.setCarCount(carCount);
 		carteam.setCarrierId(carrierId);
@@ -66,6 +65,7 @@ public class CarTeamServiceImpl implements CarTeamService{
 	 * @return
 	 */
 	public boolean deleteCarteam(String id) {
+		Carteam carteam=new Carteam();
 		carteam = getCarteamInfo(id);// 根据id查找到车辆信息
 		carTeamDao.delete(carteam);
 		return true;
@@ -74,6 +74,7 @@ public class CarTeamServiceImpl implements CarTeamService{
 	@Override
 	public boolean updateCarteam(String id, String teamName, String carCount,
 			String chief, String phone, String explaination) {
+		Carteam carteam=new Carteam();
 		carteam = getCarteamInfo(id);// 根据id查找到车辆信息
 		carteam.setTeamName(teamName);
 		carteam.setCarCount(carCount);

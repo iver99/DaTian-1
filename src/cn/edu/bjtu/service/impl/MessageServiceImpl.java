@@ -25,8 +25,6 @@ import com.alibaba.fastjson.JSONObject;
 public class MessageServiceImpl extends BaseDaoImpl<Message> implements MessageService{
 
 	@Autowired
-	Message message;
-	@Autowired
 	MessageDao messageDao;
 	
 	@Override
@@ -34,7 +32,7 @@ public class MessageServiceImpl extends BaseDaoImpl<Message> implements MessageS
 	  * ÃÌº”¡Ù—‘
 	  */
 	public boolean insertMessage(String clientId, String content){
-		
+		Message message=new Message();
 		message.setId(IdCreator.createMessageId());
 		message.setClientId(clientId);
 		message.setContent(content);

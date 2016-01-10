@@ -41,8 +41,6 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	
 	@Autowired
 	FocusDao focous;
-	@Resource 
-	Focus focus;
 	@Autowired
 	FocusDao focusDao;
 	@Autowired
@@ -64,7 +62,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	  * Ìí¼Ó¹Ø×¢
 	  */
 	public boolean insertFocus(String clientId, String foucsType, String foucsId){
-		
+		Focus focus=new Focus();
 		focus.setId(IdCreator.createFocusId());
 		focus.setClientId(clientId);
 		focus.setFocusType(foucsType);

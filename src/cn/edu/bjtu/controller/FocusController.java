@@ -32,8 +32,6 @@ public class FocusController {
 
 	@Autowired
 	FocusService focusService;
-	@Resource
-	Focus focus;
 
 	ModelAndView mv = new ModelAndView();
 
@@ -67,7 +65,8 @@ public class FocusController {
 			}
 
 			else{
-				focus = (Focus) focusJudgement.get(0);
+				
+				Focus focus = (Focus) focusJudgement.get(0);
 				flag = focusService.deleteFocus(focus.getId());
 				response.setContentType("text/html;charset=UTF-8");
 			    response.getWriter().print("delete");

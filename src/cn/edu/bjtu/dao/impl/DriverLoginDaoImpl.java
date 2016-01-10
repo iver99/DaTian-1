@@ -13,8 +13,6 @@ import cn.edu.bjtu.vo.Driverinfo;
 @Repository
 public class DriverLoginDaoImpl extends BaseDaoImpl<Driverinfo> implements DriverLoginDao {
 	
-	@Resource
-	Driverinfo driverinfo;
 
 	@Override
 	public Driverinfo checkLogin(String phone,String passwd) {

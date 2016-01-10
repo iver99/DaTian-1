@@ -42,9 +42,6 @@ import com.alibaba.fastjson.JSONObject;
 @Controller
 public class LinetransportController {
 
-	private Logger logger = Logger.getLogger(LinetransportController.class);
-	
-	
 	/**
 	 * 资源栏所有干线信息
 	 * @return

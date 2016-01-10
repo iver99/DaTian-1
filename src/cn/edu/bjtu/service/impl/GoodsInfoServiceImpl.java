@@ -39,10 +39,6 @@ public class GoodsInfoServiceImpl implements GoodsInfoService{
 	
 	@Resource
 	GoodsInfoDao goodsinfoDao;
-	@Resource
-	Goodsform goodsform;
-	@Resource
-	GoodsClientView goodsClientView;
 	@Autowired
 	FocusService focusService;
 	

@@ -17,9 +17,4 @@ import cn.edu.bjtu.vo.Settlement;
 @Repository
 public class SettlementRecordDaoImpl extends BaseDaoImpl<Settlement> implements SettlementRecordDao{
 	
-	@Autowired
-	OrderDao orderDao;
-	@Autowired
-	OrderService orderService;
-	
 }

@@ -39,8 +39,6 @@ public class CitylineServiceImpl implements CitylineService {
 
 	@Resource
 	CitylineDao citylineDao;
-	@Resource
-	Cityline cityline;
 	@Autowired 
 	FocusService focusService;
 	/**
@@ -207,7 +205,7 @@ public class CitylineServiceImpl implements CitylineService {
 	 */
 	@Override
 	public boolean deleteCityline(String id) {
-		cityline = getCitylineInfo(id);// 根据id查找到城市配送信息
+		Cityline cityline = getCitylineInfo(id);// 根据id查找到城市配送信息
 		citylineDao.delete(cityline);
 		
 		//把此关注表中的此干线信息设置为失效

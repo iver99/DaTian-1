@@ -30,8 +30,6 @@ public class AddressController {
 	
 	@Autowired
 	AddressService addressService;
-	@Resource
-	Address address;
 	/**
 	 * 跳转到常用发货地址
 	 * @return

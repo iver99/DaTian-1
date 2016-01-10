@@ -17,13 +17,11 @@ public class CarDaoImpl extends BaseDaoImpl<Carinfo> implements CarDao{
 
 	@Override
 	public List<Carinfo> getAllcarNum(String carrierId) {
-		// TODO 自动生成的方法存根
 		return this.find("from Carinfo where carrierId='"+carrierId+"'");
 	}
 
 	@Override
 	public boolean setcarState(String carNum,String carState) {
-		// TODO 自动生成的方法存根
 		String hql = "from Carinfo where carNum='"+carNum+"'";
 		List<Carinfo> car = this.find(hql);
 		Carinfo carinfo = car.get(0);

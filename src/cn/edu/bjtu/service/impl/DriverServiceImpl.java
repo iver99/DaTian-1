@@ -37,8 +37,6 @@ public class DriverServiceImpl implements DriverService{
 	@Autowired
 	DriverDao driverDao;
 	@Autowired
-	Driverinfo driverinfo;
-	@Autowired
 	CarDao carDao;
 	
 	@Override
@@ -154,7 +152,7 @@ public class DriverServiceImpl implements DriverService{
 	 * @return
 	 */
 	public boolean deleteDriver(String id) {
-		driverinfo = getDriverInfo(id);// 根据id查找到车辆信息
+		Driverinfo driverinfo = getDriverInfo(id);// 根据id查找到车辆信息
 		driverDao.delete(driverinfo);
 		return true;
 	}

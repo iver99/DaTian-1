@@ -14,8 +14,6 @@ import cn.edu.bjtu.vo.Userinfo;
 public class LoginDaoImpl extends BaseDaoImpl<Userinfo> implements LoginDao {
 
 
-	@Resource
-	Userinfo userinfo;
 
 	@Override
 	public Userinfo checkLogin(String username, String password,int userKind) {

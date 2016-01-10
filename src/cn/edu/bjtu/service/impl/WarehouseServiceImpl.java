@@ -40,8 +40,6 @@ public class WarehouseServiceImpl implements WarehouseService {
 
 	@Resource
 	WarehouseDao warehouseDao;
-	@Resource
-	Warehouse warehouse;
 	@Autowired
 	FocusService focusService;
 
@@ -100,7 +98,8 @@ public class WarehouseServiceImpl implements WarehouseService {
 	}
 	
 	public boolean deleteWarehouse(String id){
-		warehouse = getWarehouseInfo(id);// 根据id查找到仓库信息
+		
+		Warehouse warehouse = getWarehouseInfo(id);// 根据id查找到仓库信息
 		warehouseDao.delete(warehouse);
 		//设置关注信息为失效
 		focusService.setInvalid(id);

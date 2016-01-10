@@ -22,7 +22,6 @@ public class AuthenticationDaoImpl extends BaseDaoImpl<Userinfo> implements Auth
 	ClientDao clientInfoDao;
 	@Autowired
 	UserinfoDao userinfoDao;
-	Userinfo userinfo=null;
 	@Override
 	/**
 	 * 返回认证列表

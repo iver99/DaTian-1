@@ -41,8 +41,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Resource
 	OrderDao orderDao;
-	@Resource
-	Orderform orderform;
 	@Autowired
 	CompanyDao companyDao;
 	@Autowired

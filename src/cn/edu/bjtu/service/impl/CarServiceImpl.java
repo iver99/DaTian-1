@@ -38,15 +38,11 @@ public class CarServiceImpl implements CarService {
 
 	@Autowired
 	CarDao carDao;
-	@Resource
-	Carinfo carinfo;
 
 	@Autowired
 	CarTeamDao carTeamDao;
 	@Resource
 	LinetransportService linetransportService;
-	@Resource
-	Carteam carteam;
 	
 	@Autowired
 	FocusService focusService;
@@ -252,7 +248,7 @@ public class CarServiceImpl implements CarService {
 	 * @return
 	 */
 	public boolean deleteCar(String id) {
-		carinfo = getCarInfo(id);// 根据id查找到车辆信息
+		Carinfo carinfo = getCarInfo(id);// 根据id查找到车辆信息
 
 		carDao.delete(carinfo);
 		

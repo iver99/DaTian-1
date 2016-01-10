@@ -37,8 +37,6 @@ public class ContractServiceImpl implements ContractService{
 
 	@Resource
 	ContractDao contractDao;
-	@Resource 
-	Contract contract;
 	@Autowired
 	CompanyDao companyDao;
 

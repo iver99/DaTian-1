@@ -40,8 +40,6 @@ public class SubAccountServiceImpl implements SubAccountService{
 	
 	@Resource 
 	SubAccountDao subAccountDao;
-	@Resource
-	SubAccount subAccount;
 	@Autowired
 	UserinfoDao userinfoDao;
 	

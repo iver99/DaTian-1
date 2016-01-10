@@ -45,8 +45,6 @@ public class LinetransportServiceImpl implements LinetransportService {
 
 	@Resource
 	LinetransportDao linetransportDao;
-	@Resource
-	Linetransport linetransport;
 	@Autowired
 	FocusService focusService;
 	

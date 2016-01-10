@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,6 @@ public class ClientServiceImpl implements ClientService{
 	ClientDao clientDao;
 	@Autowired
 	BusinessClientDao businessClientDao;
-	@Resource
-	Businessclient businessClient;
 	@Autowired
 	UserinfoDao userinfoDao;
 	@Autowired
@@ -66,7 +63,7 @@ public class ClientServiceImpl implements ClientService{
 	public boolean insertBusinessClient(String account, String clientName,
 			String clientBusiness, String contact, String phone,
 			String remarks, String carrierId,String path,String fileName) {
-		
+		Businessclient businessClient=new Businessclient();
 		businessClient.setAccount(account);
 		businessClient.setCarrierId(carrierId);
 		businessClient.setClientBusiness(clientBusiness);
@@ -94,7 +91,7 @@ public class ClientServiceImpl implements ClientService{
 			String clientBusiness, String contact, String phone,
 			String remarks, String carrierId,String path,String fileName) {
 		
-		businessClient=getBusinessclientInfo(id);//根据id查找到客户信息
+		Businessclient businessClient=getBusinessclientInfo(id);//根据id查找到客户信息
 		businessClient.setAccount(account);
 		businessClient.setClientName(clientName);
 		businessClient.setClientBusiness(clientBusiness);
@@ -117,7 +114,7 @@ public class ClientServiceImpl implements ClientService{
 	 */
 	@Override
 	public boolean deleteBusinessClient(String id){
-		businessClient=getBusinessclientInfo(id);//根据id查找到客户信息
+		Businessclient businessClient=getBusinessclientInfo(id);//根据id查找到客户信息
 		businessClientDao.delete(businessClient);
 		return true;
 	}

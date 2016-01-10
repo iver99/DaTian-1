@@ -33,8 +33,6 @@ public class AddressServiceImpl implements AddressService{
 	
 	@Autowired
 	AddressDao addressDao;
-	@Resource 
-	Address address;
 	
 	/**
 	 * 获取地址列表

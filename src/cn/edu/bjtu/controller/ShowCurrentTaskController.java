@@ -22,8 +22,6 @@ public class ShowCurrentTaskController {
 	@Autowired
 	DriverService driverService;
 	@Autowired
-	Driverinfo driverinfo;
-	@Autowired
 	OrderService orderService;
 	
 	@RequestMapping(value="/showcurrenttask",produces="text/html;charset=UTF-8")
@@ -34,7 +32,7 @@ public class ShowCurrentTaskController {
 		String c = "已确认";
 		//获取司机名字，以便搜索订单表
 		//System.out.println(phone);
-		driverinfo = driverService.getDriverByPhone(phone);
+		Driverinfo driverinfo = driverService.getDriverByPhone(phone);
 		String name = driverinfo.getDriverName();
 		//System.out.println(name);
 		

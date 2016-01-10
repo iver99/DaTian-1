@@ -32,8 +32,6 @@ public class ComplaintServiceImpl implements ComplaintService {
 	@Resource
 	ComplaintDao complaintDao;
 	@Resource
-	Complaintform complaintform;
-	@Resource
 	OrderService orderService;
 	@Autowired
 	OrderDao orderDao;
@@ -55,7 +53,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 	 * 新增投诉
 	 */
 	public boolean insertComplaint(ComplaintBean complaintBean, String userId) {
-		
+		Complaintform complaintform =new Complaintform();
 
 		complaintform.setId(IdCreator.createCityLineId());
 		complaintform.setType(complaintBean.getType());
@@ -78,7 +76,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 	@Override
 	public boolean doAcceptComplaint(String id, String feedback) {
 
-		complaintform = getComplaintById(id);
+		Complaintform complaintform = getComplaintById(id);
 		complaintform.setFeedback(feedback);
 		complaintform.setState("已受理");
 		complaintDao.update(complaintform);
