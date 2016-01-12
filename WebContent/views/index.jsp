@@ -57,19 +57,14 @@
 <div id="div_index_1">
 	<div class="div_index_1a"></div>
 	<div class="div_index_1b">
-    	<ul>
-        	<li class="li_index_1a">安全 &#8226; 优质 &#8226; 放心</li>
-        	<li class="li_index_1b">注册就送保险</li>
-        	<li class="li_index_1c">海量资源</li>
-        	<li class="li_index_1d">单票500公斤起更享85折优惠</li>
-        	<li class="li_index_1e"></li>
-        </ul>
+        <img src="images/illust_3_3.png" style="width:35%" />
     </div>
 </div>
 
+
 <div id="div_index_2">
     <ul class="ul_index_2">
-        <li class="li_index_2a">线路查询</li>
+        <li class="li_index_2a">整车查询</li><!--类似于原来的线路查询  -->
         <li class="li_index_2b" id="cityselector">
             <input id="city1" type="text" value="" class="input_city2" />
             &nbsp;&nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp;&nbsp;
@@ -101,7 +96,7 @@
     </ul>
 </div>
 
-<div id="div_index_3">
+<!-- <div id="div_index_3">
 	<div id="div_index_3_1">
         <ul class="ul_index_3">
             <li class="li_index_3_1a">我有货，找线路</li>
@@ -127,8 +122,8 @@
         </ul>
 	</div>
 </div>
-
-<div id="div_index_4">
+ -->
+<!-- <div id="div_index_4">
         <ul class="ul_index_4_1">
             <li>更多帮助</li>
         </ul>
@@ -139,7 +134,7 @@
             <li class="li_index_4_2d"><a href="javascript:;" class="a_index_4_2" hidefocus="true">加入资源</a></li>
         </ul>
 </div>
-
+ -->
 <%@ include  file="popup1.jsp"%>
 
 <div id="popup2" style="display:none;">

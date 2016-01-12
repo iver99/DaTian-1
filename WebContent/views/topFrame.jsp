@@ -46,14 +46,16 @@
             <td width="220" class="td_top2a"><a href="homepage" hidefocus="true"><img src="images/logo.png" /></a></td>
             <td>
                 <div class="key">
-                    <span class="mkey">线路</span>
+                    <span class="mkey">整车</span>
                     <ul  class="key_ul" >
-                    	<li onclick="$('#resource_choose').val('线路')">线路</li>
-                    	<li onclick="$('#resource_choose').val('配送')">配送</li>
-                        <li onclick="$('#resource_choose').val('车辆')">车辆</li>
+                    	<li onclick="$('#resource_choose').val('整车')">整车</li>
+                    	<li onclick="$('#resource_choose').val('零担')">零担</li>
+                        <!-- <li onclick="$('#resource_choose').val('车辆')">车辆</li> -->
+                        <li onclick="$('#resource_choose').val('配送')">落地配</li>
                         <li onclick="$('#resource_choose').val('仓库')">仓库</li>
-                        <li onclick="$('#resource_choose').val('公司')">公司</li>
-                        <li onclick="$('#resource_choose').val('货物')">货物</li>
+                        <li onclick="$('#resource_choose').val('国内空运')">国内空运</li>
+                        <!-- <li onclick="$('#resource_choose').val('公司')">公司</li> -->
+                        <!-- <li onclick="$('#resource_choose').val('货物')">货物</li> -->
                     </ul>
                 </div>
                 <input type="text" name="search_content"  id="search_content" class="search_input" value="请输入关键字" hidefocus="true"  />
@@ -75,7 +77,7 @@
                         <div class='extra'>&nbsp;</div>
                     </div>
                     <div class='mc'>
-                        <div class='item fore'>
+                        <!-- <div class='item fore'>
                             <span><h3><a href="linetransport?flag=0" hidefocus="true">运输线路</a></h3><s></s></span>
                             <div class='i-mc'>
                                 <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
@@ -111,16 +113,90 @@
                                 <div class='fr'>
                                     <img src="images/illust_1a.png" />
                                     <dl class='fore'>
-                                        <!-- <dt>推荐</dt>
+                                        <dt>推荐</dt>
                                         <dd><a href="companyDetail?id=C-0001" hidefocus="true">北京市畅通达1</a></dd>
                                         <dd><a href="companyDetail?id=C-0002" hidefocus="true">北京市畅通达</a></dd>
-                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd> -->
+                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class='item fore'>
+                            <span><h3><a href="linetransport?flag=0" hidefocus="true">整车</a></h3><s></s></span>
+                            <div class='i-mc'>
+                                <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
+                                <div class='subitem'>
+                                    <dl class='fore'>
+                                        <dt>始发城市</dt>
+                                        <dd>
+                                            <em><a href="javascript:;" hidefocus="true">北京</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">天津</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">上海</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">广州</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">武汉</a></em>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>到达城市</dt>
+                                        <dd>
+                                            <em><a href="javascript:;" hidefocus="true">北京</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">天津</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">上海</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">广州</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">武汉</a></em>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class='fr'>
+                                    <img src="images/illust_1a.png" />
+                                    <dl class='fore'>
+                                        <dt>推荐</dt>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
                                     </dl>
                                 </div>
                             </div>
                         </div>
                         <div class='item'>
-                            <span><h3><a href="cityline?flag=0" hidefocus="true">配送网络</a></h3><s></s></span>
+                            <span><h3><a href="resource_list2.htm" hidefocus="true">零担</a></h3><s></s></span>
+                            <div class='i-mc'>
+                                <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
+                                <div class='subitem'>
+                                    <dl class='fore'>
+                                        <dt>始发城市</dt>
+                                        <dd>
+                                            <em><a href="javascript:;" hidefocus="true">北京</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">天津</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">上海</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">广州</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">武汉</a></em>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>到达城市</dt>
+                                        <dd>
+                                            <em><a href="javascript:;" hidefocus="true">北京</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">天津</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">上海</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">广州</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">武汉</a></em>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class='fr'>
+                                    <img src="images/illust_1a.png" />
+                                    <dl class='fore'>
+                                        <dt>推荐</dt>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='item'>
+                            <span><h3><a href="cityline?flag=0" hidefocus="true">落地配</a></h3><s></s></span>
                             <div class='i-mc'>
                                 <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
                                 <div class='subitem'>
@@ -144,15 +220,15 @@
                                 <div class='fr'>
                                     <img src="images/illust_1b.png" />
                                     <dl class='fore'>
-                                        <!-- <dt>推荐</dt>
-                                        <dd><a href="companyDetail?id=C-0001" hidefocus="true">北京市畅通达1</a></dd>
-                                        <dd><a href="companyDetail?id=C-0002" hidefocus="true">北京市畅通达</a></dd>
-                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd> -->
+                                        <dt>推荐</dt>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
                                     </dl>
                                 </div>
                             </div>
                         </div>
-                        <div class='item'>
+                        <!-- <div class='item'>
                             <span><h3><a href="car?flag=0" hidefocus="true">车辆</a></h3><s></s></span>
                             <div class='i-mc'>
                                 <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
@@ -185,14 +261,14 @@
                                 <div class='fr'>
                                     <img src="images/illust_1c.png" />
                                     <dl class='fore'>
-                                        <!-- <dt>推荐</dt>
+                                        <dt>推荐</dt>
                                         <dd><a href="companyDetail?id=C-0001" hidefocus="true">北京市畅通达1</a></dd>
                                         <dd><a href="companyDetail?id=C-0002" hidefocus="true">北京市畅通达</a></dd>
-                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd> -->
+                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd>
                                     </dl>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class='item'>
                             <span><h3><a href="warehouse?flag=0" hidefocus="true">仓库</a></h3><s></s></span>
                             <div class='i-mc'>
@@ -225,56 +301,64 @@
                                 <div class='fr'>
                                     <img src="images/illust_1d.png" />
                                     <dl class='fore'>
-                                        <!-- <dt>推荐</dt>
-                                        <dd><a href="companyDetail?id=C-0001" hidefocus="true">北京市畅通达1</a></dd>
-                                        <dd><a href="companyDetail?id=C-0002" hidefocus="true">北京市畅通达</a></dd>
-                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd> -->
+                                        <dt>推荐</dt>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
                                     </dl>
                                 </div>
                             </div>
                         </div>
                         <div class='item'>
-                            <span><h3><a href="company" hidefocus="true">公司</a></h3><s></s></span>
+                            <span><h3><a href="resource_list5.htm" hidefocus="true">国内空运</a></h3><s></s></span>
                             <div class='i-mc'>
                                 <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
                                 <div class='subitem'>
                                     <dl class='fore'>
-                                        <dt>资源等级</dt>
+                                        <dt>始发港</dt>
                                         <dd>
-                                            <em><a href="company?flag=0&resource_level=自由">自有</a></em>
-                                            <em><a href="company?flag=0&resource_level=核心">核心</a></em>
-                                            <em><a href="company?flag=0&resource_level=外围" hidefocus="true">外围</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">北京</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">天津</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">上海</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">广州</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">武汉</a></em>
                                         </dd>
                                     </dl>
                                     <dl>
-                                        <dt>业务种类</dt>
+                                        <dt>目的港</dt>
                                         <dd>
-                                            <em><a href="company?flag=0&business_kind=运输线路" hidefocus="true">运输线路</a></em>
-                                            <em><a href="company?flag=0&business_kind=配送网络" hidefocus="true">配送网络</a></em>
-                                            <em><a href="company?flag=0&business_kind=仓储" hidefocus="true">仓储</a></em>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>信用等级</dt>
-                                        <dd>
-                                            <em><a href="company?flag=0&credit_rate=1级" hidefocus="true">1级</a></em>
-                                            <em><a href="company?flag=0&credit_rate=2级" hidefocus="true">2级</a></em>
-                                            <em><a href="company?flag=0&credit_rate=3级" hidefocus="true">3级</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">北京</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">天津</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">上海</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">广州</a></em>
+                                            <em><a href="javascript:;" hidefocus="true">武汉</a></em>
                                         </dd>
                                     </dl>
                                 </div>
                                 <div class='fr'>
-                                    <img src="images/illust_1f.png" />
+                                    <img src="images/illust_1a.png" />
                                     <dl class='fore'>
-                                        <!-- <dt>推荐</dt>
-                                        <dd><a href="companyDetail?id=C-0001" hidefocus="true">北京市畅通达1</a></dd>
-                                        <dd><a href="companyDetail?id=C-0002" hidefocus="true">北京市畅通达</a></dd>
-                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd> -->
+                                        <dt>推荐</dt>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
+                                        <dd><a href="javascript:;" hidefocus="true">北京畅通达物流</a></dd>
                                     </dl>
                                 </div>
                             </div>
                         </div>
-                        <div class='extra'><a href="goodsform?flag=0" hidefocus="true">货物</a></div>
+                    </div>
+                                <!-- <div class='fr'>
+                                    <img src="images/illust_1f.png" />
+                                    <dl class='fore'>
+                                        <dt>推荐</dt>
+                                        <dd><a href="companyDetail?id=C-0001" hidefocus="true">北京市畅通达1</a></dd>
+                                        <dd><a href="companyDetail?id=C-0002" hidefocus="true">北京市畅通达</a></dd>
+                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd>
+                                    </dl>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- <div class='extra'><a href="goodsform?flag=0" hidefocus="true">货物</a></div> -->
                     </div>
                 </div>
                 <script type="text/javascript"> 
@@ -284,6 +368,7 @@
             </td>
            <td class="td_top2a">
             	<a href="linetransport?flag=0" class="a_mainnav" hidefocus="true">找资源</a>
+            	<a href="goodsform?flag=0" class="a_mainnav" hidefocus="true">找货物</a>
             </td>
             <td class="td_top2a">&nbsp;</td>
             <td width="3%">&nbsp;</td>
