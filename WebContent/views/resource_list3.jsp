@@ -60,76 +60,49 @@
 			<tr>
 				<td width="230" class="td_leftnav_top">
 					<div id="main_frame_left">
-						<a href="linetransport?flag=0" class="a_leftnav" hidefocus="true">运输线路</a>
-						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">配送网络</a>
-						<span class="text_leftnav1">车辆</span> 
+						<a href="linetransport?flag=0" class="a_leftnav" hidefocus="true">整车</a>
+						<span class="text_leftnav1">零担</span> 
+						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">落地配</a>
 						<a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
-						<a href="company" class="a_leftnav" hidefocus="true">公司</a> <a
-							href="goodsform?flag=0" class="a_leftnav" hidefocus="true"
-							style="border-bottom: none;">货物</a>
+						<a href="company" class="a_leftnav" hidefocus="true">公司</a> 
+						<!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
 					</div>
 				</td>
 				<td>
 					<div id="div_resource_select">
 						<div id="cityselector" class="div_cityselector1">
-							当前位置： <input id="city1" type="text" value="" text="carLocation" class="input_city1" /> &nbsp;&nbsp;&nbsp;&nbsp;目的城市：
+							起止城市： <input id="city1" type="text" value="" text="carLocation" class="input_city1" /> &nbsp;&nbsp;至 &nbsp;&nbsp;
 							 <input	id="city2" type="text" value="" text="endPlace"	class="input_city1" />
 						</div>
 						<ul class="resource">
 							<li class="resource_list">
 								<dl id="select1" value="carBase">
-									<dt>厢型：</dt>
+									<dt>运输时限：</dt>
 									<dd class="resource_all selected">
 										<a href="javascript:;" hidefocus="true" id="select1_0">全部</a>
 									</dd>
 									<dd>
-										<a href="javascript:;" hidefocus="true" id="select1_1">普通</a>
+										<a href="javascript:;" hidefocus="true" id="select1_1">24小时以内</a>
 									</dd>
 									<dd>
-										<a href="javascript:;" hidefocus="true" id="select1_2">平板</a>
+										<a href="javascript:;" hidefocus="true" id="select1_2">48小时以内</a>
 									</dd>
 									<dd>
-										<a href="javascript:;" hidefocus="true" id="select1_3">厢式</a>
-									</dd>
-									<dd>
-										<a href="javascript:;" hidefocus="true" id="select1_4">高栏</a>
+										<a href="javascript:;" hidefocus="true" id="select1_3">72小时以内</a>
 									</dd>
 								</dl>
 							</li>
 							<li class="resource_list">
 								<dl id="select2" value="carLength">
-									<dt>车长：</dt>
+									<dt>提供回程：</dt>
 									<dd class="resource_all selected">
 										<a href="javascript:;" hidefocus="true" id="select2_0">全部</a>
 									</dd>
 									<dd>
-										<a href="javascript:;" hidefocus="true" id="select2_1">10米</a>
+										<a href="javascript:;" hidefocus="true" id="select2_1">提供回程</a>
 									</dd>
 									<dd>
-										<a href="javascript:;" hidefocus="true" id="select2_2">12米</a>
-									</dd>
-									<dd>
-										<a href="javascript:;" hidefocus="true" id="select2_3">14米</a>
-									</dd>
-								</dl>
-							</li>
-							<li class="resource_list">
-								<dl id="select3" value="carWeight">
-									<dt>载重：</dt>
-									<dd class="resource_all selected">
-										<a href="javascript:;" hidefocus="true" id="select3_0">全部</a>
-									</dd>
-									<dd>
-										<a href="javascript:;" hidefocus="true" id="select3_1">8吨</a>
-									</dd>
-									<dd>
-										<a href="javascript:;" hidefocus="true" id="select3_2">12吨</a>
-									</dd>
-									<dd>
-										<a href="javascript:;" hidefocus="true" id="select3_3">16吨</a>
-									</dd>
-									<dd>
-										<a href="javascript:;" hidefocus="true" id="select3_4">20吨</a>
+										<a href="javascript:;" hidefocus="true" id="select2_2">不提供回程</a>
 									</dd>
 								</dl>
 							</li>
@@ -233,22 +206,25 @@
 					<table border="0" cellspacing="0" cellpadding="0"
 						class="table_main_list" id="list1">
 						<thead id="thead">
-							<tr>
-								<td width="15" class="td_main_list_head"></td>
-								<td class="td_main_list_head">牌照号码</td>
-								<td class="td_main_list_head" width="80">用途</td>
-								<td class="td_main_list_head" width="70">状态</td>
-								<td class="td_main_list_head" width="70">车长(米)</td>
-								<td class="td_main_list_head" width="70">载重(吨)</td>
-								<td class="td_main_list_head" width="100">当前位置</td>
-								<td class="td_main_list_head" width="80">定位日期</td>
-								<td class="td_main_list_head" width="45">关注</td>
-							</tr>
+                        <tr>
+                            <td width="15" class="td_main_list_head"></td>
+                            <td width="70" class="td_main_list_head">始发城市</td>
+                            <td width="70" class="td_main_list_head">到达城市</td>
+                            <td class="td_main_list_head">所有者</td>
+                            <td class="td_main_list_head" width="55">&nbsp;时限<br />
+                            <td class="td_main_list_head" width="55">提供<br />
+                                回程</td>
+                            <td class="td_main_list_head" width="75">标准报价<br />(元/吨)</td>
+                            <td class="td_main_list_head" width="75">标准报价<br />(元/方)</td>
+                            <td class="td_main_list_head" width="80">发布日期</td>
+                            <td class="td_main_list_head" width="45">关注</td>
+                        </tr>
+
+
 						</thead>
 						<tbody id="testbody">
 							
 						</tbody>
-
 						<select id="carloc" style="display:none" >
 							<c:forEach var="location" items="${locList }">
 								<option value="${location.carNum }">${location.carNum }</option>
@@ -256,7 +232,7 @@
 								<option value="${location.locLatitude }">${location.locLatitude }</option>
 								<option value="${location.carLocation }">${location.carLocation }</option>
 							</c:forEach>
-						</select>
+						</select> 
 
 					</table>
 					<table border="0" cellpadding="0" cellspacing="0"

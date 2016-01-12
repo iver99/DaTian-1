@@ -37,31 +37,36 @@
 
 <%@ include  file="topFrame.jsp"%>
 <div id="main_frame">
-	<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;车辆
+	<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;<a href="car?flag=0" hidefocus="true">零担</a>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tbody>
 	
 		<tr>
-			<td width="320" class="td_leftnav_top"><img src="images/illust_2c.jpg" /></td>
+			<td width="320" class="td_leftnav_top"><img src="images/illust_2b.jpg" />
+			    <div class="text_detail_title3">
+                    	浏览次数：309
+                </div>
+			</td>
 			<td class="td_detail_top">
-            	车牌照号：<span class="text_detail_title1">${carInfo.carNum }</span>
+                始发城市：<span class="text_detail_title1">${carInfo.carNum }</span>
                 <br />
-                车辆规格：<span class="text_detail_title2">${carInfo.carLength }</span>
+                到达城市：<span class="text_detail_title1">${carInfo.carLength }</span>
                 <br />
-                车辆载重：<span class="text_detail_title2">${carInfo.carWeight }</span>
+                运输时限：<span class="text_detail_title2">${carInfo.carWeight }</span>
                 <br />
-                目前状态：<span class="text_detail_title1">${carInfo.carState }</span>
+                标准报价：<span class="text_detail_title2">${carInfo.carState }</span>
                 <br />
-                定位方式：GPS定位
+                提货费：   <span class="text_detail_title2">100元</span>
                 <br />
-                当前位置：上海-上海市-闸北区吴淞路22号 (定位时间 2014-03-22 17:39:20)&nbsp;&nbsp;<a href="javascript:;" hidefocus="true"><img src="images/btn_refresh1.png" alt="刷新" /></a>
+                送货费：   <span class="text_detail_title2">200元</span>
                 <br />
-                发布日期：${carInfo.relDate }
+                提供回程：有
                 <br />
-              浏览次数：309
+                增值服务：分拣、上楼
+                <br />   
+                发货日期：${carInfo.relDate }
                 <br />
-            	所属公司：${carrierInfo.companyName }
-            
+                所有者：    ${carrierInfo.companyName }&nbsp;<img src="images/btn_level1a.png" />          
                 <br />
                 <%-- 联系电话：${carrierInfo.phone } --%>
                 <hr class="hr_1" />
@@ -99,31 +104,31 @@
                 <div id="detail_tab">
                     <ul class="nav">
                         <li><a href="#item1" class="current" hidefocus="true">补充信息</a></li>
-                        <li><a href="#item2" hidefocus="true">运营线路</a></li>
-                        <li><a href="#item3" hidefocus="true">公司信息</a></li>
+                 <!--   <li><a href="#item2" hidefocus="true">运营线路</a></li> -->
+                        <li><a href="#item3" hidefocus="true">所有者信息</a></li>
                         <li><a href="#item4" hidefocus="true">评价记录</a></li>
                     </ul>
                     <div class="list_wrap">
                         <ul id="item1">
-                            <li>用途：${carInfo.carUse }</li>
-                            <li>车型：${carInfo.carType }</li>
-                            <li>厢型：${carInfo.carBase }</li>
-                            <li>品牌：${carInfo.carBrand }</li>
-                            <li>冷藏：${carInfo.storage }</li>
-                            <li>购置日期：${carInfo.purchaseTime }</li>
-                       
+                            <li class="item2a">1）单票最低收费50元/票，不含提派费装卸费另计。</li>
+                            <li class="item2a">2）时限从货物到达始发站的次日零时起开始计算。</li>
+                            <li class="item2a">3）所有报价均不含保险，保险费率为货物声明价值的0.3%。</li>
+                            <li class="item2a">4）以上报价为门到门价格，不含装卸、分拣、上楼等操作费用。如需装卸，装卸费另计。</li>
+                            <li class="item2a">5）重量与体积之比小于1：4时即为泡货，按轻货报价计费。</li>
+                            <li class="item2a">6）其他附加费用：200元。</li>
                         </ul>
-                        <ul id="item2" class="tab_hide">
+<%--                    <ul id="item2" class="tab_hide">
                             <li class="item2a">${linetransportInfo.startPlace }←→${linetransportInfo.endPlace }</li>
                             <!-- <li class="item2a">经停城市：数据库没有，与城市关联？（石家庄、郑州）</li> -->
-                        </ul>
+                        </ul> --%>
                         <ul id="item3" class="tab_hide">
                            	<li>公司名称：${carrierInfo.companyName }</li>
-                            <li>公司性质：${carrierInfo.companyType }</li>
-                            <li>注册日期：${carrierInfo.relDate }</li>
-                            <li>服务行业：${carrierInfo.serviceIndustry }</li>
+                            <li>公司性质：${carrierInfo.companyType }</li>           
+                            <li>公司规模：${carrierInfo.companyScale}</li>           
+<%--  						<li>注册日期：${carrierInfo.relDate }</li> --%>
+<%--                        <li>服务行业：${carrierInfo.serviceIndustry }</li> --%>
                             <li>业务种类：专线卡车</li>
-                            <li>信用等级：${carrierInfo.creditRate	 }级</li>
+<%--                        <li>信用等级：${carrierInfo.creditRate	 }级</li> --%>
                         </ul>
                         <ul id="item4" class="tab_hide">
                        <div id="div_rating3">
