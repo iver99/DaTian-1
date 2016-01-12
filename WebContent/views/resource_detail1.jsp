@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>运输线路详细信息</title>
+<title>整车资源详细信息</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -39,27 +39,34 @@
 
 <%@ include  file="topFrame.jsp"%>
 <div id="main_frame">
-	<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;运输线路
+	<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;整车
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tbody>
 		<tr>
 			<td width="320" class="td_leftnav_top"><img src="images/illust_2a.jpg" /></td>
-			<td class="td_detail_top">线路名称：<span class="text_detail_title1">${linetransportInfo.startPlace }→${linetransportInfo.endPlace }</span>
+			<td class="td_detail_top">始发城市：<span class="text_detail_title1">${linetransportInfo.startPlace }→${linetransportInfo.endPlace }</span>
                 <br />
-                运输类型：<span class="text_detail_title2">${linetransportInfo.type }</span>
+                到达城市：<span class="text_detail_title1">${linetransportInfo.type }</span>
                 <br />
-                在途时限：<span class="text_detail_title2">${linetransportInfo.onWayTime }</span>
+                运输时限：<span class="text_detail_title2">${linetransportInfo.onWayTime }</span>
                 <br />
-                参考报价：<span class="text_detail_title2">${linetransportInfo.refPrice }元/公斤</span>
+                厢式：<span class="text_detail_title2">${linetransportInfo.refPrice }元/公斤</span>
                 <br />
-                详细报价：<a href="downloadlinedetailprice?id=${linetransportInfo.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a>
+                车长：<span class="text_detail_title2">${linetransportInfo.refPrice }元/公斤</span>
                 <br />
-                发布日期：${linetransportInfo.relDate }
+                标准报价：<span class="text_detail_title2">${linetransportInfo.refPrice }元/公斤</span>
                 <br />
-                浏览次数：309
+                提货费：<span class="text_detail_title2">${linetransportInfo.refPrice }元/公斤</span>
                 <br />
-            	所属公司：${carrierInfo.companyName }
-            
+                送货费：<span class="text_detail_title2">${linetransportInfo.refPrice }元/公斤</span>
+                <br />
+               提供回程：有
+                <br />
+               增值服务：分拣、上楼
+               <br />
+               发布日期：${linetransportInfo.relDate }
+               <br />
+               所有者：${carrierInfo.companyName }
                 <br />
 <%--                 联系电话：${carrierInfo.phone } --%>
             	
@@ -99,7 +106,7 @@
                 <div id="detail_tab">
                     <ul class="nav">
                         <li><a href="#item1" class="current" hidefocus="true">补充信息</a></li>
-                        <li><a href="#item2" hidefocus="true">公司信息</a></li>
+                        <li><a href="#item2" hidefocus="true">所有者信息</a></li>
                         <li><a href="#item3" hidefocus="true">评价记录</a></li>
                     </ul>
                     <div class="list_wrap">

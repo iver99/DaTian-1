@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>资源-运输线路</title>
+<title>资源-整车</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 	<link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 	<link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -43,18 +43,17 @@
 
 <%@ include  file="topFrame.jsp"%>
 	<div id="main_frame">
-		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;运输线路<input type="hidden" id="page_info" value="运输线路"/>
+		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;整车<input type="hidden" id="page_info" value="运输线路"/>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="230" class="td_leftnav_top">
 					<div id="main_frame_left">
-						<span class="text_leftnav1">运输线路</span>
-						 <a href="cityline?flag=0"	class="a_leftnav" hidefocus="true">配送网络</a> <a
-							href="car?flag=0" class="a_leftnav" hidefocus="true">车辆</a>
-						<a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
-						<a href="company" class="a_leftnav" hidefocus="true">公司</a> <a
-							href="goodsform?flag=0" class="a_leftnav" hidefocus="true"
-							style="border-bottom: none;">货物</a>
+						<span class="text_leftnav1">整车</span>
+						 <a href="car?flag=0" class="a_leftnav" hidefocus="true">零担</a>
+						 <a href="cityline?flag=0"	class="a_leftnav" hidefocus="true">落地配</a> 
+						 <a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
+						 <a href="" class="a_leftnav" hidefocus="true">国内空运</a> 
+						 <!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
 					</div>
 				</td>
 				<td>
@@ -69,10 +68,14 @@
                     <ul class="resource">
                         <li class="resource_list">
                             <dl id="select1" value="type">
-                                <dt>运输类型：</dt>
+                                <dt>车辆长度：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select1_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_1">整车</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_2">零担</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_1">4.2米</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_2">6.2米</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_3">7.6米</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_4">9.5米</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_5">12.5米</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_6">17.5米</a></dd>
                             </dl>
                         </li>
                        <!--  <li class="resource_list">
@@ -88,12 +91,21 @@
                             </dl>
                         </li> -->
                         <li class="resource_list">
+                            <dl id="select2" value="refPrice">
+                                <dt>车辆厢型：</dt>
+                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select2_0">全部</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_1">高栏</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_2">平板</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_3">厢式</a></dd>
+                            </dl>
+                        </li>
+                        <li class="resource_list">
                             <dl id="select3" value="refPrice">
-                                <dt>参考报价：</dt>
+                                <dt>运输时限：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select3_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select3_1">大于2元/kg</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select3_2">1至2元/kg</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select3_3">小于1元/kg</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select3_1">24小时以内</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select3_2">48小时以内</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select3_3">72小时以内</a></dd>
                             </dl>
                         </li>
                         <li class="resource_result">
@@ -161,12 +173,18 @@
 						<thead id="thead">
 							<tr>
 								<td width="15" class="td_main_list_head"></td>
-								<td class="td_main_list_head">线路名称</td>
-								<td width="100" class="td_main_list_head">参考价(元/kg)</td>
-								<td width="60" class="td_main_list_head">类型</td>
-								<td width="80" class="td_main_list_head">时限(小时)</td>
-								<td width="80" class="td_main_list_head">发布日期</td>
-								<td width="45" class="td_main_list_head">关注</td>
+								<td width="70" class="td_main_list_head">始发城市</td>
+								<td width="70" class="td_main_list_head">到达城市</td>
+								<td class="td_main_list_head">所有者</td>
+								<td width="55" class="td_main_list_head">所有者</td>
+								<td class="td_main_list_head" width="55">厢型</td>
+                                <td class="td_main_list_head" width="55">&nbsp;时限<br />
+                                (小时)</td>
+                                <td class="td_main_list_head" width="55">提供<br />回程</td>
+                                <td class="td_main_list_head" width="75">标准报价<br />(元/吨)</td>
+                                <td class="td_main_list_head" width="75">标准报价<br />(元/方)</td>
+                                <td class="td_main_list_head" width="80">发布日期</td>
+                                <td class="td_main_list_head" width="45">关注</td>
 							</tr>
 						</thead>
 						<tbody id="testbody"></tbody>
