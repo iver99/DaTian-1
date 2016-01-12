@@ -74,7 +74,6 @@
 				<value>cn/edu/bjtu/vo/CityCarrierView.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/CarCarrierView.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/WarehouseCarrierView.hbm.xml</value>
-				<value>cn/edu/bjtu/vo/GoodsformClientinfoView.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/GoodsClientView.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/Contract.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/Businessclient.hbm.xml</value>
