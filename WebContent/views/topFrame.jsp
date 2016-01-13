@@ -122,7 +122,7 @@
                             </div>
                         </div> -->
                         <div class='item fore'>
-                            <span><h3><a href="linetransport?flag=0" hidefocus="true">整车</a></h3><s></s></span>
+                            <span><h3><a href="fulltruckload?flag=0" hidefocus="true">整车</a></h3><s></s></span>
                             <div class='i-mc'>
                                 <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
                                 <div class='subitem'>
@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         <div class='item'>
-                            <span><h3><a href="car?flag=0" hidefocus="true">零担</a></h3><s></s></span>
+                            <span><h3><a href="lesstruckload?flag=0" hidefocus="true">零担</a></h3><s></s></span>
                             <div class='i-mc'>
                                 <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
                                 <div class='subitem'>
