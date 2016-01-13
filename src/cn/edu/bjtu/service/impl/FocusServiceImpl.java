@@ -77,9 +77,9 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	  * 判断某条信息是否已被关注 
 	  */
 	public List getFocusJudgement(String clientId, String focusType,
-			String foucsId) {
+			String focusId) {
 		
-		return focusDao.getFocusJudgement(clientId,focusType,foucsId);
+		return focusDao.find("from Focus where clientId='"+clientId+"' and focusType='"+focusType+"' and focusId='"+focusId+"'");
 	}
 
 	@Override
@@ -87,7 +87,9 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	  * 删除关注 
 	  */
 	public boolean deleteFocus(String id){
-		return focusDao.deleteFocus(id);
+		Focus focus = this.get(Focus.class, id);
+		 this.delete(focus);
+		 return true;
 	}
 	@Override
 	/**
@@ -95,7 +97,10 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	 */
 	public List getFocusList(String clientId,String focusType) {
 		
-		return focusDao.getFocusList(clientId,focusType);
+		if(focusType != "")
+			return this.find("from Focus where clientId='"+clientId+"' and focusType='"+focusType+"'");
+		else
+			return this.find("from Focus where clientId='"+clientId+"'");
 	}
 	
 	

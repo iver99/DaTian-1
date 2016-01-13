@@ -11,7 +11,5 @@ import cn.edu.bjtu.vo.Clientinfo;
  *
  */
 public interface ClientDao extends BaseDao<Clientinfo>{
-	public boolean validateUser(String userId,String realName,String phone,String IDCard,
-			String sex, String path, String fileName);
 
 }

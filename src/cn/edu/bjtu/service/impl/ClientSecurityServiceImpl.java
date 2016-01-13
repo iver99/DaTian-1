@@ -53,22 +53,34 @@ public class ClientSecurityServiceImpl implements ClientSecurityService{
 		return true;
 
 	}
-	
+	/**
+	 * ºÏ≤Èæ…√‹¬Î
+	 */
 	@Override
 	public boolean checkOldPassword(String oldPassword,String userId) {
 		
-		return clientSecurityDao.checkOldPassword(oldPassword,userId);
+		Userinfo user = userinfoDao.get(Userinfo.class, userId);
+
+		if (user.getPassword().equals(oldPassword))
+			return true;
+		return false;
 	}
+	/**
+	 * –ﬁ∏ƒ√‹¬Î
+	 */
 	@Override
 	public boolean changePassword(String newPassword,String userId) {
 		
-		return clientSecurityDao.changePassword(newPassword,userId);
+		Userinfo user =userinfoDao.get(Userinfo.class, userId);
+		user.setPassword(newPassword);
+		userinfoDao.save(user);
+		return true;
 	}
 	
 	@Override
 	public Userinfo getUserById(String userId) {
 		
-		return clientSecurityDao.getUserById(userId);
+		return userinfoDao.get(Userinfo.class, userId);
 	}
 	
 
@@ -106,7 +118,20 @@ public class ClientSecurityServiceImpl implements ClientSecurityService{
 		if(a1.trim().equals("") || a2.trim().equals("")|| a3.trim().equals(""))
 			return false;
 		
-		return clientSecurityDao.setSecurityQuestion(q1,q2,q3,a1,a2,a3,uId);
+		Userinfo userinfo = userinfoDao.get(Userinfo.class, uId);
+
+		userinfo.setSecurityAnswerOne(a1.trim());
+		userinfo.setSecurityAnswerTwo(a2.trim());
+		userinfo.setSecurityAnswerThree(a3.trim());
+		userinfo.setSecurityQuestionOne(q1.trim());
+		userinfo.setSecurityQuestionTwo(q2.trim());
+		userinfo.setSecurityQuestionThree(q3.trim());
+
+		userinfo.setSecurityQuestionStatus("“—…Ë÷√");
+
+		/*baseDao.update(userinfo);*/
+		userinfoDao.update(userinfo);
+		return true;
 	}
 
 	
@@ -116,7 +141,14 @@ public class ClientSecurityServiceImpl implements ClientSecurityService{
 		if(a1.trim().equals("") || a2.trim().equals("") || a3.trim().equals(""))
 			return false;
 		
-		return clientSecurityDao.checkAnswer(a1,a2,a3,uId);
+		Userinfo userinfo = userinfoDao.get(Userinfo.class, uId);
+
+		if (a1.trim().endsWith(userinfo.getSecurityAnswerOne())
+				&& a2.trim().equals(userinfo.getSecurityAnswerTwo())
+				&& a3.trim().equals(userinfo.getSecurityAnswerThree()))
+			return true;
+
+		return false;
 	}
 
 	/**

@@ -166,7 +166,27 @@ public class ClientServiceImpl implements ClientService{
 	public boolean validateUser(String userId, String realName, String phone,
 			String IDCard, String sex, String path, String fileName) {
 		
-		return clientDao.validateUser(userId,realName,phone,IDCard,sex, path, fileName);
+		Clientinfo clientInfo = clientDao.get(Clientinfo.class, userId);
+		if (clientInfo == null) {// clientinfo找不到记录
+			return false;
+		}
+
+		clientInfo.setRealName(realName);
+		clientInfo.setPhone(phone);
+		clientInfo.setIdcard(IDCard);
+		clientInfo.setSex(sex);
+		clientDao.update(clientInfo);
+		Userinfo userInfo = userinfoDao.get(Userinfo.class, userId);
+		userInfo.setStatus("审核中");
+		if (path != null && fileName != null) {
+			String fileLocation = path + "//" + fileName;
+			clientInfo.setIDPicture(fileLocation);//设置文件上传路径
+		}
+		userinfoDao.update(userInfo);
+
+		// }
+
+		return true;
 	}
 	@Override
 	/**
