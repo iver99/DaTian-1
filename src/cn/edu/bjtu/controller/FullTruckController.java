@@ -33,7 +33,6 @@ public class FullTruckController {
      */
 	@RequestMapping(value="/fulltruckload",params="flag=0")
 	public String getallFullTruckLoad(){
-		
 		return "resource_list";
 		
 	}
