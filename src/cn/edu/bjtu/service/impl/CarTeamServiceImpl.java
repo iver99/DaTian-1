@@ -39,7 +39,7 @@ public class CarTeamServiceImpl implements CarTeamService{
 	@Override
 	public Carteam getCarteamInfo(String id) {
 		
-		return carTeamDao.getCarteamInfo(id);
+		return carTeamDao.get(Carteam.class,id);
 	}
 
 	@Override

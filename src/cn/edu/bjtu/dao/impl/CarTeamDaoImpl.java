@@ -10,12 +10,4 @@ import cn.edu.bjtu.vo.Carteam;
 public class CarTeamDaoImpl extends BaseDaoImpl<Carteam> implements CarTeamDao{
 	
 	
-	@Override
-	/**
-	 * 返回具体车队信息
-	 */
-	public Carteam getCarteamInfo(String id) {
-		
-		return this.get(Carteam.class,id);
-	}
 }

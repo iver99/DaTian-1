@@ -15,21 +15,6 @@ import cn.edu.bjtu.vo.Driverinfo;
 @Repository
 public class CarDaoImpl extends BaseDaoImpl<Carinfo> implements CarDao{
 
-	@Override
-	public List<Carinfo> getAllcarNum(String carrierId) {
-		return this.find("from Carinfo where carrierId='"+carrierId+"'");
-	}
-
-	@Override
-	public boolean setcarState(String carNum,String carState) {
-		String hql = "from Carinfo where carNum='"+carNum+"'";
-		List<Carinfo> car = this.find(hql);
-		Carinfo carinfo = car.get(0);
-		carinfo.setCarState(carState);
-		
-		this.update(carinfo);
-		return true;
-	}
 	
 	
 }

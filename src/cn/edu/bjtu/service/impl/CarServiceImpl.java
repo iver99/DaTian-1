@@ -345,14 +345,18 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public List<Carinfo> getAllcarNum(String carrierId) {
-		// TODO 自动生成的方法存根
-		return carDao.getAllcarNum(carrierId);
+		return carDao.find("from Carinfo where carrierId='"+carrierId+"'");
 	}
 
 	@Override
 	public boolean setcarState(String carNum,String carState) {
-		// TODO 自动生成的方法存根
-		return carDao.setcarState(carNum, carState);
+		String hql = "from Carinfo where carNum='"+carNum+"'";
+		List<Carinfo> car = carDao.find(hql);
+		Carinfo carinfo = car.get(0);
+		carinfo.setCarState(carState);
+		
+		carDao.update(carinfo);
+		return true;
 	}
 	
 	
