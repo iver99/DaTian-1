@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.dao.AddressDao;
 import cn.edu.bjtu.dao.CompanyDao;
+import cn.edu.bjtu.dao.OrderCarrierViewDao;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.util.Constant;
@@ -45,59 +46,92 @@ public class OrderServiceImpl implements OrderService {
 	CompanyDao companyDao;
 	@Autowired
 	AddressDao addressDao;
-
+	@Autowired
+	OrderCarrierViewDao orderCarrierViewDao;
 	@Override
 	public OrderCarrierView getSendOrderDetail(String id) {
 		
-		return orderDao.getSendOrderDetail(id);
+		return orderCarrierViewDao.get(OrderCarrierView.class, id);
 	}
 
 	@Override
 	public Orderform getRecieveOrderDetail(String id) {
 		
-		return orderDao.getRecieveOrderDetail(id);
+		return orderDao.get(Orderform.class, id);
 	}
 
-
+	/**
+	 * 通过订单编号获取某订单id
+	 */
 	@Override
 	public Orderform getOrderByOrderNum(String orderNum) {
-		return orderDao.getOrderByOrderNum(orderNum);
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("orderNum", orderNum);
+		return orderDao.get("from Orderform where orderNum=:orderNum",params);
 	}
 
 	@Override
 	public OrderCarrierView getOrderByOrderId(String orderId) {
 		
-		return orderDao.getOrderByOrderId(orderId);
+		return orderCarrierViewDao.get(OrderCarrierView.class, orderId);
 	}
-
+	/**
+	 * 承运方修改订单状态为待收货
+	 */
 	@Override
 	public boolean acceptOrder(String orderId) {
 		
-		return orderDao.acceptOrder(orderId);
+
+		Orderform order = orderDao.get(Orderform.class, orderId);
+		order.setState("已受理");
+
+		orderDao.update(order);
+		return true;
 	}
-	
+	/**
+	 * 为订单分配司机
+	 */
 	@Override
 	public boolean setDriver(String orderId,String driver){
 		
-		return orderDao.setDriver(orderId, driver);
+		Orderform order = orderDao.get(Orderform.class, orderId);
+		order.setDriver(driver);
+		
+		orderDao.update(order);
+		return true;
 	}
 	
 	@Override
 	public boolean setcarNum(String orderId, String carNum) {
-		// TODO 自动生成的方法存根
-		return orderDao.setcarNum(orderId, carNum);
+		Orderform order = orderDao.get(Orderform.class, orderId);
+		order.setCarNum(carNum);
+		
+		orderDao.update(order);
+		return true;
 	}
-	
+	/**
+	 * 司机确认
+	 */
 	@Override
 	public boolean setConfirm(String orderId){
 		
-		return orderDao.setConfirm(orderId);	
+		String t = "true";
+		Orderform order = orderDao.get(Orderform.class, orderId);
+		order.setConfirm(t);
+		order.setState("已确认");
+		
+		orderDao.update(order);
+		return true;
 	}
 	
 	@Override
 	public boolean setcompleteNumber(String orderId, Float price) {
-		// TODO 自动生成的方法存根
-		return orderDao.setcompleteNumber(orderId, price);
+		Orderform order = orderDao.get(Orderform.class, orderId);
+		order.setActualPrice(price);
+		order.setState("待评价");
+		
+		orderDao.update(order);
+		return true;
 	}
 
 	@Override
@@ -106,7 +140,14 @@ public class OrderServiceImpl implements OrderService {
 	 */
 	public float getExpectedMoney(String orderId) {
 		
-		return orderDao.getExpectedMoney(orderId);
+		List list = orderDao.find("select expectedPrice from Orderform where id='" + orderId + "'");
+		if (list != null)
+		{
+			//Orderform order=(Float)list.get(0);
+			return ((Float)list.get(0)).floatValue();
+		}
+		else
+			return 0.0f;
 	}
 
 	/**
@@ -129,19 +170,32 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Orderform getOrderInfo(String orderId) {
 		
-		return orderDao.getOrderInfo(orderId);
+		return orderDao.get(Orderform.class, orderId);
 	}
 
+	/**
+	 * 确认收货操作
+	 */
 	@Override
 	public boolean confirmCargo(String orderId) {
+		Orderform order=orderDao.get(Orderform.class, orderId);
+		order.setState("待评价");
 		
-		return orderDao.confirmCargo(orderId);
+		orderDao.update(order);
+		return true;
 	}
 
+	/**
+	 * cancel order
+	 */
 	@Override
 	public boolean cancel(String cancelReason, String orderId) {
+		Orderform order=orderDao.get(Orderform.class, orderId);
+		order.setCancelReason(cancelReason);
+		order.setState("已取消");
 		
-		return orderDao.cancel(cancelReason, orderId);
+		orderDao.update(order);
+		return true;
 	}
 
 	
@@ -438,14 +492,20 @@ public class OrderServiceImpl implements OrderService {
      */
 	@Override
 	public List<Orderform> getOrderByDriverName(String driver) {
-		// TODO 自动生成的方法存根
-		return orderDao.getOrderByDriverName(driver);
+		String hql="from Orderform where driver=:driver";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("driver", driver);
+		return orderDao.find(hql, params);
 	}
 
 	@Override
 	public boolean setState(String orderId, String state) {
 		
-		return orderDao.setState(orderId, state);
+		Orderform order = orderDao.get(Orderform.class, orderId);
+		order.setState(state);
+		
+		orderDao.update(order);
+		return true;
 	}
 
 	
