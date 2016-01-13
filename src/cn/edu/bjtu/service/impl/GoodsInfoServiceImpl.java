@@ -20,16 +20,20 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.edu.bjtu.bean.search.CargoSearchBean;
+import cn.edu.bjtu.dao.CompanyDao;
+import cn.edu.bjtu.dao.GoodsClientViewDao;
 import cn.edu.bjtu.dao.GoodsInfoDao;
+import cn.edu.bjtu.dao.ResponseDao;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.GoodsInfoService;
 import cn.edu.bjtu.util.Constant;
-
 import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
+import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.GoodsClientView;
 import cn.edu.bjtu.vo.Goodsform;
+import cn.edu.bjtu.vo.Response;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -41,18 +45,23 @@ public class GoodsInfoServiceImpl implements GoodsInfoService{
 	GoodsInfoDao goodsinfoDao;
 	@Autowired
 	FocusService focusService;
-	
+	@Autowired
+	GoodsClientViewDao goodsClientViewDao;
+	@Autowired
+	private CompanyDao companyDao;
+	@Autowired
+	private ResponseDao responseDao;
 	
 	@Override
 	public GoodsClientView getAllGoodsDetail(String id) {
 		
-		return goodsinfoDao.getAllGoodsDetail(id);
+		return goodsClientViewDao.get(GoodsClientView.class, id);
 	}
 	
 	@Override
 	public Goodsform getMyGoodsDetail(String id) {
 		
-		return goodsinfoDao.getMyGoodsDetail(id);
+		return goodsinfoDao.get(Goodsform.class, id);
 	}
 	
 	//@SuppressWarnings("deprecation")
@@ -77,7 +86,43 @@ public class GoodsInfoServiceImpl implements GoodsInfoService{
 	@Override
 	public boolean commitResponse(String goodsId, String remarks, String userId,String path,String fileName) {
 		
-		return goodsinfoDao.commitResponse(goodsId,remarks,userId,path,fileName);
+		Goodsform goods = goodsinfoDao.get(Goodsform.class, goodsId);
+		String clientId="";
+		String committer="";
+		String phone="";
+		if(goods!=null){
+			clientId=goods.getClientId();
+		}
+		Carrierinfo carrier=companyDao.get(Carrierinfo.class, userId);
+		if(carrier!=null){
+			committer=carrier.getCompanyContact();
+			phone=carrier.getPhone();
+		}
+		//goods.setRemarks(remarks);
+		int feedBackQuantity=goods.getFeedbackQuantity();
+		feedBackQuantity++;//反馈数量加1
+		goods.setFeedbackQuantity(feedBackQuantity);
+		goodsinfoDao.update(goods);
+		//此处还需要记录到反馈表中
+		Response response=new Response();
+		response.setId(IdCreator.createResponseId());
+		response.setCarrierId(userId);
+		response.setClientId(clientId);
+		response.setCommitter(committer);
+		response.setGoodsId(goodsId);
+		response.setPhone(phone);
+		response.setRemarks(remarks);
+		response.setRelDate(new Date());
+		response.setStatus("待确认");//add by RussWest0 at 2015年6月6日,下午3:07:08 
+		// 保存文件路径
+				if (path != null && fileName != null) {
+					String fileLocation = path + "//" + fileName;
+					response.setRelatedMaterial(fileLocation);
+				}
+		//保存反馈信息
+		responseDao.save(response);
+		
+		return true;
 	}
 
 	
@@ -148,7 +193,7 @@ public class GoodsInfoServiceImpl implements GoodsInfoService{
 	@Override
 	public boolean confirmResponse(String goodsId) {
 		
-		Goodsform goodsinfo=goodsinfoDao.getMyGoodsDetail(goodsId);	
+		Goodsform goodsinfo=goodsinfoDao.get(Goodsform.class, goodsId);	
 		
 		if(goodsinfo!=null){
 			goodsinfo.setState("已确认");
