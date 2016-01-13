@@ -7,8 +7,6 @@ import cn.edu.bjtu.vo.Linetransport;
 
 public interface LinetransportDao extends BaseDao<Linetransport>{
 
-
-	public Linetransport getLinetransportInfo(String linetransportid);
 	
 
 	

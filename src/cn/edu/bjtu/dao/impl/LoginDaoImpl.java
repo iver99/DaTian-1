@@ -13,22 +13,6 @@ import cn.edu.bjtu.vo.Userinfo;
 @Repository
 public class LoginDaoImpl extends BaseDaoImpl<Userinfo> implements LoginDao {
 
-
-
-	@Override
-	public Userinfo checkLogin(String username, String password,int userKind) {
-		
-		//ÐèÒªÐÞ¸Ä 
-		String hql="from Userinfo where username=:username and password=:password and userKind=:userKind";
-		Map<String,Object> params=new HashMap<String,Object>();
-		params.put("username", username);
-		params.put("password", password);
-		params.put("userKind", userKind);
-		
-		return this.get(hql, params);
-	}
-	
-
 	
 	
 

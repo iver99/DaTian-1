@@ -56,7 +56,7 @@ public class LinetransportServiceImpl implements LinetransportService {
 	 */
 	public Linetransport getLinetransportInfo(String linetransportid) {
 		
-		return linetransportDao.getLinetransportInfo(linetransportid);
+		return linetransportDao.get(Linetransport.class, linetransportid);
 	}
 
 

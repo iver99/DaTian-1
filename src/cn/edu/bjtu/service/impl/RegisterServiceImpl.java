@@ -89,7 +89,7 @@ public class RegisterServiceImpl implements RegisterService{
 	 */
 	public List getUserCheck(String username) {
 		
-		return registerDao.getUserCheck(username);
+		return registerDao.find("From Userinfo where username='" + username + "'");
 	}
 	
 	

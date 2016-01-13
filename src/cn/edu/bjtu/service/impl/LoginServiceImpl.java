@@ -1,5 +1,8 @@
 package cn.edu.bjtu.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,9 +21,14 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public Userinfo checkLogin(String username, String password,int userKind) {
 		
-		
-		
-		return loginDao.checkLogin(username, password,userKind); 
+		//ÐèÒªÐÞ¸Ä 
+				String hql="from Userinfo where username=:username and password=:password and userKind=:userKind";
+				Map<String,Object> params=new HashMap<String,Object>();
+				params.put("username", username);
+				params.put("password", password);
+				params.put("userKind", userKind);
+				
+				return loginDao.get(hql, params);
 	}
 
 }
