@@ -9,6 +9,14 @@ import java.util.Date;
  *
  */
 public class IdCreator {
+	
+	/**
+	 * 返回整车或者零担ID
+	 * @return
+	 */
+	public static String createTruckId(){
+		return "TR" + (int)(Math.random() * 100000000);
+	}
 
 	/**
 	 * 
