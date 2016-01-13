@@ -17,9 +17,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.bean.search.CompanySearchBean;
+import cn.edu.bjtu.dao.CitylineDao;
 import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.FocusDao;
+import cn.edu.bjtu.dao.LinetransportDao;
 import cn.edu.bjtu.dao.UserinfoDao;
+import cn.edu.bjtu.dao.WarehouseDao;
 import cn.edu.bjtu.service.CompanyService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
@@ -44,23 +47,28 @@ public class CompanyServiceImpl implements CompanyService{
 	UserinfoDao userinfoDao;
 	@Autowired
 	FocusDao focusDao;
-	
-	
+	@Autowired
+	LinetransportDao linetransportDao;
+	@Autowired
+	CitylineDao citylineDao;
+	@Autowired
+	WarehouseDao warehouseDao;
+
 	
 	
 	@Override
 	public List getLinetransportByCarrierId(String id){
-		return companyDao.getLinetransportByCarrierId(id);
+		return linetransportDao.find("from Linetransport as s where s.carrierId='" + id+ "'");
 	}
 	
 	@Override
 	public List getCitylineByCarrierId(String id){
-		return companyDao.getCitylineByCarrierId(id);
+		return citylineDao.find("from Cityline as s where s.carrierId='" + id+ "'");
 	}
 	
 	@Override
 	public List getwarehouseByCarrierId(String id){
-		return companyDao.getwarehouseByCarrierId(id);
+		return warehouseDao.find("from Warehouse as s where s.carrierId='" + id+ "'");
 	}
 
 	/**
