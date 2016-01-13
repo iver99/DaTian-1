@@ -15,9 +15,9 @@ public class TruckBean {
 	private String id;
 	private String startCity;
 	private String endCity;
-	private int onwayTime;
+	private String onwayTime;
 	private String carType;
-	private Float carLength;
+	private String carLength;
 	private Float stanPrice1;
 	private Float stanPrice2;
 	private Float pickFee;
@@ -68,13 +68,13 @@ public class TruckBean {
 	/**
 	 * @return onwayTime
 	 */
-	public int getOnwayTime() {
+	public String getOnwayTime() {
 		return onwayTime;
 	}
 	/**
 	 * @param onwayTime 要设置的 onwayTime
 	 */
-	public void setOnwayTime(int onwayTime) {
+	public void setOnwayTime(String onwayTime) {
 		this.onwayTime = onwayTime;
 	}
 	/**
@@ -92,13 +92,13 @@ public class TruckBean {
 	/**
 	 * @return carLength
 	 */
-	public Float getCarLength() {
+	public String getCarLength() {
 		return carLength;
 	}
 	/**
 	 * @param carLength 要设置的 carLength
 	 */
-	public void setCarLength(Float carLength) {
+	public void setCarLength(String carLength) {
 		this.carLength = carLength;
 	}
 	/**
