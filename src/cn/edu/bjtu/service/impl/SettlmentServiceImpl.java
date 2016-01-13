@@ -35,7 +35,7 @@ public class SettlmentServiceImpl implements SettlementService{
 	@Override
 	public List getOrderStatement(String orderNum) {
 		
-		return settlementDao.getOrderStatement(orderNum);
+		return settlementDao.find("from SettlementCarrierView where orderNum='"+orderNum+"'");
 	}
 	/**
 	 * 返回用户已结算金额/待结算金额  flag=0已结算/flag=1待结算

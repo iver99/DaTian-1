@@ -19,7 +19,6 @@ import cn.edu.bjtu.dao.UserinfoDao;
 import cn.edu.bjtu.service.SubAccountService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.Encrypt;
-
 import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.SubAccount;
@@ -50,14 +49,26 @@ public class SubAccountServiceImpl implements SubAccountService{
 	public List getSubAccount(String userId) {
 		
 		
-		return subAccountDao.getSubAccount(userId);
+		return subAccountDao.find("from SubAccount where hostAccountId='"+userId+"'");
 	}
 	
 	
 	
 	@Override
 	public boolean changeStatus(String id){
-		return subAccountDao.changeStatus(id);
+		SubAccount subAccount = subAccountDao.get(SubAccount.class, id);
+		String temp="";
+		temp=subAccount.getStatus();
+		if(temp.equals("已停用")){
+			subAccount.setStatus("正常");// 修改状态
+		}
+		else if(temp.equals("正常")){
+			subAccount.setStatus("已停用");// 修改状态
+		}
+
+		//return baseDao.update(subAccount);
+		subAccountDao.save(subAccount);
+		return true;
 	}
 	
 	/**
@@ -65,7 +76,8 @@ public class SubAccountServiceImpl implements SubAccountService{
 	 */
 	@Override
 	public boolean deleteSubAccount(String id){
-		subAccountDao.deleteSubAccount(id);
+		SubAccount subAccount =subAccountDao.get(SubAccount.class, id);
+		subAccountDao.delete(subAccount);
 		//删除userinfo表
 		Userinfo user=userinfoDao.get(Userinfo.class, id);
 		

@@ -12,13 +12,5 @@ import cn.edu.bjtu.vo.SettlementCarrierView;
 @Repository
 public class SettlementDaoImpl extends BaseDaoImpl<SettlementCarrierView> implements SettlementDao{
 	
-	@Override
-	public List getOrderStatement(String orderNum) {
-		
-		return this.find("from SettlementCarrierView where orderNum='"+orderNum+"'");
-	}
-
-
-
 	
 }
