@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-13 10:02:24 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.edu.bjtu.vo.Truck" table="truck" catalog="datian">
+        <id name="id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="startCity" type="java.lang.String">
+            <column name="startCity" />
+        </property>
+        <property name="endCity" type="java.lang.String">
+            <column name="endCity" />
+        </property>
+        <property name="onwayTime" type="int">
+            <column name="onwayTime" />
+        </property>
+        <property name="carType" type="java.lang.String">
+            <column name="carType" />
+        </property>
+        <property name="carLength" type="java.lang.Float">
+            <column name="carLength" precision="10" />
+        </property>
+        <property name="stanPrice1" type="java.lang.Float">
+            <column name="stanPrice1" precision="10" />
+        </property>
+        <property name="stanPrice2" type="java.lang.Float">
+            <column name="stanPrice2" precision="10" />
+        </property>
+        <property name="pickFee" type="java.lang.Float">
+            <column name="pickFee" precision="10" />
+        </property>
+        <property name="deliveryFee" type="java.lang.Float">
+            <column name="deliveryFee" precision="10" />
+        </property>
+        <property name="offerReturn" type="java.lang.String">
+            <column name="offerReturn" />
+        </property>
+        <property name="extraService" type="java.lang.String">
+            <column name="extraService" />
+        </property>
+        <property name="relDate" type="java.util.Date">
+            <column name="relDate" length="10" />
+        </property>
+        <property name="carrierId" type="java.lang.String">
+            <column name="carrierId" />
+        </property>
+        <property name="remarks" type="java.lang.String">
+            <column name="remarks" />
+        </property>
+        <property name="picture" type="java.lang.String">
+            <column name="picture" />
+        </property>
+        <property name="resourceType" type="java.lang.String">
+            <column name="resourceType" />
+        </property>
+    </class>
+</hibernate-mapping>
