@@ -16,16 +16,4 @@ import cn.edu.bjtu.vo.Address;
 public class AddressDaoImpl extends BaseDaoImpl<Address> implements AddressDao{
 
 	
-	@Override
-	public List getAddress(String userId) {
-		
-		return this.find("from Address where clientId='"+userId+"'");
-	}
-	
-	@Override
-	public Address getAddressDetail(String id){
-		return this.get(Address.class, id);
-	}
-	
-	
 }
