@@ -36,7 +36,8 @@ public class LoginFilter extends OncePerRequestFilter {
 				"js" ,"images", "css", "Focus", "focus", 
 				"focusNum", "homepage", "linetransport", "footer", "cityline",
 				"car", "warehouse", "company", "goodsform", "allcomplaint",
-				"city","usercheck","goodsdetail","intro","driverconfirm","showcurrenttask","shownewtask","showfinishedtask","upload/TakeoverNumber","upload/CompleteNumber","upload/Location","location"
+				"city","usercheck","goodsdetail","intro","driverconfirm","showcurrenttask","shownewtask","showfinishedtask","upload/TakeoverNumber","upload/CompleteNumber","upload/Location","location","fulltruckload"
+				,"lesstruckload"
 		};
 
 		// ÇëÇóµÄuri
