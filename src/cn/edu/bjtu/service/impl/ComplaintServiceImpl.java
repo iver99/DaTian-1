@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.bean.page.ComplaintBean;
+import cn.edu.bjtu.dao.ComplaintClientViewDao;
 import cn.edu.bjtu.dao.ComplaintDao;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.ComplaintService;
@@ -35,11 +36,13 @@ public class ComplaintServiceImpl implements ComplaintService {
 	OrderService orderService;
 	@Autowired
 	OrderDao orderDao;
+	@Autowired
+	ComplaintClientViewDao complaintClientViewDao;
 
 	@Override
 	public List getAllUserCompliant() {
 
-		return complaintDao.getAllUserCompliant();
+		return complaintClientViewDao.find("from ComplaintClientView");
 	}
 
 	@Override

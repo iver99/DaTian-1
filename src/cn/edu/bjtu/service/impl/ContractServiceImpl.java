@@ -57,7 +57,7 @@ public class ContractServiceImpl implements ContractService{
 	 */
 	public Contract getContractInfo(String contractId) {
 		
-		return contractDao.getContractInfo(contractId);
+		return contractDao.get(Contract.class,contractId);
 	}
 	/**
 	 * 新增合同
@@ -86,13 +86,27 @@ public class ContractServiceImpl implements ContractService{
 	 */
 	public boolean shutdownContract(String contractId, String reason) {
 		
-		return contractDao.shutdownContract(contractId,reason);
+		Contract contract=contractDao.get(Contract.class, contractId);
+		contract.setState("已终止");//更新状态
+		contract.setReason(reason);
+		/*baseDao.update(contract);		*/
+		contractDao.update(contract);
+		return true;
 	}
 	
 	@Override
 	public boolean changeStatus(String id) {
 		
-		return contractDao.changeStatus(id);
+		Contract contract = contractDao.get(Contract.class, id);
+		String temp="";
+		temp=contract.getState();
+		if(temp.equals("待确认")){
+			contract.setState("有效");// 修改状态
+		}
+
+		//return baseDao.update(subAccount);
+		contractDao.update(contract);
+		return true;
 	}
 	
 	/**

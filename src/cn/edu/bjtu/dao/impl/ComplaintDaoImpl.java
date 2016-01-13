@@ -12,17 +12,6 @@ import cn.edu.bjtu.vo.Complaintform;
 @Repository
 public class ComplaintDaoImpl extends BaseDaoImpl<Complaintform> implements ComplaintDao
 {
-	@Autowired
-	ComplaintClientViewDao complaintClientViewDao;
-	
-	/**
-	 * 获取所有投诉 
-	 */
-	@Override
-	public List getAllUserCompliant() {
-		
-		return complaintClientViewDao.find("from ComplaintClientView");
-	}
 
 	
 }
