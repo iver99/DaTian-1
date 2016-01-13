@@ -67,7 +67,7 @@
                     </div>
                     <ul class="resource">
                         <li class="resource_list">
-                            <dl id="select1" value="type">
+                            <dl id="select1" value="carLength">
                                 <dt>车辆长度：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select1_0">全部</a></dd>
                                 <dd><a href="javascript:;" hidefocus="true" id="select1_1">4.2米</a></dd>
@@ -91,7 +91,7 @@
                             </dl>
                         </li> -->
                         <li class="resource_list">
-                            <dl id="select2" value="refPrice">
+                            <dl id="select2" value="carType">
                                 <dt>车辆厢型：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select2_0">全部</a></dd>
                                 <dd><a href="javascript:;" hidefocus="true" id="select2_1">高栏</a></dd>
@@ -100,7 +100,7 @@
                             </dl>
                         </li>
                         <li class="resource_list">
-                            <dl id="select3" value="refPrice">
+                            <dl id="select3" value="onwayTime">
                                 <dt>运输时限：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select3_0">全部</a></dd>
                                 <dd><a href="javascript:;" hidefocus="true" id="select3_1">24小时以内</a></dd>
@@ -320,19 +320,19 @@ function loadXMLDoc(id)
 //干线筛选
 function getSelectedLineAjax(startPlace,
 		endPlace,
-		transportType,
-		refPrice,
-		fromPlace,
+		carLength,
+		carType,
+		onwayTime,
 		display,
 		currentPage){
 	//alert("ajax_post");
-      var url="linetransporttest";
+      var url="fulltruckloadAjax";
 	  $.post(url,{
 		  startPlace:startPlace,
 		  endPlace:endPlace,
-		  transportType:transportType,
-		  refPrice:refPrice,
-		  fromPlace:fromPlace,
+		  carLength:carLength,
+		  carType:carType,
+		  onwayTime:onwayTime,
 		  display:display,
 		  currentPage:currentPage},
 	  function(data,status){
