@@ -9,9 +9,4 @@ import cn.edu.bjtu.vo.Driverinfo;
  * @date   2015年5月24日 上午10:09:02
  */
 public interface DriverDao extends BaseDao<Driverinfo>{
-	public Driverinfo getDriverInfo(String driverId);
-	public Driverinfo getDriverInfoByPhone(String phone);
-	public List getAllDriverName(String carrierId);
-	public List getAllDriver(String carrierId);
-	public String getDriverIdByName(String driverName);
 }

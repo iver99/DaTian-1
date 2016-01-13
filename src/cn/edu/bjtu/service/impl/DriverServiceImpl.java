@@ -45,14 +45,16 @@ public class DriverServiceImpl implements DriverService{
 	 */
 	public Driverinfo getDriverInfo(String driverId) {
 		
-		return driverDao.getDriverInfo(driverId);
+		return driverDao.get(Driverinfo.class,driverId);
 	}
 	
 	@Override
 	public Driverinfo getDriverByPhone(String phone) {
-		// TODO 自动生成的方法存根
-	
-		return driverDao.getDriverInfoByPhone(phone);
+				String hql="from Driverinfo where phone=:phone";
+				Map<String,Object> params=new HashMap<String,Object>();
+				params.put("phone", phone);
+				
+				return driverDao.get(hql, params);
 	}
 	
 	@Override
@@ -63,7 +65,7 @@ public class DriverServiceImpl implements DriverService{
 		
 		String driverId = carDao.get(Carinfo.class, carId).getDriverId();
 
-		return driverDao.getDriverInfo(driverId);
+		return driverDao.get(Driverinfo.class,driverId);
 	}
 
 	@Override
@@ -72,13 +74,13 @@ public class DriverServiceImpl implements DriverService{
 	 */
 	public List getAllDriverName(String carrierId) {
 		
-		return driverDao.getAllDriverName(carrierId);
+		return driverDao.find("select driverName from Driverinfo where carrierId='"+carrierId+"'");
 	}
 
 	@Override
 	public List getAllDriver(String carrierId) {
 		
-		return driverDao.getAllDriver(carrierId);
+		return driverDao.find("from Driverinfo where carrierId='"+carrierId+"'");
 	}
 	
 	
