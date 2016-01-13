@@ -29,6 +29,7 @@ public class TruckBean {
 	private String remarks;
 	private String picture;
 	private String resourceType;
+	private String companyName;
 	/**
 	 * @return id
 	 */
@@ -232,6 +233,18 @@ public class TruckBean {
 	 */
 	public void setResourceType(String resourceType) {
 		this.resourceType = resourceType;
+	}
+	/**
+	 * @return companyName
+	 */
+	public String getCompanyName() {
+		return companyName;
+	}
+	/**
+	 * @param companyName ÒªÉèÖÃµÄ companyName
+	 */
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 }
