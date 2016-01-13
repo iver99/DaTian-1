@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.dao.AuthenticationDao;
+import cn.edu.bjtu.dao.ClientDao;
 import cn.edu.bjtu.dao.UserinfoDao;
 import cn.edu.bjtu.service.AuthenticationService;
-
 import cn.edu.bjtu.vo.Clientinfo;
 import cn.edu.bjtu.vo.Userinfo;
 @Transactional
@@ -22,15 +22,9 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	AuthenticationDao authenticationDao;
 	@Autowired
 	UserinfoDao userinfoDao;	
+	@Autowired
+	ClientDao clientInfoDao;
 	
-	@Override
-	/**
-	 * 获取所有认证信息
-	 */
-	public List<Userinfo> getAllAuthentication() {
-		
-		return authenticationDao.getAllAuthentication();
-	}
 	@Override
 	/**
 	 * 获取个人信息
@@ -39,7 +33,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	 */
 	public Userinfo getMyUserDetail(String clientId) {
 		
-		return authenticationDao.getMyUserDetail(clientId);
+		return userinfoDao.get(Userinfo.class,clientId);
 	}
 	@Override
 	/**
@@ -49,7 +43,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	 */
 	public Clientinfo getAuthenticationInfo(String clientId) {
 		
-		return authenticationDao.getAuthenticationInfo(clientId);
+		return clientInfoDao.get(Clientinfo.class, clientId);
 	}
 	
 	 @Override
@@ -66,10 +60,16 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 		authenticationDao.update(userinfo);//保存实体
 		 return true;
 	}
+	 
 	@Override
 	public List getFindUser(String username) {
 		
-		return authenticationDao.getFindUser(username);
+		String sql = "from Userinfo where (status = '审核中' or status = '已审核') ";
+		if (username.equals("用户名")) {
+			// 查找时不考虑用户名
+		} else
+			sql += "and username like '%" + username + "%'";
+	return userinfoDao.find(sql);
 	}
 	
 	/**

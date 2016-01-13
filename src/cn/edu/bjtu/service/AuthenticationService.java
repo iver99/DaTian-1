@@ -7,7 +7,6 @@ import cn.edu.bjtu.vo.Userinfo;
 
 public interface AuthenticationService {
 	
-	public List<Userinfo> getAllAuthentication();
 	public Clientinfo getAuthenticationInfo(String clientId);
 	public boolean updateAuthenticStatus(String feedback, String clientId,String status);
 	public Userinfo getMyUserDetail(String clientId);

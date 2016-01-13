@@ -40,15 +40,14 @@ public class AddressServiceImpl implements AddressService{
 	@Override
 	public List getAddress(String userId) {
 		
-		
-		return addressDao.getAddress(userId);
+		return addressDao.find("from Address where clientId='"+userId+"'");
 	}
 	
 	
 	@Override
 	public Address getAddressDetail(String id){
 		
-		return addressDao.getAddressDetail(id);
+		return addressDao.get(Address.class, id);
 	}
 	
 	
@@ -76,7 +75,7 @@ public class AddressServiceImpl implements AddressService{
 	@Override
 	public boolean updateAddress(HttpSession session,Address address){
 	
-		Address addr= addressDao.getAddressDetail(address.getId());// 根据id查找
+		Address addr= addressDao.get(Address.class, address.getId());// 根据id查找
 		addr.setName(address.getName());
 		addr.setPhone(address.getPhone());
 		addr.setAddress(address.getAddress());
