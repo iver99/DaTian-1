@@ -1,7 +1,9 @@
 package cn.edu.bjtu.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -22,14 +24,26 @@ public class TrackServiceImpl implements TrackService {
 	@Override
 	public boolean createNewTrack(String id, String orderId,String orderNum, String carNum, Double locLongitude, Double locLatitude,
 			String time, String address) {
-		// TODO 自动生成的方法存根
-		return trackDao.createNewTrack(id, orderId, orderNum,carNum, locLongitude, locLatitude, time, address);
+		Track track = new Track();
+		track.setAddress(address);
+		track.setCarNum(carNum);
+		track.setId(id);
+		track.setLocLatitude(locLatitude);
+		track.setLocLongitude(locLongitude);
+		track.setOrderId(orderId);
+		track.setTime(time);
+		track.setOrderNum(orderNum);
+		trackDao.save(track);
+		
+		return true;
 	}
 
 	@Override
 	public List<Track> getTrackByOrderId(String orderId) {
-		// TODO 自动生成的方法存根
-		return trackDao.getTrackByOrderId(orderId);
+		String hql="from Track where orderId=:orderId order by time desc";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("orderId", orderId);
+		return trackDao.find(hql, params);
 	}
 	
 }

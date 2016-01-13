@@ -44,8 +44,8 @@ public class WarehouseServiceImpl implements WarehouseService {
 	FocusService focusService;
 
 	@Override
-	public Warehouse getWarehouseInfo(String Warehouseid) {
-		return warehouseDao.getWarehouseInfo(Warehouseid);
+	public Warehouse getWarehouseInfo(String warehouseid) {
+		return warehouseDao.get(Warehouse.class, warehouseid);
 	}
 
 	@Override
