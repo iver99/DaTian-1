@@ -43,7 +43,6 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 	 */
 	@Override
 	public JSONArray getSelectedFullTruckLoadNew(TruckBean truckBean, PageUtil pageUtil, HttpSession session) {
-		truckBean.setResourceType("Õû³µ");
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		Map<String,Object> params=new HashMap<String,Object>();
 			String sql = "select t1.id,"
