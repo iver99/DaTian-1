@@ -176,7 +176,6 @@
 								<td width="70" class="td_main_list_head">始发城市</td>
 								<td width="70" class="td_main_list_head">到达城市</td>
 								<td class="td_main_list_head">所有者</td>
-								<td width="55" class="td_main_list_head">所有者</td>
 								<td class="td_main_list_head" width="55">厢型</td>
                                 <td class="td_main_list_head" width="55">&nbsp;时限<br />
                                 (小时)</td>
@@ -338,17 +337,18 @@ function getSelectedLineAjax(startPlace,
 	  function(data,status){
 			  //alert(data);
 			  $("#testbody").empty();
-		for(var i=0; i<5; i++) {
+		for(var i=0; i<data.length; i++) {
 			var str="<tr>";
 			str+="<td class=\"td_main_list_content\"></td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"test"+"</td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].endCity+"</td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>"+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].carType+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>";
+			str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>"
 			if(data[i].status == "有效"){
 				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
 			}else{
