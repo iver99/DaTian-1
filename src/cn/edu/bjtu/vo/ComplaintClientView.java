@@ -3,11 +3,14 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+@Entity
+@Table(name="complaint_client_view")
 public class ComplaintClientView implements java.io.Serializable {
-
+	@Id
 	private String id;
 	private String type;
 	private String theme;

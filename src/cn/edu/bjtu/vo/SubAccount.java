@@ -2,16 +2,19 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * 
  * @author RussWest0
  *
  */
-@Component
+@Entity
+@Table(name="subaccount")
 public class SubAccount {
-	
+	@Id
 	private String id;
 	private String username;
 	private String password;

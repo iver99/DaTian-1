@@ -21,7 +21,7 @@
 	<context:component-scan base-package="cn.edu.bjtu.dao.impl"></context:component-scan>
 	<context:component-scan base-package="cn.edu.bjtu.service.impl"></context:component-scan>
 	<context:component-scan base-package="cn.edu.bjtu.util"></context:component-scan>
-	<context:component-scan base-package="cn.edu.bjtu.vo"></context:component-scan>
+	<!-- <context:component-scan base-package="cn.edu.bjtu.vo"></context:component-scan> -->
 
 	<!-- 对静态资源的处理 -->
 	 <mvc:resources location="/views/images/" mapping="/images/**"/><!-- /images/**的请求都会到/views/images/下去找，下面的类似 -->
@@ -53,9 +53,9 @@
 
 
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mappingResources">
+		<!-- <property name="mappingResources">
 			<list>
 				<value>cn/edu/bjtu/vo/Userinfo.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/Comment.hbm.xml</value>
@@ -90,6 +90,12 @@
 				<value>cn/edu/bjtu/vo/Companycertificate.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/GoodsResponseView.hbm.xml</value>
 				<value>cn/edu/bjtu/vo/Settlement.hbm.xml</value>
+			</list>
+		</property> -->
+		<!-- 自动扫描注解方式配置的hibernate类文件 -->
+		<property name="packagesToScan">
+			<list>
+				<value>cn.edu.bjtu.vo</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

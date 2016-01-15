@@ -5,15 +5,18 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author solitudeycq
  *
  */
-@Component
+@Entity
+@Table(name="truck")
 public class Truck implements java.io.Serializable {
-	
+	@Id
 	private String id;
 	private String startCity;
 	private String endCity;

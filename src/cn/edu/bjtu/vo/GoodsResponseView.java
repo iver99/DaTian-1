@@ -2,9 +2,12 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+@Entity
+@Table(name="goods_response_view")
 public class GoodsResponseView {
 	
 	private String responseId;
@@ -16,7 +19,7 @@ public class GoodsResponseView {
 	private String remarks;
 	private String relatedMaterial;
 	private Date relDate;
-	
+	@Id
 	private String id ;//货物id
 	private String state;//反馈状态
 	private String name;//货物名称
