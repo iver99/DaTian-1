@@ -2,11 +2,14 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+@Entity
+@Table(name="carteam")
 public class Carteam {
-
+	@Id
 	private String id;
 	private String teamName;
 	private String carCount;

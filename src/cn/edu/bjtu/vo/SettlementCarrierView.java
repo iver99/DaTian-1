@@ -2,6 +2,10 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,8 +14,10 @@ import org.springframework.stereotype.Component;
  * @author RussWest0
  *
  */
+@Entity
+@Table(name="settlement_carrier_view")
 public class SettlementCarrierView {
-	
+	@Id
 	private String id;//¶©µ¥id
 	private String orderNum;
 	private String clientName;

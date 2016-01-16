@@ -64,7 +64,7 @@ public class CommonController {
 	public ModelAndView insert(@RequestParam int flag,HttpServletRequest request,HttpServletResponse response) {
 		
 		if (flag == 1)
-			mv.setViewName("mgmt_r_line2");// 干线
+			mv.setViewName("mgmt_r_line2");// 整车
 		else if (flag == 2)
 			mv.setViewName("mgmt_r_city2");// 城市配送
 		else if (flag == 3){

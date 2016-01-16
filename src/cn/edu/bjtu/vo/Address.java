@@ -2,11 +2,14 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+@Entity
+@Table(name="address")
 public class Address {
-	
+	@Id
 	private String id;
 	private String name;
 	private String address;

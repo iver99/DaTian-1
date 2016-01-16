@@ -2,10 +2,14 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
-@Component
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="line_carrier_view")
 public class LineCarrierView {
 	private String companyName;
+	@Id
 	private String id;
 	private String startPlace;
 	private String endPlace;

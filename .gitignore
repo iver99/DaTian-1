@@ -1,0 +1,9 @@
+#一下文件或者文件夹都是git忽略追踪的，以后IDE相关的文件尽量不要提交到git中
+#请在eclipse中在对应的文件或者文件夹上右键-Team-advanced-untrack，先取消对这些文件的追踪，这样.gitignore才会起作用。
+/build/
+/target/
+.classpath
+.project
+.settings/
+#这是我本地进行单元测试的包，所以忽略掉了
+src/cn/edu/bjtu/test/

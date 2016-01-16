@@ -2,14 +2,18 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 /**
  * settlement vo
  * @author RussWest0
  * @date   2015年6月20日 下午12:50:56
  */
-@Component
+@Entity
+@Table(name="settlement")
 public class Settlement {
+	@Id
 	private String id;
 	private String orderNum;
 	private String userId;

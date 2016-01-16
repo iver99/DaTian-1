@@ -2,9 +2,15 @@ package cn.edu.bjtu.vo;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="city_carrier_view")
 public class CityCarrierView {
 	private String companyName;
 	private String creditRate;
+	@Id
 	private String id;
 	private String cityName;
 	private Float refPrice;

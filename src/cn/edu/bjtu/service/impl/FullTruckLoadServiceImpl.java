@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,12 +21,17 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import cn.edu.bjtu.bean.page.LinetransportBean;
 import cn.edu.bjtu.bean.search.CityLineSearchBean;
 import cn.edu.bjtu.bean.search.TruckBean;
+import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.TruckDao;
 import cn.edu.bjtu.service.FullTruckLoadService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.vo.Carrierinfo;
+import cn.edu.bjtu.vo.Linetransport;
+import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq
@@ -37,6 +43,8 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
     
 	@Autowired
 	TruckDao truckDao;
+	@Autowired
+	CompanyDao companyDao;
 	/**
 	 * 资源栏获取筛选整车资源
 	 * 
@@ -84,27 +92,30 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 		
 		List<TruckBean> fulltruckloadList=new ArrayList<TruckBean>();
 		for(Iterator<Object[]> it=objectList.iterator();it.hasNext();){
-			TruckBean truckbean=new TruckBean();
 			Object[] obj=it.next();
-			truckBean.setId((String)obj[0]);
-			truckBean.setStartCity((String)obj[1]);
-			truckBean.setEndCity((String)obj[2]);
-			truckBean.setOnwayTime((String)obj[3]);
-			truckBean.setCarType((String)obj[4]);
-			truckBean.setCarLength((String)obj[5]);
-			truckBean.setStanPrice1((Float)obj[6]);
-			truckBean.setStanPrice2((Float)obj[7]);
-			truckBean.setPickFee((Float)obj[8]);
-			truckBean.setDeliveryFee((Float)obj[9]);
-			truckBean.setOfferReturn((String)obj[10]);
-			truckBean.setExtraService((String)obj[11]);
-			truckBean.setRelDate((Date)obj[12]);
-			truckBean.setCarrierId((String)obj[13]);
-			truckBean.setRemarks((String)obj[14]);
-			truckBean.setPicture((String)obj[15]);
-			truckBean.setResourceType((String)obj[16]);
-			if((truckBean.getResourceType()).equals("整车")){
-			     fulltruckloadList.add(truckBean);
+			String carrierId = (String)obj[13];
+			Carrierinfo carrierInfo = companyDao.get(Carrierinfo.class, carrierId);
+			TruckBean truckBean1 = new TruckBean();
+			truckBean1.setCompanyName(carrierInfo.getCompanyName());
+			truckBean1.setId((String)obj[0]);
+			truckBean1.setStartCity((String)obj[1]);
+			truckBean1.setEndCity((String)obj[2]);
+			truckBean1.setOnwayTime(((Integer)obj[3]).toString());
+			truckBean1.setCarType((String)obj[4]);
+			truckBean1.setCarLength(((Float)obj[5]).toString());
+			truckBean1.setStanPrice1((Float)obj[6]);
+			truckBean1.setStanPrice2((Float)obj[7]);
+			truckBean1.setPickFee((Float)obj[8]);
+			truckBean1.setDeliveryFee((Float)obj[9]);
+			truckBean1.setOfferReturn((String)obj[10]);
+			truckBean1.setExtraService((String)obj[11]);
+			truckBean1.setRelDate((Date)obj[12]);
+			truckBean1.setCarrierId((String)obj[13]);
+			truckBean1.setRemarks((String)obj[14]);
+			truckBean1.setPicture((String)obj[15]);
+			truckBean1.setResourceType((String)obj[16]);
+			if((truckBean1.getResourceType()).equals("整车")){
+			     fulltruckloadList.add(truckBean1);
 			}
 		}
 		
@@ -136,7 +147,7 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 			wheresql+=" and t1.endCity=:endCity ";
 			params.put("endCity", truckBean.getEndCity());
 		}
-		if (truckBean.getCarLength() != null && !truckBean.getEndCity().trim().equals("All")
+		if (truckBean.getCarLength() != null && !truckBean.getCarLength().trim().equals("All")
 				&& !truckBean.getCarLength().equals("")) {
 			String  carLength = truckBean.getCarLength();
 			if (carLength.equals("4.2米")) {
@@ -176,6 +187,40 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 			}
 		}
 		return wheresql;
+	}
+
+	@Override
+	public Truck getfulltruckloadInfo(String truckId) {
+		
+		return truckDao.get(Truck.class, truckId);
+	}
+    
+	/*
+	 * 我的信息-整车资源
+	 * 
+	 */
+	@Override
+	public JSONArray getUserFullTruckLoadResource(HttpSession session, PageUtil pageUtil) {
+		String carrierId=(String)session.getAttribute(Constant.USER_ID);
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("carrierId", carrierId);
+		String hql="from Truck  where carrierId=:carrierId order by relDate desc";
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Truck> list=truckDao.find(hql, params,page,display);
+		
+		System.out.println(list.size());
+		
+		JSONArray jsonArray=new JSONArray();
+		for(int i=0;i<list.size();i++){
+			Truck truckBean=new Truck();
+			BeanUtils.copyProperties(list.get(i), truckBean);
+			if(truckBean.getResourceType().equals("整车")){
+				JSONObject jsonObject=(JSONObject)JSONObject.toJSON(truckBean);
+				jsonArray.add(jsonObject);
+			}
+		}
+		return jsonArray;
 	}
 
 }
