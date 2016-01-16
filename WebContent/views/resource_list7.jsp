@@ -56,52 +56,30 @@
 				 <!-- 这一层对应筛选部分,某些控件的text和value值有所更改，后面通过这两个值控制筛选状态  -->
             	<div id="div_resource_select">
                     <div id="cityselector" class="div_cityselector1">
-                        起止城市：
-                        <input id="city1" type="text" text="startPlace" value="" class="input_city1" />
+                        起止港：
+                        <input id="city1" type="text" text="startCity" value="" class="input_city1" />
                         &nbsp;&nbsp;至&nbsp;&nbsp;
-                        <input id="city2" type="text" text="endPlace" value="" class="input_city1" />
+                        <input id="city2" type="text" text="endCity" value="" class="input_city1" />
                     </div>
                     <ul class="resource">
                         <li class="resource_list">
-                            <dl id="select1" value="carLength">
-                                <dt>车辆长度：</dt>
+                            <dl id="select1" value="onwayTime">
+                                <dt>抵运时间：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select1_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_1">4.2米</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_2">6.2米</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_3">7.6米</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_4">9.5米</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_5">12.5米</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_6">17.5米</a></dd>
-                            </dl>
-                        </li>
-                       <!--  <li class="resource_list">
-                       
-                            <dl id="select2" value="startPlace1">
-                                <dt>始发城市：</dt>
-                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select2_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_1">北京始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_2">天津始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_3">上海始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_4">武汉始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_5">广州始发</a></dd>
-                            </dl>
-                        </li> -->
-                        <li class="resource_list">
-                            <dl id="select2" value="carType">
-                                <dt>车辆厢型：</dt>
-                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select2_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_1">高栏</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_2">平板</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_3">厢式</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_1">12小时</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_2">24小时</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_3">48小时</a></dd>
                             </dl>
                         </li>
                         <li class="resource_list">
-                            <dl id="select3" value="onwayTime">
-                                <dt>运输时限：</dt>
-                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select3_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select3_1">24小时以内</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select3_2">48小时以内</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select3_3">72小时以内</a></dd>
+                            <dl id="select2" value="">
+                                <dt>航班周期：</dt>
+                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select2_0">全部</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_1">每天</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_2">周一二</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_3">周一二三</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_3">周一二三四</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select2_3">周一二三四五</a></dd>
                             </dl>
                         </li>
                         <li class="resource_result">
@@ -122,62 +100,22 @@
 						<input id="display" value="10" type="hidden"/>
 						<input id="currentPage" value="1" type="hidden"/>
 						<input id="flag" value=0 type="hidden"/><!-- 点击页码和点击筛选标识位 -->
-						
-						<!-- <div id="middlesort">
-							 <ul class="quickmenu">
-								<li class="menuitem">
-									<div class="menu">
-										<a href="javascript:;" class="menuhd" hidefocus="true">价格</a>
-										<div class="menubd">
-											<div class="menubdpanel">
-												<a href="javascript:;" class="a_top2a" hidefocus="true"
-													id="trigger1a">升序</a> <a href="javascript:;"
-													class="a_top2b" hidefocus="true" id="trigger1b">降序</a>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="menuitem">
-									<div class="menu">
-										<a href="javascript:;" class="menuhd" hidefocus="true">时限</a>
-										<div class="menubd">
-											<div class="menubdpanel">
-												<a href="javascript:;" class="a_top2a" hidefocus="true"
-													id="trigger2a">升序</a> <a href="javascript:;"
-													class="a_top2b" hidefocus="true" id="trigger2b">降序</a>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="menuitem">
-									<div class="menu">
-										<a href="javascript:;" class="menuhd" hidefocus="true">关注</a>
-										<div class="menubd">
-											<div class="menubdpanel">
-												<a href="javascript:;" class="a_top2a" hidefocus="true"
-													id="trigger3a">升序</a> <a href="javascript:;"
-													class="a_top2b" hidefocus="true" id="trigger3b">降序</a>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div> -->
 					</div>
 					<table border="0" cellspacing="0" cellpadding="0"
 						class="table_main_list" id="list">
 						<thead id="thead">
 							<tr>
 								<td width="15" class="td_main_list_head"></td>
-								<td width="70" class="td_main_list_head">始发城市</td>
-								<td width="70" class="td_main_list_head">到达城市</td>
+								<td width="70" class="td_main_list_head">始发港</td>
+								<td width="70" class="td_main_list_head">目的港</td>
 								<td class="td_main_list_head">所有者</td>
-								<td class="td_main_list_head" width="55">厢型</td>
-                                <td class="td_main_list_head" width="55">&nbsp;时限<br />
-                                (小时)</td>
-                                <td class="td_main_list_head" width="55">提供<br />回程</td>
-                                <td class="td_main_list_head" width="75">标准报价<br />(元/吨)</td>
-                                <td class="td_main_list_head" width="75">标准报价<br />(元/方)</td>
+								<td class="td_main_list_head" width="60">M</td>
+                                <td class="td_main_list_head" width="60">N</td>
+                                <td class="td_main_list_head" width="60">+45</td>
+                                <td class="td_main_list_head" width="60">+100</td>
+                                <td class="td_main_list_head" width="60">+300</td>
+                                <td class="td_main_list_head" width="70">航班周期</td>
+                                <td class="td_main_list_head" width="70">抵运时间</td>
                                 <td class="td_main_list_head" width="80">发布日期</td>
                                 <td class="td_main_list_head" width="45">关注</td>
 							</tr>

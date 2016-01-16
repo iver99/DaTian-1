@@ -61,9 +61,9 @@
             	<div id="div_resource_select">
                     <div id="cityselector" class="div_cityselector1">
                         起止城市：
-                        <input id="city1" type="text" text="startPlace" value="" class="input_city1" />
+                        <input id="city1" type="text" text="startCity" value="" class="input_city1" />
                         &nbsp;&nbsp;至&nbsp;&nbsp;
-                        <input id="city2" type="text" text="endPlace" value="" class="input_city1" />
+                        <input id="city2" type="text" text="endCity" value="" class="input_city1" />
                     </div>
                     <ul class="resource">
                         <li class="resource_list">

@@ -71,8 +71,8 @@
 				<td>
 					<div id="div_resource_select">
 						<div id="cityselector" class="div_cityselector1">
-							起止城市： <input id="city1" type="text" value="" text="StartCity" class="input_city1" /> &nbsp;&nbsp;至 &nbsp;&nbsp;
-							 <input	id="city2" type="text" value="" text="endPlace"	class="input_city1" />
+							起止城市： <input id="city1" type="text" value="" text="startCity" class="input_city1" /> &nbsp;&nbsp;至 &nbsp;&nbsp;
+							 <input	id="city2" type="text" value="" text="endCity"	class="input_city1" />
 						</div>
 						<ul class="resource">
 							<li class="resource_list">

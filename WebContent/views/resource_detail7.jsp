@@ -38,23 +38,17 @@
     <tbody>
 		<tr>
 			<td width="320" class="td_leftnav_top"><img src="images/illust_2a.jpg" /></td>
-			<td class="td_detail_top">始发城市：<span class="text_detail_title1">${truckInfo.startCity }</span>
+			<td class="td_detail_top">始发港：<span class="text_detail_title1">${truckInfo.startCity }</span>
                 <br />
-                到达城市：<span class="text_detail_title1">${truckInfo.endCity }</span>
+                目的港：<span class="text_detail_title1">${truckInfo.endCity }</span>
                 <br />
-                运输时限：<span class="text_detail_title2">${truckInfo.onwayTime }小时</span>
+                抵运时间：<span class="text_detail_title2">${truckInfo.onwayTime }小时</span>
                 <br />
-                厢式：<span class="text_detail_title2">${truckInfo.carType }</span>
-                <br />
-                车长：<span class="text_detail_title2">${truckInfo.carLength }米</span>
-                <br />
-                标准报价：<span class="text_detail_title2">${truckInfo.stanPrice1 }元/吨</span>
+                报价：<span class="text_detail_title2">${truckInfo.carType }</span>
                 <br />
                 提货费：<span class="text_detail_title2">${truckInfo.stanPrice2 }元/方</span>
                 <br />
                 送货费：<span class="text_detail_title2">${truckInfo.deliveryFee }元</span>
-                <br />
-               提供回程：${truckInfo.offerReturn }
                 <br />
                增值服务：${truckInfo.extraService }
                <br />
@@ -62,8 +56,6 @@
                <br />
                所有者：${carrierInfo.companyName }
                 <br />
-<%--                 联系电话：${carrierInfo.phone } --%>
-            	
                 <hr class="hr_1" />
                 <input type="button" value="0" style="display:none" id="i"></input>
                 <c:forEach var="focus" items="${focusList }">
