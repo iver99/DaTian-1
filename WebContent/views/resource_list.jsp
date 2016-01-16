@@ -341,7 +341,7 @@ function getSelectedLineAjax(startPlace,
 			var str="<tr>";
 			str+="<td class=\"td_main_list_content\"></td>";
 			str+="<td class=\"td_main_list_content\">"+"<a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].endCity+"</td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
 			str+="<td class=\"td_main_list_content\">"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>"+"</td>";
 			str+="<td class=\"td_main_list_content\">"+data[i].carType+"</td>";
 			str+="<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>";
