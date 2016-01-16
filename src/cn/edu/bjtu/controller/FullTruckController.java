@@ -90,6 +90,9 @@ public class FullTruckController {
 			@RequestParam("flag") int flag,
 			HttpServletRequest request){
 		Truck truckInfo = fulltruckloadService.getfulltruckloadInfo(truckId);
+		if((truckInfo.getExtraService()).equals("")){
+			truckInfo.setExtraService("ц╩сп");
+		}
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List focusList = focusService.getFocusList(clientId,"fulltruckload");
 		mv.addObject("focusList", focusList);
