@@ -37,7 +37,7 @@ public class LoginFilter extends OncePerRequestFilter {
 				"focusNum", "homepage", "linetransport", "footer", "cityline",
 				"car", "warehouse", "company", "goodsform", "allcomplaint",
 				"city","usercheck","goodsdetail","intro","driverconfirm","showcurrenttask","shownewtask","showfinishedtask","upload/TakeoverNumber","upload/CompleteNumber","upload/Location","location","fulltruckload"
-				,"lesstruckload","fulltruckloaddetail","insertfulltruckload"
+				,"lesstruckload","fulltruckloaddetail","insertfulltruckload","fulltruckloaddelete","updatefulltruckload"
 		};
 
 		// ÇëÇóµÄuri

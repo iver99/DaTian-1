@@ -28,6 +28,7 @@ import cn.edu.bjtu.bean.search.CityLineSearchBean;
 import cn.edu.bjtu.bean.search.TruckBean;
 import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.TruckDao;
+import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.FullTruckLoadService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
@@ -49,6 +50,9 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 	TruckDao truckDao;
 	@Autowired
 	CompanyDao companyDao;
+	@Autowired
+	FocusService focusService;
+	
 	/**
 	 * 资源栏获取筛选整车资源
 	 * 
@@ -239,6 +243,45 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 		//设置文件位置 
 		truck.setPicture(fileLocation);
 		truckDao.save(truck);// 保存实体
+		return true;
+	}
+
+	@Override
+	public boolean deletefulltruckLoad(String id) {
+	    Truck truck = getfulltruckloadInfo(id);
+	    truckDao.delete(truck);
+	    //把此关注表中的此干线信息设置为失效
+		
+	    focusService.setInvalid(id);
+		return true;
+	}
+
+	@Override
+	public boolean updateFullTruckLoad(Truck truck, HttpServletRequest request, MultipartFile file) {
+		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
+		//保存文件
+		String fileLocation=UploadFile.uploadFile(file, carrierId, "fulltruckload");
+
+		Truck truckInstance = truckDao.get(Truck.class,truck.getId());
+		truckInstance.setStartCity(truck.getStartCity());
+		truckInstance.setEndCity(truck.getEndCity());
+		truckInstance.setOnwayTime(truck.getOnwayTime());
+		truckInstance.setCarType(truck.getCarType());
+		truckInstance.setCarLength(truck.getCarLength());
+		truckInstance.setStanPrice1(truck.getStanPrice1());
+		truckInstance.setStanPrice2(truck.getStanPrice2());
+		truckInstance.setPickFee(truck.getPickFee());
+		truckInstance.setDeliveryFee(truck.getDeliveryFee());
+		truckInstance.setOfferReturn(truck.getOfferReturn());
+		truckInstance.setExtraService(truck.getExtraService());
+		truckInstance.setRemarks(truck.getRemarks());
+		
+		
+		//设置文件位置 
+		truckInstance.setPicture(fileLocation);
+
+		//更新
+		truckDao.update(truckInstance);
 		return true;
 	}
 

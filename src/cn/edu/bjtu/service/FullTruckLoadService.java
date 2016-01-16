@@ -42,5 +42,9 @@ public interface FullTruckLoadService {
 	public JSONArray getUserFullTruckLoadResource(HttpSession session,PageUtil pageUtil);
 	
 	public boolean insertNewFullTruckLoad(Truck truck,HttpServletRequest request, MultipartFile file);
+	
+	public boolean deletefulltruckLoad(String id);
+	
+	public boolean updateFullTruckLoad(Truck truck,HttpServletRequest request,MultipartFile file);
 
 }

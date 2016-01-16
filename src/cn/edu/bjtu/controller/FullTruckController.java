@@ -156,5 +156,30 @@ public class FullTruckController {
 		boolean flag=fulltruckloadService.insertNewFullTruckLoad(truck,request,file);
 		return "redirect:fulltruckload?flag=1";
 	}
+	
+	/**
+	 * 删除整车资源
+	 */
+	@RequestMapping(value = "fulltruckloaddelete", method = RequestMethod.GET)
+	public String deleteLine(@RequestParam String id,// GET方式传入，在action中
+			HttpServletRequest request, HttpServletResponse response) {
+		fulltruckloadService.deletefulltruckLoad(id);
+		return "redirect:fulltruckload?flag=1";
+
+	}
+	
+	/**
+	 * 更新整车资源信息
+	 * @param line
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="updatefulltruckload",method=RequestMethod.POST)
+	public String updateLinetransport(Truck truck,MultipartFile file,
+			HttpServletRequest request) {
+		boolean flag = fulltruckloadService.updateFullTruckLoad(truck,request,file);
+		return "redirect:fulltruckload?flag=1";
+	}
+
 
 }
