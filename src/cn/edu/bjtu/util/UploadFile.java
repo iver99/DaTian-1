@@ -45,6 +45,8 @@ public class UploadFile {
 			path = UploadPath.getResponsePath();
 		} else if ("complaint".equals(fileType)) {
 			path = UploadPath.getComplaintPath();
+		} else if("fulltruckload".equals(fileType)){
+			path = UploadPath.getFullTruckLoadPath();
 		}
 		
 		if (file.getSize() != 0)// 有上传文件的情况

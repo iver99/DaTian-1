@@ -11,12 +11,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -28,7 +30,9 @@ import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.TruckDao;
 import cn.edu.bjtu.service.FullTruckLoadService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.Truck;
@@ -209,8 +213,6 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
 		List<Truck> list=truckDao.find(hql, params,page,display);
 		
-		System.out.println(list.size());
-		
 		JSONArray jsonArray=new JSONArray();
 		for(int i=0;i<list.size();i++){
 			Truck truckBean=new Truck();
@@ -221,6 +223,23 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 			}
 		}
 		return jsonArray;
+	}
+
+	@Override
+	public boolean insertNewFullTruckLoad(Truck truck, HttpServletRequest request, MultipartFile file) {
+		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
+		//保存文件
+		String fileLocation=UploadFile.uploadFile(file, carrierId, "fulltruckload");
+		
+		truck.setRelDate(new Date());
+		truck.setCarrierId(carrierId);
+		truck.setId(IdCreator.createTruckId());
+		truck.setResourceType("整车");
+		
+		//设置文件位置 
+		truck.setPicture(fileLocation);
+		truckDao.save(truck);// 保存实体
+		return true;
 	}
 
 }
