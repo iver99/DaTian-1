@@ -10,8 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +24,7 @@ import cn.edu.bjtu.dao.TruckDao;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.util.Constant;
-import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
-import cn.edu.bjtu.vo.Truck;
 
 @Transactional
 @Service("LesstruckloadServiceImpl")
@@ -83,20 +79,20 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 			
 			List<TruckBean> lesstruckloadList=new ArrayList<TruckBean>();
 			for(Iterator<Object[]> it=objectList.iterator();it.hasNext();){
-				TruckBean truckbean=new TruckBean();
+				TruckBean truckbean1=new TruckBean();
 				Object[] obj=it.next();
-				truckbean.setId((String)obj[0]);
-				truckbean.setStartCity((String)obj[1]);
-				truckbean.setEndCity((String)obj[2]);
-				truckbean.setCarrierId((String)obj[3]);
-				truckbean.setOnwayTime((String)obj[4]);
-				truckbean.setOfferReturn((String)obj[5]);
-				truckbean.setStanPrice1((Float)obj[6]);
-				truckbean.setStanPrice2((Float)obj[7]);
-				truckbean.setRelDate((Date)obj[8]);
-				truckBean.setResourceType((String)obj[9]);
-				if((truckBean.getResourceType()).equals("¡„µ£")){
-				     lesstruckloadList.add(truckBean);
+				truckbean1.setId((String)obj[0]);
+				truckbean1.setStartCity((String)obj[1]);
+				truckbean1.setEndCity((String)obj[2]);
+				truckbean1.setCarrierId((String)obj[3]);
+				truckbean1.setOnwayTime((String)obj[4]);
+				truckbean1.setOfferReturn((String)obj[5]);
+				truckbean1.setStanPrice1((Float)obj[6]);
+				truckbean1.setStanPrice2((Float)obj[7]);
+				truckbean1.setRelDate((Date)obj[8]);
+				truckbean1.setResourceType((String)obj[9]);
+				if((truckbean1.getResourceType()).equals("¡„µ£")){
+				     lesstruckloadList.add(truckbean1);
 				}
 			}
 			

@@ -3,37 +3,23 @@ package cn.edu.bjtu.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-
 import cn.edu.bjtu.bean.search.TruckBean;
 import cn.edu.bjtu.service.CommentService;
 import cn.edu.bjtu.service.CompanyService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.service.LinetransportService;
-import cn.edu.bjtu.util.Constant;
-import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
-import cn.edu.bjtu.vo.Carinfo;
-import cn.edu.bjtu.vo.Carrierinfo;
-import cn.edu.bjtu.vo.Carteam;
-import cn.edu.bjtu.vo.Comment;
-import cn.edu.bjtu.vo.Driverinfo;
-import cn.edu.bjtu.vo.Linetransport;
 
 @Controller
 public class LesstruckloadController {
@@ -44,8 +30,6 @@ public class LesstruckloadController {
 	@Resource
 	CompanyService companyService;
 	
-	@Resource
-	LinetransportService linetransportService;
 	@Autowired
 	FocusService focusService;
 
@@ -60,16 +44,6 @@ public class LesstruckloadController {
 		return "resource_list3";
 	}
 	
-/*	*//**
-	 * 获取我的信息-零担信息（未修改公司后台，待修改）
-	 * @return
-	 *//*
-	@RequestMapping(value="/car",params="flag=1")
-	public String getMyInfoCar(HttpServletRequest request){
-		return "mgmt_r_car";
-		
-	}
-	*/
 	
 	
 	/**

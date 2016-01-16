@@ -60,12 +60,12 @@
 			<tr>
 				<td width="230" class="td_leftnav_top">
 					<div id="main_frame_left">
-						<a href="linetransport?flag=0" class="a_leftnav" hidefocus="true">整车</a>
+						<a href="fulltruckload?flag=0" class="a_leftnav" hidefocus="true">整车</a>
 						<span class="text_leftnav1">零担</span> 
 						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">落地配</a>
 						<a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
-						<a href="company" class="a_leftnav" hidefocus="true">公司</a> 
-						<!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
+						<!-- <a href="company" class="a_leftnav" hidefocus="true">公司</a> --> 
+						<a href="" class="a_leftnav" hidefocus="true">国内空运</a>
 					</div>
 				</td>
 				<td>

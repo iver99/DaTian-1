@@ -46,13 +46,13 @@
 			<tr>
 				<td width="230" class="td_leftnav_top">
 					<div id="main_frame_left">
-						<a href="linetransport?flag=0" class="a_leftnav" hidefocus="true">运输线路</a>
-						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">配送网络</a>
-						<a href="car?flag=0" class="a_leftnav" hidefocus="true">车辆</a> <span
-							class="text_leftnav1">仓库</span> <a href="company"
-							class="a_leftnav" hidefocus="true">公司</a> <a
-							href="goodsform?flag=0" class="a_leftnav" hidefocus="true"
-							style="border-bottom: none;">货物</a>
+						<a href="fulltruckload?flag=0" class="a_leftnav" hidefocus="true">整车</a>
+						<a href="lesstruckload?flag=0" class="a_leftnav" hidefocus="true">零担</a>
+						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">落地配</a> 
+						<span class="text_leftnav1">仓库</span> 
+						<a href="" class="a_leftnav" hidefocus="true">国内空运</a>
+						<!-- <a href="company" class="a_leftnav" hidefocus="true">公司</a> --> 
+						<!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
 					</div>
 				</td>
 				<td>

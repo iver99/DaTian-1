@@ -77,50 +77,6 @@
                         <div class='extra'>&nbsp;</div>
                     </div>
                     <div class='mc'>
-                        <!-- <div class='item fore'>
-                            <span><h3><a href="linetransport?flag=0" hidefocus="true">运输线路</a></h3><s></s></span>
-                            <div class='i-mc'>
-                                <div class='close' onclick="$(this).parent().parent().removeClass('hover')"></div>
-                                <div class='subitem'>
-                                    <dl class='fore'>
-                                        <dt>始发城市</dt>
-                                        <dd>
-                                            <em><a href="linetransport?flag=0&city1=北京&city2=全国" hidefocus="true">北京</a></em>
-                                            <em><a href="linetransport?flag=0&city1=天津&city2=全国" hidefocus="true">天津</a></em>
-                                            <em><a href="linetransport?flag=0&city1=上海&city2=全国" hidefocus="true">上海</a></em>
-                                            <em><a href="linetransport?flag=0&city1=广州&city2=全国" hidefocus="true">广州</a></em>
-                                            <em><a href="linetransport?flag=0&city1=武汉&city2=全国" hidefocus="true">武汉</a></em>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>到达城市</dt>
-                                        <dd>
-                                            <em><a href="linetransport?flag=0&city1=全国&city2=北京" hidefocus="true">北京</a></em>
-                                            <em><a href="linetransport?flag=0&city1=全国&city2=天津" hidefocus="true">天津</a></em>
-                                            <em><a href="linetransport?flag=0&city1=全国&city2=上海" hidefocus="true">上海</a></em>
-                                            <em><a href="linetransport?flag=0&city1=全国&city2=广州" hidefocus="true">广州</a></em>
-                                            <em><a href="linetransport?flag=0&city1=全国&city2=武汉" hidefocus="true">武汉</a></em>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>运输类型</dt>
-                                        <dd>
-                                            <em><a href="linetransport?flag=0&type=整车" hidefocus="true">整车</a></em>
-                                            <em><a href="linetransport?flag=0&type=零担" hidefocus="true">零担</a></em>
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div class='fr'>
-                                    <img src="images/illust_1a.png" />
-                                    <dl class='fore'>
-                                        <dt>推荐</dt>
-                                        <dd><a href="companyDetail?id=C-0001" hidefocus="true">北京市畅通达1</a></dd>
-                                        <dd><a href="companyDetail?id=C-0002" hidefocus="true">北京市畅通达</a></dd>
-                                        <dd><a href="companyDetail?id=C-0003" hidefocus="true">北京圆通</a></dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class='item fore'>
                             <span><h3><a href="fulltruckload?flag=0" hidefocus="true">整车</a></h3><s></s></span>
                             <div class='i-mc'>

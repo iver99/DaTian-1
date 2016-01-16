@@ -41,17 +41,17 @@
 
 <%@ include  file="topFrame.jsp"%>
 <div id="main_frame">
-	<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;货物<input type="hidden" id="page_info" value="货物"/>
+	<span class="text_main_title1">货物</span>&nbsp;&gt;&nbsp;货物<input type="hidden" id="page_info" value="货物"/>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
 			<td width="230" class="td_leftnav_top">
                 <div id="main_frame_left">
-                   <a href="linetransport?flag=0" class="a_leftnav" hidefocus="true">运输线路</a>
-						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">配送网络</a>
-						 <a	href="car?flag=0" class="a_leftnav" hidefocus="true">车辆</a>
-						<a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
-						 <a href="company" class="a_leftnav" hidefocus="true">公司</a>
-                    <span class="text_leftnav1" style="border-bottom:none;">货物</span>
+                   <!-- <a href="linetransport?flag=0" class="a_leftnav" hidefocus="true">运输线路</a>
+				   <a href="cityline?flag=0" class="a_leftnav" hidefocus="true">配送网络</a>
+				   <a	href="car?flag=0" class="a_leftnav" hidefocus="true">车辆</a>
+				   <a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
+				   <a href="company" class="a_leftnav" hidefocus="true">公司</a> -->
+                   <span class="text_leftnav1" style="border-bottom:none;">货物</span>
                 </div> 
 			</td>
 			<td>

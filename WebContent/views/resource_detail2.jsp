@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>配送网络详细信息</title>
+<title>落地配资源详细信息</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -37,7 +37,7 @@
 
 <%@ include  file="topFrame.jsp"%>
 <div id="main_frame">
-	<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;配送网络
+	<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;落地配
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tbody>
    

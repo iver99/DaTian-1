@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>资源-配送网络</title>
+<title>资源-落地配</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 	<link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 	<link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -46,13 +46,13 @@
 			<tr>
 				<td width="230" class="td_leftnav_top">
 					<div id="main_frame_left">
-						<a href="linetransport?flag=0" class="a_leftnav" hidefocus="true">运输线路</a>
-						<span class="text_leftnav1">配送网络</span> <a
-							href="car?flag=0" class="a_leftnav" hidefocus="true">车辆</a>
+						<a href="fulltruckload?flag=0" class="a_leftnav" hidefocus="true">整车</a>
+						<a href="lesstruckload?flag=0" class="a_leftnav" hidefocus="true">零担</a>
+						<span class="text_leftnav1">落地配</span> 
 						<a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
-						<a href="company" class="a_leftnav" hidefocus="true">公司</a> <a
-							href="goodsform?flag=0" class="a_leftnav" hidefocus="true"
-							style="border-bottom: none;">货物</a>
+						<a href="" class="a_leftnav" hidefocus="true">国内空运</a>
+						<!-- <a href="company" class="a_leftnav" hidefocus="true">公司</a>  -->
+						<!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
 					</div>
 				</td>
 				<td>
