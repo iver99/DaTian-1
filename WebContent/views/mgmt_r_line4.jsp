@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>干线运输线路信息</title>
+<title>整车资源信息</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -76,7 +76,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2a">
                     <tr>
                         <td>
-                            <span class="span_mgmt_right2_text1">查看运输线路信息</span>
+                            <span class="span_mgmt_right2_text1">查看整车资源信息</span>
                             <span class="span_mgmt_right2_text2"><a href="javascript:history.go(-1);" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
                         </td>
                     </tr>
@@ -87,28 +87,48 @@
                             <br />   	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">线路名称：</td>
-                                    <td>${linetransportInfo.lineName }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">始发城市：</td>
-                                    <td>${linetransportInfo.startPlace }</td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">始发城市：</td>
+                                    <td>${truckInfo.startCity }</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">到达城市：</td>
-                                    <td>${linetransportInfo.endPlace }</td>
-                                </tr>
-                                    <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">在途时限：</td>
-                                    <td>${linetransportInfo.onWayTime } (小时)</td>
+                                    <td>${truckInfo.endCity }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运输类型：</td>
-                                    <td>${linetransportInfo.type }</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">运输时限：</td>
+                                    <td>${truckInfo.onwayTime } (小时)</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">参考价：</td>
-                                    <td>${linetransportInfo.refPrice }(元/kg)</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">厢型：</td>
+                                    <td>${truckInfo.carType }</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">车长：</td>
+                                    <td>${truckInfo.carLength }(米)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">提供回程：</td>
+                                    <td>${truckInfo.offerReturn }</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
+                                    <td>${truckInfo.extraService }</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td>${truckInfo.stanPrice1 }(元/吨)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td>${truckInfo.stanPrice2 }(元/方)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">提货费：</td>
+                                    <td>${truckInfo.pickFee }(元)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">送货费：</td>
+                                    <td>${truckInfo.deliveryFee }(元)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
@@ -116,7 +136,7 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">补充信息：</td>
-                                    <td>${linetransportInfo.remarks }</td>
+                                    <td>${truckInfo.remarks }</td>
                                 </tr>
                             </table>
                         </td>
