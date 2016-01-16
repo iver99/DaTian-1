@@ -251,20 +251,12 @@ function loadXMLDoc(id)
 }
 
 //整车筛选
-function getSelectedLineAjax(startPlace,
-		endPlace,
-		carLength,
-		carType,
-		onwayTime,
-		display,
-		currentPage){
+function getSelectedLineAjax(startCity,endCity,onwayTime,display,currentPage){
 	//alert("ajax_post");
-      var url="fulltruckloadAjax";
+      var url="airlineAjax";
 	  $.post(url,{
-		  startPlace:startPlace,
-		  endPlace:endPlace,
-		  carLength:carLength,
-		  carType:carType,
+		  startCity:startCity,
+		  endCity:endCity,
 		  onwayTime:onwayTime,
 		  display:display,
 		  currentPage:currentPage},

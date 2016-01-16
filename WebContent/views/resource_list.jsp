@@ -78,18 +78,6 @@
                                 <dd><a href="javascript:;" hidefocus="true" id="select1_6">17.5米</a></dd>
                             </dl>
                         </li>
-                       <!--  <li class="resource_list">
-                       
-                            <dl id="select2" value="startPlace1">
-                                <dt>始发城市：</dt>
-                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select2_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_1">北京始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_2">天津始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_3">上海始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_4">武汉始发</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select2_5">广州始发</a></dd>
-                            </dl>
-                        </li> -->
                         <li class="resource_list">
                             <dl id="select2" value="carType">
                                 <dt>车辆厢型：</dt>
@@ -126,47 +114,6 @@
 						<input id="display" value="10" type="hidden"/>
 						<input id="currentPage" value="1" type="hidden"/>
 						<input id="flag" value=0 type="hidden"/><!-- 点击页码和点击筛选标识位 -->
-						
-						<!-- <div id="middlesort">
-							 <ul class="quickmenu">
-								<li class="menuitem">
-									<div class="menu">
-										<a href="javascript:;" class="menuhd" hidefocus="true">价格</a>
-										<div class="menubd">
-											<div class="menubdpanel">
-												<a href="javascript:;" class="a_top2a" hidefocus="true"
-													id="trigger1a">升序</a> <a href="javascript:;"
-													class="a_top2b" hidefocus="true" id="trigger1b">降序</a>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="menuitem">
-									<div class="menu">
-										<a href="javascript:;" class="menuhd" hidefocus="true">时限</a>
-										<div class="menubd">
-											<div class="menubdpanel">
-												<a href="javascript:;" class="a_top2a" hidefocus="true"
-													id="trigger2a">升序</a> <a href="javascript:;"
-													class="a_top2b" hidefocus="true" id="trigger2b">降序</a>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="menuitem">
-									<div class="menu">
-										<a href="javascript:;" class="menuhd" hidefocus="true">关注</a>
-										<div class="menubd">
-											<div class="menubdpanel">
-												<a href="javascript:;" class="a_top2a" hidefocus="true"
-													id="trigger3a">升序</a> <a href="javascript:;"
-													class="a_top2b" hidefocus="true" id="trigger3b">降序</a>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div> -->
 					</div>
 					<table border="0" cellspacing="0" cellpadding="0"
 						class="table_main_list" id="list">
@@ -317,8 +264,8 @@ function loadXMLDoc(id)
 }
 
 //整车筛选
-function getSelectedLineAjax(startPlace,
-		endPlace,
+function getSelectedLineAjax(startCity,
+		endCity,
 		carLength,
 		carType,
 		onwayTime,
@@ -327,8 +274,8 @@ function getSelectedLineAjax(startPlace,
 	//alert("ajax_post");
       var url="fulltruckloadAjax";
 	  $.post(url,{
-		  startPlace:startPlace,
-		  endPlace:endPlace,
+		  startCity:startCity,
+		  endCity:endCity,
 		  carLength:carLength,
 		  carType:carType,
 		  onwayTime:onwayTime,
