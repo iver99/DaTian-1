@@ -30,17 +30,10 @@ import cn.edu.bjtu.util.PageUtil;
 @Service("LesstruckloadServiceImpl")
 public class LesstruckloadServiceImpl implements LesstruckloadService {
 		@Autowired
-		TruckDao truckDao;
-
-/*		@Autowired
-		CarTeamDao carTeamDao;
-		@Resource
-		LinetransportService linetransportService;*/
-		
+		TruckDao truckDao;	
 		@Autowired
 		FocusService focusService;
-		
-		
+	
 		/**
 		 * 返回资源栏筛选零担
 		 */
@@ -148,18 +141,6 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 			
 			return wheresql;
 		}
-		
-		
-		
-/*		@Override
-		*//**
-		 * 返回特定车辆信息
-		 *//*
-		public Truck getCarInfo(String carid) {
-			
-
-			return truckDao.get(Truck.class, carid);
-		}*/
 		
 		
 		

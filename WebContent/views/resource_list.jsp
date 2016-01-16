@@ -316,7 +316,7 @@ function loadXMLDoc(id)
 		});
 }
 
-//干线筛选
+//整车筛选
 function getSelectedLineAjax(startPlace,
 		endPlace,
 		carLength,

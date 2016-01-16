@@ -334,7 +334,7 @@ function OnLoad() {
 		if(checkRecommend()){
 			var display = $("#display").val();
 			var currentPage = $("#currentPage").val();
-		getSelectedCarAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedLesstruckloadAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
 		getSelectedCarTotalRows("中文或拼音","中文或拼音","All","All","All",display,currentPage);
 			
 		}
