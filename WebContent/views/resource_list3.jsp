@@ -71,12 +71,12 @@
 				<td>
 					<div id="div_resource_select">
 						<div id="cityselector" class="div_cityselector1">
-							起止城市： <input id="city1" type="text" value="" text="carLocation" class="input_city1" /> &nbsp;&nbsp;至 &nbsp;&nbsp;
+							起止城市： <input id="city1" type="text" value="" text="StartCity" class="input_city1" /> &nbsp;&nbsp;至 &nbsp;&nbsp;
 							 <input	id="city2" type="text" value="" text="endPlace"	class="input_city1" />
 						</div>
 						<ul class="resource">
 							<li class="resource_list">
-								<dl id="select1" value="carBase">
+								<dl id="select1" value="onwayTime">
 									<dt>运输时限：</dt>
 									<dd class="resource_all selected">
 										<a href="javascript:;" hidefocus="true" id="select1_0">全部</a>
@@ -93,7 +93,7 @@
 								</dl>
 							</li>
 							<li class="resource_list">
-								<dl id="select2" value="carLength">
+								<dl id="select2" value="offerReturn">
 									<dt>提供回程：</dt>
 									<dd class="resource_all selected">
 										<a href="javascript:;" hidefocus="true" id="select2_0">全部</a>
@@ -548,14 +548,16 @@ function loadXMLDoc(id)
 }
 
 //车辆筛选
-function getSelectedCarAjax(startPlace,endPlace,carBase,carLength,carWeight,display,currentPage){
-      var url="getSelectedCarAjax";
+function getSelectedLesstruckloadAjax(startCity,endCity,carrierId,onwayType,offerReturn,stanPrice1,stanPrice2,relDate,display,currentPage){
+      var url="getSelectedLesstruckloadAjax";
 	  $.post(url,{
-		  startPlace:startPlace,
-		  endPlace:endPlace,
-		  carBase:carBase,
-		  carLength:carLength,
-		  carWeight:carWeight,
+		  startCity:startCity,
+		  endCity:endCity,
+		  onwayType:onwayTape,
+		  offerReturn:offerReturn,
+		  stanPrice1:stanPrice1,
+		  stanPrice2:stanPrice2,
+		  relDate:relDate,
 		  display:display,
 		  currentPage:currentPage},
 	  function(data,status){
@@ -564,16 +566,18 @@ function getSelectedCarAjax(startPlace,endPlace,carBase,carLength,carWeight,disp
 		for(var i=0; i<data.length; i++) {
 			$("#testbody").append("<tr>");
 			$("#testbody").append("<td class=\"td_main_list_content\"></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"cardetail?carId="+data[i].id+"&carrierId="+data[i].carrierId+"&linetransportId=$"+data[i].linetransportId+"&flag=0\" hidefocus=\"true\">"+data[i].carNum+"</a><br /> <a href=\"companyDetail?id="+data[i].carrierId+" style=\"color:#717071;\" hidefocus=\"true\">"+data[i].companyName+"<img src=\"images/btn_level1a.png\" /></a></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carBase+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carState+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carLength+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carWeight+"</td>");
-			if(data[i].carLocation == undefined){
+			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?startCity="+data[i].startCity+"&flag=0\" hidefocus=\"true\"></a></td>");
+			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?endCity="+data[i].endCity+"&flag=0\" hidefocus=\"true\"></a></td>");
+			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carrierId+"</td>");
+			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>");
+			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>");
+			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>");
+			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>");
+/* 			if(data[i].onwayTime == undefined){
 				$("#testbody").append("<td class=\"td_main_list_content\">--</td>");
 			}else{
 				$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carLocation+"</td>");
-			}
+			} */
 			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
 			if(data[i].status == "有效")
 				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
@@ -592,14 +596,16 @@ function renderTime(date){
 } 
 
 //获取所有车辆筛选的总条数
-function getSelectedCarTotalRows(startPlace,endPlace,carBase,carLength,carWeight,display,currentPage){
-	var url="getSelectedCarTotalRowsAjax";
+function getSelectedLesstruckloadTotalRows(startCity,endCity,carrierId,onwayType,offerReturn,stanPrice1,stanPrice2,relDate,display,currentPage){
+	var url="getSelectedLesstruckloadTotalRowsAjax";
 	  $.post(url,{
-		  startPlace:startPlace,
-		  endPlace:endPlace,
-		  carBase:carBase,
-		  carLength:carLength,
-		  carWeight:carWeight,
+		  startCity:startCity,
+		  endCity:endCity,
+		  onwayType:onwayTape,
+		  offerReturn:offerReturn,
+		  stanPrice1:stanPrice1,
+		  stanPrice2:stanPrice2,
+		  relDate:relDate,
 		  display:display,
 		  currentPage:currentPage},
 	  function(data,status){
