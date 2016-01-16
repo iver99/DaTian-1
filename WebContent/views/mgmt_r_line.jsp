@@ -196,10 +196,10 @@ function getUserFullTruckLoadResource(display,currentPage){
 						str+="<ul class=\"quickmenu\">";
 						str+="<li class=\"menuitem\">";
 						str+="<div class=\"menu\">";
-						str+="<a href=\"linetransportdetail?linetransportid="+data[i].id+"&carrierId=0&flag=2\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
+						str+="<a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId=0&flag=2\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
 						str+="<div class=\"menubd\">";
 						str+="<div class=\"menubdpanel\">";
-						str+="<a href=\"linetransportdelete?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
+						str+="<a href=\"fulltruckloaddelete?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
 						str+="</div></div></div></li></ul></div></td></tr>";
 						
 						body.append(str);
