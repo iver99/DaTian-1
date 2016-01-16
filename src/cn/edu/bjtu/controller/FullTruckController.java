@@ -108,5 +108,34 @@ public class FullTruckController {
 			}
 		return mv;
 	}
+	
+	/**
+	 * 我的信息-整车资源
+	 * @param flag
+	 * @param page
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/fulltruckload",params="flag=1")
+	public String getAllFullTruckLoad(@RequestParam int flag,
+			PageUtil page, HttpSession session) {
+		return "mgmt_r_line";
+	}
+	
+	/**
+	 * 我的信息-整车资源 
+	 * @param session
+	 * @param lineBean
+	 * @param pageUtil
+	 * @return
+	 */
+	@RequestMapping(value="getUserFullTruckLoadResourceAjax",produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String getUserFullTruckLoadResource(HttpSession session,PageUtil pageUtil) {
+		
+		JSONArray jsonArray=fulltruckloadService.getUserFullTruckLoadResource(session,pageUtil);
+		
+		return jsonArray.toString();
+	}
 
 }

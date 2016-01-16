@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>干线运输线路信息</title>
+<title>整车资源信息</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -83,7 +83,7 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0"
 			class="table_mgmt_right2">
 			<tr>
-				<td><span class="span_mgmt_right2_text1">干线运输线路信息</span> <span
+				<td><span class="span_mgmt_right2_text1">整车资源信息</span> <span
 					class="span_mgmt_right2_text2"><a href="insert?flag=1"
 						hidefocus="true"><img src="images/btn_add1.png"
 							class="span_mgmt_right2_pic1" title="添加" /></a></span></td>
@@ -105,14 +105,17 @@
 			<thead id="thead">
 			   <tr>
 				<td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
-				<td class="td_mgmt_right3_head">名称</td>
-				<td width="60" class="td_mgmt_right3_head">运输类型</td>
-				<td width="60" class="td_mgmt_right3_head">始发</td>
-				<td width="60" class="td_mgmt_right3_head">到达</td>
-				<td width="80" class="td_mgmt_right3_head">在途(小时)</td>
-				<td width="100" class="td_mgmt_right3_head">参考价(元/kg)</td>
-				<td width="80" class="td_mgmt_right3_head">发布日期</td>
-				<td width="80" class="td_mgmt_right3_head">操作</td>
+				<td width="70" class="td_mgmt_right3_head">始发城市</td>
+				<td width="70" class="td_mgmt_right3_head">到达城市</td>
+				<td width="55" class="td_mgmt_right3_head">时限<br>小时</td>
+				<td class="td_mgmt_right3_head">厢型</td>
+				<td width="55" class="td_mgmt_right3_head">提供<br>回程</td>
+				<td width="75" class="td_mgmt_right3_head">标准报价<br>(元/吨)</td>
+                <td width="75" class="td_mgmt_right3_head">标准报价<br>(元/方)</td>
+                <td width="55" class="td_mgmt_right3_head">提货费<br>(元)</td>
+                <td width="55" class="td_mgmt_right3_head">送货费<br>(元)</td>
+                <td width="80" class="td_mgmt_right3_head">发布日期</td>
+                <td width="80" class="td_mgmt_right3_head">操作</td>
 			</tr>
 			</thead>
 			<tbody id="result_body">
@@ -156,13 +159,13 @@
 		var currentPage=$("#currentPage").val();
 		//alert(display+"-"+currentPage)
 		//加载用户干线资源
-		getUserLinetransportResource(display,currentPage);
-		getUserLinetransportResourceTotalRows(display,currentPage);
+		getUserFullTruckLoadResource(display,currentPage);
+		getUserFullTruckLoadResourceTotalRows(display,currentPage);
 	}
 	
 //加载干线资源
-function getUserLinetransportResource(display,currentPage){
-	var url="getUserLinetransportResourceAjax";
+function getUserFullTruckLoadResource(display,currentPage){
+	var url="getUserFullTruckLoadResourceAjax";
 	$.ajax({
 		url:url,
 		data:{
@@ -175,15 +178,18 @@ function getUserLinetransportResource(display,currentPage){
 			var body=$("#result_body");
 			//循环输出结果集
 			body.empty();
-			   for(var i =0;i<data.length;i++){
+			   for(var i=0;i<data.length;i++){
 				   		var str="<tr>";
 				   		str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"linetransportdetail?linetransportid="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a></td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].type+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].startPlace+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].endPlace+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].onWayTime+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].refPrice+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].onwayTime+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carType+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].offerReturn+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].stanPrice1+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].stanPrice2+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].pickFee+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].deliveryFee+"</td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>";
 				   		str+="<td class='td_mgmt_right3_td3'>";
 				   		str+="<div id=\"handlebox\" style=\"z-index: 201;\">";
@@ -203,7 +209,7 @@ function getUserLinetransportResource(display,currentPage){
 	})
 }
 //干线资源总条数
-function getUserLinetransportResourceTotalRows(display,currentPage){
+function getUserFullTruckLoadResourceTotalRows(display,currentPage){
 	var url="getUserLinetransportResourceTotalRowsAjax";
 	$.ajax({
 		url:url,

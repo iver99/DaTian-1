@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import cn.edu.bjtu.bean.page.LinetransportBean;
 import cn.edu.bjtu.bean.search.CityLineSearchBean;
 import cn.edu.bjtu.bean.search.TruckBean;
 import cn.edu.bjtu.dao.CompanyDao;
@@ -28,6 +30,7 @@ import cn.edu.bjtu.service.FullTruckLoadService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carrierinfo;
+import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.Truck;
 
 /**
@@ -190,6 +193,34 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 	public Truck getfulltruckloadInfo(String truckId) {
 		
 		return truckDao.get(Truck.class, truckId);
+	}
+    
+	/*
+	 * 我的信息-整车资源
+	 * 
+	 */
+	@Override
+	public JSONArray getUserFullTruckLoadResource(HttpSession session, PageUtil pageUtil) {
+		String carrierId=(String)session.getAttribute(Constant.USER_ID);
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("carrierId", carrierId);
+		String hql="from Truck  where carrierId=:carrierId order by relDate desc";
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Truck> list=truckDao.find(hql, params,page,display);
+		
+		System.out.println(list.size());
+		
+		JSONArray jsonArray=new JSONArray();
+		for(int i=0;i<list.size();i++){
+			Truck truckBean=new Truck();
+			BeanUtils.copyProperties(list.get(i), truckBean);
+			if(truckBean.getResourceType().equals("整车")){
+				JSONObject jsonObject=(JSONObject)JSONObject.toJSON(truckBean);
+				jsonArray.add(jsonObject);
+			}
+		}
+		return jsonArray;
 	}
 
 }

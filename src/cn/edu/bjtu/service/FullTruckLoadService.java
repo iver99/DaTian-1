@@ -28,5 +28,13 @@ public interface FullTruckLoadService {
 	public JSONArray getSelectedFullTruckLoadNew(TruckBean truckBean,PageUtil pageUtil,HttpSession session);
 	
 	public Truck getfulltruckloadInfo(String truckId);
+	
+	/**
+	 * 我的信息-我的整车资源
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
+	public JSONArray getUserFullTruckLoadResource(HttpSession session,PageUtil pageUtil);
 
 }
