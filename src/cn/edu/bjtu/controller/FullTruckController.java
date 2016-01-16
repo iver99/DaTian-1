@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -30,6 +31,7 @@ import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
+import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.Truck;
 
 /**
@@ -88,6 +90,9 @@ public class FullTruckController {
 			@RequestParam("flag") int flag,
 			HttpServletRequest request){
 		Truck truckInfo = fulltruckloadService.getfulltruckloadInfo(truckId);
+		if((truckInfo.getExtraService()).equals("")){
+			truckInfo.setExtraService("没有");
+		}
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List focusList = focusService.getFocusList(clientId,"fulltruckload");
 		mv.addObject("focusList", focusList);
@@ -136,6 +141,20 @@ public class FullTruckController {
 		JSONArray jsonArray=fulltruckloadService.getUserFullTruckLoadResource(session,pageUtil);
 		
 		return jsonArray.toString();
+	}
+	
+	/**
+	 * 新增整车资源
+	 * @param line
+	 * @param file
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "insertfulltruckload", method = RequestMethod.POST)
+	public String insertNewLinetransport(Truck truck,MultipartFile file,
+			HttpServletRequest request) {
+		boolean flag=fulltruckloadService.insertNewFullTruckLoad(truck,request,file);
+		return "redirect:fulltruckload?flag=1";
 	}
 
 }
