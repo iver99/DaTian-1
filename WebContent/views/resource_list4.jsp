@@ -50,7 +50,7 @@
 						<a href="lesstruckload?flag=0" class="a_leftnav" hidefocus="true">零担</a>
 						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">落地配</a> 
 						<span class="text_leftnav1">仓库</span> 
-						<a href="" class="a_leftnav" hidefocus="true">国内空运</a>
+						<a href="airline?flag=0" class="a_leftnav" hidefocus="true">国内空运</a>
 						<!-- <a href="company" class="a_leftnav" hidefocus="true">公司</a> --> 
 						<!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
 					</div>

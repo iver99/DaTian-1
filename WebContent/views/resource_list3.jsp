@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>资源-车辆</title>
+<title>资源-零担</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -55,7 +55,7 @@
 
 <%@ include  file="topFrame.jsp"%>
 	<div id="main_frame">
-		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;车辆<input type="hidden" id="page_info" value="车辆 "/>
+		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;零担<input type="hidden" id="page_info" value="车辆 "/>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="230" class="td_leftnav_top">
@@ -65,7 +65,7 @@
 						<a href="cityline?flag=0" class="a_leftnav" hidefocus="true">落地配</a>
 						<a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
 						<!-- <a href="company" class="a_leftnav" hidefocus="true">公司</a> --> 
-						<a href="" class="a_leftnav" hidefocus="true">国内空运</a>
+						<a href="airline?flag=0" class="a_leftnav" hidefocus="true">国内空运</a>
 					</div>
 				</td>
 				<td>

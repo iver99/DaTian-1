@@ -41,7 +41,7 @@
 
 <%@ include  file="topFrame.jsp"%>
 	<div id="main_frame">
-		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;配送网络<input type="hidden" id="page_info" value="配送网络"/>
+		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;落地配<input type="hidden" id="page_info" value="配送网络"/>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="230" class="td_leftnav_top">
@@ -50,7 +50,7 @@
 						<a href="lesstruckload?flag=0" class="a_leftnav" hidefocus="true">零担</a>
 						<span class="text_leftnav1">落地配</span> 
 						<a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
-						<a href="" class="a_leftnav" hidefocus="true">国内空运</a>
+						<a href="airline?flag=0" class="a_leftnav" hidefocus="true">国内空运</a>
 						<!-- <a href="company" class="a_leftnav" hidefocus="true">公司</a>  -->
 						<!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
 					</div>

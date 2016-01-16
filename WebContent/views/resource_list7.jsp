@@ -1,14 +1,10 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%-- <%
-	int count=(Integer)request.getAttribute("count");
-%> --%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>资源-整车</title>
+<title>资源-国内空运</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 	<link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 	<link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -43,16 +39,16 @@
 
 <%@ include  file="topFrame.jsp"%>
 	<div id="main_frame">
-		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;整车<input type="hidden" id="page_info" value="运输线路"/>
+		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;国内空运<input type="hidden" id="page_info" value="运输线路"/>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="230" class="td_leftnav_top">
 					<div id="main_frame_left">
-						<span class="text_leftnav1">整车</span>
+						 <a href="fulltruckload?flag=0" class="a_leftnav" hidefocus="true">整车</a>
 						 <a href="lesstruckload?flag=0" class="a_leftnav" hidefocus="true">零担</a>
 						 <a href="cityline?flag=0"	class="a_leftnav" hidefocus="true">落地配</a> 
 						 <a href="warehouse?flag=0" class="a_leftnav" hidefocus="true">仓库</a>
-						 <a href="airline?flag=0" class="a_leftnav" hidefocus="true">国内空运</a> 
+						 <span class="text_leftnav1">国内空运</span> 
 						 <!-- <a href="goodsform?flag=0" class="a_leftnav" hidefocus="true" style="border-bottom: none;">货物</a> -->
 					</div>
 				</td>
