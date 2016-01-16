@@ -52,7 +52,7 @@
                         <a href="mycomplaint" class="a_mgmt_leftnav" hidefocus="true">我的投诉</a>
                        <%} %>
 						</div>
-                   <%@ include  file="mysource_leftnav_myresource.jsp"%>
+                    <%@ include  file="mysource_leftnav_myresource.jsp"%>
                     <%@ include  file="mysource_leftnav_myplan.jsp"%>
                     <%@ include  file="mysource_leftnav_myanalysis.jsp"%>
                     <%@ include  file="mysource_leftnav_myaccount.jsp"%>

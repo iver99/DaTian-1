@@ -42,7 +42,7 @@
 			<td width="230" class="td_leftnav_top">
                 <div id="main_frame_left">
                     <%@ include  file="mysource_leftnav_mytrade.jsp"%>
-                    <hr class="hr_2" />
+                    <%-- <hr class="hr_2" />
                     <span class="text_mgmt_leftnav1"><span
 							id="mgmt_nav_switch2a" class="span_mgmt_nav1" title="收起"
 							onclick="mgmt_nav_switch2a();"></span><span
@@ -67,7 +67,8 @@
                         <% if((Integer)session.getAttribute("userKind") ==2) {%><!-- 个人用户 -->
                         <a href="contract" class="a_mgmt_leftnav1" hidefocus="true">合同信息</a>
                         <%} %>
-                    </div>
+                    </div> --%>
+                    <%@ include  file="mysource_leftnav_myresource.jsp"%>
                     <%@ include  file="mysource_leftnav_myplan.jsp"%>
                     <%@ include  file="mysource_leftnav_myanalysis.jsp"%>
                     <%@ include  file="mysource_leftnav_myaccount.jsp"%>
