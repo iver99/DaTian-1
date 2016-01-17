@@ -204,6 +204,38 @@
 						body.append("</tr>");
 						
 					}
+					if(data[i].focusType == 'fulltruckload'){
+						body.append("<tr>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
+						body.append("<td class=\"td_mgmt_right3_td1\">整车</td>");
+						var str="<td class=\"td_mgmt_right3_td1\">";
+						str+="<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"→"+data[i].endCity+"</a>"+"<br></br>"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>";
+						/* str+="<br />"; */
+						/* str+="<a href=\"companyDetail?id="+data[i].carrierId+"\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>"; */
+						str+="</td>";
+						body.append(str);	
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
+						
+						if(data[i].status == '有效'){
+							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
+							str+="<td class=\"td_mgmt_right3_td3\">";
+							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
+							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
+							str+="<div class=\"menu\">";
+							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=1&resourceId="+data[i].focusId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
+							str+="<div class=\"menubd\">";
+							str+="<div class=\"menubdpanel\">";
+							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
+							str+="</div></div></div></li></ul></div></td>";
+							body.append(str);
+							}
+						else if(data[i].status == '失效'){
+							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
+							}
+						body.append("</tr>");
+						
+					}
 					if(data[i].focusType == 'cityline'){
 						body.append("<tr>");
 						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");

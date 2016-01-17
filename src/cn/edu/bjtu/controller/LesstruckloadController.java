@@ -25,6 +25,7 @@ import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
@@ -186,6 +187,20 @@ public class LesstruckloadController {
 			HttpServletRequest request) {
 		boolean flag = LesstruckloadService.updateLesstruckload(truck,request,file);
 		return "redirect:lesstruckload?flag=1";
+	}
+	
+	/**
+	 * 图片展示下载
+	 */
+	@RequestMapping(value="downloadlesstruckloaddetailprice", method = RequestMethod.GET)
+	public ModelAndView downloadDetailPrice(@RequestParam String id,// GET方式传入，在action中
+			HttpServletRequest request, HttpServletResponse response) {
+		Truck truckInfo = LesstruckloadService.getLesstruckloadInfo(id); // 需要重构,返回一条具体的线路不是list
+		String file = truckInfo.getPicture();
+		DownloadFile.downloadFile(file,request,response);
+		
+		return mv;
+
 	}
 
 
