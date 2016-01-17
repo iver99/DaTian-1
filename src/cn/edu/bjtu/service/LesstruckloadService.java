@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.alibaba.fastjson.JSONArray;
 
 import cn.edu.bjtu.bean.search.TruckBean;
@@ -41,4 +43,20 @@ public interface LesstruckloadService {
 	 *//*
 	public Integer getLesstruckloadResourceTotalRows(HttpSession session);
 */
+	
+	public Truck getLesstruckloadInfo(String truckId);
+	
+	/**
+	 * 我的信息-我的资源-零担
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 *//*
+	public JSONArray getUserLesstruckloadResource(HttpSession session,PageUtil pageUtil);
+	
+	public boolean insertNewLesstruckload(Truck truck,HttpServletRequest request, MultipartFile file);
+	
+	public boolean deleteLesstruckload(String id);
+	
+	public boolean updateLesstruckload(Truck truck,HttpServletRequest request,MultipartFile file);*/
 }

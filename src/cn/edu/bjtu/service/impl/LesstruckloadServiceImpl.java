@@ -27,6 +27,7 @@ import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carrierinfo;
+import cn.edu.bjtu.vo.Truck;
 
 @Transactional
 @Service("LesstruckloadServiceImpl")
@@ -166,7 +167,12 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 		}
 		
 		
-		
+		@Override
+		public Truck getLesstruckloadInfo(String truckId) {
+			
+			return truckDao.get(Truck.class, truckId);
+		}
+	    
 	
 		/**
 		 * 字符创转为日期类型

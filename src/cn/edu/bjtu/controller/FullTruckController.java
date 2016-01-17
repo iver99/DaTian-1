@@ -90,7 +90,9 @@ public class FullTruckController {
 			@RequestParam("flag") int flag,
 			HttpServletRequest request){
 		Truck truckInfo = fulltruckloadService.getfulltruckloadInfo(truckId);
-		if((truckInfo.getExtraService()).equals("")){
+		if(truckInfo.getExtraService()==null){
+			truckInfo.setExtraService("没有");	
+		} else if(truckInfo.getExtraService().equals("")){
 			truckInfo.setExtraService("没有");
 		}
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
