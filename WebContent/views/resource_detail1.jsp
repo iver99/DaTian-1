@@ -73,7 +73,7 @@
                 <hr class="hr_1" />
                 <input type="button" value="0" style="display:none" id="i"></input>
                 <c:forEach var="focus" items="${focusList }">
-					<c:if test="${linetransportInfo.id==focus.focusId}">
+					<c:if test="${truckInfo.id==focus.focusId}">
 						<script>
 							document.getElementById("i").value=1;
 						</script>
@@ -81,9 +81,9 @@
 				</c:forEach>
 				<script type="text/javascript">
 					if(document.getElementById("i").value==1)
-						document.write( "<input type=\"button\" id=\"btnfav\" value=\"已关注\" class=\"input_detail3\" hidefocus=\"true\" onclick=\"loadXMLDoc('${linetransportInfo.id }');hidefav(this);\" />" );
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"已关注\" class=\"input_detail3\" hidefocus=\"true\" onclick=\"loadXMLDoc('${truckInfo.id }');hidefav(this);\" />" );
 					else
-						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${linetransportInfo.id }');hidefav(this);\" />" );
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${truckInfo.id }');hidefav(this);\" />" );
 				</script>
                 
                 <%-- <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${linetransportInfo.carrierId}&flag=1&resourceId=${linetransportInfo.id}'" /> --%>
@@ -203,7 +203,7 @@ function loadXMLDoc(id){
 	$.ajax({
 		   type: "GET",
 		   url: curWwwPath.substring(0,pos) + "/DaTian/focus",//请求的后台地址
-		   data: "type=linetransport&id=" + id,//前台传给后台的参数
+		   data: "type=fulltruckload&id=" + id,//前台传给后台的参数
 		   cache:false,
 		   success: function(msg){//msg:返回值
 			   if(msg == "login"){
