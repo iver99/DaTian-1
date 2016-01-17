@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.edu.bjtu.service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONArray;
 
-import cn.edu.bjtu.bean.search.CityLineSearchBean;
 import cn.edu.bjtu.bean.search.TruckBean;
 import cn.edu.bjtu.util.PageUtil;
-import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.Truck;
 
 /**

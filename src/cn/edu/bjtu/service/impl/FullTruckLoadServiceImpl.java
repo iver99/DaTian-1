@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,8 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import cn.edu.bjtu.bean.page.LinetransportBean;
-import cn.edu.bjtu.bean.search.CityLineSearchBean;
 import cn.edu.bjtu.bean.search.TruckBean;
 import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.TruckDao;
@@ -35,7 +32,6 @@ import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.Carrierinfo;
-import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.Truck;
 
 /**
