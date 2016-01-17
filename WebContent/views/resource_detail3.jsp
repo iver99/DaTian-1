@@ -48,23 +48,23 @@
                 </div>
 			</td>
 			<td class="td_detail_top">
-                始发城市：<span class="text_detail_title1">${carInfo.carNum }</span>
+                始发城市：<span class="text_detail_title1">${truckInfo.startCity }</span>
                 <br />
-                到达城市：<span class="text_detail_title1">${carInfo.carLength }</span>
+                到达城市：<span class="text_detail_title1">${truckInfo.endCity }</span>
                 <br />
-                运输时限：<span class="text_detail_title2">${carInfo.carWeight }</span>
+                运输时限：<span class="text_detail_title2">${truckInfo.onwayTime }小时</span>
                 <br />
-                标准报价：<span class="text_detail_title2">${carInfo.carState }</span>
+                标准报价：<span class="text_detail_title2">${truckInfo.stanPrice1 }元/吨、${truckInfo.stanPrice2 }元/方</span>
                 <br />
-                提货费：   <span class="text_detail_title2">100元</span>
+                提货费：   <span class="text_detail_title2">${truckInfo.pickFee }元</span>
                 <br />
-                送货费：   <span class="text_detail_title2">200元</span>
+                送货费：   <span class="text_detail_title2">${truckInfo.deliveryFee }元</span>
                 <br />
-                提供回程：有
+                提供回程：${truckInfo.offerReturn }
                 <br />
-                增值服务：分拣、上楼
+                增值服务：${truckInfo.extraService }
                 <br />   
-                发货日期：${carInfo.relDate }
+                发货日期：${truckInfo.relDate }
                 <br />
                 所有者：    ${carrierInfo.companyName }&nbsp;<img src="images/btn_level1a.png" />          
                 <br />
