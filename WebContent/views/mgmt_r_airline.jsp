@@ -156,8 +156,8 @@ function getAirLineResource(display,currentPage){
 			   for(var i=0;i<data.length;i++){
 				   		var str="<tr>";
 				   		str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"airlinedetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"airlinedetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"airlinedetail?airlineId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"airlinedetail?airlineId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].onwayTime+"</td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].price1+"</td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].price2+"</td>";
