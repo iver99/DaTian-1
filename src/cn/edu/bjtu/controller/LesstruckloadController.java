@@ -54,6 +54,8 @@ public class LesstruckloadController {
 	@ResponseBody
 	public String getCarSelected(TruckBean truckBean,PageUtil pageUtil,HttpSession session){
 		
+		System.out.println("方法进来了");
+		
 		JSONArray jsonArray = LesstruckloadService.getSelectedLesstruckloadNew(truckBean, pageUtil,
 				session);
 		

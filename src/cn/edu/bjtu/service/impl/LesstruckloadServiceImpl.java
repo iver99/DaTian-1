@@ -20,17 +20,21 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.edu.bjtu.bean.search.TruckBean;
+import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.TruckDao;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.vo.Carrierinfo;
 
 @Transactional
 @Service("LesstruckloadServiceImpl")
 public class LesstruckloadServiceImpl implements LesstruckloadService {
 		@Autowired
 		TruckDao truckDao;	
+		@Autowired
+		CompanyDao companyDao;
 		@Autowired
 		FocusService focusService;
 	
@@ -42,18 +46,26 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 			String userId=(String)session.getAttribute(Constant.USER_ID);
 			Map<String,Object> params=new HashMap<String,Object>();
 				String sql = "select t1.id,"
-					+ "t1.startCity,"
-					+ "t1.endCity,"
-					+ "t1.carrierId,"
-					+ "t1.onwayTime,"
-					+ "t1.offerReturn,"
-					+ "t1.stanPrice1,"
-					+ "t1.stanPrice2,"
-					+ "t1.relDate,"
-					+ "t3.status "
-					+ " from truck t1 "
-					+ "left join ("
-					+ "select * from focus t2 ";
+						+ "t1.startCity,"
+						+ "t1.endCity,"
+						+ "t1.onwayTime,"
+						+ "t1.carType,"
+						+ "t1.carLength,"
+						+ "t1.stanPrice1,"
+						+ "t1.stanPrice2,"
+						+ "t1.pickFee,"
+						+ "t1.deliveryFee,"
+						+ "t1.offerReturn,"
+						+ "t1.extraService,"
+						+ "t1.relDate,"
+						+ "t1.carrierId,"
+						+ "t1.remarks,"
+						+ "t1.picture,"
+						+ "t1.resourceType,"
+						+ "t3.status "
+						+ " from truck t1 "
+						+ "left join ("
+						+ "select * from focus t2 ";
 					
 			if(userId!=null){//如果当前有用户登录在条件中加入用户信息
 				sql+=" where t2.focusType='lesstruckload' and t2.clientId=:clientId ";
@@ -68,24 +80,35 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 			JSONArray jsonArray = new JSONArray();
 			int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
 			int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+			System.out.println(sql);
 			List<Object[]> objectList=truckDao.findBySql(sql, params,page,display);
 			
 			List<TruckBean> lesstruckloadList=new ArrayList<TruckBean>();
 			for(Iterator<Object[]> it=objectList.iterator();it.hasNext();){
-				TruckBean truckbean1=new TruckBean();
 				Object[] obj=it.next();
-				truckbean1.setId((String)obj[0]);
-				truckbean1.setStartCity((String)obj[1]);
-				truckbean1.setEndCity((String)obj[2]);
-				truckbean1.setCarrierId((String)obj[3]);
-				truckbean1.setOnwayTime((String)obj[4]);
-				truckbean1.setOfferReturn((String)obj[5]);
-				truckbean1.setStanPrice1((Float)obj[6]);
-				truckbean1.setStanPrice2((Float)obj[7]);
-				truckbean1.setRelDate((Date)obj[8]);
-				truckbean1.setResourceType((String)obj[9]);
-				if((truckbean1.getResourceType()).equals("零担")){
-				     lesstruckloadList.add(truckbean1);
+				String carrierId = (String)obj[13];
+				Carrierinfo carrierInfo = companyDao.get(Carrierinfo.class, carrierId);
+				TruckBean truckBean1 = new TruckBean();
+				truckBean1.setCompanyName(carrierInfo.getCompanyName());
+				truckBean1.setId((String)obj[0]);
+				truckBean1.setStartCity((String)obj[1]);
+				truckBean1.setEndCity((String)obj[2]);
+				truckBean1.setOnwayTime(((Integer)obj[3]).toString());
+				truckBean1.setCarType((String)obj[4]);
+				truckBean1.setCarLength(((Float)obj[5]).toString());
+				truckBean1.setStanPrice1((Float)obj[6]);
+				truckBean1.setStanPrice2((Float)obj[7]);
+				truckBean1.setPickFee((Float)obj[8]);
+				truckBean1.setDeliveryFee((Float)obj[9]);
+				truckBean1.setOfferReturn((String)obj[10]);
+				truckBean1.setExtraService((String)obj[11]);
+				truckBean1.setRelDate((Date)obj[12]);
+				truckBean1.setCarrierId((String)obj[13]);
+				truckBean1.setRemarks((String)obj[14]);
+				truckBean1.setPicture((String)obj[15]);
+				truckBean1.setResourceType((String)obj[16]);
+				if((truckBean1.getResourceType()).equals("零担")){
+				     lesstruckloadList.add(truckBean1);
 				}
 			}
 			

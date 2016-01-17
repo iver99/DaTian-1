@@ -225,7 +225,7 @@
 						<tbody id="testbody">
 							
 						</tbody>
-						<select id="carloc" style="display:none" >
+	<%-- 					<select id="carloc" style="display:none" >
 							<c:forEach var="location" items="${locList }">
 								<option value="${location.carNum }">${location.carNum }</option>
 								<option value="${location.locLongitude }">${location.locLongitude }</option>
@@ -233,7 +233,7 @@
 								<option value="${location.carLocation }">${location.carLocation }</option>
 							</c:forEach>
 						</select> 
-
+ --%>
 					</table>
 					<table border="0" cellpadding="0" cellspacing="0"
 						class="table_recordnumber">
@@ -334,8 +334,8 @@ function OnLoad() {
 		if(checkRecommend()){
 			var display = $("#display").val();
 			var currentPage = $("#currentPage").val();
-		getSelectedLesstruckloadAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-		getSelectedCarTotalRows("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedLineAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
+		getSelectedLesstruckloadTotalRows("中文或拼音","中文或拼音","All","All","All",display,currentPage);
 			
 		}
 	}
@@ -347,61 +347,41 @@ function OnLoad() {
 function checkRecommend(){
 	var paraStr=window.location.search;
 	paraStr=UrlDecode(paraStr);//汉字解析
-	if(paraStr.indexOf("city1")>0 || paraStr.indexOf("vip_service")){//参数串中存在搜索信息
+	if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0 || paraStr.indexOf("type")){//参数串中存在搜索信息
 		var para=new Array();
-		var carBase;//箱型
-		var carLength;//长度
-		var carWeight;//载重 
+		var city1;//存储搜索种类
+		var city2;//存储搜索内容
+		var type;//运输类型
 		//debugger;
 		para=paraStr.split("&");
 		for(var i=0;i<para.length;i++){
 			//alert(para[i]);
-			if(para[i].indexOf("carBase")>=0){//解析搜索类型
+			if(para[i].indexOf("city1")>=0){//解析搜索类型
 				var para_kind=new Array();
 				para_kind=para[i].split("=");
-				carBase=para_kind[1];//第二个值为参数值
+				city1=para_kind[1];//第二个值为参数值
 			}
-			if(para[i].indexOf("carLength")>=0){//解析运输类型
+			if(para[i].indexOf("city2")>=0){//解析搜索内容
 				var para_content=new Array();
 				para_content=para[i].split("=");
-				carLength=para_content[1];//第二个值为参数值
+				city2=para_content[1];//第二个值为参数值
 			}
-			if(para[i].indexOf("carWeight")>=0){//解析运输类型
+			if(para[i].indexOf("type")>=0){//解析运输类型
 				var para_content=new Array();
 				para_content=para[i].split("=");
-				carWeight=para_content[1];//第二个值为参数值
+				type=para_content[1];//第二个值为参数值
 			}
 		}
 		//set value
-		if(carBase == '普通'){
+		$("#city1").val(city1);
+		$("#city2").val(city2);
+		//这里没有设置运输类型的显示效果
+		if(type == '整车'){
 			$("#select1_1").click(); 
 		}
-		if(carBase == '集装箱'){
-			$("#select1_3").click(); 
-		}
-		if(carBase == '平板'){
+		if(type == '零担'){
 			$("#select1_2").click(); 
 		}
-		if(carLength =='10米'){
-			$("#select2_1").click();
-		}
-		if(carLength =='12米'){
-			$("#select2_2").click();
-		}
-		if(carLength =='14米'){
-			$("#select2_3").click();
-		}
-		if(carWeight == '8吨'){
-			$("#select3_1").click();
-		}
-		if(carWeight == '16吨'){
-			$("#select3_3").click();		
-		}
-		if(carWeight == '20吨'){
-			$("#select3_4").click();
-		}
-
-
 		$("#btn1").click();
 		return false;
 	}
@@ -547,45 +527,37 @@ function loadXMLDoc(id)
 		});
 }
 
-//车辆筛选
-function getSelectedLesstruckloadAjax(startCity,endCity,carrierId,onwayType,offerReturn,stanPrice1,stanPrice2,relDate,display,currentPage){
+//零担筛选
+function getSelectedLineAjax(startCity,endCity,onwayTime,offerReturn,display,currentPage){
       var url="getSelectedLesstruckloadAjax";
 	  $.post(url,{
 		  startCity:startCity,
 		  endCity:endCity,
-		  onwayType:onwayTape,
+		  onwayTime:onwayTime,
 		  offerReturn:offerReturn,
-		  stanPrice1:stanPrice1,
-		  stanPrice2:stanPrice2,
-		  relDate:relDate,
 		  display:display,
 		  currentPage:currentPage},
 	  function(data,status){
 			  //alert(data);
 			  $("#testbody").empty();
 		for(var i=0; i<data.length; i++) {
-			$("#testbody").append("<tr>");
-			$("#testbody").append("<td class=\"td_main_list_content\"></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?startCity="+data[i].startCity+"&flag=0\" hidefocus=\"true\"></a></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?endCity="+data[i].endCity+"&flag=0\" hidefocus=\"true\"></a></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carrierId+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>");
-/* 			if(data[i].onwayTime == undefined){
-				$("#testbody").append("<td class=\"td_main_list_content\">--</td>");
+			var str="<tr>";
+			str+="<td class=\"td_main_list_content\"></td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>"+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>";
+			str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>"
+			if(data[i].status == "有效"){
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
 			}else{
-				$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].carLocation+"</td>");
-			} */
-			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
-			if(data[i].status == "有效")
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-			else
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-			$("#testbody").append("</tr>");
-			
-			
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
+			}
+			str+="</tr>";
+			 $("#testbody").append(str);
 		}
 	  },"json");
 }
@@ -595,17 +567,14 @@ function renderTime(date){
 	return da.getFullYear()+"-"+ (da.getMonth()+1)+"-" +da.getDate(); 
 } 
 
-//获取所有车辆筛选的总条数
-function getSelectedLesstruckloadTotalRows(startCity,endCity,carrierId,onwayType,offerReturn,stanPrice1,stanPrice2,relDate,display,currentPage){
+//获取所有零担筛选的总条数
+function getSelectedLesstruckloadTotalRows(startCity,endCity,onwayTime,offerReturn,display,currentPage){
 	var url="getSelectedLesstruckloadTotalRowsAjax";
 	  $.post(url,{
 		  startCity:startCity,
 		  endCity:endCity,
-		  onwayType:onwayTape,
+		  onwayTime:onwayTime,
 		  offerReturn:offerReturn,
-		  stanPrice1:stanPrice1,
-		  stanPrice2:stanPrice2,
-		  relDate:relDate,
 		  display:display,
 		  currentPage:currentPage},
 	  function(data,status){
