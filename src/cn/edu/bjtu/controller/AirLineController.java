@@ -25,6 +25,7 @@ import cn.edu.bjtu.service.CommentService;
 import cn.edu.bjtu.service.CompanyService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
@@ -146,6 +147,39 @@ public class AirLineController {
 			HttpServletRequest request) {
 		boolean flag=airlineService.insertNewAirLine(airline,request,file);
 		return "redirect:airline?flag=1";
+	}
+	
+	/**
+	 * 更新国内空运资源信息
+	 * @param line
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="updateairline",method=RequestMethod.POST)
+	public String updateLinetransport(AirLine airline,MultipartFile file,HttpServletRequest request) {
+		boolean flag = airlineService.updateAirLine(airline,request,file);
+		return "redirect:airline?flag=1";
+	}
+	
+	/**
+	 * 删除国内空运资源
+	 */
+	@RequestMapping(value = "airlinedelete", method = RequestMethod.GET)
+	public String deleteLine(@RequestParam String id,// GET方式传入，在action中
+			HttpServletRequest request, HttpServletResponse response) {
+		airlineService.deleteairline(id);
+		return "redirect:airline?flag=1";
+
+	}
+	
+	@RequestMapping(value = "downloadairlinedetailprice", method = RequestMethod.GET)
+	public ModelAndView downloadAirLineDetailPrice(@RequestParam String id,// GET方式传入，在action中
+			HttpServletRequest request, HttpServletResponse response) {
+		AirLine airlineInfo = airlineService.getAirLineInfo(id); // 需要重构,返回一条具体的线路不是list
+			String file = airlineInfo.getPicture();
+			DownloadFile.downloadFile(file,request,response);
+		return mv;
+
 	}
 
 }

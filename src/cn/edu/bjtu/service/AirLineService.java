@@ -33,4 +33,8 @@ public interface AirLineService {
 	public JSONArray getAirLineResource(HttpSession session,PageUtil pageUtil);
 	
 	public boolean insertNewAirLine(AirLine airline,HttpServletRequest request, MultipartFile file);
+	
+	public boolean updateAirLine(AirLine airline,HttpServletRequest request,MultipartFile file);
+	
+	public boolean deleteairline(String id);
 }

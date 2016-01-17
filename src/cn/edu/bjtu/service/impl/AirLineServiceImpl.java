@@ -33,7 +33,6 @@ import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
-import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq
@@ -201,6 +200,45 @@ public class AirLineServiceImpl implements AirLineService {
 		//设置文件位置 
 		airline.setPicture(fileLocation);
 		airlineDao.save(airline);// 保存实体
+		return true;
+	}
+
+	@Override
+	public boolean updateAirLine(AirLine airline, HttpServletRequest request, MultipartFile file) {
+		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
+		//保存文件
+		String fileLocation=UploadFile.uploadFile(file, carrierId, "airline");
+
+		AirLine airlineInstance = airlineDao.get(AirLine.class,airline.getId());
+		airlineInstance.setStartCity(airline.getStartCity());
+		airlineInstance.setEndCity(airline.getEndCity());
+		airlineInstance.setOnwayTime(airline.getOnwayTime());
+		airlineInstance.setPrice1(airline.getPrice1());
+		airlineInstance.setPrice2(airline.getPrice2());
+		airlineInstance.setPrice3(airline.getPrice3());
+		airlineInstance.setPrice4(airline.getPrice4());
+		airlineInstance.setPrice5(airline.getPrice5());
+		airlineInstance.setPickFee(airline.getPickFee());
+		airlineInstance.setDeliveryFee(airline.getDeliveryFee());
+		airlineInstance.setExtraService(airline.getExtraService());
+		airlineInstance.setRemarks(airline.getRemarks());
+		
+		
+		//设置文件位置 
+		airlineInstance.setPicture(fileLocation);
+
+		//更新
+		airlineDao.update(airlineInstance);
+		return true;
+	}
+
+	@Override
+	public boolean deleteairline(String id) {
+		AirLine airline = getAirLineInfo(id);
+	    airlineDao.delete(airline);
+	    //把此关注表中的此资源信息设置为失效
+		
+	    focusService.setInvalid(id);
 		return true;
 	}
 }
