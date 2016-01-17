@@ -5,10 +5,10 @@
                     <div id="mgmt_nav2" class="div_mgmt_show1">
                     <% if((Integer)session.getAttribute("userKind") ==3) {%><!-- 企业用户 -->
                         <a href="fulltruckload?flag=1&Display=10&PageNow=1" class="a_mgmt_leftnav" hidefocus="true">整车资源信息</a>
-                        <a href="car?flag=1" class="a_mgmt_leftnav" hidefocus="true">零担资源信息</a>
+                        <a href="lesstruckload?flag=1" class="a_mgmt_leftnav" hidefocus="true">零担资源信息</a>
                         <a href="cityline?flag=1" class="a_mgmt_leftnav" hidefocus="true">落地配资源信息</a><!-- 原来是城市配送网络信息 -->
                         <a href="car?flag=1" class="a_mgmt_leftnav" hidefocus="true">车辆资源信息</a>
-                        <a href="" class="a_mgmt_leftnav" hidefocus="true">国内空运资源信息</a>
+                        <a href="airline?flag=1" class="a_mgmt_leftnav" hidefocus="true">国内空运资源信息</a>
                         <a href="warehouse?flag=1" class="a_mgmt_leftnav" hidefocus="true">仓库资源信息</a>
 						<a href="driver?flag=1" class="a_mgmt_leftnav" hidefocus="true">司机资源信息</a>
 						<%} %>
