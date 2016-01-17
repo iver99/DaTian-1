@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.edu.bjtu.controller;
 
 import java.util.List;
@@ -28,6 +25,7 @@ import cn.edu.bjtu.service.CompanyService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.FullTruckLoadService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
@@ -179,6 +177,20 @@ public class FullTruckController {
 			HttpServletRequest request) {
 		boolean flag = fulltruckloadService.updateFullTruckLoad(truck,request,file);
 		return "redirect:fulltruckload?flag=1";
+	}
+	
+	/**
+	 * 图片展示下载
+	 */
+	@RequestMapping(value="downloadfulltruckloaddetailprice", method = RequestMethod.GET)
+	public ModelAndView downloadDetailPrice(@RequestParam String id,// GET方式传入，在action中
+			HttpServletRequest request, HttpServletResponse response) {
+		Truck truckInfo = fulltruckloadService.getfulltruckloadInfo(id); // 需要重构,返回一条具体的线路不是list
+		String file = truckInfo.getPicture();
+		DownloadFile.downloadFile(file,request,response);
+		
+		return mv;
+
 	}
 
 

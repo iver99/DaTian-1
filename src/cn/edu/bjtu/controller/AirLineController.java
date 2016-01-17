@@ -25,6 +25,7 @@ import cn.edu.bjtu.service.CommentService;
 import cn.edu.bjtu.service.CompanyService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
@@ -168,6 +169,16 @@ public class AirLineController {
 			HttpServletRequest request, HttpServletResponse response) {
 		airlineService.deleteairline(id);
 		return "redirect:airline?flag=1";
+
+	}
+	
+	@RequestMapping(value = "downloadairlinedetailprice", method = RequestMethod.GET)
+	public ModelAndView downloadAirLineDetailPrice(@RequestParam String id,// GET方式传入，在action中
+			HttpServletRequest request, HttpServletResponse response) {
+		AirLine airlineInfo = airlineService.getAirLineInfo(id); // 需要重构,返回一条具体的线路不是list
+			String file = airlineInfo.getPicture();
+			DownloadFile.downloadFile(file,request,response);
+		return mv;
 
 	}
 

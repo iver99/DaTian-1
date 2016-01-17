@@ -107,7 +107,7 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
-                                    <td><a href="downloadlinedetailprice?id=${linetransportInfo.id }" hidefocus="true"><img src="images/btn_filetype1.png" /></a></td>
+                                    <td><a href="downloadairlinedetailprice?id=${airlineInfo.id }" hidefocus="true"><img src="images/btn_filetype1.png" /></a></td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">补充信息：</td>
