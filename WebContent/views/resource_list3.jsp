@@ -326,25 +326,25 @@
 			src="footer.jsp"></iframe>
 	</div>
 </body>
-<script type="text/javascript">
+<script type="text/javascript" charset="utf-8">
 function OnLoad() {
 	//Rescreen();
 	loadFocus();
 	if(checkSearch()){
-		if(checkRecommend()){
+		if(checkFind){
 			var display = $("#display").val();
 			var currentPage = $("#currentPage").val();
 		getSelectedLineAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
-		getSelectedLesstruckloadTotalRows("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedLesstruckloadTotalRows("中文或拼音","中文或拼音","All","All",display,currentPage); 
 			
 		}
 	}
-	
-	//检查是否需要执行搜索功能
-	checkSearch();
+/* 	检查是否需要执行搜索功能   上面if语句和js已经判断是否执行，故无用
+
+	checkSearch();  */
 }
 //用于上方下拉页的链接
-function checkRecommend(){
+function checkFind(){
 	var paraStr=window.location.search;
 	paraStr=UrlDecode(paraStr);//汉字解析
 	if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0 || paraStr.indexOf("type")){//参数串中存在搜索信息

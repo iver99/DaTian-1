@@ -52,7 +52,7 @@ public class LesstruckloadController {
 	 */
 	@RequestMapping(value="getSelectedLesstruckloadAjax",produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String getCarSelected(TruckBean truckBean,PageUtil pageUtil,HttpSession session){
+	public String getSelectedLesstruckloadAjax(TruckBean truckBean,PageUtil pageUtil,HttpSession session){
 		
 		System.out.println("方法进来了");
 		
