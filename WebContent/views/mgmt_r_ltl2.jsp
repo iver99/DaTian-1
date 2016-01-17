@@ -85,9 +85,9 @@
                                     <td height="40" class="td_mgmt_right3_td1b">提供回程：</td>
                                     <td>
                                         <select id="" name="offerReturn" style="width:120px;" required>
-                                            <option value="" >请选择</option>
+                                            <option value=""  selected="selected">请选择</option>
                                             <option value="有">有</option>
-                                            <option value="无" selected="selected">无</option>
+                                            <option value="无">无</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -178,10 +178,6 @@
 				city1 : "required",
 				city2 : "required",
 				onwayTime : {
-					required : true,
-					number : true
-				},
-				carLength : {
 					required : true,
 					number : true
 				},
