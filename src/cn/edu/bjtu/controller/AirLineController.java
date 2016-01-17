@@ -29,6 +29,7 @@ import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
+import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq
@@ -145,6 +146,18 @@ public class AirLineController {
 	public String insertNewLinetransport(AirLine airline,MultipartFile file,
 			HttpServletRequest request) {
 		boolean flag=airlineService.insertNewAirLine(airline,request,file);
+		return "redirect:airline?flag=1";
+	}
+	
+	/**
+	 * 更新国内空运资源信息
+	 * @param line
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="updateairline",method=RequestMethod.POST)
+	public String updateLinetransport(AirLine airline,MultipartFile file,HttpServletRequest request) {
+		boolean flag = airlineService.updateAirLine(airline,request,file);
 		return "redirect:airline?flag=1";
 	}
 

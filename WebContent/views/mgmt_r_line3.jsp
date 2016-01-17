@@ -110,9 +110,9 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">增值服务：</td>
                                     <td>
                                         <select id="valueadd" style="width:120px;" onchange="change1();">
-                                            <option value="" selected="selected">请选择</option>
+                                            <option value="" >请选择</option>
                                             <option value="A">有</option>
-                                            <option value="B">无</option>
+                                            <option value="B" selected="selected">无</option>
                                         </select>
                                         <div id="v_detail" style="display:none;">
                                             <input type="text" name="extraService" class="input_mgmt1" style="width:176px;" placeholder="请输入内容..." />
