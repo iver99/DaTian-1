@@ -20,4 +20,12 @@ public interface AirLineService {
 	public JSONArray getSelectedAirLineNew(AirLineSearchBean airlineBean, PageUtil pageUtil, HttpSession session);
     
 	public AirLine getAirLineInfo(String airrlineId);
+	
+	/**
+	 * 我的信息-我的国内空运资源
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
+	public JSONArray getAirLineResource(HttpSession session,PageUtil pageUtil);
 }

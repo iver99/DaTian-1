@@ -12,6 +12,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,7 @@ import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
+import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq
@@ -162,4 +164,23 @@ public class AirLineServiceImpl implements AirLineService {
 		return airlineDao.get(AirLine.class, airrlineId);
 	}
 
+	@Override
+	public JSONArray getAirLineResource(HttpSession session, PageUtil pageUtil) {
+		String carrierId=(String)session.getAttribute(Constant.USER_ID);
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("carrierId", carrierId);
+		String hql="from AirLine  where carrierId=:carrierId order by relDate desc";
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<AirLine> list=airlineDao.find(hql, params,page,display);
+		
+		JSONArray jsonArray=new JSONArray();
+		for(int i=0;i<list.size();i++){
+			AirLine airline=new AirLine();
+			BeanUtils.copyProperties(list.get(i), airline);
+			JSONObject jsonObject=(JSONObject)JSONObject.toJSON(airline);
+			jsonArray.add(jsonObject);
+		}
+		return jsonArray;
+	}
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>整车资源信息</title>
+<title>国内空运资源信息</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -55,7 +55,7 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0"
 			class="table_mgmt_right2">
 			<tr>
-				<td><span class="span_mgmt_right2_text1">整车资源信息</span> <span
+				<td><span class="span_mgmt_right2_text1">国内空运资源信息</span> <span
 					class="span_mgmt_right2_text2"><a href="insert?flag=1"
 						hidefocus="true"><img src="images/btn_add1.png"
 							class="span_mgmt_right2_pic1" title="添加" /></a></span></td>
@@ -77,17 +77,20 @@
 			<thead id="thead">
 			   <tr>
 				<td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
-				<td width="70" class="td_mgmt_right3_head">始发城市</td>
-				<td width="70" class="td_mgmt_right3_head">到达城市</td>
-				<td width="55" class="td_mgmt_right3_head">时限<br>小时</td>
-				<td class="td_mgmt_right3_head">厢型</td>
-				<td width="55" class="td_mgmt_right3_head">提供<br>回程</td>
-				<td width="75" class="td_mgmt_right3_head">标准报价<br>(元/吨)</td>
-                <td width="75" class="td_mgmt_right3_head">标准报价<br>(元/方)</td>
-                <td width="55" class="td_mgmt_right3_head">提货费<br>(元)</td>
-                <td width="55" class="td_mgmt_right3_head">送货费<br>(元)</td>
-                <td width="80" class="td_mgmt_right3_head">发布日期</td>
-                <td width="80" class="td_mgmt_right3_head">操作</td>
+				<td width="70" class="td_mgmt_right3_head">始发港</td>
+                        <td width="70" class="td_mgmt_right3_head">目的港</td>
+                        <td class="td_mgmt_right3_head">抵运时间<br />(小时)</td>
+                        <td width="60" class="td_mgmt_right3_head">M</td>
+                        <td width="60" class="td_mgmt_right3_head">N</td>
+                        <td width="60" class="td_mgmt_right3_head">+100</td>
+                        <td width="60" class="td_mgmt_right3_head">+300</td>
+                        <td width="60" class="td_mgmt_right3_head">+500</td>
+                        <td width="55" class="td_mgmt_right3_head">提货费<br />
+                            (元)</td>
+                        <td width="55" class="td_mgmt_right3_head">送货费<br />
+                            (元)</td>
+                        <td width="80" class="td_mgmt_right3_head">发布日期</td>
+                        <td width="80" class="td_mgmt_right3_head">操作</td>
 			</tr>
 			</thead>
 			<tbody id="result_body">
@@ -130,14 +133,14 @@
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
 		//alert(display+"-"+currentPage)
-		//加载用户干线资源
-		getUserFullTruckLoadResource(display,currentPage);
+		//加载国内空运资源
+		getAirLineResource(display,currentPage);
 		getUserFullTruckLoadResourceTotalRows(display,currentPage);
 	}
 	
-//加载干线资源
-function getUserFullTruckLoadResource(display,currentPage){
-	var url="getUserFullTruckLoadResourceAjax";
+//加载国内空运资源
+function getAirLineResource(display,currentPage){
+	var url="getAirLineResourceAjax";
 	$.ajax({
 		url:url,
 		data:{
@@ -153,13 +156,14 @@ function getUserFullTruckLoadResource(display,currentPage){
 			   for(var i=0;i<data.length;i++){
 				   		var str="<tr>";
 				   		str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"airlinedetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\"><a href=\"airlinedetail?truckId="+data[i].id+"&carrierId=0&flag=1\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].onwayTime+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carType+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].offerReturn+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].stanPrice1+"</td>";
-				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].stanPrice2+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].price1+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].price2+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].price3+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].price4+"</td>";
+				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].price5+"</td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].pickFee+"</td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+data[i].deliveryFee+"</td>";
 				   		str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>";
@@ -168,10 +172,10 @@ function getUserFullTruckLoadResource(display,currentPage){
 						str+="<ul class=\"quickmenu\">";
 						str+="<li class=\"menuitem\">";
 						str+="<div class=\"menu\">";
-						str+="<a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId=0&flag=2\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
+						str+="<a href=\"airlinedetail?airlineId="+data[i].id+"&carrierId=0&flag=2\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
 						str+="<div class=\"menubd\">";
 						str+="<div class=\"menubdpanel\">";
-						str+="<a href=\"fulltruckloaddelete?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
+						str+="<a href=\"airlinedelete?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
 						str+="</div></div></div></li></ul></div></td></tr>";
 						
 						body.append(str);

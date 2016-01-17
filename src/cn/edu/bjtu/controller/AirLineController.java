@@ -47,6 +47,7 @@ public class AirLineController {
 	CommentService commentService;
 	
 	ModelAndView mv = new ModelAndView();
+	
 	/**
      * 资源栏所有空运信息
      * @return
@@ -58,14 +59,22 @@ public class AirLineController {
 	}
 	
 	/**
+     * 资源栏所有空运信息
+     * @return
+     */
+	@RequestMapping(value="/airline",params="flag=1")
+	public String getAllAirLine(){
+		return "mgmt_r_airline";
+		
+	}
+	
+	/**
 	 * 资源栏空运筛选
 	 * @return
 	 */
 	@RequestMapping(value="airlineAjax",produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String sirlineAjax(AirLineSearchBean airlineBean,
-			PageUtil page, HttpSession session, HttpServletResponse response,
-			Model model){
+	public String airlineAjax(AirLineSearchBean airlineBean,PageUtil page, HttpSession session, HttpServletResponse response,Model model){
 		JSONArray airlineArray = airlineService.getSelectedAirLineNew(airlineBean, page, session);
 		return airlineArray.toString();	
 	}
@@ -108,6 +117,21 @@ public class AirLineController {
 			mv.setViewName("mgmt_r_airline3");
 			}
 		return mv;
+	}
+	
+	/**
+	 * 我的信息-整车资源 
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
+	@RequestMapping(value="getAirLineResourceAjax",produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String getAirLineResource(HttpSession session,PageUtil pageUtil) {
+		
+		JSONArray jsonArray=airlineService.getAirLineResource(session,pageUtil);
+		
+		return jsonArray.toString();
 	}
 
 }

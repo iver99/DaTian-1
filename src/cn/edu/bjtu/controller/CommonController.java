@@ -66,7 +66,7 @@ public class CommonController {
 		if (flag == 1)
 			mv.setViewName("mgmt_r_line2");// 整车
 		else if (flag == 2)
-			mv.setViewName("mgmt_r_city2");// 城市配送
+			mv.setViewName("mgmt_r_city2");// 落地配
 		else if (flag == 3){
 			String carrierId=(String)request.getSession().getAttribute(Constant.USER_ID);
 			List driverList = driverService.getAllDriver(carrierId);

@@ -132,7 +132,6 @@ public class FullTruckController {
 	/**
 	 * 我的信息-整车资源 
 	 * @param session
-	 * @param lineBean
 	 * @param pageUtil
 	 * @return
 	 */
