@@ -11,6 +11,14 @@ import java.util.Date;
 public class IdCreator {
 	
 	/**
+	 * 返回AirLineID
+	 * @return
+	 */
+	public static String createAirLineId(){
+		return "AI" + (int)(Math.random() * 100000000);
+	}
+	
+	/**
 	 * 返回整车或者零担ID
 	 * @return
 	 */
