@@ -33,7 +33,6 @@ import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
-import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq

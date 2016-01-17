@@ -31,7 +31,6 @@ import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
-import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.Truck;
 
 /**
