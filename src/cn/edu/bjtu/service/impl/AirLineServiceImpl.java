@@ -10,12 +10,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -26,7 +28,9 @@ import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.service.AirLineService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Truck;
@@ -182,5 +186,21 @@ public class AirLineServiceImpl implements AirLineService {
 			jsonArray.add(jsonObject);
 		}
 		return jsonArray;
+	}
+
+	@Override
+	public boolean insertNewAirLine(AirLine airline, HttpServletRequest request, MultipartFile file) {
+		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
+		//保存文件
+		String fileLocation=UploadFile.uploadFile(file, carrierId, "airline");
+		
+		airline.setRelDate(new Date());
+		airline.setCarrierId(carrierId);
+		airline.setId(IdCreator.createAirLineId());
+		
+		//设置文件位置 
+		airline.setPicture(fileLocation);
+		airlineDao.save(airline);// 保存实体
+		return true;
 	}
 }

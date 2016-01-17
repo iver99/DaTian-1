@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -28,7 +29,6 @@ import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
-import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq
@@ -132,6 +132,20 @@ public class AirLineController {
 		JSONArray jsonArray=airlineService.getAirLineResource(session,pageUtil);
 		
 		return jsonArray.toString();
+	}
+	
+	/**
+	 * 新增国内空运资源
+	 * @param line
+	 * @param file
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "insertairline", method = RequestMethod.POST)
+	public String insertNewLinetransport(AirLine airline,MultipartFile file,
+			HttpServletRequest request) {
+		boolean flag=airlineService.insertNewAirLine(airline,request,file);
+		return "redirect:airline?flag=1";
 	}
 
 }

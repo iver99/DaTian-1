@@ -91,6 +91,8 @@ public class CommonController {
 			mv.setViewName("mgmt_r_cargo2");//货物 
 		else if (flag == 10)
 			mv.setViewName("mgmt_r_car_fleet2");//车队
+		else if(flag == 11)
+			mv.setViewName("mgmt_r_airline2");//国内空运
 		return mv;
 	}
 	

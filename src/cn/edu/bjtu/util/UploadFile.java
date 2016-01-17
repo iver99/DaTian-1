@@ -47,6 +47,8 @@ public class UploadFile {
 			path = UploadPath.getComplaintPath();
 		} else if("fulltruckload".equals(fileType)){
 			path = UploadPath.getFullTruckLoadPath();
+		} else if("airline".equals(fileType)){
+			path = UploadPath.getAirLinePath();
 		}
 		
 		if (file.getSize() != 0)// 有上传文件的情况

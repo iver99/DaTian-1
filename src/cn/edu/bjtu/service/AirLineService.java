@@ -3,7 +3,10 @@
  */
 package cn.edu.bjtu.service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONArray;
 
@@ -28,4 +31,6 @@ public interface AirLineService {
 	 * @return
 	 */
 	public JSONArray getAirLineResource(HttpSession session,PageUtil pageUtil);
+	
+	public boolean insertNewAirLine(AirLine airline,HttpServletRequest request, MultipartFile file);
 }

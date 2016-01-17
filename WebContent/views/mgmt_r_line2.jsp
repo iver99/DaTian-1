@@ -93,7 +93,7 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">车长：</td>
-                                    <td><input type="text" class="input_mgmt1" name="carLength" style="width:112px;" required/>
+                                    <td><input type="text" class="input_mgmt1" id="carLength" name="carLength" style="width:112px;" required/>
                                     (米)</td>
                                 </tr>
                                 <tr>
@@ -110,9 +110,9 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">增值服务：</td>
                                     <td>
                                         <select id="valueadd" style="width:120px;" onchange="change1();">
-                                            <option value="" selected="selected">请选择</option>
+                                            <option value="" >请选择</option>
                                             <option value="A">有</option>
-                                            <option value="B">无</option>
+                                            <option value="B" selected="selected">无</option>
                                         </select>
                                         <div id="v_detail" style="display:none;">
                                             <input type="text" name="extraService" class="input_mgmt1" style="width:176px;" placeholder="请输入内容..." />
@@ -121,22 +121,22 @@
                                 </tr>
                                <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
-                                    <td><input type="text" name="stanPrice1" class="input_mgmt1" style="width:112px;" required/>
+                                    <td><input type="text" name="stanPrice1" id="stanPrice1" class="input_mgmt1" style="width:112px;" required/>
                                     (元/吨)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
-                                    <td><input type="text" name="stanPrice2" class="input_mgmt1" style="width:112px;" required/>
+                                    <td><input type="text" name="stanPrice2" id="stanPrice2" class="input_mgmt1" style="width:112px;" required/>
                                     (元/方)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">提货费：</td>
-                                    <td><input type="text" name="pickFee" class="input_mgmt1" style="width:112px;" required/>
+                                    <td><input type="text" name="pickFee" id="pickFee" class="input_mgmt1" style="width:112px;" required/>
                                     (元)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">送货费：</td>
-                                    <td><input type="text" name="deliveryFee" class="input_mgmt1" style="width:112px;" />
+                                    <td><input type="text" name="deliveryFee" id="deliveryFee" class="input_mgmt1" style="width:112px;" required/>
                                     (元)</td>
                                 </tr>
 								<tr>
@@ -187,23 +187,38 @@
 	
 	
 	function formValidate() {
-		$("#insertLine").validate({
+		$("#insertfulltruckload").validate({
 			rules : {
-				lineName : "required",
 				city1 : "required",
 				city2 : "required",
-				onWayTime : {
+				onwayTime : {
 					required : true,
 					number : true
 				},
-				type : {
+				carLength : {
+					required : true,
+					number : true
+				},
+				stanPrice1 : {
+					required : true,
+					number : true
+				},
+				stanPrice2 : {
+					required : true,
+					number : true
+				},
+				pickFee : {
+					required : true,
+					number : true
+				},
+				deliveryFee : {
+					required : true,
+					number : true
+				},
+				/* type : {
 					required : true,
 					minlength : 1
-				},
-				refPrice : {
-					required : true,
-					number : true
-				},
+				}, */
 				remarks : "required"
 
 			}

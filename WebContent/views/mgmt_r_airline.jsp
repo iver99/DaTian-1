@@ -56,7 +56,7 @@
 			class="table_mgmt_right2">
 			<tr>
 				<td><span class="span_mgmt_right2_text1">国内空运资源信息</span> <span
-					class="span_mgmt_right2_text2"><a href="insert?flag=1"
+					class="span_mgmt_right2_text2"><a href="insert?flag=11"
 						hidefocus="true"><img src="images/btn_add1.png"
 							class="span_mgmt_right2_pic1" title="添加" /></a></span></td>
 			</tr>

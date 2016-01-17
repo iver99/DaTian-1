@@ -79,7 +79,7 @@
 				<td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
 				<td width="70" class="td_mgmt_right3_head">始发城市</td>
 				<td width="70" class="td_mgmt_right3_head">到达城市</td>
-				<td width="55" class="td_mgmt_right3_head">时限<br>小时</td>
+				<td width="55" class="td_mgmt_right3_head">时限<br>(小时)</td>
 				<td class="td_mgmt_right3_head">厢型</td>
 				<td width="55" class="td_mgmt_right3_head">提供<br>回程</td>
 				<td width="75" class="td_mgmt_right3_head">标准报价<br>(元/吨)</td>
