@@ -170,13 +170,13 @@
 <script type="text/javascript" charset="utf-8">
 	function OnLoad() {
 		loadFocus();
-		if(checkSearch()){//返回true执行if,返回false执行上方搜索
-			if(checkFind()){//返回trye执行if，返回false执行首页查询
+		if(true){//返回true执行if,返回false执行上方搜索  checkSearch()
+			if(true){//返回trye执行if，返回false执行首页查询  checkFind()
 				var display=$("#display").val();
 				var currentPage=$("#currentPage").val();
-			getSelectedLineAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-			getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-			}
+			getSelectedFullTruckLoadAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+			/* getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage); */
+			} 
 		}
 		//首页的查询功能
 		//checkFind();
@@ -264,7 +264,7 @@ function loadXMLDoc(id)
 }
 
 //整车筛选
-function getSelectedLineAjax(startCity,
+function getSelectedFullTruckLoadAjax(startCity,
 		endCity,
 		carLength,
 		carType,
