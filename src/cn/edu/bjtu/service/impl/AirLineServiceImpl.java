@@ -26,6 +26,7 @@ import cn.edu.bjtu.service.AirLineService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
 
 /**
@@ -153,6 +154,12 @@ public class AirLineServiceImpl implements AirLineService {
 			}
 		}
 		return wheresql;
+	}
+
+	@Override
+	public AirLine getAirLineInfo(String airrlineId) {
+		
+		return airlineDao.get(AirLine.class, airrlineId);
 	}
 
 }

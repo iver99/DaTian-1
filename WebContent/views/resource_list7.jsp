@@ -162,7 +162,7 @@
 				var display=$("#display").val();
 				var currentPage=$("#currentPage").val();
 			getSelectedAirLineAjax("中文或拼音","中文或拼音","All",display,currentPage);
-			/* getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage); */
+			getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage); 
 			}
 		}
 		//首页的查询功能
@@ -266,14 +266,16 @@ function getSelectedAirLineAjax(startCity,endCity,onwayTime,display,currentPage)
 		for(var i=0; i<data.length; i++) {
 			var str="<tr>";
 			str+="<td class=\"td_main_list_content\"></td>";
-			str+="<td class=\"td_main_list_content\">"+"<a href=\"fulltruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].endCity+"</td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"airlinedetail?airlineId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
+			str+="<td class=\"td_main_list_content\">"+"<a href=\"airlinedetail?airlineId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
 			str+="<td class=\"td_main_list_content\">"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].carType+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].price1+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].price2+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].price3+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].price4+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].price5+"</td>";
+			str+="<td class=\"td_main_list_content\">"+"航班"+"</td>";
 			str+="<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>";
 			str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>"
 			if(data[i].status == "有效"){
 				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";

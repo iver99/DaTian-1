@@ -54,9 +54,9 @@
                 <br />
                 车长：<span class="text_detail_title2">${truckInfo.carLength }米</span>
                 <br />
-                标准报价：<span class="text_detail_title2">${truckInfo.stanPrice1 }元/吨</span>
+                标准报价：<span class="text_detail_title2">${truckInfo.stanPrice1 }元/吨、${truckInfo.stanPrice2 }元/方</span>
                 <br />
-                提货费：<span class="text_detail_title2">${truckInfo.stanPrice2 }元/方</span>
+                提货费：<span class="text_detail_title2">${truckInfo.pickFee }元/方</span>
                 <br />
                 送货费：<span class="text_detail_title2">${truckInfo.deliveryFee }元</span>
                 <br />
