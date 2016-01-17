@@ -120,74 +120,74 @@ public class LesstruckloadController {
 			}
 		return mv;
 	}
-	/*
-	*//**
-	 * 我的信息-整车资源
+	
+	/**
+	 * 我的信息-零担资源，导航栏跳转
 	 * @param flag
 	 * @param page
 	 * @param session
 	 * @return
-	 *//*
+	 */
 	@RequestMapping(value="/lesstruckload",params="flag=1")
 	public String getAllLessTruckLoad(@RequestParam int flag,
 			PageUtil page, HttpSession session) {
-		return "mgmt_r_line";
+		return "mgmt_r_ltl";
 	}
 	
-	*//**
-	 * 我的信息-整车资源 
+	/**
+	 * 我的信息-零担资源， 显示资源
 	 * @param session
 	 * @param lineBean
 	 * @param pageUtil
 	 * @return
-	 *//*
-	@RequestMapping(value="getUserFullTruckLoadResourceAjax",produces="text/html;charset=UTF-8")
+	 */
+	@RequestMapping(value="getUserLessTruckLoadResourceAjax",produces="text/html;charset=UTF-8")
 	@ResponseBody
-	public String getUserFullTruckLoadResource(HttpSession session,PageUtil pageUtil) {
+	public String getUserLessTruckLoadResource(HttpSession session,PageUtil pageUtil) {
 		
 		JSONArray jsonArray=LesstruckloadService.getUserLesstruckloadResource(session,pageUtil);
 		
 		return jsonArray.toString();
 	}
 	
-	*//**
+	/**
 	 * 新增整车资源
 	 * @param line
 	 * @param file
 	 * @param request
 	 * @return
-	 *//*
-	@RequestMapping(value = "insertfulltruckload", method = RequestMethod.POST)
+	 */
+	@RequestMapping(value = "insertlesstruckload", method = RequestMethod.POST)
 	public String insertNewLinetransport(Truck truck,MultipartFile file,
 			HttpServletRequest request) {
 		boolean flag=LesstruckloadService.insertNewLesstruckload(truck,request,file);
-		return "redirect:fulltruckload?flag=1";
+		return "redirect:lesstruckload?flag=1";
 	}
 	
-	*//**
+	/**
 	 * 删除整车资源
-	 *//*
+	 */
 	@RequestMapping(value = "lesstruckloaddelete", method = RequestMethod.GET)
 	public String deleteLine(@RequestParam String id,// GET方式传入，在action中
 			HttpServletRequest request, HttpServletResponse response) {
 		LesstruckloadService.deleteLesstruckload(id);
-		return "redirect:fulltruckload?flag=1";
+		return "redirect:lesstruckload?flag=1";
 
 	}
 	
-	*//**
+	/**
 	 * 更新整车资源信息
 	 * @param line
 	 * @param request
 	 * @param response
-	 *//*
-	@RequestMapping(value="updatefulltruckload",method=RequestMethod.POST)
+	 */
+	@RequestMapping(value="updatelesstruckload",method=RequestMethod.POST)
 	public String updateLinetransport(Truck truck,MultipartFile file,
 			HttpServletRequest request) {
 		boolean flag = LesstruckloadService.updateLesstruckload(truck,request,file);
-		return "redirect:fulltruckload?flag=1";
+		return "redirect:lesstruckload?flag=1";
 	}
-*/
+
 
 }
 

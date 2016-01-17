@@ -1,6 +1,5 @@
 package cn.edu.bjtu.service;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,14 +23,14 @@ public interface LesstruckloadService {
 	public JSONArray getSelectedLesstruckloadNew(TruckBean truckBean,PageUtil pageUtil,HttpSession session);
 	
 	/**
-	 * 获取资源栏-零担筛选记录总条数（前台）
+	 * 获取资源栏-零担筛选记录总条数
 	 * @param truckBean
 	 * @return
 	 */
 	public Integer getSelectedLesstruckloadTotalRows(TruckBean truckBean);
 	
-/*	*//**
-	 * 我的信息-车辆信息-总记录条数(后台)
+	/**
+	 * 我的信息-零担信息-总记录条数
 	 * @Title: getUserCarResourceTotalRows 
 	 *  
 	 * @param: @param session
@@ -40,23 +39,23 @@ public interface LesstruckloadService {
 	 * @throws: 异常 
 	 * @author: chendonghao 
 	 * @date: 2015年7月3日 上午11:12:59
-	 *//*
-	public Integer getLesstruckloadResourceTotalRows(HttpSession session);
-*/
+	 */
+	/*public Integer getLesstruckloadResourceTotalRows(HttpSession session);*/
+
 	
 	public Truck getLesstruckloadInfo(String truckId);
 	
 	/**
-	 * 我的信息-我的资源-零担
+	 * 我的信息-零担资源-显示资源
 	 * @param session
 	 * @param pageUtil
 	 * @return
-	 *//*
+	 */
 	public JSONArray getUserLesstruckloadResource(HttpSession session,PageUtil pageUtil);
 	
 	public boolean insertNewLesstruckload(Truck truck,HttpServletRequest request, MultipartFile file);
 	
 	public boolean deleteLesstruckload(String id);
 	
-	public boolean updateLesstruckload(Truck truck,HttpServletRequest request,MultipartFile file);*/
+	public boolean updateLesstruckload(Truck truck,HttpServletRequest request,MultipartFile file);
 }

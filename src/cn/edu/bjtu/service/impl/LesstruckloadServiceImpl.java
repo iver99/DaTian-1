@@ -10,11 +10,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -25,7 +28,9 @@ import cn.edu.bjtu.dao.TruckDao;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Truck;
 
@@ -210,7 +215,7 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 
 
 		
-		/**
+/*		*//**
 		 * 我的信息-零担信息-总记录条数(后台，未修改)
 		 *//*
 		@Override
@@ -223,52 +228,91 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 			
 			return count.intValue();
 			
-		}
+		}*/
 
-		*//**
-		 * 我的信息-零担信息（后台，未修改）
-		 *//*
+		/**
+		 * 我的信息-零担信息，显示资源
+		 */
 		@Override
-		public JSONArray getUserCarResource(HttpSession session,PageUtil pageUtil) {
+		public JSONArray getUserLesstruckloadResource(HttpSession session, PageUtil pageUtil) {
 			String carrierId=(String)session.getAttribute(Constant.USER_ID);
-			String hql="from Carinfo t where t.carrierId=:carrierId order by t.relDate desc";
 			Map<String,Object> params=new HashMap<String,Object>();
 			params.put("carrierId", carrierId);
+			String hql="from Truck  where carrierId=:carrierId order by relDate desc";
 			int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
 			int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
-			List<Carinfo> carList=carDao.find(hql, params,page,display);
-			JSONArray jsonArray=new JSONArray();
-			for(Carinfo car:carList){
-				JSONObject jsonObject=(JSONObject)JSONObject.toJSON(car);
-				jsonArray.add(jsonObject);
-			}
+			List<Truck> list=truckDao.find(hql, params,page,display);
 			
+			JSONArray jsonArray=new JSONArray();
+			for(int i=0;i<list.size();i++){
+				Truck truckBean=new Truck();
+				BeanUtils.copyProperties(list.get(i), truckBean);
+				if(truckBean.getResourceType().equals("零担")){
+					JSONObject jsonObject=(JSONObject)JSONObject.toJSON(truckBean);
+					jsonArray.add(jsonObject);
+				}
+			}
 			return jsonArray;
 		}
-*/
-/*		
-		 * 获取公司车辆 资源
-		 * @see cn.edu.bjtu.service.CarService#getCompanyCarAjax(java.lang.String)
-		 
+		
+		//添加
 		@Override
-		public String getCompanyCarAjax(String carrierId) {
-			String hql = "from Carinfo t where t.carrierId=:carrierId order by t.relDate desc";
+		public boolean insertNewLesstruckload(Truck truck, HttpServletRequest request, MultipartFile file) {
+			String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
+			//保存文件
+			String fileLocation=UploadFile.uploadFile(file, carrierId, "lesstruckload");
+			
+			truck.setRelDate(new Date());
+			truck.setCarrierId(carrierId);
+			truck.setId(IdCreator.createTruckId());
+			truck.setResourceType("零担");
+			
+			//设置文件位置 
+			truck.setPicture(fileLocation);
+			truckDao.save(truck);// 保存实体
+			return true;
+		}
 
-			Map<String, Object> params = new HashMap<String, Object>();
+		@Override
+		public boolean deleteLesstruckload(String id) {
+		    Truck truck = getLesstruckloadInfo(id);
+		    truckDao.delete(truck);
+		    //把此关注表中的此干线信息设置为失效
+			
+		    focusService.setInvalid(id);
+			return true;
+		}
+		
+		//更新
+		@Override
+		public boolean updateLesstruckload(Truck truck, HttpServletRequest request, MultipartFile file) {
+			String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
+			//保存文件
+			String fileLocation=UploadFile.uploadFile(file, carrierId, "lesstruckload");
 
-			params.put("carrierId", carrierId);
+			Truck truckInstance = truckDao.get(Truck.class,truck.getId());
+			truckInstance.setStartCity(truck.getStartCity());
+			truckInstance.setEndCity(truck.getEndCity());
+			truckInstance.setOnwayTime(truck.getOnwayTime());
+			truckInstance.setCarType(truck.getCarType());
+			truckInstance.setCarLength(truck.getCarLength());
+			truckInstance.setStanPrice1(truck.getStanPrice1());
+			truckInstance.setStanPrice2(truck.getStanPrice2());
+			truckInstance.setPickFee(truck.getPickFee());
+			truckInstance.setDeliveryFee(truck.getDeliveryFee());
+			truckInstance.setOfferReturn(truck.getOfferReturn());
+			truckInstance.setExtraService(truck.getExtraService());
+			truckInstance.setRemarks(truck.getRemarks());
+			
+			
+			//设置文件位置 
+			truckInstance.setPicture(fileLocation);
 
-			List<Carinfo> carList = carDao.find(hql, params);
+			//更新
+			truckDao.update(truckInstance);
+			return true;
+		}
 
-			JSONArray jsonArray = new JSONArray();
-
-			for (Carinfo car : carList) {
-				JSONObject jsonObject = (JSONObject) JSONObject.toJSON(car);
-				jsonArray.add(jsonObject);
-			}
-
-			return jsonArray.toString();
-		}*/
 
 	}
 
