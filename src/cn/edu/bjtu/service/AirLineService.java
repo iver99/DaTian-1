@@ -35,4 +35,6 @@ public interface AirLineService {
 	public boolean insertNewAirLine(AirLine airline,HttpServletRequest request, MultipartFile file);
 	
 	public boolean updateAirLine(AirLine airline,HttpServletRequest request,MultipartFile file);
+	
+	public boolean deleteairline(String id);
 }

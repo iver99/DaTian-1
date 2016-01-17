@@ -232,4 +232,14 @@ public class AirLineServiceImpl implements AirLineService {
 		airlineDao.update(airlineInstance);
 		return true;
 	}
+
+	@Override
+	public boolean deleteairline(String id) {
+		AirLine airline = getAirLineInfo(id);
+	    airlineDao.delete(airline);
+	    //把此关注表中的此资源信息设置为失效
+		
+	    focusService.setInvalid(id);
+		return true;
+	}
 }

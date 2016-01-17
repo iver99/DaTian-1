@@ -29,7 +29,6 @@ import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
-import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq
@@ -159,6 +158,17 @@ public class AirLineController {
 	public String updateLinetransport(AirLine airline,MultipartFile file,HttpServletRequest request) {
 		boolean flag = airlineService.updateAirLine(airline,request,file);
 		return "redirect:airline?flag=1";
+	}
+	
+	/**
+	 * 删除国内空运资源
+	 */
+	@RequestMapping(value = "airlinedelete", method = RequestMethod.GET)
+	public String deleteLine(@RequestParam String id,// GET方式传入，在action中
+			HttpServletRequest request, HttpServletResponse response) {
+		airlineService.deleteairline(id);
+		return "redirect:airline?flag=1";
+
 	}
 
 }
