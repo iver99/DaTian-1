@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>整车资源信息</title>
+<title>国内空运资源信息</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -55,7 +55,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2a">
                     <tr>
                         <td>
-                            <span class="span_mgmt_right2_text1">添加整车信息</span>
+                            <span class="span_mgmt_right2_text1">添加国内空运资源信息</span>
                             <span class="span_mgmt_right2_text2"><a href="javascript:history.go(-1);" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
                         </td>
                     </tr>
@@ -64,45 +64,24 @@
                     <tr>
                         <td class="td_mgmt_right3_td1a"> 
                             <br />
-                            <form action="insertfulltruckload"  method="post" name="insertfulltruckload" id="insertfulltruckload" enctype="multipart/form-data">  	          
+                            <form action="insertairline"  method="post" name="insertairline" id="insertairline" enctype="multipart/form-data">  	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">始发城市：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">始发港：</td>
                                     <td id="cityselector"><input id="city1" type="text" value=""  name="startCity" class="input_city1" required/></td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">到达城市：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">到达港：</td>
                                     <td id="cityselector"><input id="city2" type="text" value="" name="endCity" class="input_city1" required/></td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运输时限：</td>
-                                    <td><input type="text" class="input_mgmt1" name="onwayTime" id="onwaytime" style="width:300px;" required/>
-                                    (小时)</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">厢型：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">抵运时间：</td>
                                     <td>
-                                        <select id="carType" name="carType" style="width:120px;" required>
+                                        <select id="onwayTime" name="onwayTime" style="width:120px;" required>
                                             <option value="" selected="selected">请选择</option>
-                                            <option value="高栏">高栏</option>
-                                            <option value="厢式">厢式</option>
-                                            <option value="平板">平板</option>
-                                            <option value="其他">其他</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">车长：</td>
-                                    <td><input type="text" class="input_mgmt1" id="carLength" name="carLength" style="width:112px;" required/>
-                                    (米)</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">提供回程：</td>
-                                    <td>
-                                        <select id="" name="offerReturn" style="width:120px;" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="有">有</option>
-                                            <option value="无">无</option>
+                                            <option value="12小时">12小时</option>
+                                            <option value="24小时">24小时</option>
+                                            <option value="48小时">48小时</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -119,15 +98,30 @@
                                         </div>
                                     </td>
                                 </tr>
-                               <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
-                                    <td><input type="text" name="stanPrice1" id="stanPrice1" class="input_mgmt1" style="width:112px;" required/>
-                                    (元/吨)</td>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">M：</td>
+                                    <td><input type="text" name="price1" id="price1" class="input_mgmt1" style="width:112px;" required/>
+                                    (元)</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
-                                    <td><input type="text" name="stanPrice2" id="stanPrice2" class="input_mgmt1" style="width:112px;" required/>
-                                    (元/方)</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">N：</td>
+                                    <td><input type="text" name="price2" id="price2" class="input_mgmt1" style="width:112px;" required/>
+                                    (元/公斤)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">+100：</td>
+                                    <td><input type="text" name="price3" id="price3" class="input_mgmt1" style="width:112px;" required/>
+                                    (元/公斤)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">+300：</td>
+                                    <td><input type="text" name="price4" id="price4" class="input_mgmt1" style="width:112px;" required/>
+                                    (元/公斤)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">+500：</td>
+                                    <td><input type="text" name="price5" id="price5" class="input_mgmt1" style="width:112px;" required/>
+                                    (元/公斤)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">提货费：</td>
@@ -187,23 +181,27 @@
 	
 	
 	function formValidate() {
-		$("#insertfulltruckload").validate({
+		$("#insertairline").validate({
 			rules : {
 				city1 : "required",
 				city2 : "required",
-				onwayTime : {
+				price1 : {
 					required : true,
 					number : true
 				},
-				carLength : {
+				price2 : {
 					required : true,
 					number : true
 				},
-				stanPrice1 : {
+				price3 : {
 					required : true,
 					number : true
 				},
-				stanPrice2 : {
+				price4 : {
+					required : true,
+					number : true
+				},
+				price5 : {
 					required : true,
 					number : true
 				},

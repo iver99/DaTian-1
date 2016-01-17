@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -28,7 +29,6 @@ import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Comment;
-import cn.edu.bjtu.vo.Truck;
 
 /**
  * @author solitudeycq
@@ -47,6 +47,7 @@ public class AirLineController {
 	CommentService commentService;
 	
 	ModelAndView mv = new ModelAndView();
+	
 	/**
      * 资源栏所有空运信息
      * @return
@@ -58,14 +59,22 @@ public class AirLineController {
 	}
 	
 	/**
+     * 资源栏所有空运信息
+     * @return
+     */
+	@RequestMapping(value="/airline",params="flag=1")
+	public String getAllAirLine(){
+		return "mgmt_r_airline";
+		
+	}
+	
+	/**
 	 * 资源栏空运筛选
 	 * @return
 	 */
 	@RequestMapping(value="airlineAjax",produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String sirlineAjax(AirLineSearchBean airlineBean,
-			PageUtil page, HttpSession session, HttpServletResponse response,
-			Model model){
+	public String airlineAjax(AirLineSearchBean airlineBean,PageUtil page, HttpSession session, HttpServletResponse response,Model model){
 		JSONArray airlineArray = airlineService.getSelectedAirLineNew(airlineBean, page, session);
 		return airlineArray.toString();	
 	}
@@ -108,6 +117,35 @@ public class AirLineController {
 			mv.setViewName("mgmt_r_airline3");
 			}
 		return mv;
+	}
+	
+	/**
+	 * 我的信息-整车资源 
+	 * @param session
+	 * @param pageUtil
+	 * @return
+	 */
+	@RequestMapping(value="getAirLineResourceAjax",produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String getAirLineResource(HttpSession session,PageUtil pageUtil) {
+		
+		JSONArray jsonArray=airlineService.getAirLineResource(session,pageUtil);
+		
+		return jsonArray.toString();
+	}
+	
+	/**
+	 * 新增国内空运资源
+	 * @param line
+	 * @param file
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "insertairline", method = RequestMethod.POST)
+	public String insertNewLinetransport(AirLine airline,MultipartFile file,
+			HttpServletRequest request) {
+		boolean flag=airlineService.insertNewAirLine(airline,request,file);
+		return "redirect:airline?flag=1";
 	}
 
 }

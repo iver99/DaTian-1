@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>整车资源信息</title>
+<title>国内空运资源信息</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -51,7 +51,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2a">
                     <tr>
                         <td>
-                            <span class="span_mgmt_right2_text1">查看整车资源信息</span>
+                            <span class="span_mgmt_right2_text1">查看国内空运资源信息</span>
                             <span class="span_mgmt_right2_text2"><a href="javascript:history.go(-1);" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
                         </td>
                     </tr>
@@ -62,56 +62,56 @@
                             <br />   	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">始发城市：</td>
-                                    <td>${truckInfo.startCity }</td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">始发港：</td>
+                                    <td>${airlineInfo.startCity }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">到达城市：</td>
-                                    <td>${truckInfo.endCity }</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">到达港：</td>
+                                    <td>${airlineInfo.endCity }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运输时限：</td>
-                                    <td>${truckInfo.onwayTime } (小时)</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">厢型：</td>
-                                    <td>${truckInfo.carType }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">车长：</td>
-                                    <td>${truckInfo.carLength }(米)</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">提供回程：</td>
-                                    <td>${truckInfo.offerReturn }</td>
-                                </tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">抵运时间：</td>
+                                    <td>${airlineInfo.onwayTime }</td>
+                                </tr> 
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
-                                    <td>${truckInfo.extraService }</td>
+                                    <td>${airlineInfo.extraService }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
-                                    <td>${truckInfo.stanPrice1 }(元/吨)</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">M：</td>
+                                    <td>${airlineInfo.price1 }(元)</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
-                                    <td>${truckInfo.stanPrice2 }(元/方)</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">N：</td>
+                                    <td>${airlineInfo.price2 }(元/公斤)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">+100：</td>
+                                    <td>${airlineInfo.price3 }(元/公斤)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">+300：</td>
+                                    <td>${airlineInfo.price4 }(元/公斤)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">+500：</td>
+                                    <td>${airlineInfo.price5 }(元/公斤)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">提货费：</td>
-                                    <td>${truckInfo.pickFee }(元)</td>
+                                    <td>${airlineInfo.pickFee }(元)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">送货费：</td>
-                                    <td>${truckInfo.deliveryFee }(元)</td>
+                                    <td>${airlineInfo.deliveryFee }(元)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
-                                    <td><a href="downloadlinedetailprice?id=${linetransportInfo.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a></td>
+                                    <td><a href="downloadlinedetailprice?id=${linetransportInfo.id }" hidefocus="true"><img src="images/btn_filetype1.png" /></a></td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">补充信息：</td>
-                                    <td>${truckInfo.remarks }</td>
+                                    <td>${airlineInfo.remarks }</td>
                                 </tr>
                             </table>
                         </td>
