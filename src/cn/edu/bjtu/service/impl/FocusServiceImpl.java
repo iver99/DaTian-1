@@ -217,9 +217,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 							
 							focusBeanList.add(focusBean);
 						}
-					//}
 				}
-//			}
 		}
 		
 		//×ª³Éjsonarray
