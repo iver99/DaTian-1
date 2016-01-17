@@ -57,6 +57,28 @@ public class UploadPath {
 			return path;
 		}
 	}
+	/**
+	 * 返回零担文件上传的路径
+	 * 
+	 * @return
+	 */
+	public static String getLessTruckLoadPath() {
+		// return sep+Base_Directory+sep+"linetransport";
+		if (isWindows()) {//windows系统
+			String path = "D://uploadFile//lesstruckload";//上传到D盘
+			file = new File(path);
+			file.mkdirs();//以防文件夹不存在
+			return path;
+		}
+		else//linux系统 (未测试)
+		{
+			//如果文件夹不存在情况没有处理
+			String path= "/usr/local/uploadFile/lesstruckload";
+			file=new File(path);
+			file.mkdirs();//防止文件夹不存在
+			return path;
+		}
+	}
 	
 	/**
 	 * 返回国内空运文件上传的路径

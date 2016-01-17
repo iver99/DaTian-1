@@ -294,8 +294,6 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 			truckInstance.setStartCity(truck.getStartCity());
 			truckInstance.setEndCity(truck.getEndCity());
 			truckInstance.setOnwayTime(truck.getOnwayTime());
-			truckInstance.setCarType(truck.getCarType());
-			truckInstance.setCarLength(truck.getCarLength());
 			truckInstance.setStanPrice1(truck.getStanPrice1());
 			truckInstance.setStanPrice2(truck.getStanPrice2());
 			truckInstance.setPickFee(truck.getPickFee());

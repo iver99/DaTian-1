@@ -114,9 +114,9 @@ public class LesstruckloadController {
 			mv.addObject("avgComment", comment);
 			mv.setViewName("resource_detail3");// 资源栏点击详情的页面
 		} else if (flag == 1) {// 详情
-			mv.setViewName("mgmt_r_line4");
+			mv.setViewName("mgmt_r_ltl4");
 		} else if (flag == 2) {// 更新
-			mv.setViewName("mgmt_r_line3");
+			mv.setViewName("mgmt_r_ltl3");
 			}
 		return mv;
 	}

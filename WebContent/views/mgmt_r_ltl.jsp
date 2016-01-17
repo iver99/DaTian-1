@@ -56,7 +56,7 @@
 			class="table_mgmt_right2">
 			<tr>
 				<td><span class="span_mgmt_right2_text1">零担资源信息</span> <span
-					class="span_mgmt_right2_text2"><a href="insert?flag=1"
+					class="span_mgmt_right2_text2"><a href="insert?flag=12"
 						hidefocus="true"><img src="images/btn_add1.png"
 							class="span_mgmt_right2_pic1" title="添加" /></a></span></td>
 			</tr>
@@ -76,18 +76,24 @@
 			class="table_mgmt_right3">
 			<thead id="thead">
 			   <tr>
-				<td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
-				<td width="70" class="td_mgmt_right3_head">始发城市</td>
-				<td width="70" class="td_mgmt_right3_head">到达城市</td>
-				<td width="55" class="td_mgmt_right3_head">时限<br>（小时）</td>
-				<td width="55" class="td_mgmt_right3_head">提供<br>回程</td>
-				<td width="75" class="td_mgmt_right3_head">标准报价<br>(元/吨)</td>
-                <td width="75" class="td_mgmt_right3_head">标准报价<br>(元/方)</td>
-                <td width="55" class="td_mgmt_right3_head">提货费<br>(元)</td>
-                <td width="55" class="td_mgmt_right3_head">送货费<br>(元)</td>
-                <td width="80" class="td_mgmt_right3_head">发布日期</td>
-                <td width="80" class="td_mgmt_right3_head">操作</td>
-			</tr>
+                        <td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
+                        <td width="70" class="td_mgmt_right3_head">始发城市</td>
+                        <td width="70" class="td_mgmt_right3_head">到达城市</td>
+                        <td width="55" class="td_mgmt_right3_head">时限<br />
+                            (小时)</td>
+                        <td class="td_mgmt_right3_head">提供<br />回程</td>
+                        <td width="75" class="td_mgmt_right3_head">标准报价<br />
+                            (元/吨)</td>
+                        <td width="75" class="td_mgmt_right3_head">标准报价<br />
+                            (元/方)</td>
+                        <td width="55" class="td_mgmt_right3_head">提货费<br />
+                            (元)</td>
+                        <td width="55" class="td_mgmt_right3_head">送货费<br />
+                            (元)</td>
+                        <td width="80" class="td_mgmt_right3_head">发布日期</td>
+                        <td width="80" class="td_mgmt_right3_head">操作</td>
+              </tr>
+
 			</thead>
 			<tbody id="result_body">
 				
