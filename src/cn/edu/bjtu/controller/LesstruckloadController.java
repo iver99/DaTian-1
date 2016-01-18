@@ -72,7 +72,7 @@ public class LesstruckloadController {
 	}
 	
 	/**
-	 * 返回资源-零担信息筛选记录总条数，未实现
+	 * 返回资源-零担信息筛选记录总条数
 	 * @return
 	 */
 	@RequestMapping(value="getSelectedLesstruckloadTotalRowsAjax",method = RequestMethod.POST)
@@ -185,6 +185,7 @@ public class LesstruckloadController {
 	@RequestMapping(value="updatelesstruckload",method=RequestMethod.POST)
 	public String updateLinetransport(Truck truck,MultipartFile file,
 			HttpServletRequest request) {
+	
 		boolean flag = LesstruckloadService.updateLesstruckload(truck,request,file);
 		return "redirect:lesstruckload?flag=1";
 	}

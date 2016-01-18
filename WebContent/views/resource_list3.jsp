@@ -55,7 +55,7 @@
 
 <%@ include  file="topFrame.jsp"%>
 	<div id="main_frame">
-		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;零担<input type="hidden" id="page_info" value="车辆 "/>
+		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;零担<input type="hidden" id="page_info" value="零担"/>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="230" class="td_leftnav_top">
@@ -240,7 +240,7 @@
 						<tr>
 							<td>每页 <select id="Display" onchange="changeDisplay()">
 									<option value="10" selected="selected">10</option>
-									<option value="20">20</option>
+									<option value="20" >20</option>
 									<option value="50">50</option>
 							</select> 条记录
 							</td>
@@ -273,7 +273,8 @@
         </tr>
         <tr>
             <td class="td_popup1">
-                <input type="button" id="btn1" value="提交" class="btn_mgmt1" hidefocus="true" onclick="insertMessage()"/><input type="button" id="btn2" value="重填" class="btn_mgmt2" hidefocus="true" />
+                <input type="button" id="btn1" value="提交" class="btn_mgmt1" hidefocus="true" onclick="insertMessage()"/>
+                <input type="button" id="btn2" value="重填" class="btn_mgmt2" hidefocus="true" />
             </td>
         </tr>
     </table>
@@ -329,29 +330,42 @@
 <script type="text/javascript" charset="utf-8">
 function OnLoad() {
 	//Rescreen();
-	loadFocus();
+	
+	
+/*  	//修改隐藏字段，每页数量
+	$("#display").val($("#Display").val());
+	//当前页归1
+	$("#currentPage").val(1);
+	//加载数据
 	if(checkSearch()){
-		if(checkFind){
-			var display = $("#display").val();
-			var currentPage = $("#currentPage").val();
-		getSelectedLineAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
-		getSelectedLesstruckloadTotalRows("中文或拼音","中文或拼音","All","All",display,currentPage); 
+		var display = $("#display").val();
+		var currentPage = $("#currentPage").val();
+	getSelectedLessLoadTruckAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
+	getSelectedLessTruckLoadTotalRows("中文或拼音","中文或拼音","All","All",display,currentPage); */
+ 
+	 loadFocus(); 
+		if(checkSearch()){
+			if(checkRecommend()){
+				var display = $("#display").val();
+				var currentPage = $("#currentPage").val();
+			getSelectedLessLoadTruckAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
+			getSelectedLessTruckLoadTotalRowsAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
+				
+			}
 			
 		}
-	}
-/* 	检查是否需要执行搜索功能   上面if语句和js已经判断是否执行，故无用
+/*  	检查是否需要执行搜索功能   上面if语句和js已经判断是否执行，故无用
 
 	checkSearch();  */
 }
 //用于上方下拉页的链接
-function checkFind(){
+function checkRecommend(){
 	var paraStr=window.location.search;
 	paraStr=UrlDecode(paraStr);//汉字解析
-	if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0 || paraStr.indexOf("type")){//参数串中存在搜索信息
+	if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0){//参数串中存在搜索信息
 		var para=new Array();
 		var city1;//存储搜索种类
 		var city2;//存储搜索内容
-		var type;//运输类型
 		//debugger;
 		para=paraStr.split("&");
 		for(var i=0;i<para.length;i++){
@@ -365,11 +379,6 @@ function checkFind(){
 				var para_content=new Array();
 				para_content=para[i].split("=");
 				city2=para_content[1];//第二个值为参数值
-			}
-			if(para[i].indexOf("type")>=0){//解析运输类型
-				var para_content=new Array();
-				para_content=para[i].split("=");
-				type=para_content[1];//第二个值为参数值
 			}
 		}
 		//set value
@@ -388,19 +397,12 @@ function checkFind(){
 	
 	return true;
 }
-
-function Reset()
-{
-	document.getElementById("select1_0").click();
-	document.getElementById("select2_0").click();
-	document.getElementById("select3_0").click();
-	document.getElementById("city1").value = "中文或拼音";
-	document.getElementById("city2").value = "中文或拼音";
-}
 </script>
 
 
-</html>
+
+
+
 
 <!-- <script type="text/javascript">
 	// 百度地图API功能
@@ -507,7 +509,15 @@ function search() {
 }
 document.getElementById('popup2').style.display = "none";
 </script> -->
+
 <script type="text/javascript">
+function Reset()
+{
+	document.getElementById("select1_0").click();
+	document.getElementById("select2_0").click();
+	document.getElementById("city1").value = "中文或拼音";
+	document.getElementById("city2").value = "中文或拼音";
+}
 function loadXMLDoc(id)
 {
 	var curWwwPath=window.document.location.href;
@@ -528,7 +538,7 @@ function loadXMLDoc(id)
 }
 
 //零担筛选
-function getSelectedLineAjax(startCity,endCity,onwayTime,offerReturn,display,currentPage){
+function getSelectedLessLoadTruckAjax(startCity,endCity,onwayTime,offerReturn,display,currentPage){
       var url="getSelectedLesstruckloadAjax";
 	  $.post(url,{
 		  startCity:startCity,
@@ -542,7 +552,7 @@ function getSelectedLineAjax(startCity,endCity,onwayTime,offerReturn,display,cur
 			  $("#testbody").empty();
 		for(var i=0; i<data.length; i++) {
 			var str="<tr>";
-			str+="<td class=\"td_main_list_content\"></td>";
+			/* str+="<td class=\"td_main_list_content\"></td>";
 			str+="<td class=\"td_main_list_content\">"+"<a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
 			str+="<td class=\"td_main_list_content\">"+"<a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
 			str+="<td class=\"td_main_list_content\">"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>"+"</td>";
@@ -559,7 +569,26 @@ function getSelectedLineAjax(startCity,endCity,onwayTime,offerReturn,display,cur
 			str+="</tr>";
 			 $("#testbody").append(str);
 		}
-	  },"json");
+	  },"json"); */
+	  	$("#testbody").append("<tr>");
+		$("#testbody").append("<td class=\"td_main_list_content\"></td>");
+		$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>");
+		$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>");
+		$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a></td>");
+		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>");
+		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>");
+		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>");
+		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>");
+		$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
+		if(data[i].status == "有效")
+			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
+		else
+			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
+		$("#testbody").append("</tr>");
+		
+		
+	}
+  },"json");
 }
 
 function renderTime(date){ 
@@ -568,7 +597,8 @@ function renderTime(date){
 } 
 
 //获取所有零担筛选的总条数
-function getSelectedLesstruckloadTotalRows(startCity,endCity,onwayTime,offerReturn,display,currentPage){
+function getSelectedLessTruckLoadTotalRowsAjax(startCity,endCity,onwayTime,offerReturn,display,currentPage){
+	 
 	var url="getSelectedLesstruckloadTotalRowsAjax";
 	  $.post(url,{
 		  startCity:startCity,
@@ -659,11 +689,13 @@ function ChangeTo(page){
 	//点击页码，标志位置为1
 	$('#flag').val(1);
 	$('#btn1').click();
-}
+	
+}        
 
 //变更每页展示数量
 function changeDisplay(){
-	//修改隐藏字段，每页数量
+	//修改隐藏字段，每页数量——
+	
 	$("#display").val($("#Display").val());
 	//当前页归1
 	$("#currentPage").val(1);
@@ -671,9 +703,10 @@ function changeDisplay(){
 	if(checkSearch()){
 		var display = $("#display").val();
 		var currentPage = $("#currentPage").val();
-	getSelectedCarAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-	getSelectedCarTotalRows("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+	getSelectedLessLoadTruckAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
+	getSelectedLessTruckLoadTotalRowsAjax("中文或拼音","中文或拼音","All","All",display,currentPage);
 		
 	}
 }
 </script>
+</html>

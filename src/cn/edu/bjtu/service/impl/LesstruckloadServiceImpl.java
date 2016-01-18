@@ -86,7 +86,6 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 			JSONArray jsonArray = new JSONArray();
 			int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
 			int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
-			System.out.println(sql);
 			List<Object[]> objectList=truckDao.findBySql(sql, params,page,display);
 			
 			List<TruckBean> lesstruckloadList=new ArrayList<TruckBean>();
@@ -207,7 +206,7 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 		public Integer getSelectedLesstruckloadTotalRows(TruckBean truckBean) {
 			
 			Map<String,Object> params=new HashMap<String,Object>();
-			String hql="select count(*) from CarCarrierView t1"+whereSql(truckBean, params);
+			String hql="select count(*) from Truck t1"+whereSql(truckBean, params);
 			Long count=truckDao.count(hql, params);
 			
 			return count.intValue();

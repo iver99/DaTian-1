@@ -146,6 +146,51 @@
 			}
 			
 		}
+		
+		
+		if(page_info=='零担'){
+			//筛选资源
+			if($('#flag').val() == '0'){//直接点击筛选
+				//currentPage置为1
+				$('#currentPage').val(1);
+				
+				getSelectedLessLoadTruckAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						$('#display').val(),
+						$('#currentPage').val());
+				//总条数
+				getSelectedLessTruckLoadTotalRowsAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						$('#display').val(),
+						$('#currentPage').val());
+			}else{//点击页码调用筛选按钮
+				getSelectedLessLoadTruckAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						$('#display').val(),
+						$('#currentPage').val());
+				//总条数
+				getSelectedLessTruckLoadTotalRowsAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						$('#display').val(),
+						$('#currentPage').val());
+				
+				//flag重置为0
+				$('#flag').val(0);
+			}
+			
+		}
 		//配送网络筛选
 		if(page_info=='配送网络'){
 			if($('#flag').val() == '0'){//直接点击筛选
