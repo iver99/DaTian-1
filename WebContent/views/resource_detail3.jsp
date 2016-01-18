@@ -242,7 +242,7 @@
     <table width="540" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td height="100" align="center">
-                <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${carInfo.carrierId}&flag=3&resourceId=${carInfo.id}'" />
+                <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${truckInfo.carrierId}&flag=5&resourceId=${truckInfo.id}'" />
             </td>
         </tr>
     </table>

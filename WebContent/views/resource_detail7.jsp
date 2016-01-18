@@ -159,7 +159,7 @@
     <table width="540" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td height="100" align="center">
-                <input type="button" id="btn2" value="提交意向" class="input_detail2a" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${linetransportInfo.carrierId}&flag=1&resourceId=${linetransportInfo.id}'" />
+                <input type="button" id="btn2" value="提交意向" class="input_detail2a" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${airlineInfo.carrierId}&flag=6&resourceId=${airlineInfo.id}'" />
             </td>
         </tr>
     </table>
