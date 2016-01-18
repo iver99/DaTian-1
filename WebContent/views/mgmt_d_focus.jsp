@@ -119,27 +119,6 @@
 </div>
 
 <%@ include  file="popup1.jsp"%>
-
-<%-- <div id="popup2" style="display:none;">
-    <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td width="510"><div class="div_popup_title1">留言历史</div></td>
-            <td>
-                <div id="close2" style="cursor:pointer;"><img src="images/btn_cancel1.png" title="关闭本窗口" /></div>
-            </td>
-        </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0" id="list" style="margin:5px 5px 0 15px;">
-		<thead style="display:block;">
-		   	<tr>
-				<td style="width:250px" class="td_main_list_head">时间</td>
-				<td style="width:250px" class="td_main_list_head">内容</td>
-			</tr>
-		</thead>
-		<tbody id="getmessage" style="height:250px;overflow:auto;display:block;"></tbody>
-	</table>
-</div> --%>
-
 <div id="footer_frame">
 	<iframe allowtransparency="true" width="100%" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0" src="footer.jsp"></iframe>
 </div>
@@ -172,46 +151,12 @@
 				var body=$("#result_body");
 				body.empty();
 				for(var i=0;i<data.length;i++){
-					if(data[i].focusType == 'linetransport'){
-						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\">运输线路</td>");
-						var str="<td class=\"td_mgmt_right3_td1\">";
-						str+="<a href=\"linetransportdetail?linetransportid="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&linetransportId="+data[i].id+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"&nbsp;<img src=\"images/btn_new1.png\" /></a>";
-						str+="<br />";
-						/* str+="<a href=\"companyDetail?id="+data[i].carrierId+"\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>"; */
-						str+="</td>";
-						body.append(str);	
-						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
-						
-						if(data[i].status == '有效'){
-							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
-							str+="<td class=\"td_mgmt_right3_td3\">";
-							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
-							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=1&resourceId="+data[i].focusId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
-							str+="</div></div></div></li></ul></div></td>";
-							body.append(str);
-							}
-						else if(data[i].status == '失效'){
-							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
-							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
-							}
-						body.append("</tr>");
-						
-					}
 					if(data[i].focusType == 'fulltruckload'){
 						body.append("<tr>");
 						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">整车</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
-						str+="<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"→"+data[i].endCity+"</a>"+"<br></br>"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>";
-						/* str+="<br />"; */
-						/* str+="<a href=\"companyDetail?id="+data[i].carrierId+"\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>"; */
+						str+="<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
 						body.append(str);	
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
@@ -222,7 +167,7 @@
 							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
 							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
 							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=1&resourceId="+data[i].focusId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
+							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=1&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
 							str+="<div class=\"menubd\">";
 							str+="<div class=\"menubdpanel\">";
 							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
@@ -234,16 +179,13 @@
 							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
 							}
 						body.append("</tr>");
-						
 					}
-					if(data[i].focusType == 'cityline'){
+					if(data[i].focusType == 'lesstruckload'){
 						body.append("<tr>");
 						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\">配送城市</td>");
+						body.append("<td class=\"td_mgmt_right3_td1\">零担</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
-						str+="<a href=\"citylinedetail?citylineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"&nbsp;<img src=\"images/btn_new1.png\" /></a>";
-						str+="<br />";
-						/* str+="<a href=\"companyDetail?id="+data[i].carrierId+"\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>"; */
+						str+="<a href=\"lesstruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"lesstruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
 						body.append(str);	
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
@@ -254,7 +196,36 @@
 							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
 							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
 							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=2&resourceId="+data[i].focusId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
+							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=5&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
+							str+="<div class=\"menubd\">";
+							str+="<div class=\"menubdpanel\">";
+							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
+							str+="</div></div></div></li></ul></div></td>";
+							body.append(str);
+							}
+						else if(data[i].status == '失效'){
+							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
+							}
+						body.append("</tr>");
+					}
+					if(data[i].focusType == 'cityline'){
+						body.append("<tr>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
+						body.append("<td class=\"td_mgmt_right3_td1\">落地配</td>");
+						var str="<td class=\"td_mgmt_right3_td1\">";
+						str+="<a href=\"citylinedetail?citylineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"</a>"+"<br>"+"<a href=\"citylinedetail?citylineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
+						str+="</td>";
+						body.append(str);	
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
+						
+						if(data[i].status == '有效'){
+							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
+							str+="<td class=\"td_mgmt_right3_td3\">";
+							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
+							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
+							str+="<div class=\"menu\">";
+							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=2&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
 							str+="<div class=\"menubd\">";
 							str+="<div class=\"menubdpanel\">";
 							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
@@ -268,47 +239,12 @@
 						body.append("</tr>");
 							
 					}
-					if(data[i].focusType == 'car'){
-						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\">车辆</td>");
-						var str="<td class=\"td_mgmt_right3_td1\">";
-						str+="<a href=\"cardetail?carId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&linetransportId="+data[i].id+"&flag=0\" hidefocus=\"true\">"+data[i].carNum+"&nbsp;<img src=\"images/btn_new1.png\" /></a>";
-						str+="<br />";
-						/* str+="<a href=\"companyDetail?id="+data[i].carrierId+"\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>"; */
-						str+="</td>";
-						body.append(str);	
-						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
-						
-						if(data[i].status == '有效'){
-							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
-							str+="<td class=\"td_mgmt_right3_td3\">";
-							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
-							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=3&resourceId="+data[i].focusId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
-							str+="</div></div></div></li></ul></div></td>";
-							body.append(str);
-							}
-						else if(data[i].status == '失效'){
-							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
-							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
-							}
-						body.append("</tr>");
-				
-				
-					}
 					if(data[i].focusType == 'warehouse'){
 						body.append("<tr>");
 						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">仓库</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
-						str+="<a href=\"warehousedetail?warehouseId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"&nbsp;<img src=\"images/btn_new1.png\" /></a>";
-						str+="<br />";
-						/* str+="<a href=\"companyDetail?id="+data[i].carrierId+"\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>"; */
+						str+="<a href=\"warehousedetail?warehouseId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"</a>"+"<br>"+"<a href=\"warehousedetail?warehouseId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
 						body.append(str);	
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
@@ -321,37 +257,14 @@
 							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
 							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
 							}
-						body.append("</tr>");
-					
-					
+						body.append("</tr>");			
 					}
-					if(data[i].focusType == 'goods'){
+					if(data[i].focusType == 'airline'){
 						body.append("<tr>");
 						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\">货物</td>");
+						body.append("<td class=\"td_mgmt_right3_td1\">国内空运</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
-						str+="<a href=\"goodsdetail?id="+data[i].resourceId+"\" hidefocus=\"true\">"+data[i].name+"</a>";
-						str+="</td>";
-						body.append(str);	
-						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
-						
-						if(data[i].status == '有效'){
-							body.append("<td class=\"td_mgmt_right3_td1\">有效</td>");
-							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
-							}
-						else if(data[i].status == '失效'){
-							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
-							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
-							}
-						body.append("</tr>");
-					  
-					}
-					if(data[i].focusType == 'company'){
-						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\">公司</td>");
-						var str="<td class=\"td_mgmt_right3_td1\">";
-						str+="<a href=\"companyDetail?id="+data[i].resourceId+"\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
+						str+="<a href=\"airlinedetail?airlineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"airlinedetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
 						body.append(str);	
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
@@ -362,7 +275,7 @@
 							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
 							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
 							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=4\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
+							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=6&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交订单</a> ";
 							str+="<div class=\"menubd\">";
 							str+="<div class=\"menubdpanel\">";
 							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
@@ -374,12 +287,9 @@
 							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
 							}
 						body.append("</tr>");
-						
 					}
-
 				}
-			}
-				
+			}				
 		});
 	}
 	//总记录数

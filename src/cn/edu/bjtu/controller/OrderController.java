@@ -17,12 +17,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.edu.bjtu.bean.page.OrderBean;
+import cn.edu.bjtu.dao.CompanyDao;
+import cn.edu.bjtu.service.AirLineService;
 import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.CitylineService;
 import cn.edu.bjtu.service.CommentService;
 import cn.edu.bjtu.service.CompanyService;
 import cn.edu.bjtu.service.DriverService;
+import cn.edu.bjtu.service.FullTruckLoadService;
 import cn.edu.bjtu.service.GoodsInfoService;
+import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.ResponseService;
@@ -30,6 +34,7 @@ import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.util.UploadPath;
+import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Cityline;
@@ -38,6 +43,7 @@ import cn.edu.bjtu.vo.Driverinfo;
 import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.OrderCarrierView;
 import cn.edu.bjtu.vo.Orderform;
+import cn.edu.bjtu.vo.Truck;
 
 import com.alibaba.fastjson.JSONArray;
 
@@ -51,6 +57,14 @@ public class OrderController {
 
 	@Resource
 	OrderService orderService;
+	@Autowired
+    FullTruckLoadService fulltruckloadService;
+	@Autowired
+    LesstruckloadService lesstruckloadService;
+	@Autowired
+	CompanyDao companyDao;
+	@Autowired
+	AirLineService airlineService;
 
 	@Resource(name = "carServiceImpl")
 	CarService carService;
@@ -640,7 +654,7 @@ public class OrderController {
 	public ModelAndView getNewOrderForm(@RequestParam String carrierid,
 			@RequestParam(required=false) String resourceId,@RequestParam int flag) {
 		// 需要取出承运方公司名称
-		//flag和resourceType中标识1为干线，2为城市，3为车辆,4为公司
+		//flag和resourceType中标识1为整车，2为落地配，3为车辆,4为公司,5为零担,6为国内空运
 		int resourceType = 0;
 		if(flag==4){//从公司页面提交订单
 			Carrierinfo carrierInfo=companyService.getCompanyById(carrierid);
@@ -650,14 +664,13 @@ public class OrderController {
 			mv.setViewName("mgmt_d_order_s2a");
 			return mv;
 		}
-		if(flag==1){//从干线资源提交订单
-			Linetransport linetransportInfo = linetransportService
-					.getLinetransportInfo(resourceId);
+		if(flag==1){//从整车资源提交订单
+			Truck truckInfo = fulltruckloadService.getfulltruckloadInfo(resourceId);
 			resourceType = 1;
 			mv.addObject("resourceType", resourceType);
-			mv.addObject("linetransportInfo", linetransportInfo);
+			mv.addObject("truckInfo", truckInfo);
 		}
-		if(flag==2){// 从城市配送提交订单
+		if(flag==2){// 从落地配配送提交订单
 			Cityline citylineInfo = citylineService.getCitylineInfo(resourceId);
 			resourceType = 2;
 			mv.addObject("resourceType", resourceType);
@@ -669,7 +682,20 @@ public class OrderController {
 			mv.addObject("resourceType", resourceType);
 			mv.addObject("carInfo", carInfo);
 		}
+		if(flag==5){//从零担资源提交订单
+			Truck truckInfo = lesstruckloadService.getLesstruckloadInfo(resourceId);
+			resourceType = 5;
+			mv.addObject("resourceType", resourceType);
+			mv.addObject("truckInfo", truckInfo);
+		}
+		if(flag==6){//从国内空运资源提交订单
+			AirLine airlineInfo = airlineService.getAirLineInfo(resourceId);
+			resourceType = 6;
+			mv.addObject("resourceType", resourceType);
+			mv.addObject("airlineInfo", airlineInfo);
+		}
 		Carrierinfo company=companyService.getCompanyById(carrierid);
+		mv.addObject("company", company);
 		mv.addObject("companyName", company.getCompanyName());
 		mv.addObject("carrierId", carrierid);
 		mv.setViewName("mgmt_d_order_s2");

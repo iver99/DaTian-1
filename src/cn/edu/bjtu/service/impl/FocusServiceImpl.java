@@ -13,23 +13,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.bean.page.FocusBean;
+import cn.edu.bjtu.dao.AirLineDao;
 import cn.edu.bjtu.dao.CarDao;
 import cn.edu.bjtu.dao.CitylineDao;
 import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.FocusDao;
 import cn.edu.bjtu.dao.GoodsInfoDao;
 import cn.edu.bjtu.dao.LinetransportDao;
+import cn.edu.bjtu.dao.TruckDao;
 import cn.edu.bjtu.dao.WarehouseDao;
 import cn.edu.bjtu.dao.impl.BaseDaoImpl;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
+import cn.edu.bjtu.vo.AirLine;
 import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Cityline;
 import cn.edu.bjtu.vo.Focus;
 import cn.edu.bjtu.vo.Goodsform;
 import cn.edu.bjtu.vo.Linetransport;
+import cn.edu.bjtu.vo.Truck;
 import cn.edu.bjtu.vo.Warehouse;
 
 import com.alibaba.fastjson.JSONArray;
@@ -55,6 +59,10 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	GoodsInfoDao goodsinfoDao;
 	@Autowired
 	CompanyDao companyDao;
+	@Autowired
+	TruckDao truckDao;
+	@Autowired
+	AirLineDao airlineDao;
 	
 
 	@Override
@@ -117,31 +125,47 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 		List<Focus> focusList=focusDao.find(hql, params);
 		List<FocusBean> focusBeanList=new ArrayList<FocusBean>();
 		String search_content=bean.getSearch_content();
-//		if(!"".equals(search_content) && search_content!=null){
 			for(Focus focus:focusList){
 				FocusBean focusBean=new FocusBean();
-				if("linetransport".equals(focus.getFocusType())){
-					Linetransport line=linetransportDao.get(Linetransport.class, focus.getFocusId());
-					//if("".equals(search_content) || (!"".equals(search_content) && line.getLineName().contains(search_content))){
+				if("fulltruckload".equals(focus.getFocusType())){
+					Truck truck=truckDao.get(Truck.class, focus.getFocusId());
+					Carrierinfo company = companyDao.get(Carrierinfo.class, truck.getCarrierId());
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
-						focusBean.setStartPlace(line.getStartPlace());
-						focusBean.setEndPlace(line.getEndPlace());
-						focusBean.setLineName(line.getLineName());
-						focusBean.setRelDate(line.getRelDate());
-						focusBean.setResourceId(line.getId());
-						focusBean.setCarrierId(line.getCarrierId());
+						focusBean.setStartPlace(truck.getStartCity());
+						focusBean.setEndPlace(truck.getEndCity());
+						focusBean.setRelDate(truck.getRelDate());
+						focusBean.setResourceId(truck.getId());
+						focusBean.setCarrierId(truck.getCarrierId());
+						focusBean.setCompanyName(company.getCompanyName());
 						//若有筛选条件
 						if("".equals(search_content) || (!"".equals(search_content) && 
 								focusBean.getStartPlace().contains(search_content) ||
 								focusBean.getEndPlace().contains(search_content))){
 							focusBeanList.add(focusBean);
-						//}
-					}
-				}else if("cityline".equals(focus.getFocusType())){
+					}	
+				} else if("lesstruckload".equals(focus.getFocusType())){
+					Truck truck=truckDao.get(Truck.class, focus.getFocusId());
+					Carrierinfo company = companyDao.get(Carrierinfo.class, truck.getCarrierId());
+						focusBean.setId(focus.getId());
+						focusBean.setStatus(focus.getStatus());
+						focusBean.setFocusType(focus.getFocusType());
+						focusBean.setStartPlace(truck.getStartCity());
+						focusBean.setEndPlace(truck.getEndCity());
+						focusBean.setRelDate(truck.getRelDate());
+						focusBean.setResourceId(truck.getId());
+						focusBean.setCarrierId(truck.getCarrierId());
+						focusBean.setCompanyName(company.getCompanyName());
+						//若有筛选条件
+						if("".equals(search_content) || (!"".equals(search_content) && 
+								focusBean.getStartPlace().contains(search_content) ||
+								focusBean.getEndPlace().contains(search_content))){
+							focusBeanList.add(focusBean);
+					}	
+				} else if("cityline".equals(focus.getFocusType())){
 					Cityline cityline=citylineDao.get(Cityline.class, focus.getFocusId());
-					//if("".equals(search_content) || (!"".equals(search_content) && cityline.getName().contains(search_content))){
+					Carrierinfo company = companyDao.get(Carrierinfo.class, cityline.getCarrierId());
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
@@ -149,45 +173,14 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setRelDate(cityline.getRelDate());
 						focusBean.setResourceId(cityline.getId());
 						focusBean.setCarrierId(cityline.getCarrierId());
+						focusBean.setCompanyName(company.getCompanyName());
 						if("".equals(search_content) || (!"".equals(search_content) && focusBean.getName().contains(search_content))){
 							
 							focusBeanList.add(focusBean);
 						}
-					//}
-				}else if("car".equals(focus.getFocusType())){
-					Carinfo car=carDao.get(Carinfo.class, focus.getFocusId());
-				//	if("".equals(search_content) || (!"".equals(search_content) && car.getCarNum().contains(search_content))){
-						focusBean.setId(focus.getId());
-						focusBean.setStatus(focus.getStatus());
-						focusBean.setFocusType(focus.getFocusType());
-						focusBean.setCarNum(car.getCarNum());
-						focusBean.setRelDate(car.getRelDate());
-						focusBean.setResourceId(car.getId());
-						focusBean.setCarrierId(car.getCarrierId());
-						if("".equals(search_content) || (!"".equals(search_content) && focusBean.getCarNum().contains(search_content))){
-							
-							focusBeanList.add(focusBean);
-						}
-
-					//}
-				}else if("company".equals(focus.getFocusType())){
-					Carrierinfo company=companyDao.get(Carrierinfo.class, focus.getFocusId());
-					//if("".equals(search_content) || (!"".equals(search_content) &&company.getCompanyName().contains(search_content))){
-						focusBean.setId(focus.getId());
-						focusBean.setStatus(focus.getStatus());
-						focusBean.setFocusType(focus.getFocusType());
-						focusBean.setCompanyName(company.getCompanyName());
-						focusBean.setRelDate(company.getRelDate());
-						focusBean.setResourceId(company.getId());
-						focusBean.setCarrierId(company.getId());
-						if("".equals(search_content) || (!"".equals(search_content) && focusBean.getCompanyName().contains(search_content))){
-							focusBeanList.add(focusBean);
-							
-						}
-					//}
 				}else if("warehouse".equals(focus.getFocusType())){
 					Warehouse warehouse=warehouseDao.get(Warehouse.class, focus.getFocusId());
-					//if("".equals(search_content) || (!"".equals(search_content) && warehouse.getName().contains(search_content))){
+					Carrierinfo company = companyDao.get(Carrierinfo.class, warehouse.getCarrierId());
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
@@ -195,28 +188,28 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setName(warehouse.getName());
 						focusBean.setResourceId(warehouse.getId());
 						focusBean.setCarrierId(warehouse.getCarrierId());
+						focusBean.setCompanyName(company.getCompanyName());
 						if("".equals(search_content) || (!"".equals(search_content) && focusBean.getName().contains(search_content))){
 							
 							focusBeanList.add(focusBean);
-						}
-					//}
-					
-				}else if("goods".equals(focus.getFocusType())){
-					Goodsform cargo=goodsinfoDao.get(Goodsform.class, focus.getFocusId());
-					//if("".equals(search_content) || (!"".equals(search_content) && cargo.getName().contains(search_content))){
+						}					
+				}else if("airline".equals(focus.getFocusType())){
+					AirLine airline = airlineDao.get(AirLine.class,focus.getFocusId());
+					Carrierinfo company = companyDao.get(Carrierinfo.class, airline.getCarrierId());
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
-						focusBean.setRelDate(cargo.getRelDate());
-						focusBean.setName(cargo.getName());
-						focusBean.setResourceId(cargo.getId());
-						
-						//FIXME  //没有设置id
-						//focusBean.setCarrierId(line.getCarrierId());
-						if("".equals(search_content) || (!"".equals(search_content) && focusBean.getName().contains(search_content))){
-							
+						focusBean.setRelDate(airline.getRelDate());
+						focusBean.setStartPlace(airline.getStartCity());
+						focusBean.setEndPlace(airline.getEndCity());
+						focusBean.setCompanyName(company.getCompanyName());
+						focusBean.setResourceId(airline.getId());
+						focusBean.setCarrierId(airline.getCarrierId());
+						if("".equals(search_content) || (!"".equals(search_content) && 
+								focusBean.getStartPlace().contains(search_content) ||
+								focusBean.getEndPlace().contains(search_content))){
 							focusBeanList.add(focusBean);
-						}
+					}	
 				}
 		}
 		

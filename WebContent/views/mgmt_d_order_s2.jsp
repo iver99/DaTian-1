@@ -81,81 +81,47 @@
                     	<td><input type="hidden" id="currentUserId" name="currentUserId" value="<%=currentUserId %>"/></td>
                         <td class="td_mgmt_right3_td1a">
                             <div class="span_mgmt_right3_text4">基本信息</div>      	          
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">所属客户：</td>
-									<td>
-										<select style="width:120px;" name="clientName" id="clientName" required>
-                                        </select>
-									</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">关联客户运单：</td>
-                                    <td>
-                                        <select id="isLinkToClientWayBill" style="width:120px;" onchange="changeIsLinkToClientWayBill();" name="isLinkToClientWayBill" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="有">有</option>
-                                            <option value="无">无</option>
-                                        </select>
-                                        <div id="p_detail" style="display:none;">
-                                            <input type="text" name="clientWayBillNum" class="input_mgmt1" style="width:176px;" placeholder="请输入客户运单号..."/>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
-                                    <td><input name="companyName" type="text" readonly="readonly" value="${companyName }" required/></td>
-                                    <td><input name="carrierId" value="${carrierId }" type="hidden"/> </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
-                                    <td>
-                                        <select id="hasCarrierContract" style="width:120px;" onchange="changeHasCarrierContract();" name="hasCarrierContract" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="有">有</option>
-                                            <option value="无">无</option>
-                                        </select>
-                                        <div id="c_detail" style="display:none;">
-                                            <select style="width:93px;" name="contractId" id="contractId">
-                                                <option value="" selected="selected">请选择</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                </tr>
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0">                           
                                 <c var="resourceType" items="${resourceType }">
 									<c:choose>
 			                        <c:when test="${resourceType == '1' }">
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
-                                    <td><input name="resourceType" type="text" readonly="readonly" value="线路"/></td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">资源名称：</td>
-                                   <td> <input name="resourceName" type="text" readonly="readonly" value="${linetransportInfo.startPlace }→${linetransportInfo.endPlace }"/></td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
+                                    <td><a class="link1" hidefocus="true" target="_blank" href="fulltruckloaddetail?truckId=${truckInfo.id }&carrierId=${truckInfo.carrierId }&flag=0">（整车）${truckInfo.startCity }→${truckInfo.endCity }</a></td>
                                 </tr>
                                 </c:when>
 			                    <c:when test="${resourceType == '2' }">
 			                    <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
-                                    <td><input name="resourceType" type="text" readonly="readonly" value="城市配送"/></td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">资源名称：</td>
-                                    <td><input name="resourceName" type="text" readonly="readonly" value="${citylineInfo.name }"/></td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
+                                    <td><a class="link1" hidefocus="true" target="_blank" href="citylinedetail?citylineId=${citylineInfo.id }&carrierId=${citylineInfo.carrierId }&flag=0">（落地配）${citylineInfo.name }</a></td>
                                 </tr>
 			                    </c:when>
-			                    <c:when test="${resourceType == '3' }">
+			                    <c:when test="${resourceType == '5' }">
 			                    <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
-                                    <td><input name="resourceType" type="text" readonly="readonly" value="车辆"/></td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
+                                    <td><a class="link1" hidefocus="true" target="_blank" href="lesstruckloaddetail?truckId=${truckInfo.id }&carrierId=${truckInfo.carrierId }&flag=0">（零担）${truckInfo.startCity }→${truckInfo.endCity }</a></td>
                                 </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">资源名称：</td>
-                                    <td><input name="resourceName" type="text" readonly="readonly" value="${carInfo.carNum }"/></td>
+			                    </c:when>
+			                    <c:when test="${resourceType == '6' }">
+			                    <tr>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
+                                    <td><a class="link1" hidefocus="true" target="_blank" href="airlinedetail?airlineId=${airlineInfo.id }&carrierId=${airlineInfo.carrierId }&flag=0">（国内空运）${airlineInfo.startCity }→${airlineInfo.endCity }</a></td>
                                 </tr>
 			                    </c:when>
 			                    </c:choose>
 								</c>
+								<tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
+                                    <td>${company.companyName }</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">联系人：</td>
+                                    <td>${company.companyContact }</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">联系电话：</td>
+                                    <td>${company.phone }</td>
+                                </tr>
                             </table>
                             <div class="span_mgmt_right3_text4">货物信息</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
