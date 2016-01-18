@@ -67,9 +67,9 @@
 				</c:forEach>
 				<script type="text/javascript">
 					if(document.getElementById("i").value==1)
-						document.write( "<input type=\"button\" id=\"btnfav\" value=\"已关注\" class=\"input_detail3\" hidefocus=\"true\" onclick=\"loadXMLDoc('${linetransportInfo.id }');hidefav(this);\" />" );
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"已关注\" class=\"input_detail3\" hidefocus=\"true\" onclick=\"loadXMLDoc('${airlineInfo.id }');hidefav(this);\" />" );
 					else
-						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${linetransportInfo.id }');hidefav(this);\" />" );
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${airlineInfo.id }');hidefav(this);\" />" );
 				</script>
                 
                 <%-- <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${linetransportInfo.carrierId}&flag=1&resourceId=${linetransportInfo.id}'" /> --%>

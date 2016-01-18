@@ -72,7 +72,7 @@
                 <hr class="hr_1" />
                <input type="button" value="0" style="display:none" id="i"></input>
                 <c:forEach var="focus" items="${focusList }">
-					<c:if test="${carInfo.id==focus.focusId}">
+					<c:if test="${truckInfo.id==focus.focusId}">
 						<script>
 							document.getElementById("i").value=1;
 						</script>
@@ -80,9 +80,9 @@
 				</c:forEach>
 				<script type="text/javascript">
 					if(document.getElementById("i").value==1)
-						document.write( "<input type=\"button\" id=\"btnfav\" value=\"已关注\" class=\"input_detail3\" hidefocus=\"true\" onclick=\"loadXMLDoc('${carInfo.id }');hidefav(this);\" />" );
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"已关注\" class=\"input_detail3\" hidefocus=\"true\" onclick=\"loadXMLDoc('${truckInfo.id }');hidefav(this);\" />" );
 					else
-						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${carInfo.id }');hidefav(this);\" />" );
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${truckInfo.id }');hidefav(this);\" />" );
 				</script>
                 <%-- <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${carInfo.carrierId}&flag=3&resourceId=${carInfo.id}'" /> --%>
                 <c:choose>
