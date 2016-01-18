@@ -5,8 +5,8 @@ function changeToSearchPage(){
 	var container=$("#thead");
 	container.empty();//清空
 	container.append("<tr>");
-	if(resource_kind == '线路'){
-		window.location.href="linetransport?flag=0&resource_kind="+resource_kind+"&search_content="+search_content;
+	if(resource_kind == '整车'){
+		window.location.href="fulltruckload?flag=0&resource_kind="+resource_kind+"&search_content="+search_content;
 		//debugger;
 		container.append("<td width=\"15\" class=\"td_main_list_head\"></td><td class=\"td_main_list_head\">线路名称</td><td width=\"100\" class=\"td_main_list_head\">参考价(元/kg)</td><td width=\"60\" class=\"td_main_list_head\">类型</td><td width=\"80\" class=\"td_main_list_head\">时限(小时)</td><td width=\"80\" class=\"td_main_list_head\">发布日期</td><td width=\"45\" class=\"td_main_list_head\">关注</td>");
 
@@ -38,7 +38,7 @@ function changeToSearchPage(){
 function searchKind(){
 	var resource_kind=$("#resource_choose").val();
 	var search_content=$("#search_content").val();
-	if(resource_kind == '线路'){
+	if(resource_kind == '整车'){
 		searchFunc_linetransport(search_content,resource_kind,10,1);
 		//页码信息
 //		debugger;
