@@ -37,4 +37,6 @@ public interface AirLineService {
 	public boolean updateAirLine(AirLine airline,HttpServletRequest request,MultipartFile file);
 	
 	public boolean deleteairline(String id);
+
+	public Integer getSelectedAirLineTotalRows(AirLineSearchBean airlineBean);
 }

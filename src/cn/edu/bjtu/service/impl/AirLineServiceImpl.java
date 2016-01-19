@@ -133,14 +133,14 @@ public class AirLineServiceImpl implements AirLineService {
 		if (airlineBean.getStartCity() != null
 				&& !airlineBean.getStartCity().trim().equals("中文或拼音")
 				&& !airlineBean.getStartCity().equals("")&& !airlineBean.getStartCity().equals("全国")) {
-			wheresql+=" and t1.startCity=:startCity ";
-			params.put("startCity", airlineBean.getStartCity());
+			wheresql+=" and t1.startCity like '%"+airlineBean.getStartCity()+"%' ";
+			//params.put("startCity", airlineBean.getStartCity());
 		}
 		if (airlineBean.getEndCity() != null
 				&& !airlineBean.getEndCity().trim().equals("中文或拼音")
 				&& !airlineBean.getEndCity().equals("")&& !airlineBean.getEndCity().equals("全国")) {
-			wheresql+=" and t1.endCity=:endCity ";
-			params.put("endCity", airlineBean.getEndCity());
+			wheresql+=" and t1.endCity like '%"+airlineBean.getEndCity()+"%' ";
+			//params.put("endCity", airlineBean.getEndCity());
 		}
 		if (airlineBean.getOnwayTime() != null && !airlineBean.getOnwayTime().trim().equals("All")
 				&& !airlineBean.getOnwayTime().equals("")) {
@@ -240,5 +240,16 @@ public class AirLineServiceImpl implements AirLineService {
 		
 	    focusService.setInvalid(id);
 		return true;
+	}
+
+	/**
+	 * 返回资源栏-国内空运筛选记录总条数
+	 */
+	@Override
+	public Integer getSelectedAirLineTotalRows(AirLineSearchBean airlineBean) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		String hql="select count(*) from AirLine t1"+whereSql(airlineBean, params);
+		Long count=airlineDao.count(hql, params);
+		return count.intValue();
 	}
 }

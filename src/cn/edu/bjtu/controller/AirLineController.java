@@ -81,6 +81,16 @@ public class AirLineController {
 	}
 	
 	/**
+	 * 返回资源-国内空运信息筛选记录总条数
+	 */
+	@RequestMapping(value="airlineTotalRowsAjax",method = RequestMethod.POST)
+	@ResponseBody
+	public Integer airlineTotalRowsAjax(AirLineSearchBean airlineBean){
+		
+		Integer count = airlineService.getSelectedAirLineTotalRows(airlineBean);
+		return count;
+	}
+	/**
 	 * 获取国内空运资源详情
 	 * @param truckId
 	 * @param carrierId
@@ -121,7 +131,7 @@ public class AirLineController {
 	}
 	
 	/**
-	 * 我的信息-整车资源 
+	 * 我的信息-空运资源 
 	 * @param session
 	 * @param pageUtil
 	 * @return
