@@ -76,6 +76,10 @@ function ChangeTo(page){
 			getUserLinetransportResource(display,currentPage);
 			getUserLinetransportResourceTotalRows(display,currentPage);
 		}
+		if($("#kind").val() == 'lesstruckload'){
+			getLesstruckloadResource(display,currentPage);
+			getLessTruckLoadResourceTotalRows(display,currentPage);
+		}
 		if($("#kind").val() == 'cityline'){
 			getUserCitylineResource(display,currentPage);
 			getUserCitylineResourceTotalRows(display,currentPage);

@@ -25,7 +25,25 @@
 		<script type="text/javascript" src="js/focus_load.js"></script>
 		<!-- <!-- script type="text/javascript" src="js/search_resource.js"></script> -->
 		<!-- 引入工具js -->
-<%@ include file="jsTool.jsp" %>
+		
+		<script type="text/javascript" src="js/resource_select.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/search_resource.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/change_item.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/tool.js" charset="UTF-8"></script>
+		<!-- 兼容html5 -->
+
+ 		<script src="http://haiqiancun.com/file/demo/custom.modernizr.js"></script>
+
+ 		<!-- 用于表单验证 -->
+		<script type="text/javascript" src="js/jquery.metadata.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+		<script type="text/javascript" src="js/messages_zh.js"></script>
+		<!-- 仓库详情，查看联系人 -->
+		<script type="text/javascript" src="js/viewContact.js"></script>
+		<script type="text/javascript" src="js/renderTime.js"></script>
+		<!-- 选择日期控件 -->
+		<script type="text/javascript" src="js/calendar.js"></script>
+		
 		<script type="text/javascript">
 			$(function() {
 				$('input, textarea').placeholder();
@@ -39,7 +57,7 @@
 
 <%@ include  file="topFrame.jsp"%>
 	<div id="main_frame">
-		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;国内空运<input type="hidden" id="page_info" value="运输线路"/>
+		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;国内空运<input type="hidden" id="page_info" value="国内空运"/>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="230" class="td_leftnav_top">
@@ -74,7 +92,7 @@
                         <li class="resource_list">
                             <dl id="select2" value="">
                                 <dt>航班周期：</dt>
-                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select2_0">全部</a></dd>
+                                <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="">全部</a></dd>
                                 <dd><a href="javascript:;" hidefocus="true" id="select2_1">每天</a></dd>
                                 <dd><a href="javascript:;" hidefocus="true" id="select2_2">周一二</a></dd>
                                 <dd><a href="javascript:;" hidefocus="true" id="select2_3">周一二三</a></dd>
@@ -157,12 +175,12 @@
 <script type="text/javascript" charset="utf-8">
 	function OnLoad() {
 		loadFocus();
-		if(true){//返回true执行if,返回false执行上方搜索  checkSearch()
-			if(true){//返回trye执行if，返回false执行首页查询  checkFind()
+		if(checkSearch()){//返回true执行if,返回false执行上方搜索  checkSearch()
+			if(checkRecommend()){//返回trye执行if，返回false执行首页查询  checkFind()
 				var display=$("#display").val();
 				var currentPage=$("#currentPage").val();
 			getSelectedAirLineAjax("中文或拼音","中文或拼音","All",display,currentPage);
-			getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage); 
+			getSelectedAirLineTotalRowsAjax("中文或拼音","中文或拼音","All",display,currentPage); 
 			}
 		}
 		//首页的查询功能
@@ -174,16 +192,64 @@
 	/* function checkRecommendation(){
 		
 	} */
-	//用于首页查询干线资源
-	function checkFind(){
+	
+	
+	function checkSearch(){
+		//debugger;
+		var paraStr=window.location.search;
+		paraStr=UrlDecode(paraStr);//汉字解析
+//		alert("搜索功能...");
+		//debugger;
+		if(paraStr.indexOf("resource_kind")>0 || paraStr.indexOf("search_content")>0){//参数串中存在搜索信息
+			var para=new Array();
+			var resource_kind;//存储搜索种类
+			var search_content;//存储搜索内容
+			para=paraStr.split("&");
+			for(var i=0;i<para.length;i++){
+				//alert(para[i]);
+				if(para[i].indexOf("resource_kind")>=0){//解析搜索类型
+					var para_kind=new Array();
+					para_kind=para[i].split("=");
+					resource_kind=para_kind[1];//第二个值为参数值
+				}
+				if(para[i].indexOf("search_content")>=0){//解析搜索内容
+					var para_content=new Array();
+					para_content=para[i].split("=");
+					search_content=para_content[1];//第二个值为参数值
+				}
+			}
+			//往上方的搜索框填值用来保存搜索信息
+			$("#search_content").val(search_content);
+			$("#resource_choose").val(resource_kind);
+			if(resource_kind == '线路'){
+				$("#choose1").click();
+			}else if(resource_kind == '配送'){
+				$("#choose2").click();
+			}else if(resource_kind == '车辆'){
+				$("#choose3").click();
+			}else if(resource_kind == '仓库'){
+				$("#choose4").click();
+			}else if(resource_kind == '公司'){
+				$("#choose5").click();
+			}else if(resource_kind == '货物'){
+				$("#choose6").click();
+			}
+			//执行搜索
+			searchKind();
+			return false;//返回false，执行搜索功能,不执行list页面的默认的异步加载资源
+		}
+		return true;//返回true说明不需要执行搜索，则执行list页面上默认的资源加载
+	}
+	
+	//用于国内空运资源
+	function checkRecommend(){
 		//alert("recommend");
 		var paraStr=window.location.search;
 		paraStr=UrlDecode(paraStr);//汉字解析
-		if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0 || paraStr.indexOf("type")){//参数串中存在搜索信息
+		if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0 ){//参数串中存在搜索信息
 			var para=new Array();
 			var city1;//存储搜索种类
 			var city2;//存储搜索内容
-			var type;//运输类型
 			//debugger;
 			para=paraStr.split("&");
 			for(var i=0;i<para.length;i++){
@@ -198,22 +264,11 @@
 					para_content=para[i].split("=");
 					city2=para_content[1];//第二个值为参数值
 				}
-				if(para[i].indexOf("type")>=0){//解析运输类型
-					var para_content=new Array();
-					para_content=para[i].split("=");
-					type=para_content[1];//第二个值为参数值
-				}
 			}
 			//set value
 			$("#city1").val(city1);
 			$("#city2").val(city2);
 			//这里没有设置运输类型的显示效果
-			if(type == '整车'){
-				$("#select1_1").click(); 
-			}
-			if(type == '零担'){
-				$("#select1_2").click(); 
-			}
 			$("#btn1").click();
 			return false;
 		}
@@ -226,8 +281,6 @@
 function Reset()
 {
 	document.getElementById("select1_0").click();
-	document.getElementById("select2_0").click();
-	document.getElementById("select3_0").click();
 	document.getElementById("city1").value = "中文或拼音";
 	document.getElementById("city2").value = "中文或拼音";
 }
@@ -250,7 +303,7 @@ function loadXMLDoc(id)
 		});
 }
 
-//整车筛选
+//国内空运筛选
 function getSelectedAirLineAjax(startCity,endCity,onwayTime,display,currentPage){
 	//alert("ajax_post");
       var url="airlineAjax";
@@ -294,21 +347,17 @@ function renderTime(date){
 	return da.getFullYear()+"-"+ (da.getMonth()+1)+"-" +da.getDate(); 
 } 
 
-//获取所有干线筛选的总条数
-function getSelectedLineTotalRowsAjax(startPlace,
+//获取国内空运的总条数
+function getSelectedAirLineTotalRowsAjax(startPlace,
 		endPlace,
-		transportType,
-		refPrice,
-		fromPlace,
+		onwayTime,
 		display,
 		currentPage){
-	var url="getSelectedLineTotalRowsAjax";
+	var url="airlineTotalRowsAjax";
 	  $.post(url,{
 		  startPlace:startPlace,
 		  endPlace:endPlace,
-		  transportType:transportType,
-		  refPrice:refPrice,
-		  fromPlace:fromPlace,
+		  onwayTime:onwayTime,
 		  display:display,
 		  currentPage:currentPage},
 	  function(data,status){
@@ -316,7 +365,7 @@ function getSelectedLineTotalRowsAjax(startPlace,
 			  $('#div_resource_list_head1').text("共"+data+"条记录");
 			  $('#count').val(data);
 			  $("#page_layout").empty();
-			  pageLayout(data);//页面布局
+				pageLayout(data);
 	  },"text");
 	
 }
@@ -405,8 +454,8 @@ function changeDisplay(){
 	if(checkSearch()){
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-	getSelectedLineAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-	getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedAirLineAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedAirLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
 	}
 }
 

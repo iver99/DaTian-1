@@ -17,9 +17,9 @@
 <script type="text/javascript" src="js/main_nav.js"></script>
 <script type="text/javascript" src="js/mgmt.js"></script>
 <script type="text/javascript" src="js/backtop.js"></script>
+<script type="text/javascript" src="js/splitPage.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
 <script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="js/splitPage2.js"></script>
 <script type="text/javascript" src="js/focus_load.js"></script>
 <!-- 新增 -->
 <%@ include file="jsTool.jsp" %>
@@ -69,7 +69,7 @@
 		<input id="display" value="10" type="hidden" /> <!-- 每页展示的数量 -->
 		<input id="currentPage" value="1" type="hidden" /><!-- 当前页 -->
 		<input id="is_resource_page" value="0" type="hidden"/><!-- 是否为资源页，资源页需要模拟click按钮 -->
-		<input id="kind" value="linetransport" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
+		<input id="kind" value="lesstruckload" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
 		
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" 
@@ -197,7 +197,7 @@ function getLessTruckLoadResourceTotalRows(display,currentPage){
 		success:function(data,status){
 			 $('#count').val(data);
 			 $("#page_layout").empty();
-			  pageLayout(data);//页面布局
+			 pageLayout(data);//页面布局
 		}
 	});
 }
@@ -211,8 +211,8 @@ function changeDisplay(){
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
 		//加载零担资源
-		getLinetransportResource(display,currentPage);
-		getLinetransportResourceTotalRows(display,currentPage);
+		getLesstruckloadResource(display,currentPage);
+		getLessTruckLoadResourceTotalRows(display,currentPage);
 }
 
 </script>
