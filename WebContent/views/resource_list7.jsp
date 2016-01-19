@@ -84,9 +84,9 @@
                             <dl id="select1" value="onwayTime">
                                 <dt>抵运时间：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="select1_0">全部</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_1">12小时</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_2">24小时</a></dd>
-                                <dd><a href="javascript:;" hidefocus="true" id="select1_3">48小时</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_1">12小时抵运</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_2">24小时抵运</a></dd>
+                                <dd><a href="javascript:;" hidefocus="true" id="select1_3">48小时抵运</a></dd>
                             </dl>
                         </li>
                         <li class="resource_list">
