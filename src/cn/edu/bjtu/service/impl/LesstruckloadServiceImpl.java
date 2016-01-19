@@ -133,12 +133,12 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 		private String whereSql(TruckBean truckBean,Map<String,Object> params){
 			String wheresql=" where 1=1 ";
 			if(truckBean.getStartCity()!=null && !truckBean.getStartCity().trim().equals("中文或拼音")&&!truckBean.getStartCity().trim().equals("")&&!truckBean.getStartCity().trim().equals("全国")){
-				wheresql+=" and t1.startCity=:startCity ";
-				params.put("startCity", truckBean.getStartCity());
+				wheresql+=" and t1.startCity like '%"+truckBean.getStartCity()+"%'  ";
+				//params.put("startCity", truckBean.getStartCity());
 			}
 			if(truckBean.getEndCity()!=null && !truckBean.getEndCity().trim().equals("中文或拼音")&&!truckBean.getStartCity().trim().equals("")&&!truckBean.getStartCity().trim().equals("全国")){
-				wheresql+=" and t1.endPlace=:endCity ";
-				params.put("endPlace", truckBean.getEndCity());
+				wheresql+=" and t1.endCity like '%"+truckBean.getEndCity()+"%'  ";
+				//params.put("endPlace", truckBean.getEndCity());
 			}
 /*			if(carBean.getCarBase()!=null && !carBean.getCarBase().equals("") && !carBean.getCarBase().equals("All")){
 				wheresql+=" and t1.carBase=:carBase ";
