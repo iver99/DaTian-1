@@ -134,15 +134,14 @@
 		loadFocus();
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		//alert(display+"-"+currentPage)
-		//加载用户干线资源
-		getUserLesstruckloadResource(display,currentPage);
-		getUserLessTruckLoadResourceTotalRows(display,currentPage); 
+		//加载零担资源
+		getLesstruckloadResource(display,currentPage);
+		getLessTruckLoadResourceTotalRows(display,currentPage); 
 	}
 	
-//加载干线资源
-function getUserLesstruckloadResource(display,currentPage){
-	var url="getUserLessTruckLoadResourceAjax";
+//加载零担资源
+function getLesstruckloadResource(display,currentPage){
+	var url="getLessTruckLoadResourceAjax";
 	$.ajax({
 		url:url,
 		data:{
@@ -185,8 +184,8 @@ function getUserLesstruckloadResource(display,currentPage){
 	})
 }
 //干线资源总条数
-function getUserLessTruckLoadResourceTotalRows(display,currentPage){
-	var url="getUserLinetransportResourceTotalRowsAjax";
+function getLessTruckLoadResourceTotalRows(display,currentPage){
+	var url="getLessTruckLoadResourceTotalRowsAjax";
 	$.ajax({
 		url:url,
 		data:{
@@ -211,9 +210,9 @@ function changeDisplay(){
 	$("#currentPage").val(1);
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		//加载用户干线资源
-		getUserLinetransportResource(display,currentPage);
-		getUserLinetransportResourceTotalRows(display,currentPage);
+		//加载零担资源
+		getLinetransportResource(display,currentPage);
+		getLinetransportResourceTotalRows(display,currentPage);
 }
 
 </script>

@@ -64,13 +64,24 @@ public class FullTruckController {
 	 * 资源栏整车筛选
 	 * @return
 	 */
-	@RequestMapping(value="fulltruckloadAjax",produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="getSelectedFulltruckloadAjax",produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String fulltrackloadAjax(TruckBean truckBean,
+	public String getSelectedLesstruckloadAjax(TruckBean truckBean,
 			PageUtil page, HttpSession session, HttpServletResponse response,
 			Model model){
-		JSONArray fulltruckloadArray = fulltruckloadService.getSelectedFullTruckLoadNew(truckBean, page, session);
+		JSONArray fulltruckloadArray = fulltruckloadService.getSelectedFulltruckloadNew(truckBean, page, session);
 		return fulltruckloadArray.toString();	
+	}
+	
+	/**
+	 * 返回资源-整车信息筛选记录总条数
+	 * @return
+	 */
+	@RequestMapping(value="getSelectedFulltruckloadTotalRowsAjax",method = RequestMethod.POST)
+	@ResponseBody
+	public Integer getSelectedLesstruckloadTotalRows(TruckBean truckBean){
+		Integer count=fulltruckloadService.getSelectedFulltruckloadTotalRows(truckBean);
+		return count;
 	}
 	
 	/**

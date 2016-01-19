@@ -214,26 +214,26 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 
 
 		
-        /* *//**
-		 * 我的信息-零担信息-总记录条数(后台，未修改)
-		 *//*
+        /**
+		 * 我的信息-零担信息-总记录条数
+		 */
 		@Override
-		public Integer getLesstruckloadResourceTotalRows(HttpSession session) {
+		public Integer getSelectedLesstruckloadresourceTotalRows(HttpSession session) {
 			String carrierId=(String)session.getAttribute(Constant.USER_ID);
-			String hql="select count(*) from Carinfo t where t.carrierId=:carrierId";
+			String hql="select count(*) from Truck t where t.carrierId=:carrierId";
 			Map<String,Object> params=new HashMap<String,Object>();
 			params.put("carrierId", carrierId);
 			Long count=truckDao.count(hql, params);
 			
 			return count.intValue();
 			
-		}*/
+		}
 
 		/**
 		 * 我的信息-零担信息，显示资源
 		 */
 		@Override
-		public JSONArray getUserLesstruckloadResource(HttpSession session, PageUtil pageUtil) {
+		public JSONArray getSelectedLesstruckloadresourceloadNew(HttpSession session, PageUtil pageUtil) {
 			String carrierId=(String)session.getAttribute(Constant.USER_ID);
 			Map<String,Object> params=new HashMap<String,Object>();
 			params.put("carrierId", carrierId);

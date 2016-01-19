@@ -148,6 +148,55 @@
 		}
 		
 		
+		if(page_info=='整车'){
+			//筛选资源
+			if($('#flag').val() == '0'){//直接点击筛选
+				//currentPage置为1
+				$('#currentPage').val(1);
+				
+				getSelectedFullTruckLoadAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						urladdtion[2],
+						$('#display').val(),
+						$('#currentPage').val());
+				//总条数
+				getSelectedFulltruckloadTotalRowsAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						urladdtion[2],
+						$('#display').val(),
+						$('#currentPage').val());
+			}else{//点击页码调用筛选按钮
+				getSelectedFullTruckLoadAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						urladdtion[2],
+						$('#display').val(),
+						$('#currentPage').val());
+				//总条数
+				getSelectedFulltruckloadTotalRowsAjax(
+						$('#city1').val(),
+						$('#city2').val(),
+						urladdtion[0],
+						urladdtion[1],
+						urladdtion[2],
+						$('#display').val(),
+						$('#currentPage').val());
+				
+				//flag重置为0
+				$('#flag').val(0);
+			}
+			
+		}
+		
+		
 		if(page_info=='零担'){
 			//筛选资源
 			if($('#flag').val() == '0'){//直接点击筛选

@@ -23,7 +23,6 @@ import cn.edu.bjtu.service.CommentService;
 import cn.edu.bjtu.service.CompanyService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.LesstruckloadService;
-import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
@@ -142,13 +141,23 @@ public class LesstruckloadController {
 	 * @param pageUtil
 	 * @return
 	 */
-	@RequestMapping(value="getUserLessTruckLoadResourceAjax",produces="text/html;charset=UTF-8")
+	@RequestMapping(value="getLessTruckLoadResourceAjax",produces="text/html;charset=UTF-8")
 	@ResponseBody
-	public String getUserLessTruckLoadResource(HttpSession session,PageUtil pageUtil) {
+	public String getSelectedLesstruckloadresourceAjax(HttpSession session,PageUtil pageUtil) {
 		
-		JSONArray jsonArray=LesstruckloadService.getUserLesstruckloadResource(session,pageUtil);
+		JSONArray jsonArray=LesstruckloadService.getSelectedLesstruckloadresourceloadNew(session,pageUtil);
 		
 		return jsonArray.toString();
+	}
+	
+	/**
+	 * 我的信息-零担信息-总记录条数
+	 */
+	@RequestMapping(value="getLessTruckLoadResourceTotalRowsAjax")
+	@ResponseBody
+	public Integer getSelectedLesstruckloadresourceTotalRows(HttpSession session){
+		
+		return LesstruckloadService.getSelectedLesstruckloadresourceTotalRows(session);
 	}
 	
 	/**

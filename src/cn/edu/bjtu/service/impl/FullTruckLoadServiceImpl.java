@@ -54,7 +54,7 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 	 * 
 	 */
 	@Override
-	public JSONArray getSelectedFullTruckLoadNew(TruckBean truckBean, PageUtil pageUtil, HttpSession session) {
+	public JSONArray getSelectedFulltruckloadNew(TruckBean truckBean, PageUtil pageUtil, HttpSession session) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		Map<String,Object> params=new HashMap<String,Object>();
 			String sql = "select t1.id,"
@@ -198,6 +198,20 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 		
 		return truckDao.get(Truck.class, truckId);
 	}
+	
+	/**
+	 * 返回资源栏-零担筛选记录总条数
+	 */
+	@Override
+	public Integer getSelectedFulltruckloadTotalRows(TruckBean truckBean) {
+		
+		Map<String,Object> params=new HashMap<String,Object>();
+		String hql="select count(*) from Truck t1"+whereSql(truckBean, params);
+		Long count=truckDao.count(hql, params);
+		
+		return count.intValue();
+	}
+
     
 	/*
 	 * 我的信息-整车资源

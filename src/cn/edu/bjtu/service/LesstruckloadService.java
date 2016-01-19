@@ -31,19 +31,10 @@ public interface LesstruckloadService {
 	
 	/**
 	 * 我的信息-零担信息-总记录条数
-	 * @Title: getUserCarResourceTotalRows 
-	 *  
-	 * @param: @param session
-	 * @param: @return 
-	 * @return: Integer 
-	 * @throws: 异常 
-	 * @author: chendonghao 
-	 * @date: 2015年7月3日 上午11:12:59
+	 * 
 	 */
-	/*public Integer getLesstruckloadResourceTotalRows(HttpSession session);*/
-
+	public Integer getSelectedLesstruckloadresourceTotalRows(HttpSession session);
 	
-	public Truck getLesstruckloadInfo(String truckId);
 	
 	/**
 	 * 我的信息-零担资源-显示资源
@@ -51,7 +42,11 @@ public interface LesstruckloadService {
 	 * @param pageUtil
 	 * @return
 	 */
-	public JSONArray getUserLesstruckloadResource(HttpSession session,PageUtil pageUtil);
+	public JSONArray getSelectedLesstruckloadresourceloadNew(HttpSession session,PageUtil pageUtil);
+
+	
+	public Truck getLesstruckloadInfo(String truckId);
+
 	
 	public boolean insertNewLesstruckload(Truck truck,HttpServletRequest request, MultipartFile file);
 	

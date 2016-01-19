@@ -212,8 +212,7 @@
 				var display = $("#display").val();
 				var currentPage = $("#currentPage").val();
 				getSelectedLineAjax("中文或拼音", "All", "All", display, currentPage);
-				getSelectedCityLineTotalRowsAjax("中文或拼音", "All", "All",
-						display, currentPage);
+				getSelectedCityLineTotalRowsAjax("中文或拼音", "All", "All",display, currentPage);
 			}
 		}
 

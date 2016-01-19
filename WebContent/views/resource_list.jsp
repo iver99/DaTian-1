@@ -43,7 +43,7 @@
 
 <%@ include  file="topFrame.jsp"%>
 	<div id="main_frame">
-		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;整车<input type="hidden" id="page_info" value="运输线路"/>
+		<span class="text_main_title1">资源</span>&nbsp;&gt;&nbsp;整车<input type="hidden" id="page_info" value="整车"/>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="230" class="td_leftnav_top">
@@ -170,12 +170,12 @@
 <script type="text/javascript" charset="utf-8">
 	function OnLoad() {
 		loadFocus();
-		if(true){//返回true执行if,返回false执行上方搜索  checkSearch()
-			if(true){//返回trye执行if，返回false执行首页查询  checkFind()
+		if(checkSearch()){//返回true执行if,返回false执行上方搜索  checkSearch()
+			if(checkRecommend()){//返回trye执行if，返回false执行首页查询  checkFind()
 				var display=$("#display").val();
 				var currentPage=$("#currentPage").val();
 			getSelectedFullTruckLoadAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-			/* getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage); */
+			getSelectedFulltruckloadTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage); 
 			} 
 		}
 		//首页的查询功能
@@ -188,16 +188,13 @@
 		
 	} */
 	//用于首页查询干线资源
-	function checkFind(){
-		//alert("recommend");
+	function checkRecommend(){
 		var paraStr=window.location.search;
 		paraStr=UrlDecode(paraStr);//汉字解析
-		if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0 || paraStr.indexOf("type")){//参数串中存在搜索信息
+		if(paraStr.indexOf("city1")>0 || paraStr.indexOf("city2")>0 ){//参数串中存在搜索信息
 			var para=new Array();
 			var city1;//存储搜索种类
 			var city2;//存储搜索内容
-			var type;//运输类型
-			//debugger;
 			para=paraStr.split("&");
 			for(var i=0;i<para.length;i++){
 				//alert(para[i]);
@@ -210,11 +207,6 @@
 					var para_content=new Array();
 					para_content=para[i].split("=");
 					city2=para_content[1];//第二个值为参数值
-				}
-				if(para[i].indexOf("type")>=0){//解析运输类型
-					var para_content=new Array();
-					para_content=para[i].split("=");
-					type=para_content[1];//第二个值为参数值
 				}
 			}
 			//set value
@@ -272,7 +264,7 @@ function getSelectedFullTruckLoadAjax(startCity,
 		display,
 		currentPage){
 	//alert("ajax_post");
-      var url="fulltruckloadAjax";
+      var url="getSelectedFulltruckloadAjax";
 	  $.post(url,{
 		  startCity:startCity,
 		  endCity:endCity,
@@ -314,14 +306,14 @@ function renderTime(date){
 } 
 
 //获取所有干线筛选的总条数
-function getSelectedLineTotalRowsAjax(startPlace,
+function getSelectedFulltruckloadTotalRowsAjax(startPlace,
 		endPlace,
 		transportType,
 		refPrice,
 		fromPlace,
 		display,
 		currentPage){
-	var url="getSelectedLineTotalRowsAjax";
+	var url="getSelectedFulltruckloadTotalRowsAjax";
 	  $.post(url,{
 		  startPlace:startPlace,
 		  endPlace:endPlace,
@@ -424,8 +416,8 @@ function changeDisplay(){
 	if(checkSearch()){
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-	getSelectedLineAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-	getSelectedLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedFullTruckLoadAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedFulltruckloadTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
 	}
 }
 
