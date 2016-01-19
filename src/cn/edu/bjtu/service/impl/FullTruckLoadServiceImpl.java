@@ -118,9 +118,10 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 			truckBean1.setRemarks((String)obj[14]);
 			truckBean1.setPicture((String)obj[15]);
 			truckBean1.setResourceType((String)obj[16]);
-			if((truckBean1.getResourceType()).equals("整车")){
-			     fulltruckloadList.add(truckBean1);
-			}
+			fulltruckloadList.add(truckBean1);
+			/*if((truckBean1.getResourceType()).equals("整车")){
+			     
+			}*/
 		}
 		
 		for(int i=0;i<fulltruckloadList.size();i++){
@@ -138,7 +139,7 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 	 */
 	private String whereSql(TruckBean truckBean,Map<String,Object> params){
 		
-		String wheresql=" where 1=1 ";
+		String wheresql=" where 1=1 and t1.resourceType='整车' ";
 		if (truckBean.getStartCity() != null
 				&& !truckBean.getStartCity().trim().equals("中文或拼音")
 				&& !truckBean.getStartCity().equals("")&& !truckBean.getStartCity().equals("全国")) {
@@ -155,22 +156,22 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 				&& !truckBean.getCarLength().equals("")) {
 			String  carLength = truckBean.getCarLength();
 			if (carLength.equals("4.2米")) {
-				wheresql+=" and t1.carLength=4.2";
+				wheresql+=" and t1.carLength <= 4.2";
 			}
 			if (carLength.equals("6.2米")) {
-				wheresql+=" and t1.carLength=6.2";
+				wheresql+=" and t1.carLength >4.2 and t1.carLength <= 6.2";
 			}
 			if (carLength.equals("7.6米")) {
-				wheresql+=" and t1.carLength=7.6";
+				wheresql+=" and t1.carLength >6.2 and t1.carLength <= 7.6";
 			}
 			if (carLength.equals("9.5米")) {
-				wheresql+=" and t1.carLength=9.5";
+				wheresql+=" and t1.carLength >7.6 and t1.carLength <= 9.5";
 			}
 			if (carLength.equals("12.5米")) {
-				wheresql+=" and t1.carLength=12.5";
+				wheresql+=" and t1.carLength > 9.5 and t1.carLength <= 12.5";
 			}
 			if (carLength.equals("17.5米")) {
-				wheresql+=" and t1.carLength=17.5";
+				wheresql+=" and t1.carLength > 12.5 and t1.carLength <= 17.5";
 			}
 		}
 		if (truckBean.getCarType() != null && !truckBean.getCarType().trim().equals("All")
@@ -184,10 +185,10 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 				wheresql+=" and t1.onwayTime <= 24 ";
 			}
 			if(onwayTime.equals("48小时以内")){
-				wheresql+=" and t1.onwayTime >= 24 and t1.onwayTime <= 48 ";
+				wheresql+=" and t1.onwayTime > 24 and t1.onwayTime <= 48 ";
 			}
 			if(onwayTime.equals("72小时以内")){
-				wheresql+=" and t1.onwayTime >=48 and t1.onwayTime <= 72 ";
+				wheresql+=" and t1.onwayTime > 48 and t1.onwayTime <= 72 ";
 			}
 		}
 		return wheresql;
