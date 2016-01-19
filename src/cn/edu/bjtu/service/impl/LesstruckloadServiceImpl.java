@@ -112,9 +112,10 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 				truckBean1.setRemarks((String)obj[14]);
 				truckBean1.setPicture((String)obj[15]);
 				truckBean1.setResourceType((String)obj[16]);
-				if((truckBean1.getResourceType()).equals("零担")){
-				     lesstruckloadList.add(truckBean1);
-				}
+				lesstruckloadList.add(truckBean1);
+				/*if((truckBean1.getResourceType()).equals("零担")){
+				     
+				}*/
 			}
 			
 			for(int i=0;i<lesstruckloadList.size();i++){
@@ -131,7 +132,7 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 		 * @return
 		 */
 		private String whereSql(TruckBean truckBean,Map<String,Object> params){
-			String wheresql=" where 1=1 ";
+			String wheresql=" where 1=1 and t1.resourceType='零担' ";
 			if(truckBean.getStartCity()!=null && !truckBean.getStartCity().trim().equals("中文或拼音")&&!truckBean.getStartCity().trim().equals("")&&!truckBean.getStartCity().trim().equals("全国")){
 				wheresql+=" and t1.startCity like '%"+truckBean.getStartCity()+"%' ";
 				//params.put("startCity", truckBean.getStartCity());
@@ -160,7 +161,7 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 				
 				String offerReturn=truckBean.getOfferReturn();
 				if (offerReturn.equals("提供回程")) {
-					wheresql+=" and t1.offerReturn= '是'";
+					wheresql+=" and t1.offerReturn= '是' or t1.offerReturn='有' ";
 				}
 				if (offerReturn.equals("不提供回程")) {
 					wheresql+=" and t1.offerReturn='否' ";
