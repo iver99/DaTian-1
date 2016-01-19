@@ -150,10 +150,10 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 					wheresql+=" and t1.onwayTime <= 24";
 				}
 				if (onwayTime.equals("48小时以内")) {
-					wheresql+="  and t1.onwayTime >= 24 and t1.onwayTime <= 48 ";
+					wheresql+="  and t1.onwayTime > 24 and t1.onwayTime <= 48 ";
 				}
 				if (onwayTime.equals("72小时以内")) {
-					wheresql+=" and t1.onwayTime >=48 and t1.onwayTime <= 72";
+					wheresql+=" and t1.onwayTime > 48 and t1.onwayTime <= 72";
 				}
 			}
 			if(truckBean.getOfferReturn()!=null && !truckBean.getOfferReturn().trim().equals("All")&& !truckBean.getOfferReturn().trim().equals("")){
