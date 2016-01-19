@@ -454,8 +454,8 @@ function changeDisplay(){
 	if(checkSearch()){
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		getSelectedAirLineAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
-		getSelectedAirLineTotalRowsAjax("中文或拼音","中文或拼音","All","All","All",display,currentPage);
+		getSelectedAirLineAjax("中文或拼音","中文或拼音","All",display,currentPage);
+		getSelectedAirLineTotalRowsAjax("中文或拼音","中文或拼音","All",display,currentPage);
 	}
 }
 
