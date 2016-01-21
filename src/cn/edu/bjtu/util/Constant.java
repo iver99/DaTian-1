@@ -6,10 +6,19 @@ package cn.edu.bjtu.util;
  */
 public class Constant {
 	
+	/*用户相关*/
 	public static final String USER_NAME="username";
 	
 	public static final String USER_KIND="userKind";
 	
 	public static final String USER_ID="userId";
+	
+	
+	/*数据源相关*/
+	public static final String DATA_SOURCE="dataSource";
+	
+	/*认证，安全相关的数据源*/
+	public static final String DATA_SOURCE_SECURITY="dataSource_security";
+	
 
 }

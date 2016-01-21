@@ -23,11 +23,32 @@
 		<property name="maxPoolSize" value="${pc.jdbc.maxPoolSize}"></property>
 		<property name="minPoolSize" value="${pc.jdbc.minPoolSize}"></property>
 	</bean>
-
+	
+	<bean id="dataSource_security" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${pc.security.jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${pc.security.jdbc.url}"></property> <!-- change port -->
+		<property name="user" value="${pc.security.jdbc.user}"></property>
+		<property name="password" value="${pc.security.jdbc.password}"></property> <!-- change password -->
+		<property name="initialPoolSize" value="${pc.security.jdbc.initialPoolSize}"></property>
+		<property name="maxIdleTime" value="${pc.security.jdbc.maxIdleTime}"></property>
+		<property name="maxPoolSize" value="${pc.security.jdbc.maxPoolSize}"></property>
+		<property name="minPoolSize" value="${pc.security.jdbc.minPoolSize}"></property>
+	</bean>
+	<!-- 	动态数据源 -->
+	<bean class="cn.edu.bjtu.util.DynamicDataSource" id="dynamicDataSource">
+	<property name="targetDataSources">
+		<map key-type="java.lang.String">
+			<entry value-ref="dataSource" key="dataSource"></entry>
+			<entry value-ref="dataSource_security" key="dataSource_security"></entry>
+		</map>
+	</property>
+	<property name="defaultTargetDataSource" ref="dataSource"></property>
+	</bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="dynamicDataSource" />
 		<!-- 自动扫描注解方式配置的hibernate类文件 -->
 		<property name="packagesToScan">
 			<list>
