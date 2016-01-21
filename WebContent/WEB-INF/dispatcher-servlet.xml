@@ -21,7 +21,6 @@
 	<context:component-scan base-package="cn.edu.bjtu.dao.impl"></context:component-scan>
 	<context:component-scan base-package="cn.edu.bjtu.service.impl"></context:component-scan>
 	<context:component-scan base-package="cn.edu.bjtu.util"></context:component-scan>
-	<!-- <context:component-scan base-package="cn.edu.bjtu.vo"></context:component-scan> -->
 
 	<!-- 对静态资源的处理 -->
 	 <mvc:resources location="/views/images/" mapping="/images/**"/><!-- /images/**的请求都会到/views/images/下去找，下面的类似 -->
@@ -39,48 +38,8 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close">
-		<property name="driverClass" value="${pc.jdbc.driverClass}"></property>
-		<property name="jdbcUrl" value="${pc.jdbc.url}"></property> <!-- change port -->
-		<property name="user" value="${pc.jdbc.user}"></property>
-		<property name="password" value="${pc.jdbc.password}"></property> <!-- change password -->
-		<property name="initialPoolSize" value="${pc.jdbc.initialPoolSize}"></property>
-		<property name="maxIdleTime" value="${pc.jdbc.maxIdleTime}"></property>
-		<property name="maxPoolSize" value="${pc.jdbc.maxPoolSize}"></property>
-		<property name="minPoolSize" value="${pc.jdbc.minPoolSize}"></property>
-	</bean>
-
-
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<!-- 自动扫描注解方式配置的hibernate类文件 -->
-		<property name="packagesToScan">
-			<list>
-				<value>cn.edu.bjtu.vo</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.MySQLInnoDBDialect
-				</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.use_sql_comments">true</prop> 
-			</props>
-		</property>
-	</bean>
-	
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
-		<constructor-arg ref="sessionFactory" />
-	</bean>
-	<!-- 配置事务 -->
-	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-          <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-    <tx:annotation-driven transaction-manager="txManager"/> 
+	<!-- 引入hibernate相关的配置文件 -->
+	<import resource="spring-hibernate.xml"/>
 	
 	
 	<bean
@@ -101,7 +60,6 @@
 			<value>UTF-8</value>
 		</property>
 		<property name="maxUploadSize">
-	<!-- <value>32505856</value> -->
 		<!-- 设置最大 20M 20*1024*1024   （文件上传最大值,以 byte为单位） -->
 			<value>20971520</value>
 		</property>
@@ -109,7 +67,7 @@
 			<value>4096</value>
 		</property>
     </bean>
-<!--     属性配置文件 -->
+	<!--     属性配置文件位置 -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
