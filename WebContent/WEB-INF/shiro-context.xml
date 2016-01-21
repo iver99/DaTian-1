@@ -8,7 +8,7 @@
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 				 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<!-- <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	 <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/toLogin" />
 		<property name="successUrl" value="/home" />
@@ -16,15 +16,15 @@
 		 
 		<property name="filterChainDefinitions">
 			<value>
-				/toLogin = authc authc 表示需要认证才能访问的页面
-				/home = authc, perms[/home]  perms 表示需要该权限才能访问的页面
+				/toLogin = authc <!-- authc 表示需要认证才能访问的页面 -->
+				/home = authc, perms[/home]  <!-- perms 表示需要该权限才能访问的页面 -->
 			</value>
 		</property>
 	</bean>
 
 
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="myShiroRealm"></property>
-	</bean> -->
+		<property name="realm" ref="safetyRealm"></property>
+	</bean>
 
 </beans>
