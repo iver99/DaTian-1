@@ -61,6 +61,33 @@ public class OrderBean {
 	private String driver;
 	private String confirm;
 	
+	private String fulltruckloadId;
+	private String lesstruckloadId;
+	
+	/**
+	 * @return fulltruckloadId
+	 */
+	public String getFulltruckloadId() {
+		return fulltruckloadId;
+	}
+	/**
+	 * @param fulltruckloadId 要设置的 fulltruckloadId
+	 */
+	public void setFulltruckloadId(String fulltruckloadId) {
+		this.fulltruckloadId = fulltruckloadId;
+	}
+	/**
+	 * @return lesstruckloadId
+	 */
+	public String getLesstruckloadId() {
+		return lesstruckloadId;
+	}
+	/**
+	 * @param lesstruckloadId 要设置的 lesstruckloadId
+	 */
+	public void setLesstruckloadId(String lesstruckloadId) {
+		this.lesstruckloadId = lesstruckloadId;
+	}
 	/**
 	 * @return confirm
 	 */
