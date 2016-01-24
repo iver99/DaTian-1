@@ -154,9 +154,7 @@
                         <tr>
                             <td width="15" class="td_main_list_head"></td>
                             <td class="td_main_list_head">货物名称</td>
-                            <td class="td_main_list_head" width="70">运输类型</td>
-                            <td class="td_main_list_head" width="100">有效期至</td>
-                            <td class="td_main_list_head" width="80">重量(吨)</td>
+                            <td class="td_main_list_head" width="100">有效期至</td> 
                             <td class="td_main_list_head" width="110">发布日期</td>
                             <td class="td_main_list_head" width="45">关注</td>
                         </tr>
@@ -288,9 +286,9 @@ function getSelectedCargoAjax(startPlace,endPlace,transportType,weight,transport
 			$("#testbody").append("<tr>");
 			$("#testbody").append("<td class=\"td_main_list_content\"></td>");
 			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"goodsdetail?id="+data[i].id+"\" hidefocus=\"true\">"+data[i].name+"</a>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].transportType+"</td>");
+			/* $("#testbody").append("<td class=\"td_main_list_content\">"+data[i].transportType+"</td>"); */
 			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].limitDate)+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].weight+"</td>");
+			/* $("#testbody").append("<td class=\"td_main_list_content\">"+data[i].weight+"</td>"); */
 			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
 			if(data[i].status == "有效")
 				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
