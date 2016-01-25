@@ -15,13 +15,7 @@
 	<!-- 开启spring注解功能 -->
 	<mvc:annotation-driven />
 	<!-- 扫描spring组件 -->
-	<context:component-scan base-package="cn.edu.bjtu.controller"></context:component-scan>
-	<context:component-scan base-package="cn.edu.bjtu.service"></context:component-scan>
-	<context:component-scan base-package="cn.edu.bjtu.dao"></context:component-scan>
-	<context:component-scan base-package="cn.edu.bjtu.dao.impl"></context:component-scan>
-	<context:component-scan base-package="cn.edu.bjtu.service.impl"></context:component-scan>
-	<context:component-scan base-package="cn.edu.bjtu.util"></context:component-scan>
-	<context:component-scan base-package="cn.edu.bjtu.safety"></context:component-scan>
+	<context:component-scan base-package="cn.edu.bjtu"></context:component-scan>
 
 	<!-- 对静态资源的处理 -->
 	 <mvc:resources location="/views/images/" mapping="/images/**"/><!-- /images/**的请求都会到/views/images/下去找，下面的类似 -->
