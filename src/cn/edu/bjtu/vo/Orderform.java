@@ -33,6 +33,24 @@ public class Orderform implements java.io.Serializable {
 	private String warehouseId;
 	private String citylineId;
 	private String linetransportId;
+	/**
+	 * @return linetransportId
+	 */
+	public String getLinetransportId() {
+		return linetransportId;
+	}
+
+
+	/**
+	 * @param linetransportId 要设置的 linetransportId
+	 */
+	public void setLinetransportId(String linetransportId) {
+		this.linetransportId = linetransportId;
+	}
+
+
+	private String fulltruckloadId;
+	private String lesstruckloadId;
 	private String remarks;
 	private Float insurance;
 	private String clientId;
@@ -379,14 +397,6 @@ public class Orderform implements java.io.Serializable {
 		this.citylineId = citylineId;
 	}
 
-	public String getLinetransportId() {
-		return this.linetransportId;
-	}
-
-	public void setLinetransportId(String linetransportId) {
-		this.linetransportId = linetransportId;
-	}
-
 	public String getRemarks() {
 		return this.remarks;
 	}
@@ -438,25 +448,34 @@ public class Orderform implements java.io.Serializable {
 	}
 
 
-	/* （非 Javadoc）
-	 * @see java.lang.Object#toString()
+	/**
+	 * @return fulltruckloadId
 	 */
-	@Override
-	public String toString() {
-		return "Orderform [id=" + id + ", orderNum=" + orderNum + ", goodsName=" + goodsName + ", carrierId="
-				+ carrierId + ", expectedPrice=" + expectedPrice + ", actualPrice=" + actualPrice + ", submitTime="
-				+ submitTime + ", state=" + state + ", deliveryAddr=" + deliveryAddr + ", deliveryName=" + deliveryName
-				+ ", deliveryPhone=" + deliveryPhone + ", recieverAddr=" + recieverAddr + ", recieverName="
-				+ recieverName + ", recieverPhone=" + recieverPhone + ", warehouseId=" + warehouseId + ", citylineId="
-				+ citylineId + ", linetransportId=" + linetransportId + ", remarks=" + remarks + ", insurance="
-				+ insurance + ", clientId=" + clientId + ", goodsWeight=" + goodsWeight + ", goodsVolume=" + goodsVolume
-				+ ", contractId=" + contractId + ", resourceType=" + resourceType + ", acceptPicture=" + acceptPicture
-				+ ", explainReason=" + explainReason + ", carNum=" + carNum + ", driver=" + driver + ", confirm="
-				+ confirm + ", commentId=" + commentId + ", declaredPrice=" + declaredPrice + ", hasCarrierContract="
-				+ hasCarrierContract + ", clientName=" + clientName + ", cancelReason=" + cancelReason
-				+ ", settlementState=" + settlementState + ", isLinkToClientWayBill=" + isLinkToClientWayBill
-				+ ", clientWayBillNum=" + clientWayBillNum + ", resourceName=" + resourceName + ", companyName="
-				+ companyName + ", finishTime=" + finishTime + "]";
+	public String getFulltruckloadId() {
+		return fulltruckloadId;
 	}
-	
+
+
+	/**
+	 * @param fulltruckloadId 要设置的 fulltruckloadId
+	 */
+	public void setFulltruckloadId(String fulltruckloadId) {
+		this.fulltruckloadId = fulltruckloadId;
+	}
+
+
+	/**
+	 * @return lesstruckloadId
+	 */
+	public String getLesstruckloadId() {
+		return lesstruckloadId;
+	}
+
+
+	/**
+	 * @param lesstruckloadId 要设置的 lesstruckloadId
+	 */
+	public void setLesstruckloadId(String lesstruckloadId) {
+		this.lesstruckloadId = lesstruckloadId;
+	}
 }

@@ -88,31 +88,40 @@
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
                                     <td><a class="link1" hidefocus="true" target="_blank" href="fulltruckloaddetail?truckId=${truckInfo.id }&carrierId=${truckInfo.carrierId }&flag=0">（整车）${truckInfo.startCity }→${truckInfo.endCity }</a></td>
+                                    <td><input name="resourceType" type="hidden" value="整车"/></td>
+                                    <td><input name="resourceName" type="hidden" value="${truckInfo.startCity }→${truckInfo.endCity }"/></td>
                                 </tr>
                                 </c:when>
 			                    <c:when test="${resourceType == '2' }">
 			                    <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
                                     <td><a class="link1" hidefocus="true" target="_blank" href="citylinedetail?citylineId=${citylineInfo.id }&carrierId=${citylineInfo.carrierId }&flag=0">（落地配）${citylineInfo.name }</a></td>
+                                    <td><input name="resourceType" type="hidden" value="落地配"/></td>
+                                    <td><input name="resourceName" type="hidden" value="${citylineInfo.name }"/></td>
                                 </tr>
 			                    </c:when>
 			                    <c:when test="${resourceType == '5' }">
 			                    <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
                                     <td><a class="link1" hidefocus="true" target="_blank" href="lesstruckloaddetail?truckId=${truckInfo.id }&carrierId=${truckInfo.carrierId }&flag=0">（零担）${truckInfo.startCity }→${truckInfo.endCity }</a></td>
+                                    <td><input name="resourceType" type="hidden" value="零担"/></td>
+                                    <td><input name="resourceName" type="hidden" value="${truckInfo.startCity }→${truckInfo.endCity }"/></td>
                                 </tr>
 			                    </c:when>
 			                    <c:when test="${resourceType == '6' }">
 			                    <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
                                     <td><a class="link1" hidefocus="true" target="_blank" href="airlinedetail?airlineId=${airlineInfo.id }&carrierId=${airlineInfo.carrierId }&flag=0">（国内空运）${airlineInfo.startCity }→${airlineInfo.endCity }</a></td>
+                                    <td><input name="resourceType" type="hidden" value="国内空运"/></td>
+                                    <td><input name="resourceName" type="hidden" value="${airlineInfo.startCity }→${airlineInfo.endCity }"/></td>
                                 </tr>
 			                    </c:when>
 			                    </c:choose>
 								</c>
 								<tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
-                                    <td>${company.companyName }</td>
+                                    <td><input name="companyName" type="text" readonly value="${companyName }" required/></td>
+                                    <td><input name="carrierId" value="${carrierId }" type="hidden"/> </td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">联系人：</td>

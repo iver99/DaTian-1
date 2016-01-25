@@ -98,8 +98,8 @@ function cancel(id){
                         <td width="20" height="40" class="td_mgmt_right3_head">&nbsp;</td>
                         <td width="100" class="td_mgmt_right3_head">订单编号</td>
                         <td width="60" class="td_mgmt_right3_head">类别</td>
-                        <td class="td_mgmt_right3_head">名称</td>
-                        <td width="120" class="td_mgmt_right3_head">承运方</td>
+                        <td width="120" class="td_mgmt_right3_head">名称</td>
+                        <td class="td_mgmt_right3_head">承运方</td>
                         <td width="88" class="td_mgmt_right3_head">订单运费(元)</td>
                         <td width="88" class="td_mgmt_right3_head">最终运费(元)</td>
                         <td width="80" class="td_mgmt_right3_head">提交时间</td>
