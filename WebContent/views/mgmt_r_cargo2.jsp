@@ -72,91 +72,29 @@
                                     <td><input type="text" class="input_mgmt1" id="name" name="name" style="width:300px;" required/></td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">类型：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">货物描述：</td>
                                     <td>
-                                        <input type="radio" name="type" checked="checked" value="医药" hidefocus="true" />医药&nbsp;&nbsp;&nbsp;
-                                        <input type="radio" name="type" value="电子仪器" hidefocus="true" onclick="content_switch2();" />电子仪器&nbsp;&nbsp;&nbsp;
-                                        <input type="radio" name="type" value="服装" hidefocus="true" onclick="content_switch3();" />服装
+                                        <textarea class="textarea_rating" placeholder="请输入内容..." id="goodsDes" name="goodsDes" required></textarea>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">重量：</td>
-                                    <td><input type="text" class="input_mgmt1" id="weight" name="weight" style="width:300px;" required/>
-                                    (吨)</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运输类型：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">运输要求：</td>
                                     <td>
-                                        <input type="radio" name="transportType" value="整车" checked="checked" hidefocus="true" />整车&nbsp;&nbsp;&nbsp;
-                                        <input type="radio" name="transportType" value="零担" hidefocus="true" />零担
+                                        <textarea class="textarea_rating" placeholder="请输入内容..." id="transportReq" name="transportReq" required></textarea>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">关于运输的要求：</td>
-                                    <td><input type="text" class="input_mgmt1" id="transportReq" name="transportReq" style="width:300px;" required/></td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">线路起止：</td>
-                                    <td id="cityselector">
-                                        <input id="city1" type="text" value="" name="startPlace" class="input_city1" /><span class="span_mgmt_dynamic1" required>至</span><input id="city2" type="text" value="" name="endPlace" class="input_city1" required/>
-                                        <!--<img src="images/btn_add2.png" hidefocus="true" style="cursor:pointer;" title="添加" onclick="addcity2();" />-->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="1"></td>
-                                    <td><div id="dym_citylist"></div></td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">关于赔偿的要求：</td>
-                                    <td><input type="text" class="input_mgmt1" id="damageReq" name="damageReq" style="width:300px;" required/></td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">费用要求：</td>
                                     <td>
-                                        <select id="VIPService" style="width:110px;" name="vipservice" onchange="changeHasVIPService2();" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="需要">需要</option>
-                                            <option value="不需要">不需要</option>
-                                        </select>
-                                        <div id="c_detail" style="display:none;">
-                                            <input type="text" name="vipServiceDetail" class="input_mgmt1" style="width:186px;" placeholder="请输入内容..."/>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">发送对象：</td>
-                                    <td>
-                                        <select id="valueadd" style="width:110px;" name="oriented" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="用户">用户</option>
-                                            <option value="平台">平台</option>
-                                        </select>
-                                        <!-- <div id="v_detail" style="display:none;">
-                                            <select style="width:93px;" name="user">
-                                                <option name="orienteUser" value="" selected="selected">请选择</option>
-                                                <option value="全体用户">全体用户</option>
-                                                <option value="承运方">承运方</option>
-                                                <option value="大田分公司">大田分公司</option>
-                                            </select>
-                                        </div> -->
+                                        <textarea class="textarea_rating" placeholder="请输入内容..." id="feeReq" name="feeReq" required></textarea>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">有效期至：</td>
                                     <td><input type="text" class="input_date1" title="点击此处选择" id="limitDate" name="limitDate" onclick="SelectDate(this,'yyyy-MM-dd')" readonly="readonly" required/></td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">发票要求：</td>
-                                    <td>
-                                        <select style="width:110px;" id="invoice" name="invoice" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="需要">需要</option>
-                                            <option value="不需要">不需要</option>
-                                        </select>
-                                    </td>
-                                </tr>
+                                </tr> 
 								<tr>
-									<td height="40" class="td_mgmt_right3_td1b">相关材料：</td>
+									<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
 									<td>
                                     	<div style="position:relative;">
                                         	<input id="apply_attachment1" type="text" class="input_attachment1" name="relatedMaterial" style="width:230px;" value="" /><input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />

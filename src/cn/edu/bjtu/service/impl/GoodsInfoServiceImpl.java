@@ -73,6 +73,7 @@ public class GoodsInfoServiceImpl implements GoodsInfoService{
 		goods.setId(IdCreator.createGoodsId());
 		goods.setState("待确认");
 		goods.setRelDate(new Date());
+		goods.setUpdateDate(goods.getRelDate());
 		goods.setClientId(clientId);
 		
 		

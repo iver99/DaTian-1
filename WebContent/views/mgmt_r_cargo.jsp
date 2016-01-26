@@ -40,27 +40,7 @@
 		<tr>
 			<td width="230" class="td_leftnav_top">
                 <div id="main_frame_left">
-                    <%@ include  file="mysource_leftnav_mytrade.jsp" %>
-                    <%-- <hr class="hr_2" />
-                    <span class="text_mgmt_leftnav1"><span
-							id="mgmt_nav_switch2a" class="span_mgmt_nav1" title="收起"
-							onclick="mgmt_nav_switch2a();"></span><span
-							id="mgmt_nav_switch2b" class="span_mgmt_nav2" title="展开"
-							onclick="mgmt_nav_switch2b();"></span>我的资源</span>
-						<div id="mgmt_nav2">
-                       <% if((Integer)session.getAttribute("userKind") ==3) {%><!-- 企业用户 -->
-                        <a href="linetransport?flag=1&Display=10&PageNow=1" class="a_mgmt_leftnav" hidefocus="true">干线运输线路信息</a>
-                        <a href="cityline?flag=1" class="a_mgmt_leftnav" hidefocus="true">城市配送网络信息</a>
-                        <a href="car?flag=1" class="a_mgmt_leftnav" hidefocus="true">车辆信息</a>
-                        <a href="warehouse?flag=1" class="a_mgmt_leftnav" hidefocus="true">仓库信息</a>
-						<a href="driver?flag=1" class="a_mgmt_leftnav" hidefocus="true">司机信息</a>
-                        <%} %>
-                        <% if((Integer)session.getAttribute("userKind") ==2) {%><!-- 个人用户 -->
-                        <a href="client" class="a_mgmt_leftnav" hidefocus="true">客户信息</a>
-                        <a href="goodsform?flag=1" class="a_mgmt_leftnav1" hidefocus="true">货物信息</a>
-                        <a href="contract" class="a_mgmt_leftnav" hidefocus="true">合同信息</a>
-                        <%} %>
-                    </div> --%>
+                    <%@ include  file="mysource_leftnav_mytrade.jsp" %> 
                     <%@ include  file="mysource_leftnav_myresource.jsp"%>
                     <%@ include  file="mysource_leftnav_myplan.jsp"%>
                     <%@ include  file="mysource_leftnav_myanalysis.jsp"%>
@@ -93,11 +73,8 @@
 							<td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
 							<td width="90" class="td_mgmt_right3_head">编号</td>
 							<td class="td_mgmt_right3_head">货物名称</td>
-							<td width="80" class="td_mgmt_right3_head">发布日期</td>
 							<td width="80" class="td_mgmt_right3_head">有效期至</td>
-							<td width="50" class="td_mgmt_right3_head">反馈方</td>
-							<td width="60" class="td_mgmt_right3_head">反馈数量</td>
-							<td width="60" class="td_mgmt_right3_head">状态</td>
+							<td width="80" class="td_mgmt_right3_head">最后更新日期</td>
 							<td width="80" class="td_mgmt_right3_head">操作</td>
 						</tr>
 						</thead>
@@ -184,33 +161,20 @@
 					 str+="<td class=\"td_main_list_content\"></td>";
 					 str+="<td class=\"td_main_list_content\">"+data[i].id+"</td>";
 					 str+="<td class=\"td_main_list_content\"><a href=\"mygoodsdetail?id="+data[i].id+"&flag=1\" hidefocus=\"true\">"+data[i].name+"</a></td>";
-					 str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>";
 					 str+="<td class=\"td_main_list_content\">"+renderTime(data[i].limitDate)+"</td>";
-					 str+="<td class=\"td_main_list_content\">"+data[i].oriented+"</td>";
-					 str+="<td class=\"td_main_list_content\">"+data[i].feedbackQuantity+"</td>";
-					 if(data[i].state=='已确认'){
-						 str+="<td class=\"td_mgmt_right3_td1\">已确认</td>";
-						 str+="<td class=\"td_mgmt_right3_td3\"><a href=\"viewResponseDetailAfter?goodsid="+data[i].id+"\" hidefocus=\"true\">查看反馈</a></td>";
-					 }else if(data[i].state=='已取消'){
-						 str+="<td class=\"td_mgmt_right3_td1\">已取消</td>";
-						 str+="<td class=\"td_mgmt_right3_td3\"><a href=\"mygoodsdetail?id="+data[i].id+"&flag=1\" hidefocus=\"true\">查看</a></td>";
-						 
-					 }else{
-						 str+="<td class=\"td_mgmt_right3_td2\">待确认</td>";
-						 str+="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 203;\">";
-							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"viewResponseDetail?goodsid="+data[i].id+"\" class=\"menuhd\" hidefocus=\"true\">查看反馈</a>";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"mygoodsdetail?id="+data[i].id+"&flag=2\" class=\"a_top3\" hidefocus=\"true\">更新</a>";
-							str+="<a href=\"deletegoods?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
-							str+="</div></div></div></li></ul></div></td>";
-					 }
+					 str+="<td class=\"td_main_list_content\">"+renderTime(data[i].updateDate)+"</td>";
+					 str+="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 203;\">";
+					 str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
+					 str+="<div class=\"menu\">";
+					 str+="<a class=\"menuhd\" href=\"mygoodsdetail?id="+data[i].id+"&flag=1\" hidefocus=\"true\">查看</a>";
+					 str+="<div class=\"menubd\">";
+					 str+="<div class=\"menubdpanel\">";
+					 str+="<a href=\"mygoodsdetail?id="+data[i].id+"&flag=2\" class=\"a_top3\" hidefocus=\"true\">更新</a>";
+					 str+="<a href=\"deletegoods?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
+					 str+="</div></div></div></li></ul></div></td>";
 					 str+="</tr>";
 					 body.append(str);
 				} 
-				
 			}
 		})
 	}
