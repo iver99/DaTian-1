@@ -1,6 +1,7 @@
 package cn.edu.bjtu.controller.sms;
 
 import java.rmi.RemoteException;
+import java.util.List;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
@@ -15,6 +16,7 @@ import cn.edu.bjtu.service.sms.SmsService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.DataSourceContextHolder;
 import cn.edu.bjtu.util.VCodeCreator;
+import cn.edu.bjtu.vo.sms.SmsLog;
 /**
  * 短信接口相关的控制器
  * @author iver
@@ -176,6 +178,18 @@ public class SMSController {
 			smsErrorLogger.error(e);
 			e.printStackTrace();
 		}
+		
+	}
+	/**
+	 * 获取短信日志，为了节省工作量，暂且不坐分页功能，只显示最新的200条
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("getSmsLogAjax")
+	public List<SmsLog> getSMSLog(){
+		//切换数据源
+		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
+		return smsService.getSmsLog();
 		
 	}
 }

@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="../js/jquery.min.1.7.2.js"></script>
-<script type="text/javascript" src="../js/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
 <title>短信测试页面</title>
 </head>
 <body>
@@ -30,6 +30,7 @@
 <h1 id="balance"></h1>
 <br/><br/>
 <h2>【安卓】端短信接口url：http://123.56.143.59:8585/DaTian/sendVcodeToPhoneAjax?phone=15000000000</h2>
+<h2><a href="<%=ctxPath %>/views/smsLog.jsp">短信日志</a></h2>
 </body>
 <script type="text/javascript"> 
 	$(function() {

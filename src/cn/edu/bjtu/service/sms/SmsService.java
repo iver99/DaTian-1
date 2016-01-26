@@ -1,5 +1,9 @@
 package cn.edu.bjtu.service.sms;
 
+import java.util.List;
+
+import cn.edu.bjtu.vo.sms.SmsLog;
+
 public interface SmsService {
 	
 	/**
@@ -11,5 +15,12 @@ public interface SmsService {
 	 * @return
 	 */
 	public boolean log(String phone,String smsContent,String type,String terminal,int status);
+	
+	
+	/**
+	 * 获取短信日志
+	 * @return
+	 */
+	public List<SmsLog> getSmsLog();
 
 }

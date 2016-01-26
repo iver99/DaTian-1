@@ -1,6 +1,7 @@
 package cn.edu.bjtu.service.sms.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,18 @@ public class SmsServiceImpl implements SmsService{
 		
 		return true;
 	}
+	/**
+	 * 获取短信日志
+	 */
+	@Override
+	public List<SmsLog> getSmsLog() {
+		String hql="from SmsLog t order by t.id desc";
+		//为了省工作量，暂时不做分页功能，只去日志的前200条记录
+		List<SmsLog> logList=smsLogDao.find(hql, 1, 200);
+		
+		return logList;
+	}
+	
+	
 
 }
