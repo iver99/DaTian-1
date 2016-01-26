@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,7 +19,10 @@ import cn.b2m.eucp.example.SingletonClient;
 public class SMSController {
 	
 	ResourceBundle bundle=PropertyResourceBundle.getBundle("config");
-	public final String password=bundle.getString("password");
+	public final String password=bundle.getString("password");//password of sms interface
+	//获取短信日志记录器
+	public static Logger smsErrorLogger=Logger.getLogger("smsError");
+	public static Logger smsHisLogger=Logger.getLogger("smsHis");
 	/**
 	 * 注册序列号
 	 */
@@ -27,10 +31,17 @@ public class SMSController {
 	public String regSmsSerialNo(){
 		try {
 			int i = SingletonClient.getClient().registEx(password);
-			System.out.println("testTegistEx:" + i);
+//			System.out.println("testTegistEx:" + i);
+			//日志
+			if(i==0){
+				smsHisLogger.info("【序列号激活成功！】");
+			}else{
+				smsHisLogger.info("【序列号激活操作失败，返回值为】:"+i+",请查看短信接口说明文档查看原因!");
+			}
 			return "testTegistEx:" + i;
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			smsErrorLogger.error(e);
 			return "error!!!";
 		}
 	}
@@ -65,10 +76,16 @@ public class SMSController {
 					bundle.getString("fax"),  
 					bundle.getString("address"),  
 					bundle.getString("postcode"));
-			System.out.println("testRegistDetailInfo:" + a);
+			if(a==0){
+				smsHisLogger.info("【企业信息注册成功！】");
+			}else{
+				smsHisLogger.info("【企业信息注册操作失败，返回值为】:"+a+",请查看短信接口说明文档查看原因!");
+			}
+//			System.out.println("testRegistDetailInfo:" + a);
 			return "testRegistDetailInfo:" + a;
 		} catch (Exception e) {
 			e.printStackTrace();
+			smsErrorLogger.error(e);
 			return "error!!!";
 		}
 	}
@@ -80,10 +97,17 @@ public class SMSController {
 	public String sendSMS(String phone,String smsContent){
 		try {
 			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】"+smsContent, "",5);// 带扩展码
-			System.out.println("testSendSMS=====" + i);
+			//System.out.println("testSendSMS=====" + i);
+			//发送成功记录日志
+			if(i==0){
+				smsHisLogger.info("手机号:【"+phone+"】=====短信内容:【"+smsContent+"】");
+			}else{
+				smsHisLogger.info("【发送短信操作失败，返回值为】:"+i+",请查看短信接口说明文档查看原因!");
+			}
 			return "testSendSMS=====" + i;
 		} catch (Exception e) {
 			e.printStackTrace();
+			smsErrorLogger.error(e);
 			return "error!!!";
 		}
 	}
@@ -95,10 +119,12 @@ public class SMSController {
 	public String getSMSBalance(){
 		try {
 			Double a = SingletonClient.getClient().getBalance();
-			System.out.println("testGetBalance:" + a);
+//			System.out.println("testGetBalance:" + a);
+			//发送成功记录日志
 			return  a.toString();
 		} catch (Exception e) {
 			e.printStackTrace();
+			smsErrorLogger.error(e);
 			return "error!!!";
 		}
 	}
@@ -106,12 +132,18 @@ public class SMSController {
 	/**
 	 * 安卓端获取验证码接口
 	 */
-	@RequestMapping("sendVodeToPhoneAjax")
+	@RequestMapping("sendVcodeToPhoneAjax")
 	public void androidSendSMSByPhoneNum(String phone){
 		try {
 			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为XXXX", "",5);// 带扩展码
-			System.out.println("testSendSMS=====" + i);
+//			System.out.println("testSendSMS=====" + i);
+			if(i==0){
+				smsErrorLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【】");//FIXME
+			}else{
+				smsErrorLogger.info("【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
+			}
 		} catch (Exception e) {
+			smsErrorLogger.error(e);
 			e.printStackTrace();
 		}
 		
