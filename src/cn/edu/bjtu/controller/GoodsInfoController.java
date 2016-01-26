@@ -20,12 +20,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.edu.bjtu.bean.search.CargoSearchBean;
+import cn.edu.bjtu.service.ClientService;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.service.GoodsInfoService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadPath;
+import cn.edu.bjtu.vo.Clientinfo;
 import cn.edu.bjtu.vo.GoodsClientView;
 import cn.edu.bjtu.vo.Goodsform;
 
@@ -38,6 +40,8 @@ public class GoodsInfoController {
 	GoodsInfoService goodsInfoService;
 	@Autowired
 	FocusService focusService;
+	@Autowired
+	ClientService clientService;
 	ModelAndView mv = new ModelAndView();
 
 	/**
@@ -97,6 +101,9 @@ public class GoodsInfoController {
 	 */
 	public ModelAndView getAllGoodsDetail(@RequestParam String id) {
 		GoodsClientView goodsformInfo = goodsInfoService.getAllGoodsDetail(id);
+		String clientId = goodsformInfo.getClientId();
+		Clientinfo clientInfo = clientService.getClientInfo(clientId);
+		mv.addObject("clientInfo", clientInfo);
 		mv.addObject("goodsformInfo", goodsformInfo);
 		mv.setViewName("resource_detail6");
 

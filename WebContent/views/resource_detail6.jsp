@@ -332,17 +332,9 @@
 			<td width="320" class="td_leftnav_top"><img src="images/illust_2g.png" /></td>
 			<td class="td_detail_top">货物名称：<span class="text_detail_title1">${goodsformInfo.name }</span>
                 <br />
-                运输类型：<span class="text_detail_title2">${goodsformInfo.transportType }</span>
-                <br />
-                重量：<span class="text_detail_title2">${goodsformInfo.weight }吨</span>
-                <br />
-                始发城市：${goodsformInfo.startPlace }
-                <br />
-                目的城市：${goodsformInfo.endPlace }
+                截止时间：<span class="text_detail_title2">${goodsformInfo.limitDate }</span>
                 <br />
                 发布日期：${goodsformInfo.relDate }
-                <br />
-                有效期至：${goodsformInfo.limitDate }
                 <br />
                 发布人：${goodsformInfo.realName }<img src="images/btn_level2a.png" />
                 <br />

@@ -26,6 +26,8 @@ public class Goodsform implements java.io.Serializable {
 	private Date relDate;
 	@DateTimeFormat( pattern = "yyyy-MM-dd" )
 	private Date limitDate;
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	private Date updateDate;
 	//private String declaredValue;
 	private String transportReq;
 	private String damageReq;
@@ -34,10 +36,12 @@ public class Goodsform implements java.io.Serializable {
 	private String oriented;
 	private int feedbackQuantity;
 	private String invoice;
-	private String relatedMaterial;
+	private String relatedMaterial;//图片展示
 	private String clientId;
-	private String remarks;
+	private String remarks;  //补充信息
 	private String state;
+	private String goodsDes;//货物描述
+	private String feeReq;//费用要求
 	
 	/*private String carrierId;
 
@@ -51,6 +55,48 @@ public class Goodsform implements java.io.Serializable {
 
 	public String getState() {
 		return state;
+	}
+
+	/**
+	 * @return updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * @param updateDate 要设置的 updateDate
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	/**
+	 * @return goodsDes
+	 */
+	public String getGoodsDes() {
+		return goodsDes;
+	}
+
+	/**
+	 * @param goodsDes 要设置的 goodsDes
+	 */
+	public void setGoodsDes(String goodsDes) {
+		this.goodsDes = goodsDes;
+	}
+
+	/**
+	 * @return feeReq
+	 */
+	public String getFeeReq() {
+		return feeReq;
+	}
+
+	/**
+	 * @param feeReq 要设置的 feeReq
+	 */
+	public void setFeeReq(String feeReq) {
+		this.feeReq = feeReq;
 	}
 
 	public String getVipServiceDetail() {
