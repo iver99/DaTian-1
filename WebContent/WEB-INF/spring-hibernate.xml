@@ -35,12 +35,26 @@
 		<property name="maxPoolSize" value="${pc.security.jdbc.maxPoolSize}"></property>
 		<property name="minPoolSize" value="${pc.security.jdbc.minPoolSize}"></property>
 	</bean>
+	
+	<bean id="dataSource_sms" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${sms.jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${sms.jdbc.url}"></property> <!-- change port -->
+		<property name="user" value="${sms.jdbc.user}"></property>
+		<property name="password" value="${sms.jdbc.password}"></property> <!-- change password -->
+		<property name="initialPoolSize" value="${sms.jdbc.initialPoolSize}"></property>
+		<property name="maxIdleTime" value="${sms.jdbc.maxIdleTime}"></property>
+		<property name="maxPoolSize" value="${sms.jdbc.maxPoolSize}"></property>
+		<property name="minPoolSize" value="${sms.jdbc.minPoolSize}"></property>
+	</bean>
+	
 	<!-- 	动态数据源 -->
 	<bean class="cn.edu.bjtu.util.DynamicDataSource" id="dynamicDataSource">
 	<property name="targetDataSources">
 		<map key-type="java.lang.String">
 			<entry value-ref="dataSource" key="dataSource"></entry>
 			<entry value-ref="dataSource_security" key="dataSource_security"></entry>
+			<entry value-ref="dataSource_sms" key="dataSource_sms"></entry>
 		</map>
 	</property>
 	<property name="defaultTargetDataSource" ref="dataSource"></property>

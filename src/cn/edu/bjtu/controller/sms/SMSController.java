@@ -5,12 +5,26 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.b2m.eucp.example.SingletonClient;
+import cn.edu.bjtu.service.sms.SmsService;
+import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.DataSourceContextHolder;
 import cn.edu.bjtu.util.VCodeCreator;
+/**
+ * 短信接口相关的控制器
+ * @author iver
+ * @date   2016年1月25日 下午2:13:33
+ */
+/**
+ * 短信接口相关的控制器
+ * @author iver
+ * @date   2016年1月25日 下午2:13:33
+ */
 /**
  * 短信接口相关的控制器
  * @author iver
@@ -18,6 +32,11 @@ import cn.edu.bjtu.util.VCodeCreator;
  */
 @Controller
 public class SMSController {
+	
+	@Autowired
+	SmsService smsService;
+	
+	
 	
 	ResourceBundle bundle=PropertyResourceBundle.getBundle("config");
 	public final String password=bundle.getString("password");//password of sms interface
@@ -96,14 +115,17 @@ public class SMSController {
 	@RequestMapping("sendSMSAjax")
 	@ResponseBody
 	public String sendSMS(String phone,String smsContent){
+		//切换数据源
+		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		try {
 			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】"+smsContent, "",5);// 带扩展码
-			//System.out.println("testSendSMS=====" + i);
 			//发送成功记录日志
 			if(i==0){
 				smsHisLogger.info("手机号:【"+phone+"】=====短信内容:【"+smsContent+"】");
+				smsService.log(phone, smsContent, Constant.SMS_INFO,Constant.SMS_PC_TERM,Constant.SMS_SUCCESS);
 			}else{
-				smsHisLogger.info("【发送短信操作失败，返回值为】:"+i+",请查看短信接口说明文档查看原因!");
+				smsHisLogger.info("【PC】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
+				smsService.log(phone, "【PC】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!", Constant.SMS_WARNING,Constant.SMS_PC_TERM,Constant.SMS_FAIL);
 			}
 			return "testSendSMS=====" + i;
 		} catch (Exception e) {
@@ -120,7 +142,8 @@ public class SMSController {
 	public String getSMSBalance(){
 		try {
 			Double a = SingletonClient.getClient().getBalance();
-//			System.out.println("testGetBalance:" + a);
+			//记录日志
+			smsHisLogger.info("【短信余额】==="+a);
 			//发送成功记录日志
 			return  a.toString();
 		} catch (Exception e) {
@@ -135,16 +158,19 @@ public class SMSController {
 	 */
 	@RequestMapping("sendVcodeToPhoneAjax")
 	public void androidSendSMSByPhoneNum(String phone){
+		//切换数据源
+		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		try {
 			String vCode=VCodeCreator.getVCode();
 			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
-//			System.out.println("testSendSMS=====" + i);
 			if(i==0){
 				//FIXME
 				//存储验证码
-				smsErrorLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
+				smsHisLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
+				smsService.log(phone, vCode, Constant.SMS_VCODE,Constant.SMS_ANDROID_TERM,Constant.SMS_SUCCESS);
 			}else{
-				smsErrorLogger.info("【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
+				smsHisLogger.info("【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
+				smsService.log(phone, "【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!", Constant.SMS_WARNING,Constant.SMS_ANDROID_TERM,Constant.SMS_FAIL);
 			}
 		} catch (Exception e) {
 			smsErrorLogger.error(e);
