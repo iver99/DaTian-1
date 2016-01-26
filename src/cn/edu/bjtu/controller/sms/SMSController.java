@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.b2m.eucp.example.SingletonClient;
+import cn.edu.bjtu.util.VCodeCreator;
 /**
  * 短信接口相关的控制器
  * @author iver
@@ -135,10 +136,13 @@ public class SMSController {
 	@RequestMapping("sendVcodeToPhoneAjax")
 	public void androidSendSMSByPhoneNum(String phone){
 		try {
-			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为XXXX", "",5);// 带扩展码
+			String vCode=VCodeCreator.getVCode();
+			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
 //			System.out.println("testSendSMS=====" + i);
 			if(i==0){
-				smsErrorLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【】");//FIXME
+				//FIXME
+				//存储验证码
+				smsErrorLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
 			}else{
 				smsErrorLogger.info("【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
 			}
