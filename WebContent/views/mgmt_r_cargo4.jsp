@@ -67,50 +67,24 @@
                                     <td>${goodsdetail.name }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">货物类型：</td>
-                                    <td>${goodsdetail.type }</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">货物描述：</td>
+                                    <td>${goodsdetail.goodsDes }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">重量：</td>
-                                    <td>${goodsdetail.weight }(吨)</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运输类型：</td>
-                                    <td>${goodsdetail.transportType }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">关于运输的要求：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">运输要求：</td>
                                     <td>${goodsdetail.transportReq }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1e">线路起止：</td>
-                                    <td>
-                                    	${goodsdetail.startPlace }--${goodsdetail.endPlace }
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">关于赔偿的要求：</td>
-                                    <td>${goodsdetail.damageReq }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
-                                    <td>${goodsdetail.vipservice }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">发送范围：</td>
-                                    <td>${goodsdetail.oriented }</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">费用要求：</td>
+                                    <td>${goodsdetail.feeReq }</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">有效期至：</td>
                                     <td>${goodsdetail.limitDate }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">发票要求：</td>
-                                    <td>${goodsdetail.invoice }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">相关材料：</td>
-                                    <td><a href="downloadgoodsrelated?id=${goodsdetail.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a></td>
+                                    <td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
+                                    <td><a href="downloadgoodsrelated?id=${goodsdetail.id }" hidefocus="true"><img src="images/btn_filetype1.png" /></a></td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">补充信息：</td>

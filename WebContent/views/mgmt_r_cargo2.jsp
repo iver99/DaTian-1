@@ -144,17 +144,10 @@
 			rules : {
 				name : "required",
 				transportReq : "required",
-				damageReq : "required",
-				city1 : "required",
-				VIPService : "required",
-				valueadd : "required",
+				goodsDes : "required",
+				feeReq : "required",
 				limitDate : "required",
 				remarks : "required",
-				weight : {
-					required : true,
-					number : true
-				}
-
 			}
 		});
 	}
