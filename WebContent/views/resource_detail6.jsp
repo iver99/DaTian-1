@@ -342,12 +342,36 @@
                 <br />
                 <%-- 联系电话：${goodsformInfo.phone } --%>
                 <hr class="hr_1" />
-                <% if((Integer)session.getAttribute("userKind") ==null ) {%><!-- 企业用户 -->
+                <%-- <% if((Integer)session.getAttribute("userKind") ==null ) {%><!-- 企业用户 -->
                 <input type="button" id="btn2" value="提交反馈" class="input_detail1" hidefocus="true" onclick="window.location.href='getresponseform?goodsid=${goodsformInfo.id}'" />
             	<% } %>
                 <% if((Integer)session.getAttribute("userKind")!=null && (Integer)session.getAttribute("userKind") ==3) {%><!-- 企业用户 -->
                 <input type="button" id="btn2" value="提交反馈" class="input_detail1" hidefocus="true" onclick="window.location.href='getresponseform?goodsid=${goodsformInfo.id}'" />
-            	<% } %>
+            	<% } %> --%>
+            	<input type="button" value="0" style="display:none" id="i"></input>
+                <c:forEach var="focus" items="${focusList }">
+					<c:if test="${goodsformInfo.id==focus.focusId}">
+						<script>
+							document.getElementById("i").value=1;
+						</script>
+					</c:if>
+				</c:forEach>
+				<script type="text/javascript">
+					if(document.getElementById("i").value==1)
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"已关注\" class=\"input_detail3\" hidefocus=\"true\" onclick=\"loadXMLDoc('${goodsformInfo.id }');hidefav(this);\" />" );
+					else
+						document.write( "<input type=\"button\" id=\"btnfav\" value=\"关注\" class=\"input_detail1\" hidefocus=\"true\" onclick=\"loadXMLDoc('${goodsformInfo.id }');hidefav(this);\" />" );
+				</script>
+                
+                <%-- <input type="button" id="btn2" value="提交订单" class="input_detail2" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${linetransportInfo.carrierId}&flag=1&resourceId=${linetransportInfo.id}'" /> --%>
+                <c:choose>
+                     <c:when test="${sessionScope.username!=null }">
+                         <input type="button" id="btn2" value="查看联系方式" class="input_detail2" hidefocus="true" onclick="showid('popup1');" />
+                     </c:when>
+                     <c:otherwise>
+                         <input type="button" id="btn2" value="登陆后查看联系方式" class="input_detail2" hidefocus="true" onclick="window.location.href='login'" />
+                     </c:otherwise>
+                </c:choose>
             </td>
 		</tr>
     </table>
@@ -358,12 +382,18 @@
                 <div id="detail_tab">
                     <ul class="nav">
                         <li><a href="#item1" class="current" hidefocus="true">补充信息</a></li>
+                        <li><a href="#item2" hidefocus="true">运输要求</a></li>
+                        <li><a href="#item3" hidefocus="true">费用要求</a></li>
                     </ul>
                     <div class="list_wrap">
                         <ul id="item1">
-                            <li class="item2a">说明：</li>
                             <li class="item2a">${goodsformInfo.remarks }</li>
-                            
+                        </ul>
+                        <ul id="item2" class="tab_hide">
+                            <li class="item2a">${goodsformInfo.transportReq }</li>
+                        </ul>
+                        <ul id="item3" class="tab_hide">
+                            <li class="item2a">${goodsformInfo.feeReq }</li>
                         </ul>
                     </div>
 				</div>
@@ -372,7 +402,29 @@
     </table>
 </div>
 
-<%@ include  file="popup1.jsp"%>
+<%-- <%@ include  file="popup1.jsp"%> --%>
+<div id="popup1" class="popup" style="display:none;">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="510"><div class="div_popup_title1">联系方式</div></td>
+            <td>
+                <div style="cursor:pointer;" onclick="hideid('popup1');">
+                    <img src="images/btn_cancel1.png" title="关闭本窗口" />
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table width="540" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #ddd;">
+        <tr>
+            <td width="120" height="50" class="td_mgmt_right3_td1b_1">联系人姓名：</td>
+            <td class="td_mgmt_right3_td1b_2">${clientInfo.realName }</td>
+        </tr>
+        <tr>
+            <td height="50" class="td_mgmt_right3_td1b_1">手机号：</td>
+            <td class="td_mgmt_right3_td1b_2">${clientInfo.phone }</td>
+        </tr>
+    </table>
+</div>
 
 <div id="footer_frame">
 	<iframe allowtransparency="true" width="100%" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0" src="footer.jsp"></iframe>
@@ -384,6 +436,23 @@
 		loadFocus();
 		
 		$("#search_content").css("height",36);
+	}
+	function loadXMLDoc(id){
+		var curWwwPath=window.document.location.href;
+	    var pathName=window.document.location.pathname;
+	    var pos=curWwwPath.indexOf(pathName);
+		$.ajax({
+			   type: "GET",
+			   url: curWwwPath.substring(0,pos) + "/DaTian/focus",//请求的后台地址
+			   data: "type=goods&id=" + id,//前台传给后台的参数
+			   cache:false,
+			   success: function(msg){//msg:返回值
+				   if(msg == "login"){
+					   location.assign(curWwwPath.substring(0,pos) + "/DaTian/loginForm");
+				   }
+				   loadFocus();
+			   }
+			});
 	}
 </script>
 </html>
