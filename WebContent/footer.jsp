@@ -16,12 +16,12 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
         <td class="td_footer">
-            <a href="javascript:;" class="a_footer" target="_top" hidefocus="true">关于我们</a>
+           <!--  <a href="javascript:;" class="a_footer" target="_top" hidefocus="true">关于我们</a>
             |<a href="intro" class="a_footer" target="_top" hidefocus="true">使用帮助</a>
             |<a href="javascript:;" target="_top" class="a_footer" hidefocus="true">网站导航</a>
             |<a href="javascript:;" class="a_footer" target="_top" hidefocus="true">友情链接</a>
             |<a href="javascript:;" class="a_footer" target="_top" hidefocus="true">客服中心</a>
-            <br />
+            <br /> -->
             天津大田集团有限公司版权所有&copy;
         </td>
     </tr>
