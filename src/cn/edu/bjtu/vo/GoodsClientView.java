@@ -38,6 +38,9 @@ public class GoodsClientView implements java.io.Serializable {
 	private String realName;
 	private String carrierId;
 	private String phone;
+	private String goodsDes;
+	private String feeReq;
+	private Date updateDate;
 	@Column(name="VIPServiceDetail")
 	private String vipServiceDetail;//add by RussWest0 at 2015年6月9日,下午8:51:25 
 
@@ -234,5 +237,47 @@ public class GoodsClientView implements java.io.Serializable {
 		this.carrierId = carrierId;
 	}
 
+	/**
+	 * @return goodsDes
+	 */
+	public String getGoodsDes() {
+		return goodsDes;
+	}
+
+	/**
+	 * @param goodsDes 要设置的 goodsDes
+	 */
+	public void setGoodsDes(String goodsDes) {
+		this.goodsDes = goodsDes;
+	}
+
+	/**
+	 * @return feeReq
+	 */
+	public String getFeeReq() {
+		return feeReq;
+	}
+
+	/**
+	 * @param feeReq 要设置的 feeReq
+	 */
+	public void setFeeReq(String feeReq) {
+		this.feeReq = feeReq;
+	}
+
+	/**
+	 * @return updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * @param updateDate 要设置的 updateDate
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+    
 
 }
