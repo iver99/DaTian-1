@@ -1083,38 +1083,57 @@ a.a_pagenumber:hover {
  /******左导航伸缩切换******/
 .span_mgmt_nav1 {
 	display:inline-block;
-	width:15px;
-	height:15px;
-	background:url(../images/btn_toggle1.png) no-repeat center left;
+	font-size:16px;
+	font-weight:bold;
+	width:96%;
+	height:50px;
+	line-height:50px;
+	margin-left:4px;
+	padding-left:16px;
+	background:url(../images/btn_toggle1.png) no-repeat left center;
 	cursor:pointer;
 	}
 .span_mgmt_nav1a {
 	display:inline-block;
-	width:15px;
-	height:15px;
-	background:url(../images/btn_toggle1.png) no-repeat center left;
+	font-size:16px;
+	font-weight:bold;
+	width:96%;
+	height:50px;
+	line-height:50px;
+	margin-left:4px;
+	padding-left:16px;
+	background:url(../images/btn_toggle1.png) no-repeat left center;
 	cursor:pointer;
 	display:none;
 	}
 .span_mgmt_nav2 {
 	display:inline-block;
-	width:15px;
-	height:15px;
-	background:url(../images/btn_toggle2.png) no-repeat center left;
+	font-size:16px;
+	font-weight:bold;
+	width:96%;
+	height:50px;
+	line-height:50px;
+	margin-left:4px;
+	padding-left:16px;
+	background:url(../images/btn_toggle2.png) no-repeat left center;
 	cursor:pointer;
 	display:none;
 	}
 .span_mgmt_nav2a {
 	display:inline-block;
-	width:15px;
-	height:15px;
-	background:url(../images/btn_toggle2.png) no-repeat center left;
+	font-size:16px;
+	font-weight:bold;
+	width:96%;
+	height:50px;
+	line-height:50px;
+	margin-left:4px;
+	padding-left:16px;
+	background:url(../images/btn_toggle2.png) no-repeat left center;
 	cursor:pointer;
 	}
 .div_mgmt_show1 {
 	display:none;
 	}
-
  /******左导航伸缩切换结束******/
 
 .text_mgmt_leftnav1 {

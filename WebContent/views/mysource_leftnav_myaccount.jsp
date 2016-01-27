@@ -1,10 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <hr class="hr_2" />
-                    <span class="text_mgmt_leftnav1">
-                        <span id="mgmt_nav_switch5a" class="span_mgmt_nav1a" title="收起" onclick="mgmt_nav_switch5a();"></span>
-                        <span id="mgmt_nav_switch5b" class="span_mgmt_nav2a" title="展开" onclick="mgmt_nav_switch5b();"></span>
-                                                               我的帐户
-                    </span>
+                    <span id="mgmt_nav_switch5a" class="span_mgmt_nav1a" title="收起" onclick="mgmt_nav_switch5a();">我的账户</span>
+                    <span id="mgmt_nav_switch5b" class="span_mgmt_nav2a" title="展开" onclick="mgmt_nav_switch5b();">我的账户</span>                                                                            
                     <div id="mgmt_nav5" class="div_mgmt_show1">
                         <a href="accountinfo" class="a_mgmt_leftnav" hidefocus="true">帐户信息</a>
                         <% if((Integer)session.getAttribute("userKind") ==3) {%><!-- 企业用户 -->
