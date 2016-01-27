@@ -1022,7 +1022,7 @@ FROM
 carinfo ,
 carrierinfo
 WHERE
-carinfo.carrierId = carrierinfo.id ; ;
+carinfo.carrierId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for city_carrier_view
@@ -1044,7 +1044,7 @@ FROM
 carrierinfo ,
 cityline
 WHERE
-carrierinfo.id = cityline.carrierId ; ;
+carrierinfo.id = cityline.carrierId ; 
 
 -- ----------------------------
 -- View structure for complaint_client_view
@@ -1067,7 +1067,7 @@ FROM
 complaintform ,
 clientinfo
 WHERE
-complaintform.clientId = clientinfo.id ; ;
+complaintform.clientId = clientinfo.id ; 
 
 -- ----------------------------
 -- View structure for focus_car_view
@@ -1090,7 +1090,7 @@ carinfo ,
 carrierinfo
 WHERE
 focus.focusId = carinfo.id AND
-carinfo.carrierId = carrierinfo.id ; ;
+carinfo.carrierId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for focus_cityline_view
@@ -1112,7 +1112,7 @@ cityline ,
 carrierinfo
 WHERE
 focus.focusId = cityline.id AND
-cityline.carrierId = carrierinfo.id ; ;
+cityline.carrierId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for focus_company_view
@@ -1131,7 +1131,7 @@ FROM
 focus ,
 carrierinfo
 WHERE
-focus.focusId = carrierinfo.id ; ;
+focus.focusId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for focus_goods_view
@@ -1149,7 +1149,7 @@ FROM
 focus ,
 goodsform
 WHERE
-focus.focusId = goodsform.id ; ;
+focus.focusId = goodsform.id ; 
 
 -- ----------------------------
 -- View structure for focus_linetransport_view
@@ -1172,7 +1172,7 @@ linetransport ,
 carrierinfo
 WHERE
 focus.focusId = linetransport.id AND
-linetransport.carrierId = carrierinfo.id ; ;
+linetransport.carrierId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for focus_warehouse_view
@@ -1194,7 +1194,7 @@ warehouse ,
 carrierinfo
 WHERE
 focus.focusId = warehouse.id AND
-warehouse.carrierId = carrierinfo.id ; ;
+warehouse.carrierId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for goods_client_view
@@ -1253,7 +1253,7 @@ FROM
 goodsform ,
 response
 WHERE
-goodsform.id = response.goodsId ; ;
+goodsform.id = response.goodsId ; 
 
 -- ----------------------------
 -- View structure for line_carrier_view
@@ -1276,7 +1276,7 @@ FROM
 carrierinfo ,
 linetransport
 WHERE
-carrierinfo.id = linetransport.carrierId ; ;
+carrierinfo.id = linetransport.carrierId ; 
 
 -- ----------------------------
 -- View structure for order_carrier_view
@@ -1325,7 +1325,7 @@ FROM
 orderform ,
 carrierinfo
 WHERE
-orderform.carrierId = carrierinfo.id ; ;
+orderform.carrierId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for settlement_carrier_view
@@ -1349,7 +1349,7 @@ FROM
 orderform ,
 carrierinfo
 WHERE
-orderform.carrierId = carrierinfo.id ; ;
+orderform.carrierId = carrierinfo.id ; 
 
 -- ----------------------------
 -- View structure for warehouse_carrier_view
