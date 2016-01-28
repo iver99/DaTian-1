@@ -70,7 +70,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
                 <thead>
                     <tr>
-                        <td width="30" height="40" class="td_mgmt_right3_head1"><input type="checkbox" id="f1_all" onClick="selectall();" /></td>
+                        <td width="30" height="40" class="td_mgmt_right3_head1"><!-- <input type="checkbox" id="f1_all" onClick="selectall();" /> --></td>
 						<td width="60" class="td_mgmt_right3_head">类别</td>
                         <td class="td_mgmt_right3_head">名称</td>
                         <td width="80" class="td_mgmt_right3_head">发布日期</td>
@@ -137,7 +137,7 @@
 				for(var i=0;i<data.length;i++){
 					if(data[i].focusType == 'fulltruckload'){
 						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">整车</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
@@ -166,7 +166,7 @@
 					}
 					if(data[i].focusType == 'lesstruckload'){
 						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">零担</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"lesstruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"lesstruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
@@ -195,7 +195,7 @@
 					}
 					if(data[i].focusType == 'cityline'){
 						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">落地配</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"citylinedetail?citylineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"</a>"+"<br>"+"<a href=\"citylinedetail?citylineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
@@ -225,7 +225,7 @@
 					}
 					if(data[i].focusType == 'warehouse'){
 						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">仓库</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"warehousedetail?warehouseId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"</a>"+"<br>"+"<a href=\"warehousedetail?warehouseId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
@@ -245,7 +245,7 @@
 					}
 					if(data[i].focusType == 'airline'){
 						body.append("<tr>");
-						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" /></td>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">国内空运</td>");
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"airlinedetail?airlineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"airlinedetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
