@@ -3,8 +3,10 @@ package cn.edu.bjtu.vo;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import cn.edu.bjtu.vo.safety.UserRole;
@@ -44,6 +46,7 @@ public class Userinfo implements java.io.Serializable {
 	private String headIcon;// add by RussWest0 at 2015年6月2日,下午11:55:34 
 	private String feedback;// add by 翟博渊
 	//用户角色信息
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<UserRole> userRoles;
 	
 	
