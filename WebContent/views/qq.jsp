@@ -11,9 +11,9 @@
             </div>
             <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2509129180&site=qq&menu=yes" hidefocus="true">咨询提问</a>
             <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2509129180&site=qq&menu=yes" hidefocus="true">意见建议</a>
-            <div class="qqserver_comment" onclick="showid('popup1');" hidefocus="true">
+<!--             <div class="qqserver_comment" onclick="showid('popup1');" hidefocus="true">
                 给我留言
-            </div>
+            </div> -->
            <a href="javascript:;" class="a1" hidefocus="true" onclick="loadMessages();showid('popup2');">查看历史记录</a>
         </div>
     </div>
