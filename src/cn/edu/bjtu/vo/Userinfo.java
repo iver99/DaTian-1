@@ -1,10 +1,13 @@
 package cn.edu.bjtu.vo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import cn.edu.bjtu.vo.safety.UserRole;
 
 // Generated 2015-1-31 22:44:34 by Hibernate Tools 3.4.0.CR1
 
@@ -40,7 +43,25 @@ public class Userinfo implements java.io.Serializable {
 	
 	private String headIcon;// add by RussWest0 at 2015年6月2日,下午11:55:34 
 	private String feedback;// add by 翟博渊
+	//用户角色信息
+	private List<UserRole> userRoles;
 	
+	
+	
+	/**
+	 * @return the userRoles
+	 */
+	public List<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	/**
+	 * @param userRoles the userRoles to set
+	 */
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+
 	public String getFeedback() {
 		return feedback;
 	}
