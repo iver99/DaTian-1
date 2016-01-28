@@ -144,6 +144,15 @@ public class AirLineController {
 		
 		return jsonArray.toString();
 	}
+	/**
+	 * 我的信息-空运资源-总记录条数
+	 */
+	@RequestMapping(value="getAirLineResourceTotalRowsAjax")
+	@ResponseBody
+	public Integer getSelectedAirLineResourceTotalRows(HttpSession session){
+		
+		return airlineService.getSelectedAirLineResourceTotalRows(session);
+	}
 	
 	/**
 	 * 新增国内空运资源

@@ -186,6 +186,21 @@ public class AirLineServiceImpl implements AirLineService {
 		}
 		return jsonArray;
 	}
+	
+    /**
+	 * 我的信息-空运信息-总记录条数
+	 */
+	@Override
+	public Integer getSelectedAirLineResourceTotalRows(HttpSession session) {
+		String carrierId=(String)session.getAttribute(Constant.USER_ID);
+		String hql="select count(*) from AirLine t where t.carrierId=:carrierId";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("carrierId", carrierId);
+		Long count=airlineDao.count(hql, params);
+		
+		return count.intValue();
+		
+	}
 
 	@Override
 	public boolean insertNewAirLine(AirLine airline, HttpServletRequest request, MultipartFile file) {

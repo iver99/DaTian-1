@@ -80,6 +80,14 @@ function ChangeTo(page){
 			getLesstruckloadResource(display,currentPage);
 			getLessTruckLoadResourceTotalRows(display,currentPage);
 		}
+		if($("#kind").val() == 'fulltruckload'){
+			getUserFullTruckLoadResource(display,currentPage);
+			getUserFullTruckLoadResourceTotalRows(display,currentPage);
+		}
+		if($("#kind").val() == 'airline'){
+			getAirLineResource(display,currentPage);
+			getAirLineResourceTotalRows(display,currentPage);
+		}
 		if($("#kind").val() == 'cityline'){
 			getUserCitylineResource(display,currentPage);
 			getUserCitylineResourceTotalRows(display,currentPage);

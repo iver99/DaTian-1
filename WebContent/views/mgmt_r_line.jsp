@@ -69,7 +69,7 @@
 		<input id="display" value="10" type="hidden" /> <!-- 每页展示的数量 -->
 		<input id="currentPage" value="1" type="hidden" /><!-- 当前页 -->
 		<input id="is_resource_page" value="0" type="hidden"/><!-- 是否为资源页，资源页需要模拟click按钮 -->
-		<input id="kind" value="linetransport" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
+		<input id="kind" value="fulltruckload" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
 		
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" 

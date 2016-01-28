@@ -69,7 +69,7 @@
 		<input id="display" value="10" type="hidden" /> <!-- 每页展示的数量 -->
 		<input id="currentPage" value="1" type="hidden" /><!-- 当前页 -->
 		<input id="is_resource_page" value="0" type="hidden"/><!-- 是否为资源页，资源页需要模拟click按钮 -->
-		<input id="kind" value="linetransport" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
+		<input id="kind" value="airline" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
 		
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" 
@@ -135,7 +135,7 @@
 		//alert(display+"-"+currentPage)
 		//加载国内空运资源
 		getAirLineResource(display,currentPage);
-		getUserFullTruckLoadResourceTotalRows(display,currentPage);
+		getAirLineResourceTotalRows(display,currentPage);
 	}
 	
 //加载国内空运资源
@@ -185,8 +185,8 @@ function getAirLineResource(display,currentPage){
 	})
 }
 //干线资源总条数
-function getUserFullTruckLoadResourceTotalRows(display,currentPage){
-	var url="getUserLinetransportResourceTotalRowsAjax";
+function getAirLineResourceTotalRows(display,currentPage){
+	var url="getAirLineResourceTotalRowsAjax";
 	$.ajax({
 		url:url,
 		data:{
@@ -212,8 +212,8 @@ function changeDisplay(){
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
 		//加载用户干线资源
-		getUserLinetransportResource(display,currentPage);
-		getUserLinetransportResourceTotalRows(display,currentPage);
+		getAirLineResource(display,currentPage);
+		getAirLineResourceTotalRows(display,currentPage);
 }
 
 </script>

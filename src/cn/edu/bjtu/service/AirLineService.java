@@ -32,6 +32,13 @@ public interface AirLineService {
 	 */
 	public JSONArray getAirLineResource(HttpSession session,PageUtil pageUtil);
 	
+	/**
+	 * 我的信息-国内空运-总记录条数
+	 * 
+	 */
+	public Integer getSelectedAirLineResourceTotalRows(HttpSession session);
+	
+	
 	public boolean insertNewAirLine(AirLine airline,HttpServletRequest request, MultipartFile file);
 	
 	public boolean updateAirLine(AirLine airline,HttpServletRequest request,MultipartFile file);
