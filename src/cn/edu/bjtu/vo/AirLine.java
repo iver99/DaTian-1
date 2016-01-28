@@ -32,7 +32,11 @@ public class AirLine implements java.io.Serializable {
 	private String picture;
 	private String remarks;
 	private String carrierId;
+	private String airCycle;
 	private Date relDate;
+	
+	
+
 	/**
 	 * @return id
 	 */
@@ -224,6 +228,15 @@ public class AirLine implements java.io.Serializable {
 	 */
 	public void setRelDate(Date relDate) {
 		this.relDate = relDate;
+	}
+	/**
+	 * @param airCycle ÒªÉèÖÃµÄ airCycle
+	 */
+	public String getAirCycle() {
+		return airCycle;
+	}
+	public void setAirCycle(String airCycle) {
+		this.airCycle = airCycle;
 	}
 	
 	

@@ -84,6 +84,17 @@
                                             <option value="48小时">48小时</option>
                                         </select>
                                     </td>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">航班周期：</td>
+                                    <td>
+                                      <input type="checkbox" name="airCycle" value="1" />星期一&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="2" />星期二&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="3" />星期三&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="4" />星期四&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="5" />星期五&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="6" />星期六&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="7" />星期日&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">增值服务：</td>
