@@ -89,7 +89,7 @@
                                 <dd><a href="javascript:;" hidefocus="true" id="select1_3">48小时抵运</a></dd>
                             </dl>
                         </li>
-                        <li class="resource_list">
+<!--                         <li class="resource_list">
                             <dl id="select2" value="">
                                 <dt>航班周期：</dt>
                                 <dd class="resource_all selected"><a href="javascript:;" hidefocus="true" id="">全部</a></dd>
@@ -99,7 +99,7 @@
                                 <dd><a href="javascript:;" hidefocus="true" id="select2_3">周一二三四</a></dd>
                                 <dd><a href="javascript:;" hidefocus="true" id="select2_3">周一二三四五</a></dd>
                             </dl>
-                        </li>
+                        </li> -->
                         <li class="resource_result">
                             <dl>
                                 <dt>已选条件：</dt>
