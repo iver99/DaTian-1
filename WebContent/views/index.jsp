@@ -71,7 +71,7 @@
             <input id="city2" type="text" value="" class="input_city2" />
             <input type="button" id="btn1" value="查询" class="btn_index_2" onclick="changeToLinePage()" hidefocus="true" />
         </li>
-        <li class="li_index_2c">
+       <!--  <li class="li_index_2c">
             <a href="linetransport?flag=0&resource_kind=线路&search_content=北京" class="a_index_2c" hidefocus="true">北京</a>
             <a href="linetransport?flag=0&resource_kind=线路&search_content=天津" class="a_index_2c" hidefocus="true">天津</a>
             <a href="linetransport?flag=0&resource_kind=线路&search_content=上海" class="a_index_2c" hidefocus="true">上海</a>
@@ -92,7 +92,7 @@
             <a href="linetransport?flag=0&city1=沈阳&city2=广州" class="a_index_2d" hidefocus="true">沈阳-广州</a>
             <a href="linetransport?flag=0&city1=上海&city2=武汉" class="a_index_2d" hidefocus="true">上海-武汉</a>
             <a href="linetransport?flag=0&city1=北京&city2=广州" class="a_index_2d" hidefocus="true">北京-广州</a>
-        </li>
+        </li> -->
     </ul>
 </div>
 
