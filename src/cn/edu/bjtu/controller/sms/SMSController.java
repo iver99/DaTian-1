@@ -6,6 +6,8 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -136,6 +138,8 @@ public class SMSController {
 			return "error!!!";
 		}
 	}
+	
+
 	/**
 	 * 获取短信余额
 	 */
@@ -157,11 +161,14 @@ public class SMSController {
 	
 	/**
 	 * 安卓端获取验证码接口
+	 * @return 
 	 */
 	@RequestMapping("sendVcodeToPhoneAjax")
-	public void androidSendSMSByPhoneNum(String phone){
+	@ResponseBody
+	public String androidSendSMSByPhoneNum(String phone){
 		//切换数据源
 		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
+		JSONObject json = new JSONObject(); 
 		try {
 			String vCode=VCodeCreator.getVCode();
 			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
@@ -170,15 +177,18 @@ public class SMSController {
 				//存储验证码
 				smsHisLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
 				smsService.log(phone, vCode, Constant.SMS_VCODE,Constant.SMS_ANDROID_TERM,Constant.SMS_SUCCESS);
+				json.put("vcode", vCode);
 			}else{
 				smsHisLogger.info("【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
 				smsService.log(phone, "【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!", Constant.SMS_WARNING,Constant.SMS_ANDROID_TERM,Constant.SMS_FAIL);
+				json.put("vcode", "fail");
+
 			}
 		} catch (Exception e) {
 			smsErrorLogger.error(e);
 			e.printStackTrace();
 		}
-		
+		return json.toString();
 	}
 	/**
 	 * 获取短信日志，为了节省工作量，暂且不坐分页功能，只显示最新的200条
