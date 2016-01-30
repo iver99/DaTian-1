@@ -23,6 +23,37 @@ public class Track implements java.io.Serializable {
 	
 	private String address;
 	private String orderNum;
+	private String event;      //事件（已接受任务/已取件/运输中/已签收）
+	private String waybillNum; //运单号
+	
+
+	/**
+	 * @return waybillNum
+	 */
+	public String getWaybillNum() {
+		return waybillNum;
+	}
+
+	/**
+	 * @param waybillNum 要设置的 waybillNum
+	 */
+	public void setWaybillNum(String waybillNum) {
+		this.waybillNum = waybillNum;
+	}
+
+	/**
+	 * @return event
+	 */
+	public String getEvent() {
+		return event;
+	}
+
+	/**
+	 * @param event 要设置的 event
+	 */
+	public void setEvent(String event) {
+		this.event = event;
+	}
 
 	/**
 	 * @return orderNum
