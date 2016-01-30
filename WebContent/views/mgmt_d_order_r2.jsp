@@ -87,7 +87,7 @@
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">运单号:</td>
                                     <td>
-									     <textarea class="textarea_rating" placeholder="请输入运单号，运单号之间用英文逗号分隔..." id="waybills" name="waybills" required></textarea>
+									     <textarea class="textarea_rating" placeholder="请输入运单号，运单号之间用英文逗号分隔..." id="waybill" name="waybill" required></textarea>
 									</td>
 								</tr>
                                 <tr>

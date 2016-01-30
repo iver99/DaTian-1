@@ -25,7 +25,7 @@ public interface OrderService {
 
 	public OrderCarrierView getOrderByOrderId(String orderId);
 
-	public boolean acceptOrder(String orderId);
+	public boolean acceptOrder(String orderId,String driver,String carNum,String waybill);
 	
 	//add by solitudeycq at 2015-12-18 22:21 为订单分配司机
 	public boolean setDriver(String orderId,String driver);

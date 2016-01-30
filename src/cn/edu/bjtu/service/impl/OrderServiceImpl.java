@@ -19,6 +19,8 @@ import cn.edu.bjtu.dao.AddressDao;
 import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.dao.OrderCarrierViewDao;
 import cn.edu.bjtu.dao.OrderDao;
+import cn.edu.bjtu.dao.WayBillDao;
+import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
@@ -27,6 +29,7 @@ import cn.edu.bjtu.vo.Address;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.OrderCarrierView;
 import cn.edu.bjtu.vo.Orderform;
+import cn.edu.bjtu.vo.WayBill;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -48,6 +51,10 @@ public class OrderServiceImpl implements OrderService {
 	AddressDao addressDao;
 	@Autowired
 	OrderCarrierViewDao orderCarrierViewDao;
+	@Autowired
+	WayBillDao waybillDao;
+	@Resource(name = "carServiceImpl")
+	CarService carService;
 	@Override
 	public OrderCarrierView getSendOrderDetail(String id) {
 		
@@ -79,11 +86,34 @@ public class OrderServiceImpl implements OrderService {
 	 * 承运方修改订单状态为待收货
 	 */
 	@Override
-	public boolean acceptOrder(String orderId) {
-		
-
+	public boolean acceptOrder(String orderId,String driver,String carNum,String waybill) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
 		order.setState("已受理");
+		String[] drivers = driver.split(",");
+		String[] carNums = carNum.split(",");
+		String[] waybills = waybill.split(",");
+		for(int i=0;i<drivers.length;i++){
+			WayBill wayBill = new WayBill();
+			wayBill.setId(IdCreator.createWayBillId());
+			wayBill.setOrderId(orderId);
+			wayBill.setWaybillNum(waybills[i]);
+			wayBill.setDriver(drivers[i]);
+			wayBill.setCarNum(carNums[i]);
+			wayBill.setConfirm("false");
+			wayBill.setDeliveryAddr(order.getDeliveryAddr());
+			wayBill.setDeliveryName(order.getDeliveryName());
+			wayBill.setDeliveryPhone(order.getDeliveryPhone());
+			wayBill.setRecieverAddr(order.getRecieverAddr());
+			wayBill.setRecieverName(order.getRecieverName());
+			wayBill.setRecieverPhone(order.getRecieverPhone());
+			wayBill.setWaybillSubTime(new Date());
+			wayBill.setWaybillState("未确认");
+			wayBill.setGoodsName(order.getGoodsName());
+			wayBill.setGoodsVolume(order.getGoodsVolume());
+			wayBill.setGoodsWeight(order.getGoodsWeight());
+			waybillDao.save(wayBill);
+			carService.setcarState(carNums[i], "在途");
+		}
 
 		orderDao.update(order);
 		return true;

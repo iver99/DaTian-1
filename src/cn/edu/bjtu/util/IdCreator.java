@@ -11,6 +11,14 @@ import java.util.Date;
 public class IdCreator {
 	
 	/**
+	 * ·µ»ØWayBillID
+	 * @return
+	 */
+	public static String createWayBillId(){
+		return "WB" + (int)(Math.random() * 100000000);
+	}
+	
+	/**
 	 * ·µ»ØAirLineID
 	 * @return
 	 */
