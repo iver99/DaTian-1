@@ -7,11 +7,14 @@ package cn.edu.bjtu.util;
 public class VCodeCreator {
 
 	/**
-	 * 随机生成一个验证码
+	 * 随机生成一个4位数字验证码
 	 * @return
 	 */
 	public static String getVCode(){
-		return (int)(Math.random() * 10000)+"";
+		int vcode=(int)(Math.random() * 10000);
+		
+		//保证返回四位随机数
+		return vcode<1000?vcode+1000+"":vcode+"";
 	}
 	
 }
