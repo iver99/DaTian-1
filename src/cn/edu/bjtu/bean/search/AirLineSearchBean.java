@@ -18,6 +18,7 @@ public class AirLineSearchBean {
 	private Float price3; //+100
 	private Float price4; //+300
 	private Float price5; //+500
+	private String airCycle;
 	private Float pickFee;
 	private Float deliveryFee;
 	private String picture;
@@ -25,6 +26,19 @@ public class AirLineSearchBean {
 	private String carrierId;
 	private Date relDate;
 	private String companyName;
+	
+	/**
+	 * @return airCycle
+	 */
+	public String getAirCycle() {
+		return airCycle;
+	}
+	/**
+	 * @param airCycle ÒªÉèÖÃµÄ airCycle
+	 */
+	public void setAirCycle(String airCycle) {
+		this.airCycle = airCycle;
+	}
 	/**
 	 * @return id
 	 */

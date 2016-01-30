@@ -63,6 +63,7 @@ public class AirLineServiceImpl implements AirLineService {
 				+ "t1.price3,"
 				+ "t1.price4,"
 				+ "t1.price5,"
+				+ "t1.airCycle,"
 				+ "t1.pickFee,"
 				+ "t1.deliveryFee,"
 				+ "t1.picture,"
@@ -92,7 +93,7 @@ public class AirLineServiceImpl implements AirLineService {
 		List<AirLineSearchBean> airlineList=new ArrayList<AirLineSearchBean>();
 		for(Iterator<Object[]> it=objectList.iterator();it.hasNext();){
 			Object[] obj=it.next();
-			String carrierId = (String)obj[14];
+			String carrierId = (String)obj[15];
 			Carrierinfo carrierInfo = companyDao.get(Carrierinfo.class, carrierId);
 			AirLineSearchBean airlineBean1 = new AirLineSearchBean();
 			airlineBean1.setCompanyName(carrierInfo.getCompanyName());
@@ -106,12 +107,13 @@ public class AirLineServiceImpl implements AirLineService {
 			airlineBean1.setPrice3((Float)obj[7]);
 			airlineBean1.setPrice4((Float)obj[8]);
 			airlineBean1.setPrice5((Float)obj[9]);
-			airlineBean1.setPickFee((Float)obj[10]);
-			airlineBean1.setDeliveryFee((Float)obj[11]);
-			airlineBean1.setPicture((String)obj[12]);
-			airlineBean1.setRemarks((String)obj[13]);
-			airlineBean1.setCarrierId((String)obj[14]);
-			airlineBean1.setRelDate((Date)obj[15]);
+			airlineBean1.setAirCycle((String)obj[10]);
+			airlineBean1.setPickFee((Float)obj[11]);
+			airlineBean1.setDeliveryFee((Float)obj[12]);
+			airlineBean1.setPicture((String)obj[13]);
+			airlineBean1.setRemarks((String)obj[14]);
+			airlineBean1.setCarrierId((String)obj[15]);
+			airlineBean1.setRelDate((Date)obj[16]);
 			airlineList.add(airlineBean1);
 		}
 		for(int i=0;i<airlineList.size();i++){
