@@ -86,6 +86,18 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">航班周期：</td>
+                                    <td>
+                                      <input type="checkbox" name="airCycle" value="一" />星期一&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="二" />星期二&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="三" />星期三&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="四" />星期四&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="五" />星期五&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="六" />星期六&nbsp;&nbsp;&nbsp;&nbsp;
+									  <input type="checkbox" name="airCycle" value="日" />星期日&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">增值服务：</td>
                                     <td>
                                         <select id="valueadd" style="width:120px;" onchange="change1();">

@@ -209,7 +209,16 @@ public class AirLineServiceImpl implements AirLineService {
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		//保存文件
 		String fileLocation=UploadFile.uploadFile(file, carrierId, "airline");
-		
+		String[] tempairCycle = (airline.getAirCycle()).split(",");
+		String cycle = "周";
+		for(int i=0;i<tempairCycle.length;i++){
+			cycle = cycle + tempairCycle[i]; 
+		}
+		if(cycle.equals("周一二三四五六日")){
+			airline.setAirCycle("每天");
+		}else{
+			airline.setAirCycle(cycle);
+		}
 		airline.setRelDate(new Date());
 		airline.setCarrierId(carrierId);
 		airline.setId(IdCreator.createAirLineId());
@@ -227,6 +236,16 @@ public class AirLineServiceImpl implements AirLineService {
 		String fileLocation=UploadFile.uploadFile(file, carrierId, "airline");
 
 		AirLine airlineInstance = airlineDao.get(AirLine.class,airline.getId());
+		String[] tempairCycle = (airline.getAirCycle()).split(",");
+		String cycle = "周";
+		for(int i=0;i<tempairCycle.length;i++){
+			cycle = cycle + tempairCycle[i]; 
+		}
+		if(cycle.equals("周一二三四五六日")){
+			airlineInstance.setAirCycle("每天");
+		}else{
+			airlineInstance.setAirCycle(cycle);
+		}
 		airlineInstance.setStartCity(airline.getStartCity());
 		airlineInstance.setEndCity(airline.getEndCity());
 		airlineInstance.setOnwayTime(airline.getOnwayTime());

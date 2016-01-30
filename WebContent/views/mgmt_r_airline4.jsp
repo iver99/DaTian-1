@@ -74,6 +74,10 @@
                                     <td>${airlineInfo.onwayTime }</td>
                                 </tr> 
                                 <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">航班周期：</td>
+                                    <td>${airlineInfo.airCycle }</td>
+                                </tr>
+                                <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
                                     <td>${airlineInfo.extraService }</td>
                                 </tr>

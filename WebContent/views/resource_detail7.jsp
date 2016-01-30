@@ -44,6 +44,8 @@
                 <br />
                 抵运时间：<span class="text_detail_title2">${airlineInfo.onwayTime }</span>
                 <br />
+                航班周期：<span class="text_detail_title2">${airlineInfo.airCycle }</span>
+                <br />
                 报价：<span class="text_detail_title2">M：${airlineInfo.price1 }元、N：${airlineInfo.price2 }元/公斤、+100：${airlineInfo.price3 }元/公斤、+300：${airlineInfo.price4 }元/公斤、+500：${airlineInfo.price5 }元/公斤</span>
                 <br />
                 提货费：<span class="text_detail_title2">${airlineInfo.pickFee }元/方</span>
