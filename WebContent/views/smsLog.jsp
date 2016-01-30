@@ -40,15 +40,19 @@ function getSMSLog(){
 					str+="<td class=\"td_main_list_content\"></td>";
 					str+="<td class=\"td_main_list_content\">"+data[i].id+"</td>";
 					str+="<td class=\"td_main_list_content\">"+data[i].terminal+"</td>";
-					str+="<td class=\"td_main_list_content\">"+data[i].type+"</td>";
+					if(data[i].type == 'WARNING'){
+						str+="<td class=\"td_main_list_content\" style=\"color:red;font-weight:900\">"+data[i].type+"</td>";
+					}else{
+						str+="<td class=\"td_main_list_content\">"+data[i].type+"</td>";
+					}
 					str+="<td class=\"td_main_list_content\">"+data[i].phone+"</td>";
 					str+="<td class=\"td_main_list_content\">"+data[i].smsContent+"</td>";
 					str+="<td class=\"td_main_list_content\">"+renderTime(data[i].time)+"</td>";
 					if(data[i].status == 0)
 					{
-						str+="<td class=\"td_main_list_content\">成功</td>";
+						str+="<td class=\"td_main_list_content\" style=\"color:green\">成功</td>";
 					}else{
-						str+="<td class=\"td_main_list_content\">失败</td>";
+						str+="<td class=\"td_main_list_content\" style=\"color:red;font-weight:900\">失败</td>";
 					}
 					str+="<td class=\"td_main_list_content\">"+data[i].comment+"</td>";
 					/* if(data[i].status == "有效"){
