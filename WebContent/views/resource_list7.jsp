@@ -327,7 +327,7 @@ function getSelectedAirLineAjax(startCity,endCity,onwayTime,display,currentPage)
 			str+="<td class=\"td_main_list_content\">"+data[i].price3+"</td>";
 			str+="<td class=\"td_main_list_content\">"+data[i].price4+"</td>";
 			str+="<td class=\"td_main_list_content\">"+data[i].price5+"</td>";
-			str+="<td class=\"td_main_list_content\">"+"航班"+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].airCycle+"</td>";
 			str+="<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>";
 			str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>"
 			if(data[i].status == "有效"){
