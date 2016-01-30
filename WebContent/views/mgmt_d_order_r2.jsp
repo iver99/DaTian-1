@@ -64,28 +64,32 @@
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">受理：</td>
+                                    <td><span class="text_detail_title2">注意：选中的司机数目、车牌号的数目以及所输入的运单号的数目相等！运单号用英文逗号隔开！</span></td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">随车司机:</td>
                                     <td>
-                                    	<select class="input_mgmt2a" name="driver" id="driver" required>
-											<option value="" selected="selected">随车司机</option>
 											 <c:forEach var="driver" items="${driverList }">
-												 <option value="${driver.driverName }">${driver.driverName }</option>
-											</c:forEach>
-                                        </select>
-                                        <span class="span_mgmt_dynamic1">--</span>
-                                        <select class="input_mgmt2a" name="carNum" id="carNum" required>
-                                            <option value="" selected="selected">车牌号</option>
+												 <input type="checkbox" name="driver" value="${driver.driverName }" />${driver.driverName }
+											 </c:forEach>
+									</td>
+								</tr>
+								<tr> 
+								    <td width="120" height="40" class="td_mgmt_right3_td1b">车牌号：</td>
+								    <td>
                                             <c:forEach var="car" items="${carNumList }">
-                                                <option value="${car.carNum }">${car.carNum }</option>
+                                                <input type="checkbox" name="carNum" value="${car.carNum }" />${car.carNum }
                                             </c:forEach>
-                                        </select>
                                         <!-- <input type="text" class="input_mgmt2" value="随车司机" readonly="readonly" />
                                         <img src="images/btn_add2.png" hidefocus="true" style="cursor:pointer;" title="添加" onclick="additem();" /> -->
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td height="1"></td>
-                                    <td><div id="dym_itemlist"></div></td>
-                                </tr>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">运单号:</td>
+                                    <td>
+									     <textarea class="textarea_rating" placeholder="请输入运单号，运单号之间用英文逗号分隔..." id="waybills" name="waybills" required></textarea>
+									</td>
+								</tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">&nbsp;</td>
                                     <td>
@@ -120,10 +124,8 @@
 	function formValidate(){
 		$("#accept_order").validate({
 			rules : {
-				//orderNum : "required",
-				driver : "required",
-				
-
+				carNum : {required: true},
+				driver : {required: true},
 			}
 		});
 	}
