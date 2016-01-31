@@ -487,6 +487,10 @@ public class OrderController {
 	public ModelAndView orderDetailWaitToReceive(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
+		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		String[] carNums = (orderInfo.getCarNum()).split(",");
+		mv.addObject("loc", loc);
+		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
 		mv.setViewName("mgmt_d_order_s6");
 		return mv;
@@ -517,6 +521,10 @@ public class OrderController {
 	public ModelAndView orderDetailFinish(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
+		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		String[] carNums = (orderInfo.getCarNum()).split(",");
+		mv.addObject("loc", loc);
+		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
 		//页面需要评价信息 add by RussWest0 at 2015年6月7日,下午4:04:16 
 		Comment comment=commentService.getCommentByOrderId(orderid);
@@ -529,6 +537,10 @@ public class OrderController {
 	public ModelAndView orderDetailComment(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
+		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		String[] carNums = (orderInfo.getCarNum()).split(",");
+		mv.addObject("loc", loc);
+		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
 		mv.setViewName("mgmt_d_order_s6b");
 		return mv;
