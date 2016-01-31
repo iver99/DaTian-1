@@ -32,7 +32,7 @@ public class LocationController {
 		String orderNum = request.getParameter("orderNum");
 		Orderform order = orderService.getOrderByOrderNum(orderNum);
 		String orderId = order.getId();
-		List<Track> loc = trackService.getTrackByOrderId(orderId);
+		List<Track> loc = trackService.getTrackByOrderIdDesc(orderId);
 		JSONArray location = JSONArray.fromObject(loc);
 		
 		return location.toString();

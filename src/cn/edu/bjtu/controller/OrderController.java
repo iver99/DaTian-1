@@ -30,6 +30,7 @@ import cn.edu.bjtu.service.LesstruckloadService;
 import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.ResponseService;
+import cn.edu.bjtu.service.TrackService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
@@ -43,6 +44,7 @@ import cn.edu.bjtu.vo.Driverinfo;
 import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.OrderCarrierView;
 import cn.edu.bjtu.vo.Orderform;
+import cn.edu.bjtu.vo.Track;
 import cn.edu.bjtu.vo.Truck;
 
 import com.alibaba.fastjson.JSONArray;
@@ -84,6 +86,8 @@ public class OrderController {
 	
 	@Autowired
 	DriverService driverService;
+	@Autowired
+	TrackService trackService;
 	
 	ModelAndView mv = new ModelAndView();
 
@@ -570,6 +574,10 @@ public class OrderController {
 	public ModelAndView getOrderDetailWaitToReceive(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
+		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		String[] carNums = (orderInfo.getCarNum()).split(",");
+		mv.addObject("loc", loc);
+		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
 		mv.setViewName("mgmt_d_order_r4");
 		return mv;
@@ -585,6 +593,10 @@ public class OrderController {
 	public ModelAndView getOrderDetailWaitToConfirm(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
+		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		String[] carNums = (orderInfo.getCarNum()).split(",");
+		mv.addObject("loc", loc);
+		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
 		mv.setViewName("mgmt_d_order_r4a");
 		return mv;
@@ -600,6 +612,10 @@ public class OrderController {
 	public ModelAndView getOrderDetailFinish(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
+		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		String[] carNums = (orderInfo.getCarNum()).split(",");
+		mv.addObject("loc", loc);
+		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
 		//页面需要评价信息
 		Comment comment=commentService.getCommentByOrderId(orderid);

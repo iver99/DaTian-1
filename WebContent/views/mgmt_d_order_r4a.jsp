@@ -58,44 +58,39 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
                     <tr>
                         <td class="td_mgmt_right3_td1a">
-                        	<div class="span_mgmt_right3_text4">物流信息</div>
-                        	<table width="90%" border="0" cellspacing="0" cellpadding="0" style="clear:both; margin-left:24px;">
-                        		<tr>
-                        			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前无物流信息</td>
-                        		</tr>
-                        	</table>
-                           <!--  <div class="span_mgmt_right3_text2a"><a href="mgmt_d_order_s7.htm" hidefocus="true">切换到货物轨迹</a></div>
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" style="clear:both; margin-left:24px;">
-                                <tr>
-                                    <td width="120" height="35" class="td_mgmt_right3_td1c">2014-03-11 12:29:33</td>
-                                    <td class="td_mgmt_right3_td1c">货物已装车，车牌号：京E45785<img src="images/btn_map3a.png" alt="GPS定位" /></td>
-                                </tr>
-                                <tr>
-                                    <td height="35" class="td_mgmt_right3_td1c">2014-03-11 18:40:30</td>
-                                    <td class="td_mgmt_right3_td1c">货物已经达到济南</td>
-                                </tr>
-                                <tr>
-                                    <td height="35" class="td_mgmt_right3_td1c">2014-03-11 18:40:30</td>
-                                    <td class="td_mgmt_right3_td1c">货物已经达到济南</td>
-                                </tr>
-                                <tr>
-                                    <td height="35" class="td_mgmt_right3_td1c">2014-03-11 18:40:30</td>
-                                    <td class="td_mgmt_right3_td1c">货物已经达到济南</td>
-                                </tr>
-                                <tr>
-                                    <td height="35" class="td_mgmt_right3_td1c">2014-03-11 18:40:30</td>
-                                    <td class="td_mgmt_right3_td1c">货物已经达到济南</td>
-                                </tr>
-                                <tr>
-                                    <td height="35" class="td_mgmt_right3_td1c">2014-03-11 18:40:30</td>
-                                    <td class="td_mgmt_right3_td1c">货物已经达到济南</td>
-                                </tr>
-                                <tr>
-                                    <td height="35" class="td_mgmt_right3_td1c">2014-03-11 18:40:30</td>
-                                    <td class="td_mgmt_right3_td1c">货物已经达到济南</td>
-                                </tr>
-                            </table> -->
-                            <br />
+                        	<c:forEach var="carNum" items="${carNums }">
+                                <div class="span_mgmt_right3_text4">物流信息</div>
+                                <c:forEach var="track" items="${loc }">
+                                    <c:if test="${carNum==track.carNum }">
+                                     <table width="90%" border="0" cellspacing="0" cellpadding="0" style="clear:both; margin-left:24px;">
+                                        <c:if test="${track.event=='已接受任务' }">
+                                           <tr>
+                                               <td width="120" height="35" class="td_mgmt_right3_td1b">${track.time }</td>
+                                               <td>${track.event }，车牌号：${track.carNum }，货物在${track.address }<img src="images/btn_map3a.png" alt="GPS定位" /></td>
+                                           </tr>
+                                        </c:if>
+                                        <c:if test="${track.event=='已取件' }">
+                                           <tr>
+                                               <td width="120" height="35" class="td_mgmt_right3_td1b">${track.time }</td>
+                                               <td>${track.event }，货物在${track.address }</td>
+                                           </tr>
+                                        </c:if>
+                                        <c:if test="${track.event=='运输中' }">
+                                           <tr>
+                                               <td width="120" height="35" class="td_mgmt_right3_td1b">${track.time }</td>
+                                               <td>货物已经达到${track.address }</td>
+                                           </tr>
+                                        </c:if>
+                                        <c:if test="${track.event=='已签收' }">
+                                           <tr>
+                                               <td width="120" height="35" class="td_mgmt_right3_td1b">${track.time }</td>
+                                               <td>货物${track.event }</td>
+                                           </tr>
+                                        </c:if>
+                                    </table>
+                                    </c:if>
+                               </c:forEach>
+                            </c:forEach>
                         	<div class="span_mgmt_right3_text4">基本信息</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
