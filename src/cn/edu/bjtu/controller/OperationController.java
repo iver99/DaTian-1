@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.bean.page.OperationBean;
 import cn.edu.bjtu.service.OperationService;
 import cn.edu.bjtu.util.PageUtil;
+import cn.edu.bjtu.vo.Orderform;
 
 /**
  * 统计分析-运营指标相关
@@ -32,6 +34,17 @@ public class OperationController {
 	public String getTransportAccuracyPage(){
 		return "mgmt_s_opr";
 	}
+	
+	/**
+	 * 运输准时率-获取某一天的所有订单列表页面
+	 * @param date
+	 * @return
+	 */
+	@RequestMapping("OperationDetailsPage2a")
+	public String OperationDetailsPage2a(){
+		return "mgmt_s_opr2a";
+	}
+	
 	/**
 	 * 统计分析-运营指标-运输准确率列表
 	 * @param operationBean
@@ -91,7 +104,38 @@ public class OperationController {
 	public Long getClientConsentTotalRows(OperationBean operationBean,HttpSession session){
 		return operationService.getClientConsentTotalRows(operationBean,session);
 	}
+
+	/**
+	 * 顾客满意度-获取某一天的所有订单列表页面
+	 * @param date
+	 * @return
+	 */
+	@RequestMapping("OperationDetailsPage2b")
+	public String OperationDetailsPage2b(){
+		return "mgmt_s_opr2b";
+	}
 	
+	/**
+	 * 点击查看时，返回某一天的订单
+	 * @param session
+	 * @param operationBean
+	 * @return
+	 */
+	@RequestMapping("viewOperationDetailsAjax")
+	@ResponseBody
+	public List<Orderform> viewFinancialDetailsPage(HttpSession session,OperationBean operationBean,PageUtil pageUtil){
+		return operationService.viewOperationDetails(session, operationBean,pageUtil);
+	}
 	
-	
+	/**
+	 * 财务指标，查看页面的总记录数
+	 * @param session
+	 * @param financialBean
+	 * @return
+	 */
+	@RequestMapping("viewOperationDetailsTotalRowsAjax")
+	@ResponseBody
+	public Long viewFinancialDetailsTotalRows(HttpSession session,OperationBean operationBean){
+		return operationService.viewOperationDetailsTotalRows(session, operationBean);
+	}
 }

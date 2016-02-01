@@ -227,9 +227,41 @@ function ChangeTo(page){
 			}
 			var display=$("#display").val();
 			var currentPage=$("#currentPage").val();
-			getOperationInfo(startDate,endDate,display,currentPage);
+			getTransportAccuracyListAjax(startDate,endDate,display,currentPage);
 			//总数
-			getOperationInfoRowsAjax(startDate,endDate,display,currentPage);
+			getTransportAccuracyTotalRowsAjax(startDate,endDate,display,currentPage);
+		}	
+		//运营指标-运输准确率-运输详情查看
+		if($("#kind").val() == 'OpAccuracy2a'){
+			var startDate=$("#startDate").val();
+			var endDate=$("#endDate").val();
+			if(startDate == '意向开始时间'){
+				startDate='1970-01-01';
+			}
+			if(endDate == '意向结束时间'){
+				endDate='1970-01-01';
+			}
+			var display=$("#display").val();
+			var currentPage=$("#currentPage").val();
+			viewOperationDetailsAjax(startDate,endDate,display,currentPage);
+			//总数
+			viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage);
+		}
+		//运营指标-客户满意度-运输详情查看
+		if($("#kind").val() == 'OpAccuracy2b'){
+			var startDate=$("#startDate").val();
+			var endDate=$("#endDate").val();
+			if(startDate == '意向开始时间'){
+				startDate='1970-01-01';
+			}
+			if(endDate == '意向结束时间'){
+				endDate='1970-01-01';
+			}
+			var display=$("#display").val();
+			var currentPage=$("#currentPage").val();
+			viewOperationDetailsAjax(startDate,endDate,display,currentPage);
+			//总数
+			viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage);
 		}
 		//运营指标-运输准确率
 		if($("#kind").val() == 'OpClientConsent'){

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的关注</title>
+<title>运营指标查看</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -21,6 +21,9 @@
 <script type="text/javascript" src="js/focus_load.js"></script>
 <%@ include file="jsTool.jsp" %>
 <script type="text/javascript"> 
+/* 	$(function() {
+		$('input, textarea').placeholder(); 
+	}); */
 </script>
 </head>
 
@@ -37,7 +40,7 @@
 			<td width="230" class="td_leftnav_top">
                 <div id="main_frame_left">
                 	<%@ include  file="mysource_leftnav_mytrade.jsp"%>
-                   	<%@ include  file="mysource_leftnav_myresource.jsp"%>
+                    <%@ include  file="mysource_leftnav_myresource.jsp"%>
                     <%@ include  file="mysource_leftnav_myplan.jsp"%>
                     <%@ include  file="mysource_leftnav_myanalysis.jsp"%>
                     <%@ include  file="mysource_leftnav_myaccount.jsp"%>
@@ -49,10 +52,10 @@
                     	<td>
                         	<span class="span_mgmt_right2_text1"><a href="getTransportAccuracyPage" hidefocus="true">运输准时率</a>&nbsp;&nbsp;/&nbsp;&nbsp;客户满意度</a></span>
                             <div class="div_mgmt_s1">
-                                <input type="text" id="startDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
+                                <input type="text" class="input_date1" id="startDate" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
                                 &nbsp;&nbsp;至&nbsp;&nbsp;
-                                <input type="text" id="endDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
-                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" onclick="OnLoad();" />
+                                <input type="text" class="input_date1" id="endDate" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向结束时间" readonly="readonly" title="点击选择" />
+                                <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" onclick="OnLoad();"/>
                             </div>
 
                         </td>
@@ -63,20 +66,8 @@
 				<input id="display" value="10" type="hidden" /> <!-- 每页展示的数量 -->
 				<input id="currentPage" value="1" type="hidden" /><!-- 当前页 -->
 				<input id="is_resource_page" value="0" type="hidden"/><!-- 是否为资源页，资源页需要模拟click按钮 -->
-				<input id="kind" value="OpClientConsent" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
+				<input id="kind" value="OpAccuracy2b" type="hidden"/><!-- 用于判断是哪一栏的分页,用于splitPage.js -->
                 <table id="list" width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
-					<!-- <tr>
-                        <td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
-                        <td class="td_mgmt_right3_head">时间</td>
-                        <td width="100" class="td_mgmt_right3_head">客户满意度</td>
-                        <td width="100" class="td_mgmt_right3_head">操作</td>
-                    </tr>
-                    <tr>
-                        <td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
-                        <td class="td_mgmt_right3_td1">5月11日</td>
-                        <td class="td_mgmt_right3_td1">100%</td>
-                        <td class="td_mgmt_right3_td3"><a href="mgmt_s_opr4.htm" hidefocus="true">查看</a></td>
-                    </tr> -->
                 </table>
 				<table border="0" cellpadding="0" cellspacing="0" class="table_recordnumber">
                     <tr>
@@ -108,6 +99,7 @@
 <script type="text/javascript">
 	function OnLoad() {
 		loadFocus();
+		//var search_content=$("#search_focus").val();
 		var startDate=$("#startDate").val();
 		var endDate=$("#endDate").val();
 		if(startDate == '意向开始时间'){
@@ -119,14 +111,14 @@
 
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		getClientConsentInfo(startDate,endDate,display,currentPage);
+		viewOperationDetailsAjax(startDate,endDate,display,currentPage);
 		//总数
-		getClientConsendInfoTotalRowsAjax(startDate,endDate,display,currentPage);
+		viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage);
 	}
 	
-	//获取op客户满意度指标猎豹
-	function getClientConsentInfo(startDate,endDate,display,currentPage){
-		var url="getClientConsentInfoAjax";
+	//获取运营指标
+	function viewOperationDetailsAjax(startDate,endDate,display,currentPage){
+		var url="viewOperationDetailsAjax";
 		$.ajax({
 			url:url,
 			data:{
@@ -143,22 +135,27 @@
 				var str="";
 				str+="<tr>";
 				str+="<td width=\"20\" height=\"40\" class=\"td_mgmt_right3_head1\">&nbsp;</td>";
-				str+="<td class=\"td_mgmt_right3_head\">时间</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">客户满意度</td>";
-				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">操作</td>";
+				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">意向编号</td>";
+				str+="<td width=\"70\" class=\"td_mgmt_right3_head\">类别</td>";
+				str+="<td width=\"120\" class=\"td_mgmt_right3_head\">名称</td>";
+				str+="<td class=\"td_mgmt_right3_head\">承运方</td>";
+				str+="<td width=\"88\" class=\"td_mgmt_right3_head\">意向提交时间</td>";
+				str+="<td width=\"100\" class=\"td_mgmt_right3_head\">用户综合评价</td>";
+				str+="<td width=\"80\" class=\"td_mgmt_right3_head\">操作</td>";
 				str+="</tr>";
-            
 				body.append(str);
 				str="";
 				for(var i=0;i<data.length;i++){
-					
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].date)+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"OperationDetailsPage2b?date="+data[i].date+"\" hidefocus=\"true\">查看</a></td>";
-					str+=" </tr>";
-					
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].orderNum+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceType+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceName+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].clientName+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].submitTime)+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+"+用户综合评价"+"</td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"javascript:;\" class=\"a_top3\" hidefocus=\"true\">查看</a></td>";
+					str+="</tr>";
 				}
 				body.append(str);
 				}
@@ -167,8 +164,8 @@
 		});
 	}
 	//总记录数
-	function getClientConsendInfoTotalRowsAjax(startDate,endDate,display,currentPage){
-		var url="getClientConsentTotalRowsAjax";
+	function viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage){
+		var url="viewOperationDetailsTotalRowsAjax";
 		$.ajax({
 			url:url,
 			data:{
@@ -194,8 +191,6 @@
 		$("#display").val($("#Display").val());
 		//当前页归1
 		$("#currentPage").val(1);
-			var display=$("#display").val();
-			var currentPage=$("#currentPage").val();
 			var startDate=$("#startDate").val();
 			var endDate=$("#endDate").val();
 			if(startDate == '意向开始时间'){
@@ -204,9 +199,12 @@
 			if(endDate == '意向结束时间'){
 				endDate='1970-01-01';
 			}
-			getFinancialInfo(startDate,endDate,display,currentPage);
+	
+			var display=$("#display").val();
+			var currentPage=$("#currentPage").val();
+			viewOperationDetailsAjax(startDate,endDate,display,currentPage);
 			//总数
-			getFinancialInfoRowsAjax(startDate,endDate,display,currentPage);
+			viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage);
 	}
 </script>
 </html>

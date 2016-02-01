@@ -111,13 +111,14 @@
 
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		getOperationInfo(startDate,endDate,display,currentPage);
+		getTransportAccuracyListAjax(startDate,endDate,display,currentPage);
 		//总数
-		getOperationInfoRowsAjax(startDate,endDate,display,currentPage);
+		getTransportAccuracyTotalRowsAjax(startDate,endDate,display,currentPage);
+		
 	}
 	
 	//获取运营指标
-	function getOperationInfo(startDate,endDate,display,currentPage){
+	function getTransportAccuracyListAjax(startDate,endDate,display,currentPage){
 		var url="getTransportAccuracyListAjax";
 		$.ajax({
 			url:url,
@@ -146,11 +147,11 @@
 				for(var i=0;i<data.length;i++){
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].date)+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"mgmt_s_opr2.htm\" hidefocus=\"true\">查看</a></td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].date+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].transportFee+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalInsurance+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalFee+"</td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"OperationDetailsPage2a?date="+data[i].date+"\" hidefocus=\"true\">查看</a></td>";
 					str+="</tr>";
 				}
 				body.append(str);
@@ -160,7 +161,7 @@
 		});
 	}
 	//总记录数
-	function getOperationInfoRowsAjax(startDate,endDate,display,currentPage){
+	function getTransportAccuracyTotalRowsAjax(startDate,endDate,display,currentPage){
 		var url="getTransportAccuracyTotalRowsAjax";
 		$.ajax({
 			url:url,
@@ -198,9 +199,9 @@
 	
 			var display=$("#display").val();
 			var currentPage=$("#currentPage").val();
-			getOperationInfo(startDate,endDate,display,currentPage);
+			getTransportAccuracyListAjax(startDate,endDate,display,currentPage);
 			//总数
-			getOperationInfoRowsAjax(startDate,endDate,display,currentPage);
+			getTransportAccuracyTotalRowsAjax(startDate,endDate,display,currentPage);
 	}
 </script>
 </html>

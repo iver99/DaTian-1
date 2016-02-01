@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.bean.page.OperationBean;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.OperationService;
@@ -110,5 +111,66 @@ public class OperationServiceImpl implements OperationService{
 	}
 
 	
+	/**
+	 * 查看某一天 所有订单
+	 */
+	@Override
+	public List<Orderform> viewOperationDetails(HttpSession session,OperationBean operationBean,PageUtil pageUtil) {
+		String userId=(String)session.getAttribute(Constant.USER_ID);
+		Map<String,Object> params=new HashMap<String,Object>();
+		String hql="from Orderform t "+whereHql(userId,operationBean,params);
+		hql+=" order by t.submitTime desc";
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Orderform> list=orderDao.find(hql, params,page,display);
+		
+		return list;
+		
+	}
+	/**
+	 * 获取某一天的所有订单的总记录数
+	 * @param session
+	 * @param financialBean
+	 * @return
+	 */
+	@Override
+	public Long viewOperationDetailsTotalRows(HttpSession session,
+			OperationBean operationBean) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		String userId=(String)session.getAttribute(Constant.USER_ID);
+		String hql="select count(*) from Orderform t "+whereHql(userId, operationBean, params);
+		hql+= " order by t.submitTime desc";
+		
+		return orderDao.count(hql,params);
+		
+	}
 	
+	private String whereHql(String userId,OperationBean operationBean,Map<String,Object> params){
+		String wherehql="where t.carrierId=:userId ";
+		params.put("userId", userId);
+		String startDate=operationBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getStartDate());
+		String endDate=operationBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getEndDate());
+		if(!"1970-01-01".equals(startDate)){
+			wherehql+=" and t.submitTime>=:startDate ";
+			params.put("startDate", operationBean.getStartDate());
+		}
+		if(!"1970-01-01".equals(endDate)){
+			//这里的时间需要加一天，加到下一天的0点时间才能使结果更换准确
+			wherehql+=" and t.submitTime<=:endDate ";
+			params.put("endDate", operationBean.getEndDate());
+		}
+		//如果没有开始和结束时间则查出某一天的订单
+		if("1970-01-01".equals(startDate) && "1970-01-01".equals(endDate)){
+			wherehql+=" and date(t.submitTime)=:submitTime ";
+			params.put("submitTime", operationBean.getDate());
+		}
+		
+		return wherehql;
+	}
+	
+	
+	
+	
+	
+
 }

@@ -45,22 +45,22 @@
             <td width="3%" height="110">&nbsp;</td>
             <td width="220" class="td_top2a"><a href="homepage" hidefocus="true"><img src="images/logo.png" /></a></td>
             <td>
-                <div class="key">
+                <!-- <div class="key">
                     <span class="mkey">整车</span>
                     <ul  class="key_ul" >
                     	<li onclick="$('#resource_choose').val('整车')">整车</li>
                     	<li onclick="$('#resource_choose').val('零担')">零担</li>
-                        <!-- <li onclick="$('#resource_choose').val('车辆')">车辆</li> -->
+                        <li onclick="$('#resource_choose').val('车辆')">车辆</li>
                         <li onclick="$('#resource_choose').val('配送')">落地配</li>
                         <li onclick="$('#resource_choose').val('仓库')">仓库</li>
                         <li onclick="$('#resource_choose').val('国内空运')">国内空运</li>
-                        <!-- <li onclick="$('#resource_choose').val('公司')">公司</li> -->
-                        <!-- <li onclick="$('#resource_choose').val('货物')">货物</li> -->
+                        <li onclick="$('#resource_choose').val('公司')">公司</li>
+                        <li onclick="$('#resource_choose').val('货物')">货物</li>
                     </ul>
                 </div>
                 <input type="text" name="search_content"  id="search_content" class="search_input" value="请输入关键字" hidefocus="true"  />
                 <input type="button" class="search_btn" value="" hidefocus="true" onclick="changeToSearchPage()">
-                <input type="hidden" id="resource_choose" name="resource_choose" value="线路"/><!-- 隐藏字段 -->
+                <input type="hidden" id="resource_choose" name="resource_choose" value="线路"/>隐藏字段 -->
 			</td>
             <td width="280" class="td_top2b"><a href="getallfocus" class="a_top2" hidefocus="true" id="focusNum"><img src="images/btn_m1.png" />&nbsp;我的关注</a></td>
             <td width="3%">&nbsp;</td>
