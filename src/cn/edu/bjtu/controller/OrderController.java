@@ -496,6 +496,8 @@ public class OrderController {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
+		int length = loc.size();
+		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
@@ -530,6 +532,8 @@ public class OrderController {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
+		int length = loc.size();
+		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
@@ -546,6 +550,8 @@ public class OrderController {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
+		int length = loc.size();
+		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
@@ -595,6 +601,8 @@ public class OrderController {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
+		int length = loc.size();
+		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
@@ -614,6 +622,8 @@ public class OrderController {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
+		int length = loc.size();
+		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
@@ -633,6 +643,8 @@ public class OrderController {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
+		int length = loc.size();
+		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
