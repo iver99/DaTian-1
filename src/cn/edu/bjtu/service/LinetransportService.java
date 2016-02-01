@@ -21,7 +21,6 @@ public interface LinetransportService {
 
 	public boolean insertNewLinetransport(Linetransport line,HttpServletRequest request, MultipartFile file);
 
-	public String getLinetransportIdByCity(String startPlace, String endPlace);
 	
 	public boolean deleteLine(String id);
 

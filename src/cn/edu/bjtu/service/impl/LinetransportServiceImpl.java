@@ -78,12 +78,6 @@ public class LinetransportServiceImpl implements LinetransportService {
 		linetransportDao.save(line);// 保存实体
 		return true;
 	}
-	@Override
-	// 未实现
-	public String getLinetransportIdByCity(String startPlace, String endPlace) {
-		//FIXME 
-		return "";
-	}
 
 
 	@Override

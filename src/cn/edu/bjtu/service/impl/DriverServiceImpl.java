@@ -84,12 +84,6 @@ public class DriverServiceImpl implements DriverService{
 	}
 	
 	
-	@Override
-	// Œ¥ µœ÷
-	public String getDriverIdByName(String driverName) {
-		//FIXME
-		return "";
-	}
 
 	@Override
 	/**
