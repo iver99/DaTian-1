@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.TrackService;
-import cn.edu.bjtu.vo.Orderform;
+import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.vo.Track;
+import cn.edu.bjtu.vo.WayBill;
 import net.sf.json.JSONArray;
 
 @Controller
@@ -24,14 +25,16 @@ public class LocationController {
 	TrackService trackService;
 	@Autowired
 	OrderService orderService;
+	@Autowired
+	WayBillService waybillService;
 	
 	@RequestMapping(value="/location",produces="text/html;charset=UTF-8",method=RequestMethod.POST)
 	@ResponseBody
 	public String location(HttpServletRequest request,HttpServletResponse response){
 		
-		String orderNum = request.getParameter("orderNum");
-		Orderform order = orderService.getOrderByOrderNum(orderNum);
-		String orderId = order.getId();
+		String waybillNum = request.getParameter("waybillNum");
+		WayBill waybill = waybillService.getWayBillBywaybillNum(waybillNum);
+		String orderId = waybill.getOrderId();
 		List<Track> loc = trackService.getTrackByOrderIdDesc(orderId);
 		JSONArray location = JSONArray.fromObject(loc);
 		

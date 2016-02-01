@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.bjtu.service.DriverService;
 import cn.edu.bjtu.service.OrderService;
+import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.vo.Driverinfo;
 import cn.edu.bjtu.vo.Orderform;
+import cn.edu.bjtu.vo.WayBill;
 import net.sf.json.JSONArray;
 
 @Controller
@@ -23,30 +25,32 @@ public class ShowNewTaskController {
 	DriverService driverService;
 	@Autowired
 	OrderService orderService;
+	@Autowired
+	WayBillService waybillService;
 	
 	@RequestMapping(value="/shownewtask",produces="text/html;charset=UTF-8")
 	@ResponseBody
 	public String showNewTask(@RequestParam(value="phone",required=false) String phone){
 		
-		String f = "true";
-		String s = "已受理";
+		String f = "false";
+		String s = "未确认";
 		//获取司机名字，以便搜索订单表
 		Driverinfo driverinfo = driverService.getDriverByPhone(phone);
 		String name = driverinfo.getDriverName();
 		
 		//将List集合转化为JSONArray.
-		List<Orderform> l = orderService.getOrderByDriverName(name);
+		List<WayBill> l = waybillService.getWayBillByDriverName(name);
 		
 		//筛选符合要求的任务
 		for(int i=0;i < l.size(); i++){
-			Orderform o = (Orderform)l.get(i);
-			if((f.equals(o.getConfirm()))||(!(s.equals(o.getState())))){
+			WayBill waybill = (WayBill)l.get(i);
+			if((!((waybill.getConfirm()).equals(f)))||(!((waybill.getWaybillState()).equals(s)))){
 				l.remove(i);
 				i=i-1;
 			}
 		}
-		JSONArray orderResult = JSONArray.fromObject(l);
-		return orderResult.toString();
+		JSONArray waybillResult = JSONArray.fromObject(l);
+		return waybillResult.toString();
 	}
 
 }

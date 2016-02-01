@@ -31,6 +31,21 @@ public class Driverinfo implements java.io.Serializable {
 	private String carId;
 	private String idscans;
 	private String passwd;
+	private String state;//司机状态-已分配，空闲。
+
+	/**
+	 * @return state
+	 */
+	public String getState() {
+		return state;
+	}
+
+	/**
+	 * @param state 要设置的 state
+	 */
+	public void setState(String state) {
+		this.state = state;
+	}
 
 	/**
 	 * @return passwd

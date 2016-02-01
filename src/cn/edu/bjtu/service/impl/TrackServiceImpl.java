@@ -1,6 +1,5 @@
 package cn.edu.bjtu.service.impl;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public class TrackServiceImpl implements TrackService {
 	TrackDao trackDao;
 
 	@Override
-	public boolean createNewTrack(String id, String orderId,String orderNum, String carNum, Double locLongitude, Double locLatitude,
+	public boolean createNewTrack(String id, String orderId,String orderNum, String carNum,String event, Double locLongitude, Double locLatitude,
 			String time, String address) {
 		Track track = new Track();
 		track.setAddress(address);
@@ -33,6 +32,7 @@ public class TrackServiceImpl implements TrackService {
 		track.setOrderId(orderId);
 		track.setTime(time);
 		track.setOrderNum(orderNum);
+		track.setEvent(event);
 		trackDao.save(track);
 		
 		return true;

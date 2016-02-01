@@ -17,16 +17,19 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.dao.AddressDao;
 import cn.edu.bjtu.dao.CompanyDao;
+import cn.edu.bjtu.dao.DriverDao;
 import cn.edu.bjtu.dao.OrderCarrierViewDao;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.dao.WayBillDao;
 import cn.edu.bjtu.service.CarService;
+import cn.edu.bjtu.service.DriverService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Address;
 import cn.edu.bjtu.vo.Carrierinfo;
+import cn.edu.bjtu.vo.Driverinfo;
 import cn.edu.bjtu.vo.OrderCarrierView;
 import cn.edu.bjtu.vo.Orderform;
 import cn.edu.bjtu.vo.WayBill;
@@ -46,9 +49,13 @@ public class OrderServiceImpl implements OrderService {
 	@Resource
 	OrderDao orderDao;
 	@Autowired
+	DriverDao driverDao;
+	@Autowired
 	CompanyDao companyDao;
 	@Autowired
 	AddressDao addressDao;
+	@Autowired
+	DriverService driverService;
 	@Autowired
 	OrderCarrierViewDao orderCarrierViewDao;
 	@Autowired
@@ -88,11 +95,18 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public boolean acceptOrder(String orderId,String driver,String carNum,String waybill) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
-		order.setState("已受理");
+		order.setState("待收货");
 		String[] drivers = driver.split(",");
 		String[] carNums = carNum.split(",");
 		String[] waybills = waybill.split(",");
 		for(int i=0;i<drivers.length;i++){
+			
+			//修改司机状态
+			String driverid = driverService.getDriverIdByName(drivers[i]);
+			Driverinfo driverinfo = driverService.getDriverInfo(driverid);
+			driverinfo.setState("已分配");
+			driverDao.update(driverinfo);
+			//生成运单
 			WayBill wayBill = new WayBill();
 			wayBill.setId(IdCreator.createWayBillId());
 			wayBill.setOrderId(orderId);

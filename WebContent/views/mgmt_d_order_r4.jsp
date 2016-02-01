@@ -66,13 +66,13 @@
                                         <c:if test="${track.event=='已接受任务' }">
                                            <tr>
                                                <td width="120" height="35" class="td_mgmt_right3_td1b">${track.time }</td>
-                                               <td>${track.event }，车牌号：${track.carNum }，货物在${track.address }<img src="images/btn_map3a.png" alt="GPS定位" /></td>
+                                               <td>${track.event }，车牌号：${track.carNum }<img src="images/btn_map3a.png" alt="GPS定位" /></td>
                                            </tr>
                                         </c:if>
                                         <c:if test="${track.event=='已取件' }">
                                            <tr>
                                                <td width="120" height="35" class="td_mgmt_right3_td1b">${track.time }</td>
-                                               <td>${track.event }，货物在${track.address }</td>
+                                               <td>${track.event }</td>
                                            </tr>
                                         </c:if>
                                         <c:if test="${track.event=='运输中' }">
