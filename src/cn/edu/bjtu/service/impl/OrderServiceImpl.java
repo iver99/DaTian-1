@@ -102,8 +102,7 @@ public class OrderServiceImpl implements OrderService {
 		for(int i=0;i<drivers.length;i++){
 			
 			//修改司机状态
-			String driverid = driverService.getDriverIdByName(drivers[i]);
-			Driverinfo driverinfo = driverService.getDriverInfo(driverid);
+			Driverinfo driverinfo = driverService.getDriverByName(drivers[i]);
 			driverinfo.setState("已分配");
 			driverDao.update(driverinfo);
 			//生成运单

@@ -9,8 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Driverinfo;
-import cn.edu.bjtu.vo.Linetransport;
-
 import com.alibaba.fastjson.JSONArray;
 
 public interface DriverService {
@@ -20,6 +18,7 @@ public interface DriverService {
 	
 	//add by solitudeycq at 2015-12-19 14:48
 	public Driverinfo getDriverByPhone(String phone);
+	public Driverinfo getDriverByName(String driverName);
 
 	public List getAllDriverName(String carrierId);
 	public List getAllDriver(String carrierId);

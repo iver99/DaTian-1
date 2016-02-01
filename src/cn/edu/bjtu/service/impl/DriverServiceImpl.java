@@ -25,8 +25,6 @@ import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Driverinfo;
-import cn.edu.bjtu.vo.Linetransport;
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -46,6 +44,15 @@ public class DriverServiceImpl implements DriverService{
 	public Driverinfo getDriverInfo(String driverId) {
 		
 		return driverDao.get(Driverinfo.class,driverId);
+	}
+	
+	@Override
+	public Driverinfo getDriverByName(String driverName) {
+		String hql="from Driverinfo where driverName=:driverName";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("driverName", driverName);
+		
+		return driverDao.get(hql, params);
 	}
 	
 	@Override
@@ -189,7 +196,4 @@ public class DriverServiceImpl implements DriverService{
 		return count.intValue();
 		
 	}
-
-	
-	
 }
