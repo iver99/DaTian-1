@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我提交的订单</title>
+<title>我提交的意向</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -58,9 +58,9 @@ function cancel(id){
             	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2">
                     <tr>
                         <td>
-                        	<span class="span_mgmt_right2_text1">我提交的订单</span>
+                        	<span class="span_mgmt_right2_text1">我提交的意向</span>
                             <div class="div_mgmt_s1">
-                            	<input type="text" class="input_mgmt1" style="width:200px;" placeholder="订单编号" name="orderNum" id="orderNum" />
+                            	<input type="text" class="input_mgmt1" style="width:200px;" placeholder="意向编号" name="orderNum" id="orderNum" />
                                 <input type="button" id="btn1" value="查询" class="btn_mgmt3" hidefocus="true" onclick="OnLoad()"/>
                             </div>
                         </td>
@@ -77,11 +77,11 @@ function cancel(id){
 				<thead>
 					<tr>
                         <td width="20" height="40" class="td_mgmt_right3_head">&nbsp;</td>
-                        <td width="100" class="td_mgmt_right3_head">订单编号</td>
+                        <td width="100" class="td_mgmt_right3_head">意向编号</td>
                         <td width="60" class="td_mgmt_right3_head">类别</td>
                         <td width="120" class="td_mgmt_right3_head">名称</td>
                         <td class="td_mgmt_right3_head">承运方</td>
-                        <td width="88" class="td_mgmt_right3_head">订单运费(元)</td>
+                        <td width="88" class="td_mgmt_right3_head">意向运费(元)</td>
                         <td width="88" class="td_mgmt_right3_head">最终运费(元)</td>
                         <td width="80" class="td_mgmt_right3_head">提交时间</td>
                         <td width="60" class="td_mgmt_right3_head">状态</td>
@@ -117,7 +117,7 @@ function cancel(id){
 <div id="popup2" style="display:none;">
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
-            <td width="510"><div class="div_popup_title1">取消订单的原因</div></td>
+            <td width="510"><div class="div_popup_title1">取消意向的原因</div></td>
             <td>
                 <div id="close2" style="cursor:pointer;"><img src="images/btn_cancel1.png" title="关闭本窗口" /></div>
             </td>
@@ -152,7 +152,7 @@ function OnLoad() {
 	getUserOrderResourceTotalRows(display,currentPage,orderNum);
 }
 
-//加载我提交的订单资源
+//加载我提交的意向资源
 function getUserOrderResource(display,currentPage,orderNum){
 	var url="getUserSendOrderAjax";
 	$.ajax({
@@ -233,7 +233,7 @@ function getUserOrderResource(display,currentPage,orderNum){
 		}
 	})
 }
-//我提交的订单总条数
+//我提交的意向总条数
 function getUserOrderResourceTotalRows(display,currentPage,orderNum){
 	var url="getUseSendOrderTotalRowsAjax";
 	$.ajax({

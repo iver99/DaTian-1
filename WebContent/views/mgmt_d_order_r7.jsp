@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我提交的订单</title>
+<title>我提交的意向</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -52,7 +52,7 @@
             	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2a">
                     <tr>
                         <td height="40">
-                        	<span class="span_mgmt_right2_text1">我提交的订单</span>
+                        	<span class="span_mgmt_right2_text1">我提交的意向</span>
                             <span class="span_mgmt_right2_text2"><a href="javascript:history.go(-1);" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
 						</td>
 					</tr>
@@ -61,7 +61,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
                     <tr>
                         <td class="td_mgmt_right3_td1a">
-                        	<div class="span_mgmt_right3_text4">取消订单的原因</div> 
+                        	<div class="span_mgmt_right3_text4">取消意向的原因</div> 
                         	 <br />
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                             <tr>

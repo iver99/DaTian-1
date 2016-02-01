@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我提交的订单</title>
+<title>我提交的意向</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -65,7 +65,7 @@
             	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2a">
                     <tr>
                     	<td>
-                        	<span class="span_mgmt_right2_text1">我提交的订单</span>
+                        	<span class="span_mgmt_right2_text1">我提交的意向</span>
                             <span class="span_mgmt_right2_text2"><a href="mgmt_d_order_s.htm" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
                         </td>
                 	</tr>

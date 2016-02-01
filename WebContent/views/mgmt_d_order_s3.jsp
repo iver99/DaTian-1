@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我提交的订单</title>
+<title>我提交的意向</title>
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon" />
 <link rel="icon" href="/images/fav.ico" type="image/x-icon" />
@@ -51,7 +51,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2a">
                     <tr>
                         <td>
-                            <span class="span_mgmt_right2_text1">更新订单</span>
+                            <span class="span_mgmt_right2_text1">更新意向</span>
                             <span class="span_mgmt_right2_text2"><a href="javascript:history.go(-1);" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
                         </td>
                     </tr>
@@ -65,7 +65,7 @@
                                <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                	          
                                <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">订单编号：</td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">意向编号：</td>
                                     <td>${orderInfo.orderNum }</td>
                                 </tr>
                                 <tr>
@@ -74,7 +74,7 @@
 										<select style="width:120px;" name="clientName" required id="clientName">
 											<option value="" selected="selected">请选择</option>
                                         </select>
-                                        	<!-- 	订单id	 -->
+                                        	<!-- 	意向id	 -->
                                         <input name="id" type="hidden" value="${orderInfo.id }"/>
 									</td>
                                 </tr>
@@ -299,7 +299,7 @@
 		getUserContract();
 		//获取用户客户信息
 		getUserClientName();
-		//设置订单的原始数据,主要是select标签的内容
+		//设置意向的原始数据,主要是select标签的内容
 		setOrderValue();
 		
 		//获取常用发货地址
@@ -307,7 +307,7 @@
 		//获取常用收货地址
 		getFrequentAddress(2);
 	}
-	//设置订单的原始数据
+	//设置意向的原始数据
 	function setOrderValue(){
 		//设置关联客户运单
 		if("${orderInfo.isLinkToClientWayBill}" == '有'){
@@ -331,7 +331,7 @@
 		         option = $("<option>").text(data[i].id).val(data[i].id);
 		         CONTRACTID.append(option);
 		      }     
-			 //如果有则需要显示当前的订单号
+			 //如果有则需要显示当前的意向号
 			 if("${orderInfo.hasCarrierContract}" == '有'){
 				 $("#contractId").val("${orderInfo.contractId}");
 			 }

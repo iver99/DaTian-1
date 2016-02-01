@@ -54,7 +54,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right2a">
                     <tr>
                         <td>
-                            <span class="span_mgmt_right2_text1">添加订单</span>
+                            <span class="span_mgmt_right2_text1">添加意向</span>
                             <span class="span_mgmt_right2_text2"><a href="javascript:history.go(-1);" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
                         </td>
                     </tr>

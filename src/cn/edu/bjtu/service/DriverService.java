@@ -24,7 +24,6 @@ public interface DriverService {
 	public List getAllDriverName(String carrierId);
 	public List getAllDriver(String carrierId);
 	
-	public String getDriverIdByName(String driverName);
 	public boolean insertNewDriver(Driverinfo driver,HttpServletRequest request,MultipartFile file);
 	public boolean updateNewDriver(Driverinfo driver,HttpServletRequest request,MultipartFile file);
 	
