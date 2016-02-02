@@ -15,8 +15,8 @@
 <script type="text/javascript" src="js/top_search.js"></script>
 <script type="text/javascript" src="js/main_nav.js"></script>
 <script type="text/javascript" src="js/mgmt.js"></script>
-<script type="text/javascript" src="js/rating2.js"></script>
-<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+<!-- <script type="text/javascript" src="js/rating2.js"></script> -->
+<script type="text/javascript" src="js/jquery.raty.js"></script>
 <script type="text/javascript" src="js/backtop.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
 <script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
@@ -208,93 +208,21 @@
                             </table>
                         	<div class="span_mgmt_right3_text4">评价信息</div>      	          
                             <div id="div_rating">
-                                <div class="div_rating_sub">
-                                    <div class="div_rating_left">服务态度</div>
-                                    <div id="rating1" style="float:left;" data-score="0"></div>
-                                    <%-- <c:choose>
-                                    	<c:when test="${comment.serviceAttitude == '很好'}">
-                                    		<div id="rating1" style="float:left;" data-score="5"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.serviceAttitude == '好'}">
-                                    		<div id="rating1" style="float:left;" data-score="4"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.serviceAttitude == '一般'}">
-                                    		<div id="rating1" style="float:left;" data-score="3"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.serviceAttitude == '差'}">
-                                    		<div id="rating1" style="float:left;" data-score="2"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.serviceAttitude == '很差'}">
-                                    		<div id="rating1" style="float:left;" data-score="1"></div>
-                                    	</c:when>
-                                    </c:choose> --%>
-                                    <div class="div_rating_right"><input id="hint1" type="text" value="${comment.serviceAttitude }" class="input_rating" /></div>
-                                </div>
-                                <div class="div_rating_sub">
-                                    <div class="div_rating_left">运输时效</div>
-                                    <div id="rating2" style="float:left;" data-score="0"></div>
-                                    <%-- <c:choose>
-                                    	<c:when test="${comment.transportEfficiency == '很好'}">
-                                    		<div id="rating2" style="float:left;" data-score="5"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.transportEfficiency == '好'}">
-                                    		<div id="rating2" style="float:left;" data-score="4"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.transportEfficiency == '一般'}">
-                                    		<div id="rating2" style="float:left;" data-score="3"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.transportEfficiency == '差'}">
-                                    		<div id="rating2" style="float:left;" data-score="2"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.transportEfficiency == '很差'}">
-                                    		<div id="rating2" style="float:left;" data-score="1"></div>
-                                    	</c:when>
-                                    </c:choose> --%>
-                                    <div class="div_rating_right"><input id="hint2" type="text" value="${comment.transportEfficiency }" class="input_rating" /></div>
-                                </div>
-                                <div class="div_rating_sub">
-                                    <div class="div_rating_left">货物安全</div>
-                                    <div id="rating3" style="float:left;" data-score="0"></div>
-                                    <%-- <c:choose>
-                                    	<c:when test="${comment.cargoSafety == '很好'}">
-                                    		<div id="rating3" style="float:left;" data-score="5"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.cargoSafety == '好'}">
-                                    		<div id="rating3" style="float:left;" data-score="4"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.cargoSafety == '一般'}">
-                                    		<div id="rating3" style="float:left;" data-score="3"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.cargoSafety == '差'}">
-                                    		<div id="rating3" style="float:left;" data-score="2"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.cargoSafety == '很差'}">
-                                    		<div id="rating3" style="float:left;" data-score="1"></div>
-                                    	</c:when>
-                                    </c:choose> --%>
-                                    <div class="div_rating_right"><input id="hint3" type="text" value="${comment.cargoSafety }" class="input_rating" /></div>
-                                </div>
-                                <div class="div_rating_sub">
-                                    <div class="div_rating_left">总体费用</div>
-                                    <div id="rating4" style="float:left;" data-score="0"></div>
-                                    <%-- <c:choose>
-                                    	<c:when test="${comment.totalMoney == '很好'}">
-                                    		<div id="rating4" style="float:left;" data-score="5"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '好'}">
-                                    		<div id="rating4" style="float:left;" data-score="4"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '一般'}">
-                                    		<div id="rating4" style="float:left;" data-score="3"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '差'}">
-                                    		<div id="rating4" style="float:left;" data-score="2"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '很差'}">
-                                    		<div id="rating4" style="float:left;" data-score="1"></div>
-                                    	</c:when>
-                                    </c:choose> --%>
-                                    <div class="div_rating_right"><input id="hint4" type="text" value="${comment.totalMoney }" class="input_rating" /></div>
+                               		 <div class="div_rating_left1">综合：</div>
+                               		 <br>
+                               		 <div class="div_rating_left1">服务态度</div>
+                       			     <div id="rating1" class="div_rating_right1" data-score="0"></div>
+                                	<input type="hidden" value="" id="rate1"/> </br>
+                                <div class="div_rating_left1">运输时效</div>
+                                	 <div id="rating2" class="div_rating_right1"	data-score="0"></div>
+                                	<input type="hidden" value="" id="rate2"/> </br>
+                                <div class="div_rating_left1">货物安全</div>
+                                	 <div id="rating3" class="div_rating_right1" data-score="0"></div>
+                                	<input type="hidden" value="" id="rate3"/> </br>
+<!--                                 <div class="div_rating_left1">总体费用</div>
+                                	 <div id="rating4" class="div_rating_right1" data-score="0"></div>
+                                	<input type="hidden" value="" id="rate4"/> -->   
+                                   
                                 </div>
                                 <div class="div_rating_sub">
                                 	补充：${comment.comment }
@@ -322,39 +250,41 @@
 		//set comment star
 		setStar();
 	}
-	//设置评价星形效果
+	//加载评论星形效果
 	function setStar(){
-		var serviceAttitude="${comment.serviceAttitude}";
-		var transportEfficiency="${comment.transportEfficiency}";
-		var cargoSafety="${comment.cargoSafety}";
-		var totalMoney="${comment.totalMoney}";
-		debugger;
-		if(serviceAttitude == '很好'){
-			$("#rating1").attr("data-score","5");
+		//var serviceAttitude="${comment.serviceAttitude}";
+		var serviceAttitude="${avgComment.serviceAttitude}";
+		var transportEfficiency="${avgComment.transportEfficiency}";
+		var cargoSafety="${avgComment.cargoSafety}";
+		var totalMoney="${avgComment.totalMoney}";
+		 if(serviceAttitude == '很好'){
+			  $("#rating1").attr("data-score","5");
 		}else if(serviceAttitude =='好'){
-			$("#rating1").attr("data-score","4");
+			 $("#rating1").attr("data-score","4");
 		}else if(serviceAttitude == '一般'){
-			$("#rating1").attr("data-score","3");
+			 $("#rating1").attr("data-score","3");
 		}else if(serviceAttitude =='差'){
-			$("#rating1").attr("data-score","2");
+			 $("#rating1").attr("data-score","2");
 		}else{
-			$("#rating1").attr("data-score","1");
-		}
-		
+			 $("#rating1").attr("data-score","1");
+		}  
+		//rating1();
+		//$('#rating1').attr('data-score',3);
 		if(transportEfficiency == '很好'){
-			$("#rating2").attr("data-score","5");
+			 $("#rating2").attr("data-score","5");
 		}else if(transportEfficiency =='好'){
-			$("#rating2").attr("data-score","4");
+			 $("#rating2").attr("data-score","4");
 		}else if(transportEfficiency == '一般'){
-			$("#rating2").attr("data-score","3");
+			 $("#rating2").attr("data-score","3");
 		}else if(transportEfficiency =='差'){
-			$("#rating2").attr("data-score","2");
+			 $("#rating2").attr("data-score","2");
 		}else{
-			$("#rating2").attr("data-score","1");
+			 $("#rating2").attr("data-score","1");
 		}
-		alert($("#rating2").attr("data-score"));
-		if(cargoSafety == '很好'){
-			$("#rating3").attr("data-score","5");
+		//rating2();
+		//评价三
+		 if(cargoSafety == '很好'){
+			 $("#rating3").attr("data-score","5");
 		}else if(cargoSafety =='好'){
 			$("#rating3").attr("data-score","4");
 		}else if(cargoSafety == '一般'){
@@ -364,7 +294,8 @@
 		}else{
 			$("#rating3").attr("data-score","1");
 		}
-		
+		//rating3();
+		//评价四
 		if(totalMoney == '很好'){
 			$("#rating4").attr("data-score","5");
 		}else if(totalMoney =='好'){
@@ -375,7 +306,55 @@
 			$("#rating4").attr("data-score","2");
 		}else{
 			$("#rating4").attr("data-score","1");
-		}
+		} 
+		//rating4();
+		$('#rating1').raty({
+			half     : false,
+			size     : 16,
+			starOff  : 'images/star-off-small.png',
+			starOn   : 'images/star-on-small.png',
+			targetKeep: true,
+			score: function() { 
+			    return $("#rating1").attr('data-score');
+			}
+		  });
+		  
+		  $('#rating2').raty({
+			half     : false,
+			size     : 16,
+			starOff  : 'images/star-off-small.png',
+			starOn   : 'images/star-on-small.png',
+			starHalf : 'images/star-half-small.png',
+			targetKeep: true,
+			score: function() {
+			    return $("#rating2").attr('data-score');
+			}
+		  });
+		  $('#rating3').raty({
+			half     : false,
+			size     : 16,
+			starOff  : 'images/star-off-small.png',
+			starOn   : 'images/star-on-small.png',
+			starHalf : 'images/star-half-small.png',
+			targetKeep: true,
+			score: function() { 
+			    return $("#rating3").attr('data-score');
+			}
+		  });
+		  $('#rating4').raty({
+			half     : false,
+			size     : 16,
+			starOff  : 'images/star-off-small.png',
+			starOn   : 'images/star-on-small.png',
+			targetKeep: true,
+			score: function() { 
+			    return $("#rating4").attr('data-score');
+			}
+		  });
+		  $("#rating1").raty("readOnly",true);
+		  $("#rating2").raty("readOnly",true);
+		  $("#rating3").raty("readOnly",true);
+		  $("#rating4").raty("readOnly",true);
 	}
 </script>
 </html>
