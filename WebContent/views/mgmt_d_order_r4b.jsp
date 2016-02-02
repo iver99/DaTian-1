@@ -208,22 +208,24 @@
                             </table>
                         	<div class="span_mgmt_right3_text4">评价信息</div>      	          
                             <div id="div_rating">
-                               		 <div class="div_rating_left1">综合：</div>
-                               		 <br>
+                                  <div class="div_rating_sub">
                                		 <div class="div_rating_left1">服务态度</div>
                        			     <div id="rating1" class="div_rating_right1" data-score="0"></div>
-                                	<input type="hidden" value="" id="rate1"/> </br>
-                                <div class="div_rating_left1">运输时效</div>
+                                	 <input type="hidden" value="" id="rate1"/> </br>
+                                  </div>
+                                  <div class="div_rating_sub">
+                                     <div class="div_rating_left1">运输时效</div>
                                 	 <div id="rating2" class="div_rating_right1"	data-score="0"></div>
-                                	<input type="hidden" value="" id="rate2"/> </br>
-                                <div class="div_rating_left1">货物安全</div>
+                                	 <input type="hidden" value="" id="rate2"/> </br>
+                                  </div>
+                                  <div class="div_rating_sub">
+                                     <div class="div_rating_left1">货物安全</div>
                                 	 <div id="rating3" class="div_rating_right1" data-score="0"></div>
-                                	<input type="hidden" value="" id="rate3"/> </br>
-<!--                                 <div class="div_rating_left1">总体费用</div>
+                                	 <input type="hidden" value="" id="rate3"/> </br>
+                                  </div>
+                                <!-- <div class="div_rating_left1">总体费用</div>
                                 	 <div id="rating4" class="div_rating_right1" data-score="0"></div>
-                                	<input type="hidden" value="" id="rate4"/> -->   
-                                   
-                                </div>
+                                	<input type="hidden" value="" id="rate4"/>   --> 
                                 <div class="div_rating_sub">
                                 	补充：${comment.comment }
                                 </div>
