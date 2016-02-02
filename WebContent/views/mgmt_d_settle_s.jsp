@@ -74,9 +74,7 @@
                     <tr>
                         <td width="30" height="40" class="td_mgmt_right3_head1"><input type="checkbox" id="f1_all" onClick="selectall();" /></td>
                         <td width="100" class="td_mgmt_right3_head">订单编号</td>
-                        <td class="td_mgmt_right3_head">客户名称</td>
                         <td class="td_mgmt_right3_head">承运方</td>
-                        <td width="100" class="td_mgmt_right3_head">承运方合同编号</td>
                         <td width="80" class="td_mgmt_right3_head">订单完成时间</td>
                         <td width="88" class="td_mgmt_right3_head">订单运费(元)</td>
                         <td width="88" class="td_mgmt_right3_head">最终运费(元)</td>
@@ -148,10 +146,10 @@ function getUserSettleSResource(display,currentPage,name){
 				body.append("<tr>");
 				body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" value=\""+data[i].orderNum+"\"></td>");
                			body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"getOrderDetail?orderid="+data[i].id+"\" hidefocus=\"true\">"+data[i].orderNum+"</a></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\" hidefocus=\"true\">"+data[i].clientName+"</a></td>");
+						/* body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\" hidefocus=\"true\">"+data[i].clientName+"</a></td>"); */
 						body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"</a></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\">"+data[i].contractId+"</a></td>");
-						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].submitTime+"</td>");
+						/* body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\">"+data[i].contractId+"</a></td>"); */
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].submitTime)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].expectedPrice+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].actualPrice+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].settlementState+"</td>");
@@ -167,6 +165,12 @@ function getUserSettleSResource(display,currentPage,name){
 		}
 	})
 }
+//时间转换
+function renderTime(date){ 
+	var da = new Date(parseInt(date)); 
+	return da.getFullYear()+"-"+ (da.getMonth()+1)+"-" +da.getDate()+" "+da.getHours()+":"+da.getMinutes()+":"+da.getSeconds(); 
+} 
+
 //我的结算（需求方）总条数
 function getUserSettleSResourceTotalRows(display,currentPage,name){
 	var url="getUserSettlementTotalRowsAjax";
