@@ -96,6 +96,8 @@ public class OrderServiceImpl implements OrderService {
 	public boolean acceptOrder(String orderId,String driver,String carNum,String waybill) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
 		order.setState("´ýÊÕ»õ");
+		order.setDriver(driver);
+		order.setCarNum(carNum);
 		String[] drivers = driver.split(",");
 		String[] carNums = carNum.split(",");
 		String[] waybills = waybill.split(",");
