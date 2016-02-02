@@ -156,10 +156,10 @@
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].orderNum+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\"></td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceType+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceName+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].clientName+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].submitTime)+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+renderTimeFull(data[i].submitTime)+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].actualPrice+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].insurance+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+(data[i].actualPrice+data[i].insurance)+"</td>";
