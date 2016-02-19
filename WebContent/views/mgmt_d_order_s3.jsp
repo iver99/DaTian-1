@@ -68,7 +68,7 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">意向编号：</td>
                                     <td>${orderInfo.orderNum }</td>
                                 </tr>
-                                <tr>
+                                <%-- <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">所属客户：</td>
 									<td>
 										<select style="width:120px;" name="clientName" required id="clientName">
@@ -90,12 +90,12 @@
                                             <input type="text" value="${orderInfo.clientWayBillNum }" name="clientWayBillNum" class="input_mgmt1" style="width:176px;" placeholder="请输入客户运单号..."/>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${orderInfo.carrierName }</td>
                                 </tr>
-                                <tr>
+                             <!--    <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
                                     <td>
                                         <select style="width:110px;" onchange="change_cert();" id="hasCarrierContract" name="hasCarrierContract" required>
@@ -109,7 +109,7 @@
                                             </select>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>${orderInfo.resourceType }</td>

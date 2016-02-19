@@ -64,22 +64,22 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">意向编号：</td>
                                     <td>${orderInfo.orderNum }</td>
                                 </tr>
-                                <tr>
+                               <%--  <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">所属客户：</td>
                                     <td>${orderInfo.clientName }</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">关联客户运单：</td>
                                     <td>${orderInfo.clientName }</td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${orderInfo.carrierName }</td>
                                 </tr>
-                                <tr>
+ <%--                                <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
                                     <td>${orderInfo.hasCarrierContract }</td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>${orderInfo.resourceType }</td>

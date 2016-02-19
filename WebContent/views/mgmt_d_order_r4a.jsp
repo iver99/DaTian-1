@@ -103,10 +103,10 @@
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${orderInfo.carrierName }</td>
                                 </tr>
-                                <tr>
+                               <%--  <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
                                     <td>${orderInfo.hasCarrierContract }</td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>${orderInfo.resourceType }</td>
@@ -187,12 +187,12 @@
                             </table>
                         	<div class="span_mgmt_right3_text4">最终运费</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
+<%--                            <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">合同规定运费：</td>
                                     <td>${orderInfo.expectedPrice } (元)</td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">意向运费：</td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">意向运费：</td>
                                     <td>${orderInfo.expectedPrice } (元)</td>
                                 </tr>
                                 <tr>

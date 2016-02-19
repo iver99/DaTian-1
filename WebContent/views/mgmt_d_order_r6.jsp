@@ -76,12 +76,12 @@
                         	<div class="span_mgmt_right3_text4">最终运费</div>
                         	    	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
+                                <%-- <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">合同规定运费：</td>
                                     <td>${expectedPrice }(元)</td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">意向运费：</td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">意向运费：</td>
                                     <td>${expectedPrice } (元)</td>
                                 </tr>
                                 <tr>
