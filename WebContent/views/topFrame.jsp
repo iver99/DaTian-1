@@ -322,11 +322,11 @@
                     $(".allsort .item").hoverForIE6({delay:50});
                 </script>
             </td>
-           <td class="td_top2a">
+           <td class="td_top2c">
             	<a href="fulltruckload?flag=0" class="a_mainnav" hidefocus="true">找资源</a>
             	<a href="goodsform?flag=0" class="a_mainnav" hidefocus="true">找货物</a>
             </td>
-            <td class="td_top2a">&nbsp;</td>
+            <td class="td_top2c">&nbsp;</td>
             <td width="3%">&nbsp;</td>
 		</tr>
     </table>
