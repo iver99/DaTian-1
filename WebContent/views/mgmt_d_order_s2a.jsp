@@ -67,7 +67,7 @@
                         <td class="td_mgmt_right3_td1a">
                             <div class="span_mgmt_right3_text4">基本信息</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
+                                <!-- <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">所属客户：</td>
 									<td>
 										<select style="width:120px;" name="clientName" id="clientName" required>
@@ -87,7 +87,7 @@
                                             <input type="text" name="clientWayBillNum" class="input_mgmt1" style="width:176px;" placeholder="请输入客户运单号..."/>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td><input name="companyName" type="text" readonly="readonly" value="${carrierInfo.companyName }" required/></td>
@@ -96,7 +96,7 @@
                                 	  <td><input name="goodsId" value="${goodsId  }" type="hidden"/> </td>
                                 	   <td><input name="responseId" value="${responseId}" type="hidden"/> </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
                                     <td>
                                         <select id="hasCarrierContract" style="width:120px;" onchange="changeHasCarrierContract();" name="hasCarrierContract" required>
@@ -110,7 +110,7 @@
                                             </select>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>

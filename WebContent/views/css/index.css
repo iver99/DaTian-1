@@ -148,7 +148,13 @@ a.a_top1 {
 
 /*LOGO所在行*/
 .td_top2a {
-	text-align:center;
+	/* text-align:center; 由于上方搜索功能去掉，暂时去掉中央位置*/
+	vertical-align:middle;
+	}
+	
+/*找资源找货物*/	
+.td_top2c {
+	text-align:center; 
 	vertical-align:middle;
 	}
 

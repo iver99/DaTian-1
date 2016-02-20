@@ -123,8 +123,9 @@
                         </ul>
                         <ul id="item3" class="tab_hide">
                         	<div id="div_rating3">
-                                <div class="div_rating_left1">综合：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务态度</div>
-                       			     <div id="rating1" class="div_rating_right1" data-score="0"></div>
+                                <div class="div_rating_left1" id="avgRating">综合：</div>
+                                <div class="div_rating_left1">服务态度</div>
+                       			    <div id="rating1" class="div_rating_right1" data-score="0"></div>
                                 	<input type="hidden" value="" id="rate1"/> 
                                 <div class="div_rating_left1">运输时效</div>
                                 	 <div id="rating2" class="div_rating_right1"	data-score="0"></div>
@@ -213,8 +214,7 @@ function loadXMLDoc(id){
 		   }
 		});
 }
-
-//加载评论星形效果
+//加星星评论
 function setStar(){
 	//var serviceAttitude="${comment.serviceAttitude}";
 	var serviceAttitude="${avgComment.serviceAttitude}";

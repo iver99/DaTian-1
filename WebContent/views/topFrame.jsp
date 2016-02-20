@@ -26,7 +26,7 @@
                                 <a href="myinfo" class="menuhd" hidefocus="true">我的信息</a> 
                                 <div class="menubd">
                                     <div class="menubdpanel">
-                                        <a href="turnToOrderPage" class="a_top1" hidefocus="true">我的订单</a>
+                                        <a href="turnToOrderPage" class="a_top1" hidefocus="true">我的意向</a>
                                         <a href="turnToResourcePage" class="a_top1" hidefocus="true">我的资源</a>
                                         <a href="accountinfo" class="a_top1" hidefocus="true">帐户信息</a>
                                     </div>
@@ -322,11 +322,11 @@
                     $(".allsort .item").hoverForIE6({delay:50});
                 </script>
             </td>
-           <td class="td_top2a">
+           <td class="td_top2c">
             	<a href="fulltruckload?flag=0" class="a_mainnav" hidefocus="true">找资源</a>
             	<a href="goodsform?flag=0" class="a_mainnav" hidefocus="true">找货物</a>
             </td>
-            <td class="td_top2a">&nbsp;</td>
+            <td class="td_top2c">&nbsp;</td>
             <td width="3%">&nbsp;</td>
 		</tr>
     </table>
