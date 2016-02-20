@@ -15,7 +15,6 @@ public class SafetyRealm  extends AuthorizingRealm{
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -25,7 +24,6 @@ public class SafetyRealm  extends AuthorizingRealm{
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken arg0) throws AuthenticationException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
