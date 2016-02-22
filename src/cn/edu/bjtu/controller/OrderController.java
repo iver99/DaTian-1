@@ -236,6 +236,9 @@ public class OrderController {
 		List<Driverinfo> driverList=driverService.getAllDriver(carrierId);
 		for(int i=0;i<driverList.size();i++){
 			Driverinfo driverinfo = (Driverinfo)driverList.get(i);
+			if((driverinfo.getState())==null){
+				driverinfo.setState("¿ÕÏÐ");
+			}
 			if((driverinfo.getState()).equals("ÒÑ·ÖÅä")){
 				driverList.remove(i);
 				i=i-1;
@@ -246,6 +249,9 @@ public class OrderController {
 		List<Carinfo> carNumList=carService.getAllcarNum(carrierId);
 		for(int i=0;i<carNumList.size();i++){
 			Carinfo carinfo = (Carinfo)carNumList.get(i);
+			if((carinfo.getCarState())==null){
+				carinfo.setCarState("Í£Ðª");
+			}
 			if(!(carState.equals(carinfo.getCarState()))){
 				carNumList.remove(i);
 				i=i-1;
