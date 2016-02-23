@@ -171,9 +171,9 @@ public class SMSController {
 		JSONObject json = new JSONObject(); 
 		try {
 			String vCode=VCodeCreator.getVCode();
-			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
+			//int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
 			//方便测试暂时注释叼发短信功能
-			/*int i =0;*/
+			int i =0;
 			if(i==0){
 				//FIXME
 				//存储验证码
