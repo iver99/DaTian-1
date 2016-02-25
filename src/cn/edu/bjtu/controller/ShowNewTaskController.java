@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import cn.edu.bjtu.service.DriverService;
-import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.vo.Driverinfo;
-import cn.edu.bjtu.vo.Orderform;
 import cn.edu.bjtu.vo.WayBill;
 import net.sf.json.JSONArray;
 
@@ -23,8 +21,6 @@ public class ShowNewTaskController {
 	
 	@Autowired
 	DriverService driverService;
-	@Autowired
-	OrderService orderService;
 	@Autowired
 	WayBillService waybillService;
 	

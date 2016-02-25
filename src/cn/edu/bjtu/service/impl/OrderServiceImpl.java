@@ -111,6 +111,7 @@ public class OrderServiceImpl implements OrderService {
 			WayBill wayBill = new WayBill();
 			wayBill.setId(IdCreator.createWayBillId());
 			wayBill.setOrderId(orderId);
+			wayBill.setOrderNum(order.getOrderNum());
 			wayBill.setWaybillNum(waybills[i]);
 			wayBill.setDriver(drivers[i]);
 			wayBill.setCarNum(carNums[i]);

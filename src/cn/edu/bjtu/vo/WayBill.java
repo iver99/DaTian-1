@@ -13,6 +13,7 @@ public class WayBill implements java.io.Serializable{
 	@Id
 	private String id;
 	private String orderId;
+	private String orderNum;
 	private String waybillNum;
 	
 	private String deliveryAddr;
@@ -35,6 +36,20 @@ public class WayBill implements java.io.Serializable{
 	private Date waybillFinishTime;
 	
 	private String waybillState;
+
+	/**
+	 * @return orderNum
+	 */
+	public String getOrderNum() {
+		return orderNum;
+	}
+
+	/**
+	 * @param orderNum ÒªÉèÖÃµÄ orderNum
+	 */
+	public void setOrderNum(String orderNum) {
+		this.orderNum = orderNum;
+	}
 
 	/**
 	 * @return id
