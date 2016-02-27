@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -83,7 +84,7 @@
                             </tr>
                             <tr>
                                 <td height="40" class="td_mgmt_right3_td1b">取得驾驶证时间：</td>
-                                <td>${driver.licenceTime }</td>
+                                <td><fmt:formatDate value="${driver.licenceTime }" pattern="yyyy-MM-dd"/></td>
                             </tr>
                             <tr>
                                 <td height="40" class="td_mgmt_right3_td1b">联系电话：</td>
