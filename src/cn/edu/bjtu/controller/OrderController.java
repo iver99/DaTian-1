@@ -228,39 +228,14 @@ public class OrderController {
 	@RequestMapping("acceptOrderForm")
 	public ModelAndView getAcceptOrderForm(String orderid,
 			HttpServletRequest request, HttpServletResponse response) {
-		
-		String carState = "停歇";
-
 		// 需要查出公司司机列表 add by RussWest0 at 2015年6月7日,下午7:56:32 
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List<Driverinfo> driverList=driverService.getAllDriver(carrierId);
-		for(int i=0;i<driverList.size();i++){
-			Driverinfo driverinfo = (Driverinfo)driverList.get(i);
-			if((driverinfo.getState())==null){
-				driverinfo.setState("空闲");
-			}
-			if((driverinfo.getState()).equals("已分配")){
-				driverList.remove(i);
-				i=i-1;
-			}
-		}
 		mv.addObject("driverList",driverList);
 		//需要查出公司车牌号列表add by solitudeycq at 2015-12-24 0:46
 		List<Carinfo> carNumList=carService.getAllcarNum(carrierId);
-		for(int i=0;i<carNumList.size();i++){
-			Carinfo carinfo = (Carinfo)carNumList.get(i);
-			if((carinfo.getCarState())==null){
-				carinfo.setCarState("停歇");
-			}
-			if(!(carState.equals(carinfo.getCarState()))){
-				carNumList.remove(i);
-				i=i-1;
-			}
-		}
 		mv.addObject("carNumList", carNumList);
-		// 需要获取车牌号和司机名
 		mv.addObject("orderId", orderid);
-
 		mv.setViewName("mgmt_d_order_r2");
 		return mv;
 	}
