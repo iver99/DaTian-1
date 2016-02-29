@@ -243,6 +243,26 @@
 							}
 						body.append("</tr>");			
 					}
+					if(data[i].focusType == 'goods'){
+						body.append("<tr>");
+						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"></td>");
+						body.append("<td class=\"td_mgmt_right3_td1\">货物</td>");
+						var str="<td class=\"td_mgmt_right3_td1\">";
+						str+="<a href=\"goodsdetail?id="+data[i].resourceId+"\" hidefocus=\"true\">"+data[i].name+"</a>";
+						str+="</td>";
+						body.append(str);	
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
+						
+						if(data[i].status == '有效'){
+							body.append("<td class=\"td_mgmt_right3_td1\">有效</td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
+							}
+						else if(data[i].status == '失效'){
+							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
+							}
+						body.append("</tr>");			
+					}
 					if(data[i].focusType == 'airline'){
 						body.append("<tr>");
 						body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"></td>");

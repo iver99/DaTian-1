@@ -333,7 +333,7 @@
 			<td width="320" class="td_leftnav_top"><img src="images/illust_2g.png" /></td>
 			<td class="td_detail_top">货物名称：<span class="text_detail_title1">${goodsformInfo.name }</span>
                 <br />
-                截止时间：<span class="text_detail_title2">${goodsformInfo.limitDate }</span>
+                截止时间：<span class="text_detail_title2"><fmt:formatDate value ="${goodsformInfo.limitDate }" pattern= "yyyy-MM-dd" /></span>
                 <br />
                 发布日期：<fmt:formatDate value ="${goodsformInfo.relDate }" pattern= "yyyy-MM-dd" />
                 <br />

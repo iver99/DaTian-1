@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +26,10 @@ import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.vo.AirLine;
-import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Cityline;
 import cn.edu.bjtu.vo.Focus;
 import cn.edu.bjtu.vo.Goodsform;
-import cn.edu.bjtu.vo.Linetransport;
 import cn.edu.bjtu.vo.Truck;
 import cn.edu.bjtu.vo.Warehouse;
 
@@ -63,6 +60,8 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	TruckDao truckDao;
 	@Autowired
 	AirLineDao airlineDao;
+	@Autowired
+	GoodsInfoDao goodsDao;
 	
 
 	@Override
@@ -143,7 +142,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						if("".equals(search_content) || (!"".equals(search_content) && 
 								focusBean.getStartPlace().contains(search_content) ||
 								focusBean.getEndPlace().contains(search_content))){
-							focusBeanList.add(focusBean);
+							    focusBeanList.add(focusBean);
 					}	
 				} else if("lesstruckload".equals(focus.getFocusType())){
 					Truck truck=truckDao.get(Truck.class, focus.getFocusId());
@@ -161,7 +160,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						if("".equals(search_content) || (!"".equals(search_content) && 
 								focusBean.getStartPlace().contains(search_content) ||
 								focusBean.getEndPlace().contains(search_content))){
-							focusBeanList.add(focusBean);
+							    focusBeanList.add(focusBean);
 					}	
 				} else if("cityline".equals(focus.getFocusType())){
 					Cityline cityline=citylineDao.get(Cityline.class, focus.getFocusId());
@@ -193,6 +192,20 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 							
 							focusBeanList.add(focusBean);
 						}					
+				}else if("goods".equals(focus.getFocusType())){
+					Goodsform goods = goodsDao.get(Goodsform.class, focus.getFocusId());
+						focusBean.setId(focus.getId());
+						focusBean.setStatus(focus.getStatus());
+						focusBean.setFocusType(focus.getFocusType());
+						focusBean.setRelDate(goods.getRelDate());
+						focusBean.setName(goods.getName());
+						focusBean.setResourceId(goods.getId());
+						//focusBean.setCarrierId(warehouse.getCarrierId());
+						//focusBean.setCompanyName(company.getCompanyName());
+						if("".equals(search_content) || (!"".equals(search_content) && focusBean.getName().contains(search_content))){
+							
+							focusBeanList.add(focusBean);
+						}					
 				}else if("airline".equals(focus.getFocusType())){
 					AirLine airline = airlineDao.get(AirLine.class,focus.getFocusId());
 					Carrierinfo company = companyDao.get(Carrierinfo.class, airline.getCarrierId());
@@ -208,7 +221,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						if("".equals(search_content) || (!"".equals(search_content) && 
 								focusBean.getStartPlace().contains(search_content) ||
 								focusBean.getEndPlace().contains(search_content))){
-							focusBeanList.add(focusBean);
+							    focusBeanList.add(focusBean);
 					}	
 				}
 		}
