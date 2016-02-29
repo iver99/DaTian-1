@@ -136,7 +136,7 @@ public class CommonController {
 		Integer userId=(Integer)session.getAttribute(Constant.USER_KIND);
 		
 		if(userId==2){
-			return "mgmt_r_customer";
+			return "mgmt_r_cargo";
 		}else if(userId==3){
 			return "mgmt_r_line";
 		}
