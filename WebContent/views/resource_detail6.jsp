@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -334,7 +335,7 @@
                 <br />
                 截止时间：<span class="text_detail_title2">${goodsformInfo.limitDate }</span>
                 <br />
-                发布日期：${goodsformInfo.relDate }
+                发布日期：<fmt:formatDate value ="${goodsformInfo.relDate }" pattern= "yyyy-MM-dd" />
                 <br />
                 发布人：${goodsformInfo.realName }<img src="images/btn_level2a.png" />
                 <br />
