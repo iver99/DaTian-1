@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -64,7 +65,7 @@
                 <br />
                 增值服务：${truckInfo.extraService }
                 <br />   
-                发货日期：${truckInfo.relDate }
+                发货日期：<fmt:formatDate value ="${truckInfo.relDate }" pattern= "yyyy-MM-dd" />
                 <br />
                 所有者：    ${carrierInfo.companyName }&nbsp;<img src="images/btn_level1a.png" />          
                 <br />
@@ -148,7 +149,7 @@
                             </div>
                             <br />
                             <c:forEach var="comment" items="${commentList }">
-                            <li class="item2a">${comment.comment }--------------- ${comment.relDate }</li>
+                            <li class="item2a">${comment.comment }--------------- <fmt:formatDate value ="${comment.relDate }" pattern= "yyyy-MM-dd" /></li>
                             </c:forEach>
                         </ul>
                     </div>
