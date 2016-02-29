@@ -26,7 +26,14 @@ public class AirLineSearchBean {
 	private String carrierId;
 	private Date relDate;
 	private String companyName;
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	/**
 	 * @return airCycle
 	 */

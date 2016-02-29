@@ -114,6 +114,7 @@ public class AirLineServiceImpl implements AirLineService {
 			airlineBean1.setRemarks((String)obj[14]);
 			airlineBean1.setCarrierId((String)obj[15]);
 			airlineBean1.setRelDate((Date)obj[16]);
+			airlineBean1.setStatus((String)obj[17]);
 			airlineList.add(airlineBean1);
 		}
 		for(int i=0;i<airlineList.size();i++){
