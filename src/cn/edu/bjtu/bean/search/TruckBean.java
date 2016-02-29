@@ -30,6 +30,14 @@ public class TruckBean {
 	private String picture;
 	private String resourceType;
 	private String companyName;
+	private String status;
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	/**
 	 * @return id
 	 */

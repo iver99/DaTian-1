@@ -241,12 +241,11 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 		
 			for(Focus focus:focusList){
 				FocusBean focusBean=new FocusBean();
-				if("linetransport".equals(focus.getFocusType())){
-					Linetransport line=linetransportDao.get(Linetransport.class, focus.getFocusId());
+				if("airline".equals(focus.getFocusType())){
+					AirLine airline = airlineDao.get(AirLine.class,focus.getFocusId());
 						//若有筛选条件
 						if("".equals(search_content) || (!"".equals(search_content) && 
-								line.getStartPlace().contains(search_content) ||
-								line.getEndPlace().contains(search_content))){
+								airline.getId().contains(search_content))){
 							count++;
 					}
 				}else if("cityline".equals(focus.getFocusType())){
@@ -254,17 +253,17 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						if("".equals(search_content) || (!"".equals(search_content) && cityline.getName().contains(search_content))){
 							count++;
 						}
-				}else if("car".equals(focus.getFocusType())){
-					Carinfo car=carDao.get(Carinfo.class, focus.getFocusId());
-						if("".equals(search_content) || (!"".equals(search_content) && car.getCarNum().contains(search_content))){
+				}else if("fulltruckload".equals(focus.getFocusType())){
+					Truck truck=truckDao.get(Truck.class, focus.getFocusId());
+						if("".equals(search_content) || (!"".equals(search_content) && truck.getId().contains(search_content))){
 							
 							count++;
 						}
-				}else if("company".equals(focus.getFocusType())){
-					Carrierinfo company=companyDao.get(Carrierinfo.class, focus.getFocusId());
-						if("".equals(search_content) || (!"".equals(search_content) && company.getCompanyName().contains(search_content))){
-							count++;
-							
+				}else if("lesstruckload".equals(focus.getFocusType())){
+					Truck truck=truckDao.get(Truck.class, focus.getFocusId());
+					if("".equals(search_content) || (!"".equals(search_content) && truck.getId().contains(search_content))){
+						
+						count++;
 						}
 				}else if("warehouse".equals(focus.getFocusType())){
 					Warehouse warehouse=warehouseDao.get(Warehouse.class, focus.getFocusId());

@@ -292,7 +292,7 @@ function loadXMLDoc(id)
 	$.ajax({
 		   type: "GET",
 		   url: curWwwPath.substring(0,pos) + "/DaTian/focus",//请求的后台地址
-		   data: "type=linetransport&id=" + id,//前台传给后台的参数
+		   data: "type=airline&id=" + id,//前台传给后台的参数
 		   cache:false,
 		   success: function(msg){//msg:返回值
 			   if(msg == "login"){
