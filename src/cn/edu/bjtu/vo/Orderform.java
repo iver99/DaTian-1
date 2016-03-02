@@ -33,22 +33,6 @@ public class Orderform implements java.io.Serializable {
 	private String warehouseId;
 	private String citylineId;
 	private String linetransportId;
-	/**
-	 * @return linetransportId
-	 */
-	public String getLinetransportId() {
-		return linetransportId;
-	}
-
-
-	/**
-	 * @param linetransportId 要设置的 linetransportId
-	 */
-	public void setLinetransportId(String linetransportId) {
-		this.linetransportId = linetransportId;
-	}
-
-
 	private String fulltruckloadId;
 	private String lesstruckloadId;
 	private String remarks;
@@ -58,7 +42,6 @@ public class Orderform implements java.io.Serializable {
 	private Float goodsVolume;
 	//private Float freight;
 	private String contractId;
-	
 	private String resourceType;
 	private String acceptPicture;
 	private String explainReason;
@@ -67,129 +50,112 @@ public class Orderform implements java.io.Serializable {
 	//add by solitudeycq at 2015-12-21 22:36标示司机是否确认
 	private String confirm;
 	private String commentId;
-	
+	private String cancelReason;	
+	private String settlementState;
+	// add by RussWest0 at 2015年5月31日,下午11:34:05 
+	private String isLinkToClientWayBill;
+	private String clientWayBillNum;
+	private String resourceName;
+	private String companyName;	
+	//add by RussWest0 at 2015年7月29日,下午9:26:57 
+	private Date finishTime;// 订单结束时间
 	private float declaredPrice;
 	private String hasCarrierContract;
 	private String clientName;
 	
+	/**
+	 * @return linetransportId
+	 */
+	public String getLinetransportId() {
+		return linetransportId;
+	}
+	/**
+	 * @param linetransportId 要设置的 linetransportId
+	 */
+	public void setLinetransportId(String linetransportId) {
+		this.linetransportId = linetransportId;
+	}	
 	/**
 	 * @return confirm
 	 */
 	public String getConfirm() {
 		return confirm;
 	}
-
-
 	/**
 	 * @param confirm 要设置的 confirm
 	 */
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
-
-
-	//private String carrierName;
-	private String cancelReason;
-	
-	private String settlementState;
-	// add by RussWest0 at 2015年5月31日,下午11:34:05 
-	private String isLinkToClientWayBill;
-	private String clientWayBillNum;
-	private String resourceName;
-	private String companyName;
-	
-	//add by RussWest0 at 2015年7月29日,下午9:26:57 
-	private Date finishTime;// 订单结束时间
-
 	/**
 	 * @return the finishTime
 	 */
 	public Date getFinishTime() {
 		return finishTime;
 	}
-
-
 	/**
 	 * @param finishTime the finishTime to set
 	 */
 	public void setFinishTime(Date finishTime) {
 		this.finishTime = finishTime;
 	}
-
-
 	public String getCompanyName() {
 		return companyName;
 	}
-
-
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-
 
 	public String getResourceName() {
 		return resourceName;
 	}
 
-
 	public void setResourceName(String resourceName) {
 		this.resourceName = resourceName;
 	}
-
 
 	public String getIsLinkToClientWayBill() {
 		return isLinkToClientWayBill;
 	}
 
-
 	public void setIsLinkToClientWayBill(String isLinkToClientWayBill) {
 		this.isLinkToClientWayBill = isLinkToClientWayBill;
 	}
-
 
 	public String getClientWayBillNum() {
 		return clientWayBillNum;
 	}
 
-
 	public void setClientWayBillNum(String clientWayBillNum) {
 		this.clientWayBillNum = clientWayBillNum;
 	}
-
 
 	public String getSettlementState() {
 		return settlementState;
 	}
 
-
 	public void setSettlementState(String settlementState) {
 		this.settlementState = settlementState;
 	}
 
-
 	public Orderform() {
 	}
 
-	
 	public String getOrderNum() {
 		return orderNum;
 	}
-
 
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
 
-
 	public String getCancelReason() {
 		return cancelReason;
 	}
 
-
 	public void setCancelReason(String cancelReason) {
 		this.cancelReason = cancelReason;
 	}
-
 
 	public float getDeclaredPrice() {
 		return declaredPrice;
@@ -219,12 +185,6 @@ public class Orderform implements java.io.Serializable {
 		this.id = id;
 	}
 
-	
-
-	
-
-
-
 	public String getResourceType() {
 		return resourceType;
 	}
@@ -240,8 +200,6 @@ public class Orderform implements java.io.Serializable {
 	public void setAcceptPicture(String acceptPicture) {
 		this.acceptPicture = acceptPicture;
 	}
-
-	
 
 	public String getExplainReason() {
 		return explainReason;
@@ -379,8 +337,6 @@ public class Orderform implements java.io.Serializable {
 		this.recieverPhone = recieverPhone;
 	}
 
-	
-
 	public String getWarehouseId() {
 		return warehouseId;
 	}
@@ -437,16 +393,13 @@ public class Orderform implements java.io.Serializable {
 		this.goodsVolume = goodsVolume;
 	}
 
-
 	public String getContractId() {
 		return contractId;
 	}
 
-
 	public void setContractId(String contractId) {
 		this.contractId = contractId;
 	}
-
 
 	/**
 	 * @return fulltruckloadId
@@ -455,7 +408,6 @@ public class Orderform implements java.io.Serializable {
 		return fulltruckloadId;
 	}
 
-
 	/**
 	 * @param fulltruckloadId 要设置的 fulltruckloadId
 	 */
@@ -463,14 +415,12 @@ public class Orderform implements java.io.Serializable {
 		this.fulltruckloadId = fulltruckloadId;
 	}
 
-
 	/**
 	 * @return lesstruckloadId
 	 */
 	public String getLesstruckloadId() {
 		return lesstruckloadId;
 	}
-
 
 	/**
 	 * @param lesstruckloadId 要设置的 lesstruckloadId
