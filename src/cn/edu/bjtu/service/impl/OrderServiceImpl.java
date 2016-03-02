@@ -127,6 +127,7 @@ public class OrderServiceImpl implements OrderService {
 			wayBill.setGoodsName(order.getGoodsName());
 			wayBill.setGoodsVolume(order.getGoodsVolume());
 			wayBill.setGoodsWeight(order.getGoodsWeight());
+			wayBill.setResourceName(order.getResourceName());
 			waybillDao.save(wayBill);
 			carService.setcarState(carNums[i], "дкЭО");
 		}
