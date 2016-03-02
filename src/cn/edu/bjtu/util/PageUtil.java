@@ -1,7 +1,5 @@
 package cn.edu.bjtu.util;
 
-import java.util.List;
-
 /**
  * 分页相关类
  * @author RussWest0

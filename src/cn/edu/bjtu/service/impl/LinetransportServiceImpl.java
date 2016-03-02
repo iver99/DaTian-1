@@ -28,7 +28,6 @@ import cn.edu.bjtu.util.DataModel;
 import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
-import cn.edu.bjtu.vo.Focus;
 import cn.edu.bjtu.vo.Linetransport;
 
 import com.alibaba.fastjson.JSONArray;

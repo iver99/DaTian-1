@@ -1,10 +1,5 @@
 package cn.edu.bjtu.dao.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cn.edu.bjtu.dao.ContractDao;

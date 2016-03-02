@@ -5,14 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import cn.edu.bjtu.bean.search.CarSearchBean;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Carteam;
-import cn.edu.bjtu.vo.Linetransport;
-
 import com.alibaba.fastjson.JSONArray;
 
 public interface CarService {

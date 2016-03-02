@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.dao.sms.SmsLogDao;
 import cn.edu.bjtu.service.sms.SmsService;
-import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.vo.sms.SmsLog;
 /**
  * 短信接口相关

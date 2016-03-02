@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mchange.v2.encounter.WeakEqualityEncounterCounter;
-
 import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.FinancialService;

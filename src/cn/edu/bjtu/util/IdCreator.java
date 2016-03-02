@@ -1,8 +1,5 @@
 package cn.edu.bjtu.util;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * idÉú³ÉÀà
  * @author RussWest0

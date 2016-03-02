@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
-import com.mysql.jdbc.Messages;
-
 import cn.edu.bjtu.service.MessageService;
 import cn.edu.bjtu.util.Constant;
 

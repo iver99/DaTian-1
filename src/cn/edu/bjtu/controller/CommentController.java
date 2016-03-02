@@ -1,7 +1,5 @@
 package cn.edu.bjtu.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 

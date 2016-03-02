@@ -2,7 +2,6 @@ package cn.edu.bjtu.util;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.bjtu.vo.SettlementCarrierView;

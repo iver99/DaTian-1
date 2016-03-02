@@ -1,7 +1,5 @@
 package cn.edu.bjtu.service;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,8 +9,6 @@ import cn.edu.bjtu.bean.search.CargoSearchBean;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.GoodsClientView;
 import cn.edu.bjtu.vo.Goodsform;
-import cn.edu.bjtu.vo.Linetransport;
-
 import com.alibaba.fastjson.JSONArray;
 
 public interface GoodsInfoService {

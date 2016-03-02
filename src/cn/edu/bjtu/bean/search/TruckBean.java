@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.edu.bjtu.bean.search;
 
 import java.util.Date;

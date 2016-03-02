@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.bean.page.OperationBean;
 import cn.edu.bjtu.service.OperationService;
 import cn.edu.bjtu.util.PageUtil;

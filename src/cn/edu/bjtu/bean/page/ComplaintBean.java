@@ -1,7 +1,5 @@
 package cn.edu.bjtu.bean.page;
 
-import java.util.Date;
-
 /**
  * 投诉功能的页面Bean
  * @author RussWest0

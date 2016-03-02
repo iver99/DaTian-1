@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.WayBillService;
-import cn.edu.bjtu.vo.Orderform;
 import cn.edu.bjtu.vo.WayBill;
 
 @Controller

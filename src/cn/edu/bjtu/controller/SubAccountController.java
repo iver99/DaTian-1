@@ -1,8 +1,5 @@
 package cn.edu.bjtu.controller;
 
-import java.io.IOException;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.edu.bjtu.bean.page.SubAccountBean;
 import cn.edu.bjtu.service.RegisterService;
 import cn.edu.bjtu.service.SubAccountService;
-import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.SubAccount;
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import cn.edu.bjtu.bean.page.FinancialBean;
 import cn.edu.bjtu.bean.page.OperationBean;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Orderform;
