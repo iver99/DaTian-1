@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.TrackService;
 import cn.edu.bjtu.service.WayBillService;
@@ -23,8 +22,6 @@ import cn.edu.bjtu.vo.WayBill;
 public class UploadController {
 	@Autowired
 	OrderService orderService;
-	@Autowired
-	CarService carService;
     @Autowired
 	TrackService trackService;
     @Autowired
@@ -43,16 +40,11 @@ public class UploadController {
 	@RequestMapping(value="CompleteNumber",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadcompleteNumber(HttpServletRequest request,HttpServletResponse response){
-		String carState = "停歇";
-		String orderNum = request.getParameter("orderNum");
-		float price = Float.parseFloat(request.getParameter("price"));
-		Orderform order = orderService.getOrderByOrderNum(orderNum);
-		String orderId = order.getId();
-		//此处已修改订单状态为待评价
-		orderService.setcompleteNumber(orderId, price);
-		//同时修改汽车状态为“停歇”
-		String carNum = order.getCarNum();
-		carService.setcarState(carNum, carState);	
+		String waybillNum = request.getParameter("waybillNum");
+		String price = request.getParameter("price");
+		String picture = request.getParameter("picture");
+		waybillService.finishTask(waybillNum, price, picture);
+			
 	}
 	
 	//安卓端上传地理位置信息
