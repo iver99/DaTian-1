@@ -135,41 +135,6 @@ public class OrderServiceImpl implements OrderService {
 		orderDao.update(order);
 		return true;
 	}
-	/**
-	 * 为订单分配司机
-	 */
-	@Override
-	public boolean setDriver(String orderId,String driver){
-		
-		Orderform order = orderDao.get(Orderform.class, orderId);
-		order.setDriver(driver);
-		
-		orderDao.update(order);
-		return true;
-	}
-	
-	@Override
-	public boolean setcarNum(String orderId, String carNum) {
-		Orderform order = orderDao.get(Orderform.class, orderId);
-		order.setCarNum(carNum);
-		
-		orderDao.update(order);
-		return true;
-	}
-	/**
-	 * 司机确认
-	 */
-	@Override
-	public boolean setConfirm(String orderId){
-		
-		String t = "true";
-		Orderform order = orderDao.get(Orderform.class, orderId);
-		order.setConfirm(t);
-		order.setState("已确认");
-		
-		orderDao.update(order);
-		return true;
-	}
 	
 	@Override
 	public boolean setcompleteNumber(String orderId, Float price) {
@@ -532,30 +497,5 @@ public class OrderServiceImpl implements OrderService {
 		Long count=orderDao.count(hql, params);
 		
 		return count.intValue();
-	}
-     
-    /*
-     * 根据司机名字获取订单
-     */
-	@Override
-	public List<Orderform> getOrderByDriverName(String driver) {
-		String hql="from Orderform where driver=:driver";
-		Map<String,Object> params=new HashMap<String,Object>();
-		params.put("driver", driver);
-		return orderDao.find(hql, params);
-	}
-
-	@Override
-	public boolean setState(String orderId, String state) {
-		
-		Orderform order = orderDao.get(Orderform.class, orderId);
-		order.setState(state);
-		
-		orderDao.update(order);
-		return true;
-	}
-
-	
-
-	
+	}	
 }
