@@ -35,6 +35,12 @@ public class ParseDate {
 		    String dateString = formatter.format(date);  
 		    return dateString; 
 	}
+	public static String DateToStringFull(Date date){
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+	    String dateString = formatter.format(date); 
+		return dateString;
+		
+	}
 	
 	//test
 	public static void main(String [] args){
