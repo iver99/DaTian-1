@@ -36,6 +36,22 @@ public class WayBill implements java.io.Serializable{
 	private Date waybillFinishTime;
 	
 	private String waybillState;
+	private String resourceName;
+	
+
+	/**
+	 * @return resourceName
+	 */
+	public String getResourceName() {
+		return resourceName;
+	}
+
+	/**
+	 * @param resourceName ÒªÉèÖÃµÄ resourceName
+	 */
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
+	}
 
 	/**
 	 * @return orderNum
