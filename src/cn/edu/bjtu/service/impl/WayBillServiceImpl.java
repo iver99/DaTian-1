@@ -57,9 +57,8 @@ public class WayBillServiceImpl implements WayBillService {
 		//更改运单表相关字段
 		WayBill waybill = waybillDao.get(WayBill.class, waybillId);
 		waybill.setConfirm("true");
-		waybill.setWaybillState("已确认");
-		//生成一条轨迹，将事件设置为已接受任务
-		Orderform order = orderService.getOrderInfo(waybill.getOrderId());
+		waybill.setWaybillState("已接受");
+		/*Orderform order = orderService.getOrderInfo(waybill.getOrderId());
 		Track track = new Track();
 		track.setId(IdCreator.createTrackId());
 		track.setOrderId(order.getId());
@@ -68,7 +67,7 @@ public class WayBillServiceImpl implements WayBillService {
 		track.setWaybillNum(waybill.getWaybillNum());
 		track.setTime(ParseDate.DateToStringFull(new Date()));
 		track.setEvent("已接受任务");
-		trackDao.save(track);
+		trackDao.save(track);*/
 		waybillDao.update(waybill);
 		return true;
 	}
@@ -76,8 +75,8 @@ public class WayBillServiceImpl implements WayBillService {
 	@Override
 	public boolean startTask(String waybillId) {
 				WayBill waybill = waybillDao.get(WayBill.class, waybillId);
-				//生成一条轨迹，将事件设置为已取件
-				Orderform order = orderService.getOrderInfo(waybill.getOrderId());
+				waybill.setWaybillState("运输中");
+				/*Orderform order = orderService.getOrderInfo(waybill.getOrderId());
 				Track track = new Track();
 				track.setId(IdCreator.createTrackId());
 				track.setOrderId(order.getId());
@@ -86,7 +85,7 @@ public class WayBillServiceImpl implements WayBillService {
 				track.setWaybillNum(waybill.getWaybillNum());
 				track.setTime(ParseDate.DateToStringFull(new Date()));
 				track.setEvent("已取件");
-				trackDao.save(track);
+				trackDao.save(track);*/
 				return true;
 	}
 
