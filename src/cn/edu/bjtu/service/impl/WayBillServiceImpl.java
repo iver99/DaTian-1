@@ -52,7 +52,7 @@ public class WayBillServiceImpl implements WayBillService {
 		//更改运单表相关字段
 		WayBill waybill = waybillDao.get(WayBill.class, waybillId);
 		waybill.setConfirm("true");
-		waybill.setWaybillState("已接受");
+		waybill.setWaybillState("已确认");
 		waybillDao.update(waybill);
 		return true;
 	}
