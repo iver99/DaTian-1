@@ -64,7 +64,7 @@
                             <br />
                             <%-- <c var="goodsdetail" items="${linetransportInfo }"> --%>
 				
-                            <form action="updatefulltruckload?id=${truckInfo.id }" method="post" enctype="multipart/form-data">	          
+                            <form action="updatefulltruckload?id=${truckInfo.id }" name="updatefulltruckload" id="updatefulltruckload" method="post" enctype="multipart/form-data">	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">始发城市：</td>
@@ -93,8 +93,17 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">车长：</td>
-                                    <td><input type="text" class="input_mgmt1" value="${truckInfo.carLength }" name="carLength" style="width:112px;" required/>
-                                    (米)</td>
+                                    <td>
+                                        <select id="" name="carLength" style="width:120px;" required>
+                                            <option value="" selected="selected">请选择</option>
+                                            <option value="4.2">4.2米</option>
+                                            <option value="6.2">6.2米</option>
+                                            <option value="7.6">7.6米</option>
+                                            <option value="9.5">9.5米</option>
+                                            <option value="12.5">12.5米</option>
+                                            <option value="17.5">17.5米</option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">提供回程：</td>
@@ -181,9 +190,52 @@
 <script type="text/javascript">
 	function OnLoad() {
 		loadFocus();
+		formValidate();
 		
 		//设置页面字段值（checkbox）
 		//setPageValue();
+	}
+	function formValidate() {
+		$("#updatefulltruckload").validate({
+			rules : {
+				city1 : "required",
+				city2 : "required",
+				onwayTime : {
+					required : true,
+					number : true
+				},
+				carLength : {
+					required : true,
+					number : true
+				},
+				stanPrice1 : {
+					required : true,
+					number : true
+				},
+				stanPrice2 : {
+					required : true,
+					number : true
+				},
+				pickFee : {
+					required : true,
+					number : true
+				},
+				deliveryFee : {
+					required : true,
+					number : true
+				},
+				/* type : {
+					required : true,
+					minlength : 1
+				}, */
+				file : {
+					required : false,
+				},
+				remarks :{ 
+					required : false,
+				}
+			}
+		});
 	}
 	//设置页面字段值
 	/* function setPageValue(){
