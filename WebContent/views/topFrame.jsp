@@ -44,8 +44,8 @@
 		<tr>
             <td width="3%" height="110">&nbsp;</td>
             <td width="220" class="td_top2a"><a href="homepage" hidefocus="true"><img src="images/logo.png" /></a></td>
-            <td>
-                <!-- <div class="key">
+            <!-- <td>
+                <div class="key">
                     <span class="mkey">整车</span>
                     <ul  class="key_ul" >
                     	<li onclick="$('#resource_choose').val('整车')">整车</li>
@@ -60,9 +60,9 @@
                 </div>
                 <input type="text" name="search_content"  id="search_content" class="search_input" value="请输入关键字" hidefocus="true"  />
                 <input type="button" class="search_btn" value="" hidefocus="true" onclick="changeToSearchPage()">
-                <input type="hidden" id="resource_choose" name="resource_choose" value="线路"/>隐藏字段 -->
-			</td>
-            <td width="280" class="td_top2b"><a href="getallfocus" class="a_top2" hidefocus="true" id="focusNum"><img src="images/btn_m1.png" />&nbsp;我的关注</a></td>
+                <input type="hidden" id="resource_choose" name="resource_choose" value="线路"/>隐藏字段
+			</td> -->
+            <td width="280" align="right" class="td_top2b"><a href="getallfocus" class="a_top2" hidefocus="true" id="focusNum"><img src="images/btn_m1.png" />&nbsp;我的关注</a></td>
             <td width="3%">&nbsp;</td>
 		</tr>
 	</table>

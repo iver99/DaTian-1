@@ -148,7 +148,7 @@ a.a_top1 {
 
 /*LOGO所在行*/
 .td_top2a {
-	/* text-align:center; 由于上方搜索功能去掉，暂时去掉中央位置*/
+	 text-align:left; /* 由于上方搜索功能去掉，暂时去掉中央位置 */
 	vertical-align:middle;
 	}
 	
