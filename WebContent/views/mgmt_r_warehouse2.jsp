@@ -168,7 +168,7 @@
                                     机械出入库搬运&nbsp;&nbsp;&nbsp;
                                     <input value="分拣" type="checkbox" id="serviceContent" name="serviceContent"/>
                                     分拣&nbsp;&nbsp;&nbsp;
-                                    <input value=" 包装" type="checkbox" id="serviceContent" name="serviceContent"/>
+                                    <input value="包装" type="checkbox" id="serviceContent" name="serviceContent"/>
                                     包装&nbsp;&nbsp;&nbsp;
                                     <input value="打托盘" type="checkbox" id="serviceContent" name="serviceContent"/>
                                     打托盘&nbsp;&nbsp;&nbsp;

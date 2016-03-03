@@ -118,9 +118,9 @@ public class WarehouseController {
 		else if (flag == 2){
 			// 我的信息栏仓库更新
 			// 保管形态字符串拆解
-			String storageForm = warehouseInfo.getStorageForm();
-			String[] storageFormSpl = storageForm.split(",");
+			/*String storageForm = warehouseInfo.getStorageForm();
 			String[] everystorageForm ={"普通","冷藏","恒温","露天","危险品"};
+			String[] storageFormSpl = storageForm.split(",");
 			for(int i=0;i<5;i++)
 			{
 				int j=0;
@@ -133,8 +133,8 @@ public class WarehouseController {
 					everystorageForm[i]="";
 				}
 			}
-			mv.addObject("everystorageForm", everystorageForm);
-			// 防火安保字符串拆解
+			mv.addObject("everystorageForm", everystorageForm);*/
+			/*// 防火安保字符串拆解
 			String fireSecurity = warehouseInfo.getFireSecurity();
 			String[] fireSecuritySpl = fireSecurity.split(",");
 			String[] everyfireSecurity ={"烟感","自动喷淋","24小时摄像监控","无"};
@@ -150,8 +150,8 @@ public class WarehouseController {
 					everyfireSecurity[i]="";
 				}
 			}
-			mv.addObject("everyfireSecurity", everyfireSecurity);
-			// IT环境字符串拆解
+			mv.addObject("everyfireSecurity", everyfireSecurity);*/
+			/*// IT环境字符串拆解
 			String environment = warehouseInfo.getEnvironment();
 			String[] environmentSpl = environment.split(",");
 			String[] everyenvironment ={"Internet宽带接入","仓库信息管理系统","无"};
@@ -167,9 +167,9 @@ public class WarehouseController {
 					everyenvironment[i]="";
 				}
 			}
-			mv.addObject("everyenvironment", everyenvironment);
+			mv.addObject("everyenvironment", everyenvironment);*/
 			// 服务内容字符串拆解
-			String serviceContent = warehouseInfo.getServiceContent();
+			/*String serviceContent = warehouseInfo.getServiceContent();
 			String[] serviceContentSpl = serviceContent.split(",");
 			String[] everyserviceContent ={"机械出入库搬运","分拣","包装","打托盘","地面存储 ","货架存储"};
 			for(int i=0;i<6;i++)
@@ -184,7 +184,7 @@ public class WarehouseController {
 					everyserviceContent[i]="";
 				}
 			}
-			mv.addObject("everyserviceContent", everyserviceContent);
+			mv.addObject("everyserviceContent", everyserviceContent);*/
 			
 			mv.setViewName("mgmt_r_warehouse3");
 		}
@@ -204,8 +204,7 @@ public class WarehouseController {
 	
 	
 	@RequestMapping(value = "/updateWarehouse", method = RequestMethod.POST)
-	public String updateNewWarehouse(Warehouse warehouse,MultipartFile file,
-			HttpServletRequest request) {
+	public String updateNewWarehouse(Warehouse warehouse,MultipartFile file,HttpServletRequest request) {
 		boolean flag=warehouseService.updateNewWarehouse(warehouse,request,file);
 		return "redirect:warehouse?flag=1";
 	}

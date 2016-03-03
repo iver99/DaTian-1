@@ -102,15 +102,15 @@
                                     (平方米)</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">堆场面积：</td>
-                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${warehouseInfo.yardArea }" name="yardArea" required/>
+                                    <td height="40" class="td_mgmt_right3_td1b">仓库剩余面积：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${warehouseInfo.remainArea }" name="remainArea" required/>
                                     (平方米)</td>
                                 </tr>
-                                <tr>
+                                <%-- <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">库层层高：</td>
                                     <td><input type="text" class="input_mgmt1" style="width:300px;" value="${warehouseInfo.height }" name="height" required/>
                                     (米)</td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">消防等级：</td>
                                     <td>
@@ -125,56 +125,32 @@
                                   <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">保管形态：</td>
                                     <td>
-                                        <input type="checkbox" id="checkbox" name="storageForm" checked/>
+                                        <input value="普通" type="checkbox" id="checkbox" name="storageForm"/>
                                         普通仓库&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="storageForm"/>
+                                        <input value="冷藏" type="checkbox" id="checkbox" name="storageForm"/>
                                         冷藏仓库&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="storageForm"/>
+                                        <input value="恒温" type="checkbox" id="checkbox" name="storageForm"/>
                                         恒温仓库&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="storageForm"/>
+                                        <input value="露天" type="checkbox" id="checkbox" name="storageForm"/>
                                         露天仓库&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="storageForm"/>
+                                        <input value="危险品" type="checkbox" id="checkbox" name="storageForm"/>
                                         危险品仓库
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">防火安保：</td>
-                                    <td>
-                                        <input type="checkbox" id="checkbox" name="fireSecurity" checked/>
-                                        烟感&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="fireSecurity"/>
-                                        自动喷淋&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="fireSecurity"/>
-                                        24小时摄像监控&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="fireSecurity"/>
-                                        无
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">IT环境：</td>
-                                    <td>
-                                        <input type="checkbox" id="checkbox" name="environment" checked/>
-                                        Internet宽带接入&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox"  name="environment"/>
-                                        仓库信息管理系统&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="environment"/>
-                                        无
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">服务内容：</td>
                                     <td>
-                                        <input type="checkbox" id="checkbox" name="serviceContent" checked/>
+                                        <input value="机械出入库搬运" type="checkbox" id="checkbox" name="serviceContent"/>
                                         机械出入库搬运&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="serviceContent"/>
+                                        <input value="分拣" type="checkbox" id="checkbox" name="serviceContent"/>
                                         分拣&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="serviceContent"/>
+                                        <input value="包装" type="checkbox" id="checkbox" name="serviceContent"/>
                                         包装&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="serviceContent"/>
+                                        <input value="打托盘" type="checkbox" id="checkbox" name="serviceContent"/>
                                         打托盘&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox"  name="serviceContent"/>
+                                        <input value="地面存储" type="checkbox" id="checkbox"  name="serviceContent"/>
                                         地面存储&nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="checkbox" name="serviceContent"/>
+                                        <input value="货架存储" type="checkbox" id="checkbox" name="serviceContent"/>
                                         货架存储
                                     </td>
                                 </tr>
@@ -186,8 +162,12 @@
                                     <td height="40" class="td_mgmt_right3_td1b">联系电话：</td>
                                     <td><input type="text" class="input_mgmt1" style="width:300px;" value="${warehouseInfo.phone }" name="phone" required/></td>
                                 </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" id="standPrice" value="${warehouseInfo.standPrice }" name="standPrice" required/>(元/平方米)</td>
+                                </tr>
 								<tr>
-									<td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
+									<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
 									<td>
                                     	<div style="position:relative;">
                                         	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="请上传文件..." /><input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />

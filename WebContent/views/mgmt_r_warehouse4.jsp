@@ -86,12 +86,8 @@
                                     <td>${warehouseInfo.houseArea } (平方米)</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">堆场面积：</td>
-                                    <td>${warehouseInfo.yardArea } (平方米)</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">库层层高：</td>
-                                    <td>${warehouseInfo.height } (米)</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">仓库剩余面积：</td>
+                                    <td>${warehouseInfo.remainArea } (平方米)</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">消防等级：</td>
@@ -100,14 +96,6 @@
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">保管形态：</td>
                                     <td>${warehouseInfo.storageForm }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">防火安保：</td>
-                                    <td>${warehouseInfo.fireSecurity }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">IT环境：</td>
-                                    <td>${warehouseInfo.environment }</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">服务内容：</td>
@@ -120,6 +108,10 @@
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">联系电话：</td>
                                     <td>${warehouseInfo.phone }</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td>${warehouseInfo.standPrice }</td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">详细报价：</td>

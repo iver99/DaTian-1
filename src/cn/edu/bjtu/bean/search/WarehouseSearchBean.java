@@ -15,14 +15,48 @@ public class WarehouseSearchBean {
 	private String city;
 	private String type;//仓库类型
 //	private String kind;
-	private String storageForm;//保管心态
+	private String storageForm;//保管形态
 	private String houseArea;//仓库面积 
 	private String status;//关注状态  
+	private String remainArea;
+	private String standPrice;
 	
 	private String name;
 	private String companyName;
 	private String fireRate;
 	private Date relDate;
+
+
+	/**
+	 * @return remainArea
+	 */
+	public String getRemainArea() {
+		return remainArea;
+	}
+
+
+	/**
+	 * @param remainArea 要设置的 remainArea
+	 */
+	public void setRemainArea(String remainArea) {
+		this.remainArea = remainArea;
+	}
+
+
+	/**
+	 * @return standPrice
+	 */
+	public String getStandPrice() {
+		return standPrice;
+	}
+
+
+	/**
+	 * @param standPrice 要设置的 standPrice
+	 */
+	public void setStandPrice(String standPrice) {
+		this.standPrice = standPrice;
+	}
 
 
 	public String getName() {
