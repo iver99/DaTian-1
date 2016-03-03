@@ -40,15 +40,19 @@
                 <br />
             	所在城市：<span class="text_detail_title1">${warehouseInfo.city }</span>
                 <br />
-                仓库面积：<span class="text_detail_title2">${warehouseInfo.houseArea }平方米</span>
+                                         仓库类型：<span class="text_detail_title2">${warehouseInfo.type }</span>
                 <br />
-                仓库类型：<span class="text_detail_title2">${warehouseInfo.type }</span>
+                                         资源类型：<span class="text_detail_title2">${warehouseInfo.kind }</span>
                 <br />
-                详细报价：<a href="downloadwarehousedetailprice?id=${warehouseInfo.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a>
+                                         仓库面积：<span class="text_detail_title2">${warehouseInfo.houseArea }平方米</span>
                 <br />
-                发布日期：<fmt:formatDate value ="${warehouseInfo.relDate }" pattern= "yyyy-MM-dd" />
+                                         仓库可用面积：<span class="text_detail_title2">${warehouseInfo.remainArea }平方米</span>
+                <br />                        
+                                         标准报价：<span class="text_detail_title2">${warehouseInfo.standPrice }元/平方米</span>
                 <br />
-                浏览次数：309
+                                         发布日期：<fmt:formatDate value ="${warehouseInfo.relDate }" pattern= "yyyy-MM-dd" />
+                <br />
+                                         浏览次数：309
                 <br />
             	所属公司：${carrierInfo.companyName }
             
@@ -94,8 +98,6 @@
                         <ul id="item1">
 						    <li>地址：${warehouseInfo.address }</li>
                             <li>所属性质：${warehouseInfo.kind }</li>
-                            <li>堆场面积：${warehouseInfo.yardArea }（平方米）</li>
-                            <li>库层层高：${warehouseInfo.height }（米）</li>
                             <li>消防等级：${warehouseInfo.fireRate }</li>
                            <!--  <li>装卸平台：数据库没有（有）</li> -->
                             <li class="item2a">保管形态：${warehouseInfo.storageForm } </li>
