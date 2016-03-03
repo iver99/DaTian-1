@@ -47,7 +47,7 @@ public class AuthenticationController {
 	 * @return
 	 */
 	public ModelAndView getAllAuthentication(HttpServletRequest request) {
-		List<Userinfo> validateList = userinfoDao.find("from Userinfo where status = '…Û∫À÷–' or status = '“—…Û∫À'");
+		List<Userinfo> validateList = authenticationService.getAllAuthentication();
 		mv.addObject("validateList", validateList);
 		mv.setViewName("mgmt_m_register");
 		return mv;

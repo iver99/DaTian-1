@@ -130,6 +130,12 @@ Userinfo userinfo=userinfoDao.get(Userinfo.class, user_id);
 		return true;
 	
 	}
+	//获取所有未验证用户
+	@Override
+	public List<Userinfo> getAllAuthentication() {
+		List<Userinfo> validateList = userinfoDao.find("from Userinfo where status = '审核中' or status = '已审核'");
+		return validateList;
+	}
 	
 	
 	

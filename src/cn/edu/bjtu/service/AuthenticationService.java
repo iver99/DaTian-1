@@ -11,6 +11,7 @@ public interface AuthenticationService {
 	public boolean updateAuthenticStatus(String feedback, String clientId,String status);
 	public Userinfo getMyUserDetail(String clientId);
 	public List getFindUser(String username);
+	public List<Userinfo> getAllAuthentication();
 	
 	
 	/**

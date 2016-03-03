@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
   
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,7 +40,8 @@
 		<tr>
 			<td width="230" class="td_leftnav_top">
                 <div id="main_frame_left">
-                    <span class="text_mgmt_leftnav1"><span id="mgmt_nav_switch1a" class="span_mgmt_nav1" title="收起" onclick="mgmt_nav_switch1a();"></span><span id="mgmt_nav_switch1b" class="span_mgmt_nav2" title="展开" onclick="mgmt_nav_switch1b();"></span>客户服务</span>
+                    <span id="mgmt_nav_switch1a" class="span_mgmt_nav1" title="收起" onclick="mgmt_nav_switch1a();">客户服务</span>
+                    <span id="mgmt_nav_switch1b" class="span_mgmt_nav2" title="展开" onclick="mgmt_nav_switch1b();">客户服务</span>
                     <div id="mgmt_nav1">
                         <a href="allcomplaint" class="a_mgmt_leftnav1" hidefocus="true">投诉管理</a>
                         <a href="authentic" class="a_mgmt_leftnav" hidefocus="true">用户验证</a>
@@ -83,7 +85,7 @@
                         <td class="td_mgmt_right3_td1">${complain.type }</td>
                         <td class="td_mgmt_right3_td1">${complain.theme }</td>
                         <td class="td_mgmt_right3_td1">${complain.realName }</td>
-                        <td class="td_mgmt_right3_td1">${complain.relDate }</td>
+                        <td class="td_mgmt_right3_td1"><fmt:formatDate value ="${complain.relDate }" pattern= "yyyy-MM-dd HH:mm:ss" /></td>
                         <c:choose>
                         <c:when test="${complain.state == '受理中' }">
                         <td class="td_mgmt_right3_td1">未受理</td>
