@@ -18,6 +18,10 @@ public class Cityline implements java.io.Serializable {
 	private String id;
 	private String cityName;
 	private Float refPrice;
+	private Float standPrice1;
+	private Float standPrice2;
+	private Float pickFee;
+	private Float deliveryFee;
 	private Date relDate;
 	private String carrierId;
 	private String VIPService;
@@ -25,6 +29,63 @@ public class Cityline implements java.io.Serializable {
 	private String detailPrice;
 	private String remarks;
 	private String VIPDetail;
+	
+
+	/**
+	 * @return standPrice1
+	 */
+	public Float getStandPrice1() {
+		return standPrice1;
+	}
+
+	/**
+	 * @param standPrice1 要设置的 standPrice1
+	 */
+	public void setStandPrice1(Float standPrice1) {
+		this.standPrice1 = standPrice1;
+	}
+
+	/**
+	 * @return standPrice2
+	 */
+	public Float getStandPrice2() {
+		return standPrice2;
+	}
+
+	/**
+	 * @param standPrice2 要设置的 standPrice2
+	 */
+	public void setStandPrice2(Float standPrice2) {
+		this.standPrice2 = standPrice2;
+	}
+
+	/**
+	 * @return pickFee
+	 */
+	public Float getPickFee() {
+		return pickFee;
+	}
+
+	/**
+	 * @param pickFee 要设置的 pickFee
+	 */
+	public void setPickFee(Float pickFee) {
+		this.pickFee = pickFee;
+	}
+
+	/**
+	 * @return deliveryFee
+	 */
+	public Float getDeliveryFee() {
+		return deliveryFee;
+	}
+
+	/**
+	 * @param deliveryFee 要设置的 deliveryFee
+	 */
+	public void setDeliveryFee(Float deliveryFee) {
+		this.deliveryFee = deliveryFee;
+	}
 
 	public String getVIPDetail() {
 		return VIPDetail;
@@ -58,7 +119,7 @@ public class Cityline implements java.io.Serializable {
 
 	
 
-	public Cityline(String id, String cityName, Float refPrice, Date relDate,
+	public Cityline(String id, String cityName, Float refPrice, Float standPrice1, Float standPrice2, Float pickFee, Float deliveryFee,Date relDate,
 			String carrierId, String vIPService, String name,
 			String detailPrice, String remarks, String vIPDetail) {
 		super();
@@ -67,11 +128,15 @@ public class Cityline implements java.io.Serializable {
 		this.refPrice = refPrice;
 		this.relDate = relDate;
 		this.carrierId = carrierId;
-		VIPService = vIPService;
+		this.VIPService = vIPService;
 		this.name = name;
 		this.detailPrice = detailPrice;
 		this.remarks = remarks;
 		this.VIPDetail = vIPDetail;
+		this.standPrice1 = standPrice1;
+		this.standPrice2 = standPrice2;
+		this.pickFee = pickFee;
+		this.deliveryFee = deliveryFee;
 	}
 
 	public String getId() {
