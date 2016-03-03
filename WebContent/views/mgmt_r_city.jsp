@@ -68,10 +68,12 @@
                    <thead>
                     <tr>
                         <td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
-                        <td class="td_mgmt_right3_head">名称</td>
-                        <td width="60" class="td_mgmt_right3_head">配送城市</td>
-                        <td width="80" class="td_mgmt_right3_head">增值服务</td>
-                        <td width="100" class="td_mgmt_right3_head">参考价(元/kg)</td>
+                        <td width="70" class="td_mgmt_right3_head">配送城市</td> 
+                        <td class="td_mgmt_right3_head">增值服务</td>
+                        <td width="75" class="td_mgmt_right3_head">标准报价<br />(元/吨)</td>
+                        <td width="75" class="td_mgmt_right3_head">标准报价<br />(元/方)</td>
+                        <td width="55" class="td_mgmt_right3_head">提货费<br />(元)</td>
+                        <td width="55" class="td_mgmt_right3_head">送货费<br />(元)</td>
                         <td width="80" class="td_mgmt_right3_head">发布日期</td>
                         <td width="80" class="td_mgmt_right3_head">操作</td>
                     </tr>
@@ -136,10 +138,12 @@
 				  for(var i =0;i<data.length;i++){
 					  var str="<tr>";
 					  str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-					  str+="<td class=\"td_mgmt_right3_td1\"><a href=\"citylinedetail?citylineId="+data[i].id+"&carrierId=0&flag=2\" hidefocus=\"true\">"+data[i].name+"</a></td>";
-					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].cityName+"</td>";
+					  str+="<td class=\"td_mgmt_right3_td1\"><a href=\"citylinedetail?citylineId="+data[i].id+"&carrierId=0&flag=2\" hidefocus=\"true\">"+data[i].cityName+"</a></td>";
 					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].vIPService+"</td>";
-					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].refPrice+"</td>";
+					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].standPrice1+"</td>";
+					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].standPrice2+"</td>";
+					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].pickFee+"</td>";
+					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].deliveryFee+"</td>";
 					  str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>";
 					  str+="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 201;\">";
 					  str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";

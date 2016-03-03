@@ -59,6 +59,10 @@ public class CitylineServiceImpl implements CitylineService {
 				+ "t1.VIPService,"
 				+ "t1.creditRate,"
 				+ "t1.companyName,"
+				+ "t1.standPrice1,"
+				+ "t1.standPrice2,"
+				+ "t1.pickFee,"
+				+ "t1.deliveryFee,"
 				+ "t3.status "
 				+ " from city_carrier_view t1 "
 				+ "left join ("
@@ -92,7 +96,11 @@ public class CitylineServiceImpl implements CitylineService {
 			citylinebean.setVIPService((String)obj[6]);
 			citylinebean.setCreditRate((Integer)obj[7]);
 			citylinebean.setCompanyName((String)obj[8]);
-			citylinebean.setStatus((String)obj[9]);
+			citylinebean.setStandPrice1((Float)obj[9]);
+			citylinebean.setStandPrice2((Float)obj[10]);
+			citylinebean.setPickFee((Float)obj[11]);
+			citylinebean.setDeliveryFee((Float)obj[12]);
+			citylinebean.setStatus((String)obj[13]);
 			citylineList.add(citylinebean);
 		}
 		
