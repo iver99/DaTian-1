@@ -63,7 +63,7 @@
                 <input type="hidden" id="resource_choose" name="resource_choose" value="线路"/>隐藏字段
 			</td> -->
             <td width="280" align="right" class="td_top2b"><a href="getallfocus" class="a_top2" hidefocus="true" id="focusNum"><img src="images/btn_m1.png" />&nbsp;我的关注</a></td>
-            <td width="3%">&nbsp;</td>
+            <td width="20" height="110">&nbsp;</td>
 		</tr>
 	</table>
 <!-- </form> -->
