@@ -32,8 +32,35 @@ public class WarehouseCarrierView implements java.io.Serializable {
 	private String remarks;
 	private String carrierId;
 	private Date relDate;
+	private Float remainArea;
+	private Float standPrice;
 	private String companyName;
 	
+	
+	/**
+	 * @return remainArea
+	 */
+	public Float getRemainArea() {
+		return remainArea;
+	}
+	/**
+	 * @param remainArea 要设置的 remainArea
+	 */
+	public void setRemainArea(Float remainArea) {
+		this.remainArea = remainArea;
+	}
+	/**
+	 * @return standPrice
+	 */
+	public Float getStandPrice() {
+		return standPrice;
+	}
+	/**
+	 * @param standPrice 要设置的 standPrice
+	 */
+	public void setStandPrice(Float standPrice) {
+		this.standPrice = standPrice;
+	}
 	public String getCompanyName() {
 		return companyName;
 	}

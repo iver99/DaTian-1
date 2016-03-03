@@ -32,9 +32,44 @@ public class Warehouse implements java.io.Serializable {
 	private String remarks;
 	private String carrierId;
 	private Date relDate;
+	private Float remainArea;
+	private Float standPrice;
 
 	public Warehouse() {
 	}
+
+	
+	/**
+	 * @return remainArea
+	 */
+	public Float getRemainArea() {
+		return remainArea;
+	}
+
+
+	/**
+	 * @param remainArea 要设置的 remainArea
+	 */
+	public void setRemainArea(Float remainArea) {
+		this.remainArea = remainArea;
+	}
+
+
+	/**
+	 * @return standPrice
+	 */
+	public Float getStandPrice() {
+		return standPrice;
+	}
+
+
+	/**
+	 * @param standPrice 要设置的 standPrice
+	 */
+	public void setStandPrice(Float standPrice) {
+		this.standPrice = standPrice;
+	}
+
 
 	public Warehouse(String id) {
 		this.id = id;
