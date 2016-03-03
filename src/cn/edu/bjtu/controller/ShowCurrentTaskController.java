@@ -40,7 +40,7 @@ public class ShowCurrentTaskController {
 		//筛选符合要求的任务
 		for(int i=0;i < l.size(); i++){
 			WayBill waybill = (WayBill)l.get(i);
-			if((!((waybill.getConfirm()).equals("true")))||(!((waybill.getWaybillState()).equals("运输中")))){
+			if((!((waybill.getConfirm()).equals("true")))||((!((waybill.getWaybillState()).equals("运输中")))&&(!((waybill.getWaybillState()).equals("运输中"))))){
 				l.remove(i);
 				i=i-1;
 			}

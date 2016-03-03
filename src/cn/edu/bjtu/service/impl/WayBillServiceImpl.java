@@ -1,5 +1,6 @@
 package cn.edu.bjtu.service.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,6 +82,7 @@ public class WayBillServiceImpl implements WayBillService {
 		Float realPrice = Float.parseFloat(price);
 		WayBill waybill = waybillDao.get("from WayBill where waybillNum=:waybillNum",params);
 		waybill.setWaybillState("已签收");
+		waybill.setWaybillFinishTime(new Date());
 		waybillDao.update(waybill);
 		carService.setcarState(waybill.getCarNum(), "停歇");
 		//应添加代码，检查订单状态是否可以设置为待评价，以及设置订单运费，以及签收图片
