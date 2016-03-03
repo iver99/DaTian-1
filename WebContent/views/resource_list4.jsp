@@ -328,20 +328,20 @@ function getSelectedWarehouseAjax(city,type,storageForm,houseArea,display,curren
 			  //alert(data);
 			  $("#testbody").empty();
 		for(var i=0; i<data.length; i++) {
-			$("#testbody").append("<tr>");
-			$("#testbody").append("<td class=\"td_main_list_content\"></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"warehousedetail?warehouseId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\"	hidefocus=\"true\">"+data[i].name+"</a> <br /> <a href=\"companyDetail?id="+data[i].carrierId+" style=\"color:#717071;\" hidefocus=\"true\"> "+data[i].companyName+"<img src=\"images/btn_level1a.png\" /></a></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].fireRate+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].type+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].houseArea+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
-			if(data[i].status == "有效")
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-			else
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-			$("#testbody").append("</tr>");
-			
-			
+			var str="<tr>";
+			str+="<td class=\"td_main_list_content\"></td>";
+	        str+="<td class=\"td_main_list_content\"><a href=\"warehousedetail?warehouseId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\"	hidefocus=\"true\">"+data[i].name+"</a> <br /> <a href=\"companyDetail?id="+data[i].carrierId+" style=\"color:#717071;\" hidefocus=\"true\"> "+data[i].companyName+"<img src=\"images/btn_level1a.png\" /></a></td>";
+	        str+="<td class=\"td_main_list_content\">"+data[i].fireRate+"</td>";
+	        str+="<td class=\"td_main_list_content\">"+data[i].type+"</td>";
+	        str+="<td class=\"td_main_list_content\">"+data[i].houseArea+"</td>";
+	        str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>";
+			if(data[i].status == "有效"){
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
+			}else{
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
+			}
+			str+="</tr>";
+			$("#testbody").append(str);		
 		}
 	  },"json");
 }

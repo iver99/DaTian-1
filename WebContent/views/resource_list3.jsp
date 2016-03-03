@@ -551,41 +551,23 @@ function getSelectedLessLoadTruckAjax(startCity,endCity,onwayTime,offerReturn,di
 			  //alert(data);
 			  $("#testbody").empty();
 		for(var i=0; i<data.length; i++) {
-			var str="<tr>";
-			/* str+="<td class=\"td_main_list_content\"></td>";
-			str+="<td class=\"td_main_list_content\">"+"<a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
-			str+="<td class=\"td_main_list_content\">"+"<a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
-			str+="<td class=\"td_main_list_content\">"+"<a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a>"+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>";
-			str+="<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>";
-			str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>"
-			if(data[i].status == "有效"){
-				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
-			}else{
-				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
-			}
-			str+="</tr>";
-			 $("#testbody").append(str);
+		    var str="<tr>";
+		    str+="<td class=\"td_main_list_content\"></td>";
+		    str+="<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>";
+		    str+="<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>";
+		    str+="<td class=\"td_main_list_content\"><a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a></td>";
+		    str+="<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>";
+		    str+="<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>";
+		    str+="<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>";
+		    str+="<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>";
+		    str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>";
+		if(data[i].status == "有效"){
+			str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
+		}else{
+			str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
 		}
-	  },"json"); */
-	  	$("#testbody").append("<tr>");
-		$("#testbody").append("<td class=\"td_main_list_content\"></td>");
-		$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startCity+"</a></td>");
-		$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"lesstruckloaddetail?truckId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].endCity+"</a></td>");
-		$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a></td>");
-		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].onwayTime+"</td>");
-		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].offerReturn+"</td>");
-		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice1+"</td>");
-		$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].stanPrice2+"</td>");
-		$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
-		if(data[i].status == "有效")
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-		else
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-		$("#testbody").append("</tr>");
-		
+		str+="</tr>";
+		$("#testbody").append(str);
 		
 	}
   },"json");

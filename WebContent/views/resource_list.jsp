@@ -294,7 +294,7 @@ function getSelectedFullTruckLoadAjax(startCity,
 				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
 			}
 			str+="</tr>";
-			 $("#testbody").append(str);
+		    $("#testbody").append(str);
 		}
 	  },"json");
 }

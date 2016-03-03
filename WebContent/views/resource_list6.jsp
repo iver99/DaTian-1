@@ -283,20 +283,18 @@ function getSelectedCargoAjax(startPlace,endPlace,transportType,weight,transport
 			  //alert(data);
 			  $("#testbody").empty();
 		for(var i=0; i<data.length; i++) {
-			$("#testbody").append("<tr>");
-			$("#testbody").append("<td class=\"td_main_list_content\"></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"goodsdetail?id="+data[i].id+"\" hidefocus=\"true\">"+data[i].name+"</a>");
-			/* $("#testbody").append("<td class=\"td_main_list_content\">"+data[i].transportType+"</td>"); */
-			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].limitDate)+"</td>");
-			/* $("#testbody").append("<td class=\"td_main_list_content\">"+data[i].weight+"</td>"); */
-			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
-			if(data[i].status == "有效")
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-			else
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-			$("#testbody").append("</tr>");
-			
-			
+			var str="<tr>";
+			str+="<td class=\"td_main_list_content\"></td>";
+	        str+="<td class=\"td_main_list_content\"><a href=\"goodsdetail?id="+data[i].id+"\" hidefocus=\"true\">"+data[i].name+"</a>";
+	        str+="<td class=\"td_main_list_content\">"+renderTime(data[i].limitDate)+"</td>";
+			str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>";
+			if(data[i].status == "有效"){
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
+			}else{
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
+			}
+			str+="</tr>";
+			$("#testbody").append(str);	
 		}
 	  },"json");
 }

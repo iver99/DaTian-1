@@ -297,19 +297,19 @@ function getSelectedLineAjax(cityName,VIPService,refPrice,display,currentPage){
 			  //alert(data);
 			  $("#testbody").empty();
 		for(var i=0; i<data.length; i++) {
-			$("#testbody").append("<tr>");
-			$("#testbody").append("<td class=\"td_main_list_content\"></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"citylinedetail?citylineId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].cityName+"</a></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a></td>")
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].standPrice1+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].standPrice2+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
+			var str="<tr>";
+			str+="<td class=\"td_main_list_content\"></td>";
+			str+="<td class=\"td_main_list_content\"><a href=\"citylinedetail?citylineId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].cityName+"</a></td>";
+			str+="<td class=\"td_main_list_content\"><a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a></td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].standPrice1+"</td>";
+			str+="<td class=\"td_main_list_content\">"+data[i].standPrice2+"</td>";
+			str+="<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>";
 			if(data[i].status == "有效")
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
 			else
-				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
-			$("#testbody").append("</tr>");
-			
+				str+="<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1a\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>";
+			str+="</tr>";
+			$("#testbody").append(str);
 			
 		}
 	  },"json");
