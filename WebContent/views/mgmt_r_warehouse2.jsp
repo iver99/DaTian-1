@@ -102,15 +102,15 @@
                                 (平方米)</td>
                             </tr>
                             <tr>
-                                <td height="40" class="td_mgmt_right3_td1b">堆场面积：</td>
-                                <td><input type="text" class="input_mgmt1" style="width:300px;" name="yardArea" id="yardArea" required/>
+                                <td height="40" class="td_mgmt_right3_td1b">仓库剩余面积：</td>
+                                <td><input type="text" class="input_mgmt1" style="width:300px;" name="remainArea" id="remainArea" required/>
                                 (平方米)</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td height="40" class="td_mgmt_right3_td1b">库层层高：</td>
                                 <td><input type="text" class="input_mgmt1" style="width:300px;" name="height"  id="height" required/>
                                 (米)</td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td height="40" class="td_mgmt_right3_td1b">消防等级：</td>
                                 <td>
@@ -137,7 +137,7 @@
                                     危险品仓库
                                     </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td height="40" class="td_mgmt_right3_td1b">防火安保：</td>
                                 <td>
                                     <input value=" 烟感" type="checkbox" id="fireSecurity" name="fireSecurity"/>
@@ -149,8 +149,8 @@
                                     <input value="无" type="checkbox" id="fireSecurity" name="fireSecurity"/>
                                     无
                                 </td>
-                            </tr>
-                            <tr>
+                            </tr> -->
+                            <!-- <tr>
                                 <td height="40" class="td_mgmt_right3_td1b">IT环境：</td>
                                 <td>
                                     <input value="Internet宽带接入" type="checkbox" id="environment" name="environment"/>
@@ -160,7 +160,7 @@
                                     <input value="无" type="checkbox" id="environment" name="environment"/>
                                     无
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td height="40" class="td_mgmt_right3_td1b">服务内容：</td>
                                 <td>
@@ -186,15 +186,19 @@
                                 <td height="40" class="td_mgmt_right3_td1b">联系电话：</td>
                                 <td><input type="text" class="input_mgmt1" style="width:300px;" name="phone" id="phone" required/></td>
                             </tr>
-								<tr>
-									<td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
-									<td>
-                                    	<div style="position:relative;">
-                                        	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="请上传文件..." /><input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />
+                            <tr>
+                                <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                <td><input type="text" class="input_mgmt1" style="width:300px;" id="standPrice" name="standPrice" required/>(元/平方米)</td>
+                            </tr>
+							<tr>
+								<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
+								<td>
+                                    <div style="position:relative;">
+                                        <input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="请上传文件..." /><input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />
       <input id="upload_btn4" type="file" name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" required/>
-                                        </div>
-                                    </td>
-								</tr>
+                                    </div>
+                                 </td>
+							</tr>
                                 <!-- <tr>
                                     <td height="20" class="td_mgmt_right3_td1b"></td>
                                     <td><a href="javascript:;" hidefocus="true">报价模板&nbsp;<img src="images/btn_filetype2.png" /></a></td>
