@@ -47,11 +47,22 @@
 			<td class="td_detail_top">
             	网络名称：<span class="text_detail_title1">${citylineInfo.cityName }</span>
                 <br />
-                参考报价：<span class="text_detail_title2">${citylineInfo.refPrice }元/公斤</span>
+                标准报价：<span class="text_detail_title2">${citylineInfo.standPrice1 }元/吨、${citylineInfo.standPrice2 }元/方</span>
                 <br />
                 详细报价：<a href="downloaddetailprice?id=${citylineInfo.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a>
                 <br />
-                增值服务：${citylineInfo.VIPService }
+                提货费：<span class="text_detail_title2">${citylineInfo.pickFee }元</span>
+                <br />
+                送货费：<span class="text_detail_title2">${citylineInfo.deliveryFee }元</span>
+                <br />
+            <c:choose>
+                <c:when test="${citylineInfo.VIPService=='有' }">
+                                                          增值服务：${citylineInfo.VIPDetail }
+                </c:when>
+                <c:otherwise>
+                                                          增值服务：无
+                </c:otherwise>
+            </c:choose>
                 <br />
                 发布日期：<fmt:formatDate value ="${citylineInfo.relDate }" pattern= "yyyy-MM-dd" />
                 <br />

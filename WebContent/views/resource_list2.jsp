@@ -153,14 +153,14 @@
 						</div> -->
 					</div>
 					<table border="0" cellspacing="0" cellpadding="0"
-						class="table_main_list" id="list">
+						class="table_main_list" id="list1">
 						<thead id="thead">
 							<tr>
 								<td width="15" class="td_main_list_head"></td>
-								<td class="td_main_list_head">网络名称</td>
-								<td class="td_main_list_head" width="100">参考价(元/kg)</td>
-								<td class="td_main_list_head" width="80">增值服务</td>
-								<td class="td_main_list_head" width="80">信用等级</td>
+								<td width="70" class="td_main_list_head">配送城市</td>
+								<td class="td_main_list_head">所有者</td>
+								<td class="td_main_list_head" width="75">标准报价<br />(元/吨)</td>
+								<td class="td_main_list_head" width="75">标准报价<br />(元/方)</td>
 								<td class="td_main_list_head" width="80">发布日期</td>
 								<td class="td_main_list_head" width="45">关注</td>
 							</tr>
@@ -299,10 +299,10 @@ function getSelectedLineAjax(cityName,VIPService,refPrice,display,currentPage){
 		for(var i=0; i<data.length; i++) {
 			$("#testbody").append("<tr>");
 			$("#testbody").append("<td class=\"td_main_list_content\"></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"citylinedetail?citylineId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"</a> <br /> <a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a></td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].refPrice+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].vIPService+"</td>");
-			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].creditRate+"</td>");
+			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"citylinedetail?citylineId="+data[i].id+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].cityName+"</a></td>");
+			$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"companyDetail?id="+data[i].carrierId+"\" style=\"color:#717071;\"  hidefocus=\"true\"> "+data[i].companyName+" <img src=\"images/btn_level1a.png\" /></a></td>")
+			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].standPrice1+"</td>");
+			$("#testbody").append("<td class=\"td_main_list_content\">"+data[i].standPrice2+"</td>");
 			$("#testbody").append("<td class=\"td_main_list_content\">"+renderTime(data[i].relDate)+"</td>");
 			if(data[i].status == "有效")
 				$("#testbody").append("<td class=\"td_main_list_content\"><a href=\"javascript:;\" class=\"a_main_list_handle_icon1b\" hidefocus=\"true\" onclick=\"hide(this);loadXMLDoc('"+data[i].id+"')\"></a></td>");
