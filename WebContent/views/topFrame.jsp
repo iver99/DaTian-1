@@ -42,7 +42,7 @@
    <!--  <form action="searchResourceAjax" method="post" > -->
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
-            <td width="3%" height="110">&nbsp;</td>
+            <td width="20" height="110">&nbsp;</td>
             <td width="220" class="td_top2a"><a href="homepage" hidefocus="true"><img src="images/logo.png" /></a></td>
             <!-- <td>
                 <div class="key">
