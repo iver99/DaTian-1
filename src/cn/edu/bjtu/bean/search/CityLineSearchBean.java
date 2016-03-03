@@ -19,7 +19,60 @@ public class CityLineSearchBean {
 	private String status;//关注状态
 	private String name;//资源名称
 	private String carrierId;//承运方id
+	private Float standPrice1;
+	private Float standPrice2;
+	private Float pickFee;
+	private Float deliveryFee;
 	
+	
+	/**
+	 * @return standPrice1
+	 */
+	public Float getStandPrice1() {
+		return standPrice1;
+	}
+	/**
+	 * @param standPrice1 要设置的 standPrice1
+	 */
+	public void setStandPrice1(Float standPrice1) {
+		this.standPrice1 = standPrice1;
+	}
+	/**
+	 * @return standPrice2
+	 */
+	public Float getStandPrice2() {
+		return standPrice2;
+	}
+	/**
+	 * @param standPrice2 要设置的 standPrice2
+	 */
+	public void setStandPrice2(Float standPrice2) {
+		this.standPrice2 = standPrice2;
+	}
+	/**
+	 * @return pickFee
+	 */
+	public Float getPickFee() {
+		return pickFee;
+	}
+	/**
+	 * @param pickFee 要设置的 pickFee
+	 */
+	public void setPickFee(Float pickFee) {
+		this.pickFee = pickFee;
+	}
+	/**
+	 * @return deliveryFee
+	 */
+	public Float getDeliveryFee() {
+		return deliveryFee;
+	}
+	/**
+	 * @param deliveryFee 要设置的 deliveryFee
+	 */
+	public void setDeliveryFee(Float deliveryFee) {
+		this.deliveryFee = deliveryFee;
+	}
 	public String getCarrierId() {
 		return carrierId;
 	}

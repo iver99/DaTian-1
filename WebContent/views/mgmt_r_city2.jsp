@@ -92,12 +92,27 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">参考价：</td>
-                                    <td><input type="text" class="input_mgmt1" style="width:300px;" id="refPrice" name="refPrice" required/>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" id="standPrice1" name="standPrice1" required/>
+                                    (元/吨)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" id="standPrice2" name="standPrice2" required/>
+                                    (元/方)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">提货费：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" id="pickFee" name="pickFee" required/>
+                                    (元)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">送货费：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" id="deliveryFee" name="deliveryFee" required/>
                                     (元/kg)</td>
                                 </tr>
 								<tr>
-									<td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
+									<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
 									<td>
                                     	<div style="position:relative;">
                                         	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="请上传文件..." />

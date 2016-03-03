@@ -187,6 +187,10 @@ public class CitylineServiceImpl implements CitylineService {
 		citylineInstance.setVIPDetail(cityline.getVIPDetail());
 		citylineInstance.setRefPrice(cityline.getRefPrice());
 		citylineInstance.setRemarks(cityline.getRemarks());
+		citylineInstance.setStandPrice1(cityline.getStandPrice1());
+		citylineInstance.setStandPrice2(cityline.getStandPrice2());
+		citylineInstance.setPickFee(cityline.getPickFee());
+		citylineInstance.setDeliveryFee(cityline.getDeliveryFee());
 		//citylineInstance.setRelDate(new Date());
 		
 		//设置文件位置 

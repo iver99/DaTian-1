@@ -78,11 +78,23 @@
                                     <td>${citylineInfo.VIPService }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">参考价：</td>
-                                    <td>${citylineInfo.refPrice } 元/kg)</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td>${citylineInfo.standPrice1 } (元/吨)</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td>${citylineInfo.standPrice2 } (元/方)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">提货费：</td>
+                                    <td>${citylineInfo.pickFee } (元)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">送货费：</td>
+                                    <td>${citylineInfo.deliveryFee } (元)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
                                     <td><a href="downloaddetailprice?id=${citylineInfo.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a></td>
                                 </tr>
                                 <tr>

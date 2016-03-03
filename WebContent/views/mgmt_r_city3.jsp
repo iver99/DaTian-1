@@ -93,9 +93,24 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">参考价：</td>
-                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${citylineInfo.refPrice }" name="refPrice" required/>
-                                    (元/kg)</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${citylineInfo.standPrice1 }" name="standPrice1" required/>
+                                    (元/吨)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${citylineInfo.standPrice2 }" name="standPrice2" required/>
+                                    (元/方)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">提货费：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${citylineInfo.pickFee }" name="pickFee" required/>
+                                    (元)</td>
+                                </tr>
+                                <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">送货费：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${citylineInfo.deliveryFee }" name="deliveryFee" required/>
+                                    (元)</td>
                                 </tr>
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">详细报价：</td>
