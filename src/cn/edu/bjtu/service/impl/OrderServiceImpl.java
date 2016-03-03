@@ -123,7 +123,7 @@ public class OrderServiceImpl implements OrderService {
 			wayBill.setRecieverName(order.getRecieverName());
 			wayBill.setRecieverPhone(order.getRecieverPhone());
 			wayBill.setWaybillSubTime(new Date());
-			wayBill.setWaybillState("待确认");
+			wayBill.setWaybillState("未确认");
 			wayBill.setGoodsName(order.getGoodsName());
 			wayBill.setGoodsVolume(order.getGoodsVolume());
 			wayBill.setGoodsWeight(order.getGoodsWeight());

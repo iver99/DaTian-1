@@ -61,6 +61,7 @@ public class WayBillServiceImpl implements WayBillService {
 	public boolean startTask(String waybillId) {
 		WayBill waybill = waybillDao.get(WayBill.class, waybillId);
 		waybill.setWaybillState("运输中");
+		waybillDao.update(waybill);
 		/*Orderform order = orderService.getOrderInfo(waybill.getOrderId());
 		Track track = new Track();
 		track.setId(IdCreator.createTrackId());
@@ -80,6 +81,7 @@ public class WayBillServiceImpl implements WayBillService {
 		Float realPrice = Float.parseFloat(price);
 		WayBill waybill = waybillDao.get("from WayBill where waybillNum=:waybillNum",params);
 		waybill.setWaybillState("已签收");
+		waybillDao.update(waybill);
 		carService.setcarState(waybill.getCarNum(), "停歇");
 		//应添加代码，检查订单状态是否可以设置为待评价，以及设置订单运费，以及签收图片
 		//代码

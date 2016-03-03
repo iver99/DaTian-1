@@ -27,9 +27,6 @@ public class ShowNewTaskController {
 	@RequestMapping(value="/shownewtask",produces="text/html;charset=UTF-8")
 	@ResponseBody
 	public String showNewTask(@RequestParam(value="phone",required=false) String phone){
-		
-		String f = "false";
-		String s = "未确认";
 		//获取司机名字，以便搜索订单表
 		Driverinfo driverinfo = driverService.getDriverByPhone(phone);
 		String name = driverinfo.getDriverName();
@@ -40,7 +37,7 @@ public class ShowNewTaskController {
 		//筛选符合要求的任务
 		for(int i=0;i < l.size(); i++){
 			WayBill waybill = (WayBill)l.get(i);
-			if((!((waybill.getConfirm()).equals(f)))||(!((waybill.getWaybillState()).equals(s)))){
+			if((!((waybill.getConfirm()).equals("false")))||(!((waybill.getWaybillState()).equals("未确认")))){
 				l.remove(i);
 				i=i-1;
 			}
