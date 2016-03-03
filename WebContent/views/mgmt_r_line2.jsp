@@ -93,8 +93,19 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">车长：</td>
-                                    <td><input type="text" class="input_mgmt1" id="carLength" name="carLength" style="width:112px;" required/>
-                                    (米)</td>
+                                   <!--  <td><input type="text" class="input_mgmt1" id="carLength" name="carLength" style="width:112px;" required/>
+                                    (米)</td> -->
+                                    <td>
+                                        <select id="" name="carLength" style="width:120px;" required>
+                                            <option value="" selected="selected">请选择</option>
+                                            <option value="4.2">4.2米</option>
+                                            <option value="6.2">6.2米</option>
+                                            <option value="7.6">7.6米</option>
+                                            <option value="9.5">9.5米</option>
+                                            <option value="12.5">12.5米</option>
+                                            <option value="17.5">17.5米</option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">提供回程：</td>
@@ -219,8 +230,12 @@
 					required : true,
 					minlength : 1
 				}, */
-				remarks : "required"
-
+				file : {
+					required : false,
+				},
+				remarks :{ 
+					required : false,
+				}
 			}
 		});
 	}
