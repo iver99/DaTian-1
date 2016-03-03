@@ -242,8 +242,7 @@ public class CarController {
 			@RequestParam String phone, @RequestParam String explaination,
 			HttpServletRequest request, HttpServletResponse response) {
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
-		boolean flag = carTeamService.insertCarteam(teamName, carCount, chief,
-				phone, explaination, carrierId);
+		boolean flag = carTeamService.insertCarteam(teamName, carCount, chief, phone, explaination, carrierId);
 		return "redirect:carteam";
 	}
 

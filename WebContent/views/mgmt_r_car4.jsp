@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -99,28 +100,28 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">购置日期：</td>
-                                    <td>${carInfo.purchaseTime }</td>
+                                    <td><fmt:formatDate value ="${carInfo.purchaseTime }" pattern= "yyyy-MM-dd" /></td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">冷藏：</td>
                                     <td>${carInfo.storage }</td>
                                 </tr>
-                                <tr>
+                                <%-- <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">司机姓名：</td>
                                     <td>${driverInfo.driverName }</td>
-                                </tr>
+                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">司机电话：</td>
                                     <td>${driverInfo.phone }</td>
                                 </tr>
-                                <tr>
+                                <%-- <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">运营线路：</td>
                                     <td>${carInfo.startPlace }←→${carInfo.endPlace }</td>
-                                </tr>
-                                <tr>
+                                </tr> --%>
+                                <%-- <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">经停城市：</td>
                                     <td>${carInfo.stopPlace }</td>
-                                </tr>
+                                </tr> --%>
                             </table>
                         </td>
                     </tr>

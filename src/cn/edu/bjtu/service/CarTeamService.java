@@ -10,11 +10,9 @@ import cn.edu.bjtu.vo.Carteam;
 public interface CarTeamService {
 	public List<Carteam> getCarteam(String carrierId);
 	public Carteam getCarteamInfo(String id);
-	public boolean insertCarteam(String teamName,String carCount,String chief,String phone,
-			String explaination,String carrierId);
+	public boolean insertCarteam(String teamName,String carCount,String chief,String phone,String explaination,String carrierId);
 	public boolean deleteCarteam(String id);
-	public boolean updateCarteam(String id,String teamName,String carCount,String chief,String phone,
-			String explaination);
+	public boolean updateCarteam(String id,String teamName,String carCount,String chief,String phone,String explaination);
 	
 	/**
 	 * 我的信息-我的资源-车辆信息-车队信息

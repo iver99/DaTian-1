@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.edu.bjtu.dao.CarTeamDao;
 import cn.edu.bjtu.service.CarTeamService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carteam;
 
@@ -46,6 +47,7 @@ public class CarTeamServiceImpl implements CarTeamService{
 	public boolean insertCarteam(String teamName, String carCount,
 			String chief, String phone, String explaination, String carrierId) {
 		Carteam carteam=new Carteam();
+		carteam.setId(IdCreator.createCarteamId());
 		carteam.setTeamName(teamName);
 		carteam.setCarCount(carCount);
 		carteam.setCarrierId(carrierId);

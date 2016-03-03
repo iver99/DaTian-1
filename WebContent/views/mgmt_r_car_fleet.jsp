@@ -147,7 +147,7 @@
 					str+="<a href=\"carteamdetail?id="+data[i].id+"&flag=2\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
 					str+="<div class=\"menubd\">";
 					str+="<div class=\"menubdpanel\">";
-					str+="<a href=\"deletecarteam?id=${carteam.id }\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
+					str+="<a href=\"deletecarteam?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
 					
 					str+="</div></div></div></li></ul></div></td></tr>";
 					
