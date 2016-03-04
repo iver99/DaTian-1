@@ -38,6 +38,37 @@ public class WayBill implements java.io.Serializable{
 	private String waybillState;
 	private String resourceName;
 	
+	private Float price;
+	private String picture;
+	
+    
+	/**
+	 * @return picture
+	 */
+	public String getPicture() {
+		return picture;
+	}
+
+	/**
+	 * @param picture 要设置的 picture
+	 */
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	/**
+	 * @return price
+	 */
+	public Float getPrice() {
+		return price;
+	}
+
+	/**
+	 * @param price 要设置的 price
+	 */
+	public void setPrice(Float price) {
+		this.price = price;
+	}
 
 	/**
 	 * @return resourceName

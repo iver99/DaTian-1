@@ -42,9 +42,8 @@ public class UploadController {
 	public void uploadcompleteNumber(HttpServletRequest request,HttpServletResponse response){
 		String waybillNum = request.getParameter("waybillNum");
 		String price = request.getParameter("price");
-		String picture = request.getParameter("picture");
-		waybillService.finishTask(waybillNum, price, picture);
-			
+		String picture = request.getParameter("strImageContent");
+		waybillService.finishTask(waybillNum, price, picture);		
 	}
 	
 	//安卓端上传地理位置信息
@@ -52,6 +51,7 @@ public class UploadController {
 	@ResponseBody
 	public void uploadLocation(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		String orderNum = request.getParameter("orderNum");
+		String waybillNum = request.getParameter("waybillNum");
 		String carNum = request.getParameter("carNum");
 		String address = request.getParameter("address");
 		String time = request.getParameter("time");
@@ -64,8 +64,7 @@ public class UploadController {
 		Orderform order = orderService.getOrderByOrderNum(orderNum);
 		String orderId = order.getId();
 		
-		trackService.createNewTrack(id, orderId,orderNum, carNum, event,locLongtitude, locLatitude, time, address);
-		
+		trackService.createNewTrack(id, orderId,orderNum, carNum, event,locLongtitude, locLatitude, time, address,waybillNum);	
 	}
 
 }

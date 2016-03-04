@@ -63,16 +63,6 @@ public class WayBillServiceImpl implements WayBillService {
 		WayBill waybill = waybillDao.get(WayBill.class, waybillId);
 		waybill.setWaybillState("运输中");
 		waybillDao.update(waybill);
-		/*Orderform order = orderService.getOrderInfo(waybill.getOrderId());
-		Track track = new Track();
-		track.setId(IdCreator.createTrackId());
-		track.setOrderId(order.getId());
-		track.setOrderNum(order.getOrderNum());
-		track.setCarNum(waybill.getCarNum());
-		track.setWaybillNum(waybill.getWaybillNum());
-		track.setTime(ParseDate.DateToStringFull(new Date()));
-		track.setEvent("已取件");
-		trackDao.save(track);*/
 		return true;
 	}
 	@Override
@@ -83,6 +73,8 @@ public class WayBillServiceImpl implements WayBillService {
 		WayBill waybill = waybillDao.get("from WayBill where waybillNum=:waybillNum",params);
 		waybill.setWaybillState("已签收");
 		waybill.setWaybillFinishTime(new Date());
+		waybill.setPrice(realPrice);
+		waybill.setPicture("test"); //改数据，此处数据为图片存储地址
 		waybillDao.update(waybill);
 		carService.setcarState(waybill.getCarNum(), "停歇");
 		//应添加代码，检查订单状态是否可以设置为待评价，以及设置订单运费，以及签收图片

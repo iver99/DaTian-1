@@ -22,7 +22,7 @@ public class TrackServiceImpl implements TrackService {
 
 	@Override
 	public boolean createNewTrack(String id, String orderId,String orderNum, String carNum,String event, Double locLongitude, Double locLatitude,
-			String time, String address) {
+			String time, String address,String waybillNum) {
 		Track track = new Track();
 		track.setAddress(address);
 		track.setCarNum(carNum);
@@ -33,6 +33,7 @@ public class TrackServiceImpl implements TrackService {
 		track.setTime(time);
 		track.setOrderNum(orderNum);
 		track.setEvent(event);
+		track.setWaybillNum(waybillNum);
 		trackDao.save(track);
 		
 		return true;

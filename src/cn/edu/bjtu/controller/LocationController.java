@@ -37,8 +37,6 @@ public class LocationController {
 		String orderId = waybill.getOrderId();
 		List<Track> loc = trackService.getTrackByOrderIdDesc(orderId);
 		JSONArray location = JSONArray.fromObject(loc);
-		
 		return location.toString();
 	}
-
 }
