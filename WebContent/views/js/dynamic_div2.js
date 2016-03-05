@@ -1,6 +1,6 @@
 var count = 1; /*从id为1开始动态增加*/
 
-function additem() {  //确认订单时的动态添加信息
+function additem() {  //确认意向时的动态添加信息
 
 count += 1;
 var dymcity = document.getElementById("dym_itemlist");
@@ -17,15 +17,15 @@ var div = document.createElement("div");
 
 	var inputTxt2a = document.createElement("span");  //section-输入框
 		inputTxt2a.className = 'span_mgmt_dynamic1';
-		inputTxt2a.innerHTML = '--';
+		inputTxt2a.innerHTML = '&nbsp;--&nbsp;';
 
-	var inputTxt3 = document.createElement("input");  //section-输入框
-		inputTxt3.type = 'text';
-		inputTxt3.value = '';
-		inputTxt3.id = 'city'+count;
-		inputTxt3.className = 'input_mgmt2';
-		inputTxt3.value = '随车司机';
-		inputTxt3.readOnly = 'readOnly';
+	var inputTxt3 = document.createElement("select");  //section-输入框
+		inputTxt3.options[0] = new Option("选择随车司机", "");
+		inputTxt3.options[1] = new Option("王东强", "a");
+		inputTxt3.options[2] = new Option("马明宇", "b");
+		inputTxt3.options[3] = new Option("李铁", "c");
+		inputTxt3.size = "1";
+		inputTxt3.className = 'input_mgmt2a';
 
 	var del = document.createElement("img"); //section-删除
 		del.src = "../images/btn_cancel2.png";
