@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.edu.bjtu.bean.page.AcceptOrderBean;
 import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.dao.AddressDao;
 import cn.edu.bjtu.dao.CompanyDao;
@@ -93,45 +94,45 @@ public class OrderServiceImpl implements OrderService {
 	 * 承运方修改订单状态为待收货
 	 */
 	@Override
-	public boolean acceptOrder(String orderId,String driver,String carNum,String waybill) {
+	public boolean acceptOrder(String orderId,AcceptOrderBean acceptorderBean) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
 		order.setState("待收货");
+		String driver = acceptorderBean.getDrivers();
 		order.setDriver(driver);
+		String carNum = acceptorderBean.getCarNums();
 		order.setCarNum(carNum);
+		String waybill = acceptorderBean.getWayBillNums();
+		order.setClientWayBillNum(waybill);
+		
 		String[] drivers = driver.split(",");
 		String[] carNums = carNum.split(",");
 		String[] waybills = waybill.split(",");
 		for(int i=0;i<drivers.length;i++){
-			
-			//修改司机状态
-			Driverinfo driverinfo = driverService.getDriverByName(drivers[i]);
-			driverinfo.setState("已分配");
-			driverDao.update(driverinfo);
-			//生成运单
-			WayBill wayBill = new WayBill();
-			wayBill.setId(IdCreator.createWayBillId());
-			wayBill.setOrderId(orderId);
-			wayBill.setOrderNum(order.getOrderNum());
-			wayBill.setWaybillNum(waybills[i]);
-			wayBill.setDriver(drivers[i]);
-			wayBill.setCarNum(carNums[i]);
-			wayBill.setConfirm("false");
-			wayBill.setDeliveryAddr(order.getDeliveryAddr());
-			wayBill.setDeliveryName(order.getDeliveryName());
-			wayBill.setDeliveryPhone(order.getDeliveryPhone());
-			wayBill.setRecieverAddr(order.getRecieverAddr());
-			wayBill.setRecieverName(order.getRecieverName());
-			wayBill.setRecieverPhone(order.getRecieverPhone());
-			wayBill.setWaybillSubTime(new Date());
-			wayBill.setWaybillState("未确认");
-			wayBill.setGoodsName(order.getGoodsName());
-			wayBill.setGoodsVolume(order.getGoodsVolume());
-			wayBill.setGoodsWeight(order.getGoodsWeight());
-			wayBill.setResourceName(order.getResourceName());
-			waybillDao.save(wayBill);
-			carService.setcarState(carNums[i], "在途");
+			if(!(drivers[i].equals("null"))){
+				//生成运单
+			    WayBill wayBill = new WayBill();
+			    wayBill.setId(IdCreator.createWayBillId());
+			    wayBill.setOrderId(orderId);
+			    wayBill.setOrderNum(order.getOrderNum());
+			    wayBill.setWaybillNum(waybills[i]);
+			    wayBill.setDriver(drivers[i]);
+			    wayBill.setCarNum(carNums[i]);
+			    wayBill.setConfirm("false");
+			    wayBill.setDeliveryAddr(order.getDeliveryAddr());
+			    wayBill.setDeliveryName(order.getDeliveryName());
+			    wayBill.setDeliveryPhone(order.getDeliveryPhone());
+			    wayBill.setRecieverAddr(order.getRecieverAddr());
+			    wayBill.setRecieverName(order.getRecieverName());
+			    wayBill.setRecieverPhone(order.getRecieverPhone());
+			    wayBill.setWaybillSubTime(new Date());
+			    wayBill.setWaybillState("未确认");
+			    wayBill.setGoodsName(order.getGoodsName());
+			    wayBill.setGoodsVolume(order.getGoodsVolume());
+			    wayBill.setGoodsWeight(order.getGoodsWeight());
+			    wayBill.setResourceName(order.getResourceName());
+			    waybillDao.save(wayBill);
+			}
 		}
-
 		orderDao.update(order);
 		return true;
 	}

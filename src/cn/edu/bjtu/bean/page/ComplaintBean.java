@@ -55,9 +55,4 @@ public class ComplaintBean {
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
-	
-	
-	
-	
-
 }

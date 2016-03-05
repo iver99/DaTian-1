@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.edu.bjtu.bean.page.AcceptOrderBean;
 import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.service.AirLineService;
@@ -267,14 +268,9 @@ public class OrderController {
 	 */
 	@RequestMapping("acceptOrder")
 	public String acceptOrder(String orderid, HttpServletRequest request,
-			HttpServletResponse response,String driver,String carNum,String waybill) {
-
-		// 需要更新订单的司机列表，并且修改订单状态为已受理(待收货)
-		// 需要重定向,用来更新页面
-		// 获取到司机，但是未作处理 add by RussWest0 at 2015年6月7日,下午8:03:50
-		//获取到司机，将司机写入orderform中driver字段 add by solitudeycq
-		//获取到车牌号，将车牌号写入订单carNum字段add by solitudeycq at 2015-12-24 1:51
-		orderService.acceptOrder(orderid,driver,carNum,waybill);
+			HttpServletResponse response,AcceptOrderBean acceptorderBean) {
+		
+		orderService.acceptOrder(orderid,acceptorderBean);
 		return "redirect:recieveorderinfo";
 	}
 	

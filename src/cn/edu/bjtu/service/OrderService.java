@@ -2,6 +2,7 @@ package cn.edu.bjtu.service;
 
 import javax.servlet.http.HttpSession;
 
+import cn.edu.bjtu.bean.page.AcceptOrderBean;
 import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.OrderCarrierView;
@@ -19,7 +20,7 @@ public interface OrderService {
 
 	public OrderCarrierView getOrderByOrderId(String orderId);
 
-	public boolean acceptOrder(String orderId,String driver,String carNum,String waybill);
+	public boolean acceptOrder(String orderId,AcceptOrderBean acceptorderBean);
 	
 	public boolean setcompleteNumber(String orderId,Float price);
 

@@ -83,7 +83,7 @@
                                         </select>
 
                                         <span class="span_mgmt_dynamic1">--</span>
-                                        <input type="text" class="input_mgmt2" placeholder="请输入运单号" required="true"/>
+                                        <input type="text" class="input_mgmt2" name="waybillNum1" id="waybillNum1" placeholder="请输入运单号" required="true"/>
                                         <img src="images/btn_add2.png" hidefocus="true" style="cursor:pointer;" title="添加" onclick="additem();" />
                                     </td>
                                 </tr>
