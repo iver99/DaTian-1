@@ -108,7 +108,7 @@ public class OrderServiceImpl implements OrderService {
 		String[] carNums = carNum.split(",");
 		String[] waybills = waybill.split(",");
 		for(int i=0;i<drivers.length;i++){
-			if(!(drivers[i].equals("null"))){
+			if((!(drivers[i]==null))&&(!(drivers[i].equals("")))&&(!(drivers[i].equals("null")))){
 				//生成运单
 			    WayBill wayBill = new WayBill();
 			    wayBill.setId(IdCreator.createWayBillId());
@@ -131,6 +131,7 @@ public class OrderServiceImpl implements OrderService {
 			    wayBill.setGoodsWeight(order.getGoodsWeight());
 			    wayBill.setResourceName(order.getResourceName());
 			    waybillDao.save(wayBill);
+			    carService.setcarState(carNums[i], "在途");
 			}
 		}
 		orderDao.update(order);
