@@ -229,9 +229,29 @@ public class OrderController {
 		// 需要查出公司司机列表 add by RussWest0 at 2015年6月7日,下午7:56:32 
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List<Driverinfo> driverList=driverService.getAllDriver(carrierId);
-		mv.addObject("driverList",driverList);
+		String drivers = "";
+		for(int i=0;i<driverList.size();i++){
+			Driverinfo driver = driverList.get(i);
+			if(i!=driverList.size()-1){
+			    drivers = drivers + driver.getDriverName() + ",";
+			}else{
+				drivers = drivers + driver.getDriverName();
+			}
+		}
+		mv.addObject("drivers",drivers);
+		mv.addObject("driverList", driverList);
 		//需要查出公司车牌号列表add by solitudeycq at 2015-12-24 0:46
 		List<Carinfo> carNumList=carService.getAllcarNum(carrierId);
+		String carNums ="";
+		for(int i=0;i<carNumList.size();i++){
+			Carinfo car = carNumList.get(i);
+			if(i!=carNumList.size()-1){
+			    carNums = carNums + car.getCarNum() + ",";
+			}else{
+				carNums = carNums + car.getCarNum();
+			}
+		}
+		mv.addObject("carNums", carNums);
 		mv.addObject("carNumList", carNumList);
 		mv.addObject("orderId", orderid);
 		mv.setViewName("mgmt_d_order_r2");
