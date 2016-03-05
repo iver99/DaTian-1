@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%
+	String ctxPath=request.getContextPath();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,12 +55,13 @@
         <tr>
             <td height="40" class="td_mgmt_right3_td1b">手机验证码：</td>
             <td>
-            	<input type="text" class="input_mgmt1" style="width:150px;" placeholder="填写本人手机号码" name="phone" required/>
-                <input type="text" class="input_mgmt1" style="width:48px;" name="validationkey" required/>
-                <input type="button" id="btn_t" value="获取验证码" hidefocus="true" class="btn_register_t" />
+            	<input type="text" class="input_mgmt1" style="width:150px;" placeholder="填写本人手机号码" name="phone" id="phone" required/>
+                <input type="text" id="validationkey" class="input_mgmt1" style="width:48px;" name="validationkey" required/>
+                <input type="button" id="btn_t" value="获取验证码" onclick="doclick;" hidefocus="true" class="btn_register_t" />
+                <input id="vcode" type="hidden"  class="btn_register_t" />
                 <script type="text/javascript">
 					var wait=60;
-					function time(t) {
+					var time=function time(t) {
 							if (wait == 0) {
 								t.removeAttribute("disabled");            
 								t.value="获取验证码";
@@ -74,8 +78,32 @@
 								},
 								1000)
 							}
-						}
-					document.getElementById("btn_t").onclick=function(){time(this);}
+						}	
+					//send sms
+					var sms=function sendSms(){
+						var phone=$("#phone").val();
+						var smsContent=$("#smsContent").val();
+						var url="<%=ctxPath %>/sendVcodeToPcAjax";
+						$.ajax({
+							url:url,
+							data:{
+								phone:phone,
+								smsContent:smsContent
+							},
+							type:"post",
+							success:function(data,status){
+								$("#vcode").val(data);
+								alert(data);
+							}
+						});
+					}
+					
+					var doclick=function(){
+						time;
+						sms;
+					}
+					
+					document.getElementById("btn_t").onclick=function(){sms(this);time(this);} 
                 </script>
             </td>
         </tr>
@@ -136,11 +164,25 @@ function loadXMLDoc(flag)
 				   alert("该用户名已被使用！");
 			   }
 			   if(flag == 1 && msg == "true"){
-				   $("#register_form").submit();
+				   
+				   var validationkey=$("#validationkey").val();
+				   var vcode=$("#vcode").val();
+				   
+				   if(validationkey==vcode){ 
+
+					$("#register_form").submit();
+					
+				   }
+				    else{
+					   alert("验证码错误，请重新输入");
+				   } 
 			   }
-			   
-		   }
+		   }	   
 		});
 }
+
+
+
+
 </script>
 </html>
