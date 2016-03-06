@@ -119,7 +119,7 @@ public class SMSController {
 	@ResponseBody
 	public String sendSMS(String phone,String smsContent){
 		//切换数据源
-		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
+		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		try {
 			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】"+smsContent, "",5);// 带扩展码
 			//发送成功记录日志
@@ -166,7 +166,7 @@ public class SMSController {
 	@ResponseBody
 	public String pcSendSMSByPhoneNum(String phone){
 		//切换数据源
-		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
+		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		
 		String vCode=VCodeCreator.getVCode();
 		try {
@@ -196,7 +196,7 @@ public class SMSController {
 	@RequestMapping("getSmsLogAjax")
 	public List<SmsLog> getSMSLog(){
 		//切换数据源
-		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
+		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		return smsService.getSmsLog();
 		
 	}
