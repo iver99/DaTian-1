@@ -50,7 +50,6 @@ public class UploadController {
 	@RequestMapping(value="Location",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadLocation(HttpServletRequest request,HttpServletResponse response) throws ParseException{
-		String orderNum = request.getParameter("orderNum");
 		String waybillNum = request.getParameter("waybillNum");
 		String carNum = request.getParameter("carNum");
 		String address = request.getParameter("address");
@@ -61,7 +60,9 @@ public class UploadController {
 		String id = IdCreator.createTrackId();
 		Double locLatitude = Double.parseDouble(latitude);
 		Double locLongtitude = Double.parseDouble(longtitude);
-		Orderform order = orderService.getOrderByOrderNum(orderNum);
+		WayBill waybill = waybillService.getWayBillBywaybillNum(waybillNum);
+		Orderform order = orderService.getOrderByOrderNum(waybill.getOrderNum());
+		String orderNum = waybill.getOrderNum();
 		String orderId = order.getId();
 		
 		trackService.createNewTrack(id, orderId,orderNum, carNum, event,locLongtitude, locLatitude, time, address,waybillNum);	
