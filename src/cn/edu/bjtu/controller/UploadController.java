@@ -32,7 +32,7 @@ public class UploadController {
 	public void uploadtakeoverNumber(HttpServletRequest request,HttpServletResponse response){
 		String waybillNum = request.getParameter("waybillNum");
 		WayBill waybill = waybillService.getWayBillBywaybillNum(waybillNum);
-		String waybillid = waybill.getId();
+		String waybillid = waybill.getId(); 
 		waybillService.startTask(waybillid);
 	}
 	

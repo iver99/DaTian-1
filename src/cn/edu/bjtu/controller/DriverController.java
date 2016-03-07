@@ -30,13 +30,11 @@ public class DriverController {
 	 * @param flag
 	 * @return
 	 */
-	@RequestMapping("driver")
-	public String getAllDriver(@RequestParam int flag,
-			HttpServletRequest request, HttpServletResponse response) {
-
+	@RequestMapping(value="/driver")
+	public String getAllDriver(){
 		return "mgmt_r_driver";
+		
 	}
-
 	/**
 	 * 司机信息详情
 	 * @param driverId
