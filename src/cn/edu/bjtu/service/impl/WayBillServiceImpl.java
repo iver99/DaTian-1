@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.dao.TrackDao;
 import cn.edu.bjtu.dao.WayBillDao;
 import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.util.UploadFile;
+import cn.edu.bjtu.vo.Orderform;
 import cn.edu.bjtu.vo.WayBill;
 
 /**
@@ -33,6 +35,8 @@ public class WayBillServiceImpl implements WayBillService {
 	TrackDao trackDao;
 	@Autowired
 	CarService carService;
+	@Autowired
+	OrderDao orderDao;
 	
 	@Override
 	public List<WayBill> getWayBillByDriverName(String driver) {
@@ -75,12 +79,49 @@ public class WayBillServiceImpl implements WayBillService {
 		waybill.setWaybillState("已签收");
 		waybill.setWaybillFinishTime(new Date());
 		waybill.setPrice(realPrice);
-		waybill.setPicture(UploadFile.mobileuploadFile(picture, waybillNum)); //此处数据为图片存储地址
+		//存储图片，地址存入运单表
+		String savePath = UploadFile.mobileuploadFile(picture, waybillNum);
+		waybill.setPicture(savePath);
+		//检查订单状态是否可以修改为待评价，如果可以则设置
+		String orderId = waybill.getOrderId();
+		Orderform order = orderService.getOrderInfo(orderId);
+		List<WayBill> waybills = waybillDao.find("from WayBill where orderId="+"'"+orderId+"'"+" "+"and "+"waybillNum!="+"'"+waybillNum+"'");
+		if(waybills.size()!=0){
+		   for(int i=0;i<waybills.size();i++){
+			   WayBill tempwaybill = (WayBill)waybills.get(i);
+			   System.out.println(tempwaybill.getWaybillState());
+			   if((tempwaybill.getWaybillState()).equals("已签收")){
+				   if(i==(waybills.size())-1){
+					   order.setState("待评价");
+					   order.setFinishTime(new Date());
+				   }
+			   }
+		   }
+		}else{
+			order.setFinishTime(new Date());
+			order.setState("待评价");
+		}
+		//设置订单运费
+		Float actualPrice = order.getActualPrice();
+		if(actualPrice!=null){
+			actualPrice = actualPrice + realPrice;
+		}else{
+			actualPrice = realPrice;
+		}
+		order.setActualPrice(actualPrice);
+		//设置签收图片保存位置,存入订单表
+		String acceptPicture = order.getAcceptPicture();
+		if((!(acceptPicture==null))&&(!(acceptPicture.equals("")))&&(!(acceptPicture.equals("null")))){
+			acceptPicture = acceptPicture + "," + savePath;
+		}else{
+			acceptPicture = savePath;
+		}
+		order.setAcceptPicture(acceptPicture);
+		//更新订单表和运单表
+		orderDao.update(order);
 		waybillDao.update(waybill);
+		//更新汽车状态
 		carService.setcarState(waybill.getCarNum(), "停歇");
-		//应添加代码，检查订单状态是否可以设置为待评价，以及设置订单运费，以及签收图片
-		//代码
-		//代码
 		return true;
 	}
 

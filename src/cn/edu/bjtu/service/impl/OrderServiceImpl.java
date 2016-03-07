@@ -99,16 +99,14 @@ public class OrderServiceImpl implements OrderService {
 		String strdriver = acceptorderBean.getDrivers();
 		String strcarNum = acceptorderBean.getCarNums();
 		String strwaybill = acceptorderBean.getWayBillNums();
-		
-		
+		//分解三个参数
 		String[] tempdrivers = strdriver.split(",");
 		String[] tempcarNums = strcarNum.split(",");
 		String[] tempwaybills = strwaybill.split(",");
-		
+		//除去三个参数中的为null的项
 		String driver = null;
 		String carNum = null;
 		String waybill = null;
-		
 		for(int j=0;j<tempdrivers.length;j++){
 			if((!(tempdrivers[j]==null))&&(!(tempdrivers[j].equals("")))&&(!(tempdrivers[j].equals("null")))){
 				if(j==0){
@@ -122,13 +120,11 @@ public class OrderServiceImpl implements OrderService {
 				}
 			}
 		}
-		
+		//生成运单
 		String[] drivers = driver.split(",");
 		String[] carNums = carNum.split(",");
 		String[] waybills = waybill.split(",");
-		
 		for(int i=0;i<drivers.length;i++){
-				//生成运单
 			    WayBill wayBill = new WayBill();
 			    wayBill.setId(IdCreator.createWayBillId());
 			    wayBill.setOrderId(orderId);

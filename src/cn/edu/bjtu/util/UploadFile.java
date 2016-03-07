@@ -96,7 +96,6 @@ public class UploadFile {
 			out.write(bytes);		
 			out.flush();
 			out.close();
-			System.out.println("´æ´¢³É¹¦£¡");
 			return imgFilePath;
 		} catch (IOException e) {
 			return "´æ´¢Ê§°Ü£¡";
