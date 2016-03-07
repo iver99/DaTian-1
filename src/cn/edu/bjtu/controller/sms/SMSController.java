@@ -196,7 +196,7 @@ public class SMSController {
 	@ResponseBody
 	public String androidSendSMSByPhoneNum(String phone){
 		//ÇÐ»»Êý¾ÝÔ´
-		DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
+		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		JSONObject json = new JSONObject(); 
 		try {
 			String vCode=VCodeCreator.getVCode();
