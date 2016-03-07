@@ -96,19 +96,38 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public boolean acceptOrder(String orderId,AcceptOrderBean acceptorderBean) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
-		order.setState("待收货");
-		String driver = acceptorderBean.getDrivers();
-		order.setDriver(driver);
-		String carNum = acceptorderBean.getCarNums();
-		order.setCarNum(carNum);
-		String waybill = acceptorderBean.getWayBillNums();
-		order.setClientWayBillNum(waybill);
+		String strdriver = acceptorderBean.getDrivers();
+		String strcarNum = acceptorderBean.getCarNums();
+		String strwaybill = acceptorderBean.getWayBillNums();
+		
+		
+		String[] tempdrivers = strdriver.split(",");
+		String[] tempcarNums = strcarNum.split(",");
+		String[] tempwaybills = strwaybill.split(",");
+		
+		String driver = null;
+		String carNum = null;
+		String waybill = null;
+		
+		for(int j=0;j<tempdrivers.length;j++){
+			if((!(tempdrivers[j]==null))&&(!(tempdrivers[j].equals("")))&&(!(tempdrivers[j].equals("null")))){
+				if(j==0){
+					driver = tempdrivers[j];
+					carNum = tempcarNums[j];
+					waybill = tempwaybills[j];
+				}else{
+					driver = driver + "," +tempdrivers[j];
+					carNum = carNum + "," + tempcarNums[j];
+					waybill = waybill + "," + tempwaybills[j];
+				}
+			}
+		}
 		
 		String[] drivers = driver.split(",");
 		String[] carNums = carNum.split(",");
 		String[] waybills = waybill.split(",");
+		
 		for(int i=0;i<drivers.length;i++){
-			if((!(drivers[i]==null))&&(!(drivers[i].equals("")))&&(!(drivers[i].equals("null")))){
 				//生成运单
 			    WayBill wayBill = new WayBill();
 			    wayBill.setId(IdCreator.createWayBillId());
@@ -132,8 +151,11 @@ public class OrderServiceImpl implements OrderService {
 			    wayBill.setResourceName(order.getResourceName());
 			    waybillDao.save(wayBill);
 			    carService.setcarState(carNums[i], "在途");
-			}
 		}
+		order.setState("待收货");
+		order.setDriver(driver);
+		order.setCarNum(carNum);
+		order.setClientWayBillNum(waybill);
 		orderDao.update(order);
 		return true;
 	}
