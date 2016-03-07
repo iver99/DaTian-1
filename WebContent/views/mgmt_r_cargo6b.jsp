@@ -40,11 +40,35 @@
 		<tr>
 			<td width="230" class="td_leftnav_top">
                 <div id="main_frame_left">
-                    <%@ include  file="mysource_leftnav_mytrade.jsp" %>
-                    <%@ include  file="mysource_leftnav_myresource.jsp"%>
-                    <%@ include  file="mysource_leftnav_myplan.jsp"%>
-                    <%@ include  file="mysource_leftnav_myanalysis.jsp"%>
-                    <%@ include  file="mysource_leftnav_myaccount.jsp"%>
+                    <span id="mgmt_nav_switch1a" class="span_mgmt_nav1a" title="收起" onclick="mgmt_nav_switch1a();">我的交易</span>
+                    <span id="mgmt_nav_switch1b" class="span_mgmt_nav2a" title="展开" onclick="mgmt_nav_switch1b();">我的交易</span>
+                    <div id="mgmt_nav1" class="div_mgmt_show1">
+                        <a href="getallfocus" class="a_mgmt_leftnav" hidefocus="true">我的关注</a>
+                        <a href="sendorderinfo" class="a_mgmt_leftnav" hidefocus="true">我提交的意向</a>
+                        <a href="mysettlement" class="a_mgmt_leftnav" hidefocus="true">我的结算</a>
+                        <a href="mycomplaint" class="a_mgmt_leftnav" hidefocus="true">我的投诉</a>
+                    </div>
+                    <hr class="hr_2" />
+                    <span id="mgmt_nav_switch2a" class="span_mgmt_nav1" title="收起" onclick="mgmt_nav_switch2a();">我的资源</span>
+                    <span id="mgmt_nav_switch2b" class="span_mgmt_nav2" title="展开" onclick="mgmt_nav_switch2b();">我的资源</span>
+                    <div id="mgmt_nav2" >
+                        <a href="goodsform?flag=1" class="a_mgmt_leftnav1" hidefocus="true">货物信息</a>
+                    </div>
+                    <hr class="hr_2" />
+                    <span id="mgmt_nav_switch4a" class="span_mgmt_nav1a" title="收起" onclick="mgmt_nav_switch4a();">统计分析</span>
+                    <span id="mgmt_nav_switch4b" class="span_mgmt_nav2a" title="展开" onclick="mgmt_nav_switch4b();">统计分析</span>
+                    <div id="mgmt_nav4" class="div_mgmt_show1">
+                        <a href="getTransportAccuracyPage" class="a_mgmt_leftnav" hidefocus="true">运营指标</a>
+                        <a href="getFinancialInfoPage" class="a_mgmt_leftnav" hidefocus="true">财务指标</a>
+                    </div>
+                    <hr class="hr_2" />
+                    <span id="mgmt_nav_switch5a" class="span_mgmt_nav1a" title="收起" onclick="mgmt_nav_switch5a();">我的帐户</span>
+                    <span id="mgmt_nav_switch5b" class="span_mgmt_nav2a" title="展开" onclick="mgmt_nav_switch5b();">我的帐户</span>
+                    <div id="mgmt_nav5" class="div_mgmt_show1">
+                        <a href="accountinfo" class="a_mgmt_leftnav" hidefocus="true">帐户信息</a>
+                        <a href="getaddress" class="a_mgmt_leftnav" hidefocus="true">常用地址</a>
+                        <a href="mysecurity" class="a_mgmt_leftnav" hidefocus="true">安全设置</a>
+                    </div>
 </div>
 			</td>
 				 <td class="td_leftnav_top">
