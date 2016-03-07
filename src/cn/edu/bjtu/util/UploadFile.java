@@ -1,8 +1,13 @@
 package cn.edu.bjtu.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import Decoder.BASE64Decoder;
 
 /**
  * 文件上传
@@ -72,5 +77,29 @@ public class UploadFile {
 				return fileLocation;
 		
 	}
-
+	
+	public static String mobileuploadFile(String strImageContent,String waybillNum){
+		BASE64Decoder decoder = new BASE64Decoder();
+		String imgFilePath = UploadPath.getSignBillPath() + "//" + waybillNum + ".jpg";
+		if(strImageContent == null){
+			return "图像数据为空";
+		}
+		try {
+			byte[] bytes = decoder.decodeBuffer(strImageContent);
+			for (int i = 0; i < bytes.length; ++i) {
+				if (bytes[i] < 0) {// 调整异常数据
+					bytes[i] += 256;
+				}
+			}
+			//生成图片
+			OutputStream out = new FileOutputStream(imgFilePath);		
+			out.write(bytes);		
+			out.flush();
+			out.close();
+			System.out.println("存储成功！");
+			return imgFilePath;
+		} catch (IOException e) {
+			return "存储失败！";
+		}	
+	}
 }

@@ -14,6 +14,7 @@ import cn.edu.bjtu.dao.WayBillDao;
 import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.WayBillService;
+import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.WayBill;
 
 /**
@@ -74,7 +75,7 @@ public class WayBillServiceImpl implements WayBillService {
 		waybill.setWaybillState("已签收");
 		waybill.setWaybillFinishTime(new Date());
 		waybill.setPrice(realPrice);
-		waybill.setPicture("test"); //改数据，此处数据为图片存储地址
+		waybill.setPicture(UploadFile.mobileuploadFile(picture, waybillNum)); //此处数据为图片存储地址
 		waybillDao.update(waybill);
 		carService.setcarState(waybill.getCarNum(), "停歇");
 		//应添加代码，检查订单状态是否可以设置为待评价，以及设置订单运费，以及签收图片
