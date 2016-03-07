@@ -80,7 +80,7 @@ public class UploadFile {
 	
 	public static String mobileuploadFile(String strImageContent,String waybillNum){
 		BASE64Decoder decoder = new BASE64Decoder();
-		String imgFilePath = UploadPath.getSignBillPath() + "//" + waybillNum + ".jpg";
+		String imgFilePath = UploadPath.anothergetSignBillPath() + waybillNum + ".jpg";
 		if(strImageContent == null){
 			return "Í¼ÏñÊý¾ÝÎª¿Õ";
 		}

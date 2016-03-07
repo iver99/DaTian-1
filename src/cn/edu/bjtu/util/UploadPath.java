@@ -223,7 +223,7 @@ public class UploadPath {
 			return path;
 		}
 	}
-	//签单上传图像
+	//签单上传图像1
 	public static String getSignBillPath() {
 		if (isWindows()) {//windows系统
 			String path = "D://eclipse_project//.metadata//.plugins//org.eclipse.wst.server.core//tmp0//wtpwebapps//DaTian//file//signBill";//上传到D盘
@@ -240,6 +240,23 @@ public class UploadPath {
 			return path;
 		}
 	}
+	//签单上传图像2
+		public static String anothergetSignBillPath() {
+			if (isWindows()) {//windows系统
+				String path = "D://eclipse_project//.metadata//.plugins//org.eclipse.wst.server.core//tmp0//wtpwebapps//DaTian//file//signBill//";//上传到D盘
+				file = new File(path);
+				file.mkdirs();//以防文件夹不存在
+				return path;
+			}
+			else//linux系统 (未测试)
+			{
+				//如果文件夹不存在情况没有处理
+				String path= "/usr/local/tomcat7_v2/webapps/DaTian/file/signBill/";
+				file=new File(path);
+				file.mkdirs();//防止文件夹不存在
+				return path;
+			}
+		}
 	/**
 	 * 提交反馈时提交的文件
 	 * @return
