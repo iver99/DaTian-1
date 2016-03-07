@@ -31,10 +31,9 @@ public class UploadController {
 	@ResponseBody
 	public void uploadtakeoverNumber(HttpServletRequest request,HttpServletResponse response){
 		String waybillNum = request.getParameter("waybillNum");
-		String picture = request.getParameter("strImagecontent");
 		WayBill waybill = waybillService.getWayBillBywaybillNum(waybillNum);
 		String waybillid = waybill.getId(); 
-		waybillService.startTask(waybillid,picture);
+		waybillService.startTask(waybillid);
 	}
 	
 	//安卓端上传送达订单号，即结束任务
