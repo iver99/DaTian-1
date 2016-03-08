@@ -112,10 +112,6 @@
                                     <td height="40" class="td_mgmt_right3_td1b">配送城市：</td>
                                     <td>${citylineInfo.cityName }</td>
                                 </tr>
-                               <!--  <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">&nbsp;</td>
-                                    <td></td>
-                                </tr> -->
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
                                     <td>${citylineInfo.VIPService }</td>
@@ -138,7 +134,7 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
-                                    <td><a href="downloaddetailprice?id=${citylineInfo.id }" hidefocus="true"><img src="images/btn_filetype2.png" /></a></td>
+                                    <td><a href="downloaddetailprice?id=${citylineInfo.id }" hidefocus="true"><img src="images/btn_filetype1.png" /></a></td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">补充信息：</td>
