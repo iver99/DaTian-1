@@ -145,22 +145,10 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">意向编号：</td>
                                     <td>${orderInfo.orderNum }</td>
                                 </tr>
-                                <%-- <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">所属客户：</td>
-                                    <td>${orderInfo.clientName }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">关联客户运单：</td>
-                                    <td>${orderInfo.isLinkToClientWayBill }--${orderInfo.clientWayBillNum }</td>
-                                </tr>--%>
                                 <tr> 
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${orderInfo.carrierName }</td>
-                                </tr>
-                               <%--  <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
-                                    <td>${orderInfo.hasCarrierContract }</td>
-                                </tr> --%>
+                                </tr> 
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>${orderInfo.resourceType }</td>
@@ -235,18 +223,16 @@
                         	<div class="span_mgmt_right3_text4">签收图像</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                   <!--  <td width="120" height="40" class="td_mgmt_right3_td1b">签收图像：</td> -->
-                                    <td><!-- (未实现) --><a href="file/signBill/${orderInfo.acceptPicture }" target="_blank" hidefocus="true">
-                                    <img src="file/signBill/${orderInfo.acceptPicture }" /></a></td>
+                                <c:forEach var="waybill" items="${waybills }">
+                                    <td><a href="file/signBill/${waybill.picture }" target="_blank" hidefocus="true">
+                                             <img src="file/signBill/${waybill.picture }" />
+                                        </a>
+                                    </td>
+                                </c:forEach>
                                 </tr>
-                                
                             </table>
                         	<div class="span_mgmt_right3_text4">最终运费</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
-                               <%--  <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">合同规定运费：</td>
-                                    <td>${orderInfo.expectedPrice } (元)</td>
-                                </tr> --%>
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">意向运费：</td>
                                     <td>${orderInfo.expectedPrice } (元)</td>
@@ -325,27 +311,6 @@
                                     </c:choose>
                                     <div class="div_rating_right"><input id="hint3" type="text" value="${comment.cargoSafety }" class="input_rating" /></div>
                                 </div>
-                                <%-- <div class="div_rating_sub">
-                                    <div class="div_rating_left">总体费用</div>
-                                    <c:choose>
-                                    	<c:when test="${comment.totalMoney == '很好'}">
-                                    		<div id="rating4" style="float:left;" data-score="5"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '好'}">
-                                    		<div id="rating4" style="float:left;" data-score="4"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '一般'}">
-                                    		<div id="rating4" style="float:left;" data-score="3"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '差'}">
-                                    		<div id="rating4" style="float:left;" data-score="2"></div>
-                                    	</c:when>
-                                    	<c:when test="${comment.totalMoney == '很差'}">
-                                    		<div id="rating4" style="float:left;" data-score="1"></div>
-                                    	</c:when>
-                                    </c:choose>
-                                    <div class="div_rating_right"><input id="hint4" type="text" value="${comment.totalMoney }" class="input_rating" /></div>
-                                </div> --%>
                                 <div class="div_rating_sub">
                                 	补充：${comment.comment }
                                 </div>

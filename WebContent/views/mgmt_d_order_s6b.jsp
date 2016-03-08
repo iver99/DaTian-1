@@ -223,7 +223,12 @@
                         	<div class="span_mgmt_right3_text4">签收图像</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><a href="file/signBill/${orderInfo.acceptPicture }" target="_blank" hidefocus="true"><img src="file/signBill/${orderInfo.acceptPicture }" /></a></td>
+                                <c:forEach var="waybill" items="${waybills }">
+                                    <td><a href="file/signBill/${waybill.picture }" target="_blank" hidefocus="true">
+                                             <img src="file/signBill/${waybill.picture }" />
+                                        </a>
+                                    </td>
+                                </c:forEach>
                                 </tr>
                             </table>
                         	<div class="span_mgmt_right3_text4">最终运费</div>      	          

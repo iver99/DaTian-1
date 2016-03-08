@@ -536,6 +536,8 @@ public class OrderController {
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
+		List<WayBill> waybills = waybillService.getAllWayBillNumsPictureByOrderId(orderid);
+		mv.addObject("waybills", waybills);
 		//页面需要评价信息 add by RussWest0 at 2015年6月7日,下午4:04:16 
 		Comment comment=commentService.getCommentByOrderId(orderid);
 		mv.addObject("comment", comment);
@@ -550,6 +552,8 @@ public class OrderController {
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
 		int length = loc.size();
+		List<WayBill> waybills = waybillService.getAllWayBillNumsPictureByOrderId(orderid);
+		mv.addObject("waybills", waybills);
 		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
@@ -622,6 +626,8 @@ public class OrderController {
 		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
 		int length = loc.size();
+		List<WayBill> waybills = waybillService.getAllWayBillNumsPictureByOrderId(orderid);
+		mv.addObject("waybills", waybills);
 		mv.addObject("length", length);
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
