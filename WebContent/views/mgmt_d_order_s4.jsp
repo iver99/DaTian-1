@@ -107,30 +107,10 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">意向编号：</td>
                                     <td>${orderInfo.orderNum }</td>
                                 </tr>
-                                <%-- <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">所属客户：</td>
-                                    <c:choose>
-                                    	<c:when test="${orderInfo.clientName !='' }">
-                                    		 <td>${orderInfo.clientName }</td>
-                                    	</c:when>
-                                    	<c:otherwise>
-                                    		 <td>无</td>
-                                    	</c:otherwise>
-                                    </c:choose>
-                                   
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">关联客户运单：</td>
-                                    <td>${orderInfo.isLinkToClientWayBill }--${orderInfo.clientWayBillNum }</td>
-                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${orderInfo.carrierName }</td>
-                                </tr>
-                               <%--  <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
-                                    <td>${orderInfo.hasCarrierContract }</td>
-                                </tr> --%>
+                                </tr>   
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>${orderInfo.resourceType }</td>
@@ -194,7 +174,7 @@
                                     <td>${orderInfo.recieverPhone }</td>
                                 </tr>
                             </table>
-                            <div class="span_mgmt_right3_text4">备汪信息</div>      	          
+                            <div class="span_mgmt_right3_text4">备注信息</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">备注：</td>

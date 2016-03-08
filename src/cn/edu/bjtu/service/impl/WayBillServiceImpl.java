@@ -130,4 +130,10 @@ public class WayBillServiceImpl implements WayBillService {
 		return waybillDao.find("from WayBill where orderId='"+orderId+"'");
 	}
 
+	@Override
+	public WayBill getWayBillInfoById(String id) {
+		
+		return waybillDao.get(WayBill.class, id);
+	}
+
 }

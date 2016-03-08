@@ -117,75 +117,6 @@ public class WarehouseController {
 			mv.setViewName("mgmt_r_warehouse4");
 		else if (flag == 2){
 			// 我的信息栏仓库更新
-			// 保管形态字符串拆解
-			/*String storageForm = warehouseInfo.getStorageForm();
-			String[] everystorageForm ={"普通","冷藏","恒温","露天","危险品"};
-			String[] storageFormSpl = storageForm.split(",");
-			for(int i=0;i<5;i++)
-			{
-				int j=0;
-				for(;j<storageFormSpl.length;j++){
-					if(storageFormSpl[j].equals(everystorageForm[i])){
-						break;
-					}
-				}
-				if(j==storageFormSpl.length){
-					everystorageForm[i]="";
-				}
-			}
-			mv.addObject("everystorageForm", everystorageForm);*/
-			/*// 防火安保字符串拆解
-			String fireSecurity = warehouseInfo.getFireSecurity();
-			String[] fireSecuritySpl = fireSecurity.split(",");
-			String[] everyfireSecurity ={"烟感","自动喷淋","24小时摄像监控","无"};
-			for(int i=0;i<4;i++)
-			{
-				int j=0;
-				for(;j<fireSecuritySpl.length;j++){
-					if(fireSecuritySpl[j].equals(everyfireSecurity[i])){
-						break;
-					}
-				}
-				if(j==fireSecuritySpl.length){
-					everyfireSecurity[i]="";
-				}
-			}
-			mv.addObject("everyfireSecurity", everyfireSecurity);*/
-			/*// IT环境字符串拆解
-			String environment = warehouseInfo.getEnvironment();
-			String[] environmentSpl = environment.split(",");
-			String[] everyenvironment ={"Internet宽带接入","仓库信息管理系统","无"};
-			for(int i=0;i<3;i++)
-			{
-				int j=0;
-				for(;j<environmentSpl.length;j++){
-					if(environmentSpl[j].equals(everyenvironment[i])){
-						break;
-					}
-				}
-				if(j==environmentSpl.length){
-					everyenvironment[i]="";
-				}
-			}
-			mv.addObject("everyenvironment", everyenvironment);*/
-			// 服务内容字符串拆解
-			/*String serviceContent = warehouseInfo.getServiceContent();
-			String[] serviceContentSpl = serviceContent.split(",");
-			String[] everyserviceContent ={"机械出入库搬运","分拣","包装","打托盘","地面存储 ","货架存储"};
-			for(int i=0;i<6;i++)
-			{
-				int j=0;
-				for(;j<serviceContentSpl.length;j++){
-					if(serviceContentSpl[j].equals(everyserviceContent[i])){
-						break;
-					}
-				}
-				if(j==serviceContentSpl.length){
-					everyserviceContent[i]="";
-				}
-			}
-			mv.addObject("everyserviceContent", everyserviceContent);*/
-			
 			mv.setViewName("mgmt_r_warehouse3");
 		}
 		return mv;
@@ -227,7 +158,7 @@ public class WarehouseController {
 	@RequestMapping(value = "downloadwarehousedetailprice", method = RequestMethod.GET)
 	public ModelAndView downloadWarehouseDetailPrice(@RequestParam String id,// GET方式传入，在action中
 			HttpServletRequest request, HttpServletResponse response) {
-		Warehouse warehouseInfo = warehouseService.getWarehouseInfo(id);
+		    Warehouse warehouseInfo = warehouseService.getWarehouseInfo(id);
 			String file = warehouseInfo.getDetailPrice();
 			DownloadFile.downloadFile(file,request,response);
 		return mv;

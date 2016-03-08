@@ -223,8 +223,8 @@
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                 <c:forEach var="waybill" items="${waybills }">
-                                    <td><a href="file/signBill/${waybill.picture }" target="_blank" hidefocus="true">
-                                             <img src="file/signBill/${waybill.picture }" />
+                                    <td><a href="downloadwaybillpicture?id=${waybill.id }" hidefocus="true">
+                                             <img src="images/btn_filetype1.png" />
                                         </a>
                                     </td>
                                 </c:forEach>

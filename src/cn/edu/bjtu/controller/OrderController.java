@@ -34,6 +34,7 @@ import cn.edu.bjtu.service.ResponseService;
 import cn.edu.bjtu.service.TrackService;
 import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.AirLine;
@@ -68,10 +69,8 @@ public class OrderController {
 	CompanyDao companyDao;
 	@Autowired
 	AirLineService airlineService;
-
 	@Resource(name = "carServiceImpl")
 	CarService carService;
-
 	@Resource
 	LinetransportService linetransportService;
 	@Resource
@@ -788,6 +787,18 @@ public class OrderController {
 			return "redirect:turnToOrderPage";
 		}
 		return "redirect:mgmt_d_order_s";
+	}
+	/**
+	 * œ¬‘ÿ«© ’Õº∆¨
+	 * 
+	 */
+	@RequestMapping(value="downloadwaybillpicture",method=RequestMethod.GET)
+	public ModelAndView downloadwaybillnumpicture(@RequestParam String id,
+			HttpServletRequest request,HttpServletResponse response){
+		WayBill waybill = waybillService.getWayBillInfoById(id);
+		String file = waybill.getPicture();
+		DownloadFile.downloadFile(file, request, response);
+		return mv;
 	}
 
 }

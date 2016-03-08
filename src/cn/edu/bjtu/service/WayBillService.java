@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface WayBillService {
 	
+	public WayBill getWayBillInfoById(String id);
 	public List<WayBill> getWayBillByDriverName(String driver);
 	public WayBill getWayBillBywaybillNum(String waybillNum);
 	public boolean setConfirm(String waybillId);
