@@ -189,7 +189,7 @@ public class OrderServiceImpl implements OrderService {
 	public boolean signBill(String orderId, float actualPrice,
 			String explainReason,String fileLocation) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
-		order.setState("待确认");//修改 订单状态
+		order.setState("待评价");//修改 订单状态
 		order.setActualPrice(actualPrice);
 		order.setExplainReason(explainReason);
 		order.setAcceptPicture(fileLocation);

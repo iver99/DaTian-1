@@ -125,4 +125,9 @@ public class WayBillServiceImpl implements WayBillService {
 		return true;
 	}
 
+	@Override
+	public List<WayBill> getAllWayBillNumsPictureByOrderId(String orderId) {
+		return waybillDao.find("from WayBill where orderId='"+orderId+"'");
+	}
+
 }

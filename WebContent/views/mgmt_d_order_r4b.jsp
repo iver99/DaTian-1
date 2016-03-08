@@ -103,9 +103,10 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
                     <tr>
                         <td class="td_mgmt_right3_td1a">
+                        <div class="span_mgmt_right3_text4">物流信息</div>
                         	<c:forEach var="carNum" items="${carNums }">
                                 <c:if test="${length!=0 }">
-                                <div class="span_mgmt_right3_text4">物流信息</div>
+                                     <div class="span_mgmt_right3_text4"></div>
                                 </c:if>
                                 <c:forEach var="track" items="${loc }">
                                     <c:if test="${carNum==track.carNum }">
@@ -134,8 +135,8 @@
                                                <td>货物${track.event }</td>
                                            </tr>
                                         </c:if>
-                                    </table>
-                                    </c:if>
+                                     </table>
+                                   </c:if>
                                </c:forEach>
                             </c:forEach>
                         	<div class="span_mgmt_right3_text4">基本信息</div>      	          
@@ -148,10 +149,6 @@
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${orderInfo.carrierName }</td>
                                 </tr>
-                               <%--  <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
-                                    <td>${orderInfo.hasCarrierContract }</td>
-                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>${orderInfo.resourceType }</td>
@@ -222,20 +219,19 @@
                                     <td>${orderInfo.remarks }</td>
                                 </tr>
                             </table>
-                        
                         	<div class="span_mgmt_right3_text4">签收图像</div>      	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <!-- <td width="120" height="40" class="td_mgmt_right3_td1b">签收图像：</td> -->
-                                    <td><a href="file/signBill/${orderInfo.acceptPicture }" target="_blank" hidefocus="true"><img src="file/signBill/${orderInfo.acceptPicture }" /></a></td>
+                                <c:forEach var="waybill" items="${waybills }">
+                                    <td><a href="file/signBill/${waybill.picture }" target="_blank" hidefocus="true">
+                                             <img src="file/signBill/${waybill.picture }" />
+                                        </a>
+                                    </td>
+                                </c:forEach>
                                 </tr>
                             </table>
                         	<div class="span_mgmt_right3_text4">最终运费</div>      	          
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0">
-                                <%-- <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">合同规定运费：</td>
-                                    <td>${orderInfo.expectedPrice } (元)</td>
-                                </tr> --%>
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0">  
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">意向运费：</td>
                                     <td>${orderInfo.expectedPrice } (元)</td>
@@ -265,10 +261,7 @@
                                      <div class="div_rating_left1">货物安全</div>
                                 	 <div id="rating3" class="div_rating_right1" data-score="0"></div>
                                 	 <input type="hidden" value="" id="rate3"/> </br>
-                                  </div>
-                                <!-- <div class="div_rating_left1">总体费用</div>
-                                	 <div id="rating4" class="div_rating_right1" data-score="0"></div>
-                                	<input type="hidden" value="" id="rate4"/>   --> 
+                                  </div>  
                                 <div class="div_rating_sub">
                                 	补充：${comment.comment }
                                 </div>

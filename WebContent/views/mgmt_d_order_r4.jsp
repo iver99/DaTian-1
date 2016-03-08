@@ -101,9 +101,10 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
                     <tr>
                         <td class="td_mgmt_right3_td1a">
+                        <div class="span_mgmt_right3_text4">物流信息</div>
                             <c:forEach var="carNum" items="${carNums }">
                                 <c:if test="${length!=0 }">
-                                <div class="span_mgmt_right3_text4">物流信息</div>
+                                <div class="span_mgmt_right3_text4"></div>
                                 </c:if>
                                 <c:forEach var="track" items="${loc }">
                                     <c:if test="${carNum==track.carNum }">

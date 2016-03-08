@@ -16,4 +16,5 @@ public interface WayBillService {
 	public boolean setConfirm(String waybillId);
 	public boolean startTask(String waybillId);
 	public boolean finishTask(String waybillNum,String price,String picture);
+	public List<WayBill> getAllWayBillNumsPictureByOrderId(String orderId);
 }

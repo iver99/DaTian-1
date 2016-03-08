@@ -32,6 +32,7 @@ import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.ResponseService;
 import cn.edu.bjtu.service.TrackService;
+import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
@@ -45,6 +46,7 @@ import cn.edu.bjtu.vo.OrderCarrierView;
 import cn.edu.bjtu.vo.Orderform;
 import cn.edu.bjtu.vo.Track;
 import cn.edu.bjtu.vo.Truck;
+import cn.edu.bjtu.vo.WayBill;
 
 import com.alibaba.fastjson.JSONArray;
 
@@ -87,6 +89,8 @@ public class OrderController {
 	DriverService driverService;
 	@Autowired
 	TrackService trackService;
+	@Autowired
+	WayBillService waybillService;
 	
 	ModelAndView mv = new ModelAndView();
 
@@ -643,6 +647,8 @@ public class OrderController {
 		mv.addObject("loc", loc);
 		mv.addObject("carNums", carNums);
 		mv.addObject("orderInfo", orderInfo);
+		List<WayBill> waybills = waybillService.getAllWayBillNumsPictureByOrderId(orderid);
+		mv.addObject("waybills", waybills);
 		//页面需要评价信息
 		Comment comment=commentService.getCommentByOrderId(orderid);
 		mv.addObject("comment",comment);
