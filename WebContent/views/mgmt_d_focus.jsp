@@ -318,17 +318,8 @@
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
 						
 						if(data[i].status == '有效'){
-							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
-							str+="<td class=\"td_mgmt_right3_td3\">";
-							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
-							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=6&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交意向</a> ";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
-							str+="</div></div></div></li></ul></div></td>";
-							body.append(str);
+							body.append("<td class=\"td_mgmt_right3_td1\">有效</td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
 							}
 						else if(data[i].status == '失效'){
 							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
