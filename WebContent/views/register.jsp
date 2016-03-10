@@ -14,6 +14,7 @@
 <link rel="bookmark" href="/images/fav.ico" type="image/x-icon" />
 <link type="text/css" rel="stylesheet" href="css/index.css" />
 <script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
 <script type="text/javascript" src="js/top_search.js"></script>
 <script type="text/javascript" src="js/main_nav.js"></script>
 <script type="text/javascript" src="js/backtop.js"></script>
@@ -45,7 +46,7 @@
     <table border="0" cellspacing="0" cellpadding="0" class="table_register1">
         <tr>
             <td width="120" height="40" class="td_mgmt_right3_td1b">用户名：</td>
-            <td><input type="text" class="input_mgmt1" style="width:300px;" name="username" id="username" required/>&nbsp;&nbsp;<a href="javascript:;" hidefocus="true" onclick="loadXMLDoc(0)">检查用户名</a></td>
+            <td><input type="text" class="input_mgmt1" style="width:300px;" name="username" id="username"/>&nbsp;&nbsp;<a href="javascript:;" hidefocus="true" onclick="loadXMLDoc(0)">检查用户名</a></td>
         </tr>
         <tr>
         	<td width="120" height="40" class="td_mgmt_right3_td1b">用户类型：</td>
@@ -55,7 +56,7 @@
         <tr>
             <td height="40" class="td_mgmt_right3_td1b">手机验证码：</td>
             <td>
-            	<input type="text" class="input_mgmt1" style="width:150px;" placeholder="填写本人手机号码" name="phone" id="phone" required/>
+            	<input type="text" class="input_mgmt1" style="width:150px;" placeholder="填写本人手机号码" name="phone" id="phone" required="true"/>
                 <input type="text" id="validationkey" class="input_mgmt1" style="width:48px;" name="validationkey" required/>
                 <input type="button" id="btn_t" value="获取验证码" onclick="doclick;" hidefocus="true" class="btn_register_t" />
                 <input id="vcode" type="hidden"  class="btn_register_t" />
@@ -109,11 +110,12 @@
         </tr>
         <tr>
             <td height="40" class="td_mgmt_right3_td1b">密码：</td>
-            <td><input type="password" class="input_mgmt1" style="width:300px;" name="password" required/></td>
+            <td><input type="password" class="input_mgmt1" style="width:300px;" name="password" id="password" required/></td>
         </tr>
         <tr>
             <td height="40" class="td_mgmt_right3_td1b">确认密码：</td>
-            <td><input type="password" class="input_mgmt1" style="width:300px;" name="passwordRepeat" required/></td>
+            <td><input type="password" class="input_mgmt1" style="width:300px;" name="passwordRepeat" id="passwordRepeat"  required/></td>
+        	<td vertical-align="middle"><div vertical-align="middle" id="passwordfail"></div></td>
         </tr>
     </table>
     <div class="div_register_content1a"></div>
@@ -142,9 +144,37 @@
 <script type="text/javascript">
 	function OnLoad() {
 		loadFocus();
+		formValidate();//表单验证
+		
 	}
 </script>
 <script type="text/javascript">
+
+function formValidate() {
+	$("#register_form").validate({
+		rules : {
+			username : {
+				required : true,
+			},
+			phone : {
+				required : true,
+				number : true
+			},
+			validationkey : {
+				required : true,
+				number : true
+			},
+			password : {
+				required : true,
+			},
+			passwordRepeat : {
+				required : true,
+				equalTo:'#password'
+			},
+		}
+	});
+}
+
 function loadXMLDoc(flag)
 {
 	var curWwwPath=window.document.location.href;
@@ -159,7 +189,9 @@ function loadXMLDoc(flag)
 				   alert("该用户名可以使用~");
 			   } */
 			   if(flag ==0 && msg == "true"){
-				   alert("该用户名可以使用~");
+				   alert("该用户名可以使用");
+			   }else if(msg == "null"){
+				   alert("用户名不能为空");  
 			   }else if(msg == "false"){
 				   alert("该用户名已被使用！");
 			   }
@@ -169,7 +201,7 @@ function loadXMLDoc(flag)
 				   var vcode=$("#vcode").val();
 				   
 				   if(validationkey==vcode){ 
-
+					
 					$("#register_form").submit();
 					
 				   }
@@ -177,7 +209,7 @@ function loadXMLDoc(flag)
 					   alert("验证码错误，请重新输入");
 				   } 
 			   }
-		   }	   
+		   }   
 		});
 }
 

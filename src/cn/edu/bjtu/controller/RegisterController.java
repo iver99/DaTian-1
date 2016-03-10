@@ -52,10 +52,15 @@ public class RegisterController {
 			HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String username = request.getParameter("username");
 		List userCheck = registerServiceImpl.getUserCheck(username);
-		if(userCheck.isEmpty() || userCheck==null)
+		if((userCheck.isEmpty() || userCheck==null )&& username!="")
 		{
 			response.setContentType("text/html;charset=UTF-8");
 			response.getWriter().print("true");
+		}
+		else if(username==""||username==null||username.isEmpty())
+		{
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().print("null");
 		}
 		else
 		{
