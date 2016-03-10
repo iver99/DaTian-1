@@ -201,7 +201,7 @@
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">补充信息：</td>
 									<td>
-                                    	<textarea class="textarea_rating" id="remarks" name="remarks" value="${airlineInfo.remarks }" placeholder="请输入内容..." required></textarea>
+                                    	<textarea class="textarea_rating" id="remarks" name="remarks" placeholder="请输入内容..." required>${airlineInfo.remarks }</textarea>
                                     </td>
 								</tr>
                                 <tr>
