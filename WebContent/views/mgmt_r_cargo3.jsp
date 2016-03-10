@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -135,7 +136,7 @@
 								</tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">有效期至：</td>
-                                    <td><input type="text" class="input_date1" title="点击此处选择" onclick="SelectDate(this,'yyyy-MM-dd')" value="${goodsdetail.limitDate }" readonly="readonly" name="limitDate" required/></td>
+                                    <td><input type="text" class="input_date1" title="点击此处选择" onclick="SelectDate(this,'yyyy-MM-dd')" value="<fmt:formatDate value ="${goodsdetail.limitDate }" pattern= "yyyy-MM-dd" />" readonly="readonly" name="limitDate" required/></td>
                                 </tr>
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
