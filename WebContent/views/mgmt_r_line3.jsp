@@ -104,9 +104,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_mgmt_right3">
                     <tr>
                         <td class="td_mgmt_right3_td1a"> 
-                            <br />
-                            <%-- <c var="goodsdetail" items="${linetransportInfo }"> --%>
-				
+                            <br />               
                             <form action="updatefulltruckload?id=${truckInfo.id }" name="updatefulltruckload" id="updatefulltruckload" method="post" enctype="multipart/form-data">	          
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
@@ -204,7 +202,7 @@
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">补充信息：</td>
 									<td>
-                                    	<textarea class="textarea_rating" id="remarks" value="${truckInfo.remarks }" name="remarks" placeholder="请输入内容..." required></textarea>
+                                    	<textarea class="textarea_rating" id="remarks" name="remarks" placeholder="请输入内容..." required>${truckInfo.remarks }</textarea>
                                     </td>
 								</tr>
                                 <tr>
