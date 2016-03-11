@@ -33,9 +33,7 @@ public class LocationController {
 	public String location(HttpServletRequest request,HttpServletResponse response){
 		
 		String waybillNum = request.getParameter("waybillNum");
-		WayBill waybill = waybillService.getWayBillBywaybillNum(waybillNum);
-		String orderId = waybill.getOrderId();
-		List<Track> loc = trackService.getTrackByOrderIdDesc(orderId);
+		List<Track> loc = trackService.getTrackByWayBillNumDesc(waybillNum);
 		JSONArray location = JSONArray.fromObject(loc);
 		return location.toString();
 	}

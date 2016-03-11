@@ -54,5 +54,13 @@ public class TrackServiceImpl implements TrackService {
 		params.put("orderId", orderId);
 		return trackDao.find(hql, params);
 	}
+
+	@Override
+	public List<Track> getTrackByWayBillNumDesc(String waybillNum) {
+		String hql = "from Track where waybillNum=:waybillNum order by time desc";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("waybillNum", waybillNum);
+		return trackDao.find(hql, params);
+	}
 	
 }
