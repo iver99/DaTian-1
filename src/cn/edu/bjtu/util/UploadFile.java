@@ -56,6 +56,8 @@ public class UploadFile {
 			path = UploadPath.getLessTruckLoadPath();
 		} else if("airline".equals(fileType)){
 			path = UploadPath.getAirLinePath();
+		}else if("userpicture".equals(fileType)){
+		    path = UploadPath.getUserpicturePath();
 		}
 		
 		if (file.getSize() != 0)// 有上传文件的情况

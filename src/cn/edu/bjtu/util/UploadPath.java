@@ -153,7 +153,22 @@ public class UploadPath {
 			return path;
 		}
 	}
-
+	public static String getUserpicturePath() {
+		if (isWindows()) {//windows系统
+			String path = "D://uploadFile//userpicture";//上传到D盘
+			file = new File(path);
+			file.mkdirs();//以防文件夹不存在
+			return path;
+		}
+		else//linux系统 (未测试)
+		{
+			//如果文件夹不存在情况没有处理
+			String path= "/usr/local/uploadFile/userpicture";
+			file=new File(path);
+			file.mkdirs();//防止文件夹不存在
+			return path;
+		}
+	}
 	public static String getClientPath() {
 		if (isWindows()) {//windows系统
 			String path = "D://uploadFile//client";//上传到D盘

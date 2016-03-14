@@ -72,6 +72,23 @@
   font-size: 20px;
   color: #FFFFFF;
   margin:0px 2px;
+  margin-bottom: 10px;
+  background-color: #0e6fb7;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px #B0B0B0;
+  border: 0px #fff solid;}
+  
+.Btnsty_upload{ float: right;
+   width: 100px;
+  display: inline-block;
+  margin-bottom: 10px;
+  height: 57px;
+  line-height: 57px;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin:0px 2px;
   background-color: #0e6fb7;
   border-radius: 3px;
   text-decoration: none;

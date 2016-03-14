@@ -4,7 +4,7 @@ swfobject.addDomLoadEvent(function () {
 			upload_url: '../user_avatar/asp/Upload.asp',
 			src_upload: 2  //1为自动保存原图，2为由用户选择是否保存原图
 		}
-/*					,
+				,
 		function (msg) {
 			switch(msg.code)
 			{
@@ -29,13 +29,13 @@ swfobject.addDomLoadEvent(function () {
 					{
 						if(msg.content.sourceUrl)
 						{
-							alert("原图已成功保存至服务器，url为：\n" +　msg.content.sourceUrl);
+							alert("原图已成功保存至服务器，url为：\n" +msg.content.sourceUrl);
 						}
 						alert("头像已成功保存至服务器，url为：\n" + msg.content.avatarUrls.join("\n"));
 					}
 				break;
 			}
-		}*/
+		}
 	);
 	document.getElementById("upload").onclick=function(){
 		swf.call("upload");

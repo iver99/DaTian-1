@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +33,7 @@ import cn.edu.bjtu.vo.Userinfo;
 public class ClientController {
 	@Resource
 	ClientService clientService;
+	
 	ModelAndView mv = new ModelAndView();
 
 	@RequestMapping("accountinfo")
@@ -72,6 +74,22 @@ public class ClientController {
 		Userinfo userinfo = clientService.getBasicUserInfo(session);
 		mv.addObject("userInfo", userinfo);
 		mv.setViewName("mgmt_a_info2");
+		return mv;
+	}
+	/**
+	 * 查看用户头像
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("getuserpicture")
+	public ModelAndView getUserPicture(HttpSession session) {
+		Clientinfo clientinfo = clientService.getUserPicture(session);
+		mv.addObject("clientinfo", clientinfo);
+		String userPicture=clientinfo.getIDPicture();
+		/*System.out.println(userPicture);*/
+		mv.addObject("userpicture",userPicture);
+		mv.setViewName("mgmt_a_info5a");
 		return mv;
 	}
 	/**
@@ -201,6 +219,16 @@ public class ClientController {
 		mv.setViewName("mgmt_a_info3b");
 		return mv;
 	}
+	/**
+	 * 添加idpicture
+	 */
+	@RequestMapping(value = "insertuseridpicture", method = RequestMethod.POST)
+	public ModelAndView insertUserIDPicture(Clientinfo clientinfo,HttpServletRequest request,MultipartFile file) {
+		clientService.insertUserIdPicture(clientinfo,request,file);
+		mv.setViewName("mgmt_a_info");
+		return mv;
+		
+	}
 
 	/**
 	 * 下载idpicture
@@ -214,6 +242,7 @@ public class ClientController {
 		return mv;
 
 	}
+
 	
 	/**
 	 * 返回我的信息-首页下方交易信息

@@ -105,6 +105,7 @@
 					<tr>
 						<td class="td_mgmt_right3_td1a"> 
                             <br /> 
+                            <form action="insertuseridpicture"  method="post" name="insertuseridpicture" id="insertuseridpicture" enctype="multipart/form-data">
                             <div style="width:630px;">
                             	<div class="container">
 								  <div class="imageBox">
@@ -116,16 +117,17 @@
 								    <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
 								      <label for="upload-file">上传图像</label>
 								      </a>
-								      <input type="file" class="" name="upload-file" id="upload-file" />
+								      <input type="file" class="" name="file" id="upload-file" />
 								    </div>
 								    <input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切">
 								    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
 								    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
-								   <!--  <input type="button" id="upload" align="middle" class="Btnsty_upload" value="上传" > -->
+								    <input type="submit" id="upload" align="middle" class="Btnsty_upload" value="上传" >
 								  </div>
 								  <div class="cropped"></div>
 								</div> 
-							</div>        
+							</div>
+							</form>      
                             <!-- <div style="width:630px;">
                                 <div>
                                     <p id="swfContainer">

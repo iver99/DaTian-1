@@ -126,7 +126,7 @@
 											<ul class="quickmenu">
 												<li class="menuitem">
 													<div class="menu">
-														<a href="mgmt_a_info5a.htm" class="menuhd"
+														<a href="getuserpicture" class="menuhd"
 															hidefocus="true">查看</a>
 														<div class="menubd">
 															<div class="menubdpanel">

@@ -1,6 +1,9 @@
 package cn.edu.bjtu.service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.edu.bjtu.vo.Businessclient;
 import cn.edu.bjtu.vo.Clientinfo;
@@ -31,6 +34,12 @@ public interface ClientService {
 	 * @return
 	 */
 	public Userinfo getBasicUserInfo(HttpSession session);
+	/**
+	 * 查看用户头像
+	 * @param userId
+	 * @return
+	 */
+	public Clientinfo getUserPicture(HttpSession session);
 	public boolean checkHeadIconStatus(String userId);
 	
 	public String getStatus(String userId);
@@ -53,4 +62,11 @@ public interface ClientService {
 	 * @return
 	 */
 	public String getTransactionInfo(HttpSession session);
+	
+	/**
+	 * 获取我的信息-头像设置
+	 * @param session
+	 * @return
+	 */
+	public boolean insertUserIdPicture(Clientinfo clientinfo,HttpServletRequest request,MultipartFile file);
 }

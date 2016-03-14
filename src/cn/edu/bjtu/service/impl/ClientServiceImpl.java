@@ -4,11 +4,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.edu.bjtu.dao.BusinessClientDao;
 import cn.edu.bjtu.dao.ClientDao;
@@ -17,6 +19,7 @@ import cn.edu.bjtu.service.ClientService;
 import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
+import cn.edu.bjtu.util.UploadFile;
 import cn.edu.bjtu.vo.Businessclient;
 import cn.edu.bjtu.vo.Clientinfo;
 import cn.edu.bjtu.vo.Userinfo;
@@ -123,10 +126,16 @@ public class ClientServiceImpl implements ClientService{
 	 */
 	@Override
 	public Userinfo getBasicUserInfo(HttpSession session) {
-		String userId=(String)session.getAttribute(Constant.USER_ID);
-//		Integer userKind=(Integer)session.getAttribute(Constant.USER_KIND);
-		
+		String userId=(String)session.getAttribute(Constant.USER_ID);	
 		return userinfoDao.get(Userinfo.class, userId);
+	}
+	/**
+	 * 返回用户头像
+	 */
+	@Override
+	public Clientinfo getUserPicture(HttpSession session) {
+		String clientId=(String)session.getAttribute(Constant.USER_ID);
+		return clientDao.get(Clientinfo.class, clientId);
 	}
 	/**
 	 * 检查用户头像设置的状态
@@ -231,6 +240,27 @@ public class ClientServiceImpl implements ClientService{
 		
 		
 		
+	}
+	/**
+	 * 获取我的信息-头像设置
+	 */
+	@Override
+	public boolean insertUserIdPicture(Clientinfo clientinfo,HttpServletRequest request,MultipartFile file) {
+		
+		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
+		/*System.out.println(clientId);*/
+		Clientinfo clientinfo1 = clientDao.get(Clientinfo.class, clientId);
+		//保存文件
+		String fileLocation=UploadFile.uploadFile(file, clientId, "userpicture");
+		//设置文件位置 
+		System.out.println(fileLocation);
+		clientinfo1.setIDPicture(fileLocation);
+		clientDao.update(clientinfo1);// 保存实体
+		Userinfo userInfo = userinfoDao.get(Userinfo.class, clientId);
+		userInfo.setHeadIcon("已设置");
+		userinfoDao.update(userInfo);//保存头像状态
+
+		return true;
 	}
 	
 	
