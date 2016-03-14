@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -87,7 +86,6 @@ public class ClientController {
 		Clientinfo clientinfo = clientService.getUserPicture(session);
 		mv.addObject("clientinfo", clientinfo);
 		String userPicture=clientinfo.getIDPicture();
-		/*System.out.println(userPicture);*/
 		mv.addObject("userpicture",userPicture);
 		mv.setViewName("mgmt_a_info5a");
 		return mv;

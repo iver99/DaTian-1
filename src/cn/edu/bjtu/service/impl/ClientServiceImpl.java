@@ -248,12 +248,10 @@ public class ClientServiceImpl implements ClientService{
 	public boolean insertUserIdPicture(Clientinfo clientinfo,HttpServletRequest request,MultipartFile file) {
 		
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
-		/*System.out.println(clientId);*/
 		Clientinfo clientinfo1 = clientDao.get(Clientinfo.class, clientId);
 		//保存文件
 		String fileLocation=UploadFile.uploadFile(file, clientId, "userpicture");
 		//设置文件位置 
-		System.out.println(fileLocation);
 		clientinfo1.setIDPicture(fileLocation);
 		clientDao.update(clientinfo1);// 保存实体
 		Userinfo userInfo = userinfoDao.get(Userinfo.class, clientId);
