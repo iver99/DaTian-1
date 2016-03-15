@@ -64,6 +64,22 @@ public class OrderBean {
 	private String fulltruckloadId;
 	private String lesstruckloadId;
 	
+	private int onwayTime;
+	
+	
+	
+	/**
+	 * @return onwayTime
+	 */
+	public int getOnwayTime() {
+		return onwayTime;
+	}
+	/**
+	 * @param onwayTime ÒªÉèÖÃµÄ onwayTime
+	 */
+	public void setOnwayTime(int onwayTime) {
+		this.onwayTime = onwayTime;
+	}
 	/**
 	 * @return fulltruckloadId
 	 */

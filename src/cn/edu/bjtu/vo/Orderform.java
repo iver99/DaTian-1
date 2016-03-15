@@ -66,8 +66,21 @@ public class Orderform implements java.io.Serializable {
 	private Date startDelivery;//司机开始送货时间
 	private int isOntime;//是否准时送达
 	private int flag;//数值为1,用于统计分析
+	private int onwayTime;//运输时限
 	
 	
+	/**
+	 * @return onwayTime
+	 */
+	public int getOnwayTime() {
+		return onwayTime;
+	}
+	/**
+	 * @param onwayTime 要设置的 onwayTime
+	 */
+	public void setOnwayTime(int onwayTime) {
+		this.onwayTime = onwayTime;
+	}
 	/**
 	 * @return startDelivery
 	 */

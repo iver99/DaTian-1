@@ -116,6 +116,7 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
                                     <td><a class="link1" hidefocus="true" target="_blank" href="fulltruckloaddetail?truckId=${truckInfo.id }&carrierId=${truckInfo.carrierId }&flag=0">（整车）${truckInfo.startCity }→${truckInfo.endCity }</a></td>
                                     <td><input name="resourceType" type="hidden" value="整车"/></td>
+                                    <td><input name="onwayTime" type="hidden" value="${truckInfo.onwayTime }"/></td>
                                     <td><input name="fulltruckloadId" type="hidden" value="${truckInfo.id }"/></td>
                                     <td><input name="resourceName" type="hidden" value="${truckInfo.startCity }→${truckInfo.endCity }"/></td>
                                 </tr>
@@ -133,6 +134,7 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
                                     <td><a class="link1" hidefocus="true" target="_blank" href="lesstruckloaddetail?truckId=${truckInfo.id }&carrierId=${truckInfo.carrierId }&flag=0">（零担）${truckInfo.startCity }→${truckInfo.endCity }</a></td>
                                     <td><input name="resourceType" type="hidden" value="零担"/></td>
+                                    <td><input name="onwayTime" type="hidden" value="${truckInfo.onwayTime }"/></td>
                                     <td><input name="lesstruckloadId" type="hidden" value="${truckInfo.id }"/></td>
                                     <td><input name="resourceName" type="hidden" value="${truckInfo.startCity }→${truckInfo.endCity }"/></td>
                                 </tr>

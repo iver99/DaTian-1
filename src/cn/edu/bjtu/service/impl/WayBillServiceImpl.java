@@ -94,7 +94,6 @@ public class WayBillServiceImpl implements WayBillService {
 		if(waybills.size()!=0){
 		   for(int i=0;i<waybills.size();i++){
 			   WayBill tempwaybill = (WayBill)waybills.get(i);
-			   System.out.println(tempwaybill.getWaybillState());
 			   if((tempwaybill.getWaybillState()).equals("ÒÑÇ©ÊÕ")){
 				   if(i==(waybills.size())-1){
 					   order.setState("´ýÆÀ¼Û");

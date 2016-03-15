@@ -190,6 +190,7 @@ public class OrderServiceImpl implements OrderService {
 			String explainReason,String fileLocation) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
 		order.setState("´ýÆÀ¼Û");//ÐÞ¸Ä ¶©µ¥×´Ì¬
+		order.setFinishTime(new Date());
 		order.setActualPrice(actualPrice);
 		order.setExplainReason(explainReason);
 		order.setAcceptPicture(fileLocation);
