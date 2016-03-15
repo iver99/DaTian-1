@@ -1,6 +1,8 @@
 package cn.edu.bjtu.service.impl;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.bean.page.OperationBean;
+import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.dao.OrderDao;
 import cn.edu.bjtu.service.OperationService;
 import cn.edu.bjtu.util.Constant;
@@ -32,19 +35,32 @@ public class OperationServiceImpl implements OperationService{
 	public List<OperationBean> getTransportAccuracyList(OperationBean operationBean,
 			HttpSession session, PageUtil pageUtil) {
 		Map<String,Object> params=new HashMap<String,Object>();
-		String hql="from Orderform t "+whereHql(operationBean,session,params);
-		hql+=" group by date(t.submitTime) order by t.submitTime desc";
 		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
 		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
-		List<Orderform> list=orderDao.find(hql, params,page,display);
-		List<OperationBean> opList=new ArrayList<OperationBean>();
-		//目前系统中没有关于准确率和准确意向的数据 FIXME
-		for(Orderform order:list){
-			OperationBean opBean=new OperationBean();
-			opBean.setDate(order.getSubmitTime());
-			opList.add(opBean);
-		}
-		
+	    String userId=(String)session.getAttribute(Constant.USER_ID);
+	    String sql = "select submitTime,sum(isOntime) as totalOntime,sum(flag) as totalFlag from Orderform where "
+	    		+ "carrierId='"+userId+"' and resourceType !='落地配' group by date(submitTime)";
+	    List list = orderDao.find(sql,params,page,display);
+	    List<OperationBean> opList=new ArrayList<OperationBean>();
+	    for(int i=0;i<list.size();i++){
+	    	Object[] object = (Object[])list.get(i);
+	    	OperationBean opBean = new OperationBean();
+	    	opBean.setDate((Date)object[0]);
+	    	opBean.setAccurateIntention(Integer.valueOf(object[1].toString()));
+	    	opBean.setTotalIntention(Integer.valueOf(object[2].toString()));
+	    	
+	    	NumberFormat numberFormat = NumberFormat.getInstance();
+	    	numberFormat.setMinimumFractionDigits(1);
+	    	String transportAccuracy = numberFormat.format(((float)(Integer.valueOf(object[1].toString())))/((float)(Integer.valueOf(object[2].toString())))*100);
+	    	if(transportAccuracy.equals("0.0")){
+	    		opBean.setTransportAccuracy("0");
+	    	}else if(transportAccuracy.equals("100.0")){
+	    		opBean.setTransportAccuracy("100");
+	    	}else{
+	    		opBean.setTransportAccuracy(transportAccuracy);
+	    	}
+	    	opList.add(opBean);	    	
+	    }
 		return opList;
 	}
 	
