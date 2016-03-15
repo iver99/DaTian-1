@@ -67,6 +67,11 @@ public class WayBillServiceImpl implements WayBillService {
 	public boolean startTask(String waybillId) {
 		WayBill waybill = waybillDao.get(WayBill.class, waybillId);
 		waybill.setWaybillState("运输中");
+		//同时还得设置订单开始任务时间，以用于后期的统计分析
+		String orderId = waybill.getOrderId();
+		Orderform order = orderDao.get(Orderform.class, orderId);
+		order.setStartDelivery(new Date());
+		orderDao.update(order);
 		waybillDao.update(waybill);
 		return true;
 	}

@@ -305,6 +305,8 @@ public class OrderServiceImpl implements OrderService {
 		orderInstance.setSubmitTime(new Date());
 		orderInstance.setClientId(userId);
 		orderInstance.setSettlementState("Î´Éú³É");
+		orderInstance.setIsOntime(0);
+		orderInstance.setFlag(1);
 		
 		orderDao.save(orderInstance);
 		
