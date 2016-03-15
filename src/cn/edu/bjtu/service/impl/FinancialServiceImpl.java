@@ -1,5 +1,6 @@
 package cn.edu.bjtu.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -45,8 +46,14 @@ public class FinancialServiceImpl implements FinancialService{
 		for(Object[] obj:objList){
 			FinancialBean bean=new FinancialBean();
 			bean.setDate((Date)obj[0]);
-			bean.setTransportFee((Double)obj[1]==null?0.0:(Double)obj[1]);
-			bean.setTotalInsurance((Double)obj[2]==null?0.0:(Double)obj[2]);
+			Double transportFeetemp = (Double)obj[1]==null?0.0:(Double)obj[1];
+			Double totalInsurancetemp = (Double)obj[2]==null?0.0:(Double)obj[2];
+			BigDecimal tF = new BigDecimal(Double.valueOf(transportFeetemp));
+			double transportFee = tF.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			bean.setTransportFee((Double)transportFee);
+			BigDecimal tI = new BigDecimal(Double.valueOf(totalInsurancetemp));
+			double totalInsurance = tI.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			bean.setTotalInsurance((Double)totalInsurance);
 			bean.setTotalFee(bean.getTotalInsurance()+bean.getTransportFee());
 			beanList.add(bean);
 		}
