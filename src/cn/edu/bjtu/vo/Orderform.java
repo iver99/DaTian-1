@@ -63,6 +63,47 @@ public class Orderform implements java.io.Serializable {
 	private String hasCarrierContract;
 	private String clientName;
 	
+	private Date startDelivery;//司机开始送货时间
+	private int isOntime;//是否准时送达
+	private int flag;//数值为1,用于统计分析
+	
+	
+	/**
+	 * @return startDelivery
+	 */
+	public Date getStartDelivery() {
+		return startDelivery;
+	}
+	/**
+	 * @param startDelivery 要设置的 startDelivery
+	 */
+	public void setStartDelivery(Date startDelivery) {
+		this.startDelivery = startDelivery;
+	}
+	/**
+	 * @return isOntime
+	 */
+	public int getIsOntime() {
+		return isOntime;
+	}
+	/**
+	 * @param isOntime 要设置的 isOntime
+	 */
+	public void setIsOntime(int isOntime) {
+		this.isOntime = isOntime;
+	}
+	/**
+	 * @return flag
+	 */
+	public int getFlag() {
+		return flag;
+	}
+	/**
+	 * @param flag 要设置的 flag
+	 */
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
 	/**
 	 * @return linetransportId
 	 */
