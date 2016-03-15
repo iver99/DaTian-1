@@ -166,10 +166,4 @@ public class OperationServiceImpl implements OperationService{
 		
 		return wherehql;
 	}
-	
-	
-	
-	
-	
-
 }

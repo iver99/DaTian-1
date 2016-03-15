@@ -66,8 +66,6 @@ public class OrderBean {
 	
 	private int onwayTime;
 	
-	
-	
 	/**
 	 * @return onwayTime
 	 */
