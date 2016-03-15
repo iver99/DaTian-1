@@ -190,10 +190,20 @@ public class OrderServiceImpl implements OrderService {
 			String explainReason,String fileLocation) {
 		Orderform order = orderDao.get(Orderform.class, orderId);
 		order.setState("´ýÆÀ¼Û");//ÐÞ¸Ä ¶©µ¥×´Ì¬
-		order.setFinishTime(new Date());
+		Date finishDate = new Date();
+		order.setFinishTime(finishDate);
 		order.setActualPrice(actualPrice);
 		order.setExplainReason(explainReason);
 		order.setAcceptPicture(fileLocation);
+		if(!((order.getResourceType()).equals("ÂäµØÅä"))){
+			long onwayTime = (order.getOnwayTime())*60*60*1000;
+			long finishTime = finishDate.getTime();
+			long subTime = order.getSubmitTime().getTime();
+			long realOnwaytime = finishTime - subTime;
+			if(realOnwaytime<=onwayTime){
+				order.setIsOntime(1);
+			}
+		}
 		
 		orderDao.update(order);
 		return true;

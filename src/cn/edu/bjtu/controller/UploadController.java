@@ -37,7 +37,7 @@ public class UploadController {
 	}
 	
 	//安卓端上传送达订单号，即结束任务
-	@RequestMapping(value="CompleteNumber",method=RequestMethod.POST)
+	@RequestMapping(value="CompleteNumber")
 	@ResponseBody
 	public void uploadcompleteNumber(HttpServletRequest request,HttpServletResponse response){
 		String waybillNum = request.getParameter("waybillNum");

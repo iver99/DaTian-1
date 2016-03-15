@@ -91,19 +91,32 @@ public class WayBillServiceImpl implements WayBillService {
 		String orderId = waybill.getOrderId();
 		Orderform order = orderService.getOrderInfo(orderId);
 		List<WayBill> waybills = waybillDao.find("from WayBill where orderId="+"'"+orderId+"'"+" "+"and "+"waybillNum!="+"'"+waybillNum+"'");
+		Date finishDate = new Date();
+		long subTime = order.getSubmitTime().getTime();
+		long finishTime = finishDate.getTime();
 		if(waybills.size()!=0){
 		   for(int i=0;i<waybills.size();i++){
 			   WayBill tempwaybill = (WayBill)waybills.get(i);
 			   if((tempwaybill.getWaybillState()).equals("已签收")){
 				   if(i==(waybills.size())-1){
 					   order.setState("待评价");
-					   order.setFinishTime(new Date());
+					   order.setFinishTime(finishDate);
+					   if(!((order.getResourceType()).equals("落地配"))){
+						   if((finishTime-subTime)<=((order.getOnwayTime())*60*60*1000)){
+							   order.setIsOntime(1);
+						   }
+					   }
 				   }
 			   }
 		   }
 		}else{
-			order.setFinishTime(new Date());
+			order.setFinishTime(finishDate);
 			order.setState("待评价");
+			if(!((order.getResourceType()).equals("落地配"))){
+				   if((finishTime-subTime)<=((order.getOnwayTime())*60*60*1000)){
+					   order.setIsOntime(1);
+				   }
+			   }
 		}
 		//设置订单运费
 		Float actualPrice = order.getActualPrice();
