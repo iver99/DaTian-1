@@ -39,7 +39,16 @@ public class OperationServiceImpl implements OperationService{
 		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
 	    String userId=(String)session.getAttribute(Constant.USER_ID);
 	    String sql = "select submitTime,sum(isOntime) as totalOntime,sum(flag) as totalFlag from Orderform where "
-	    		+ "carrierId='"+userId+"' and resourceType !='ÂäµØÅä' group by date(submitTime)";
+	    		+ "carrierId='"+userId+"' ";
+	    String startDate = operationBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getStartDate());
+	    String endDate = operationBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getEndDate());
+	    if(!"1970-01-01".equals(startDate)){
+	    	sql+="and submitTime>='"+startDate+"' ";
+	    }
+	    if(!"1970-01-01".equals(endDate)){
+	    	sql+="and submitTime<='"+endDate+"' ";
+	    }
+	    sql+="and resourceType !='ÂäµØÅä' group by date(submitTime)";
 	    List list = orderDao.find(sql,params,page,display);
 	    List<OperationBean> opList=new ArrayList<OperationBean>();
 	    for(int i=0;i<list.size();i++){
