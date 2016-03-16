@@ -144,14 +144,22 @@ public class ClientServiceImpl implements ClientService{
 	public boolean checkHeadIconStatus(String userId) {
 		
 		Userinfo userinfo=userinfoDao.get(Userinfo.class, userId);
-		if(userinfo !=null){
+		/*Clientinfo clientinfo=clientDao.get(clientId);*/
+		if(userinfo!=null){
 			if(userinfo.getHeadIcon().equals("已设置")){
 				return true;//已设置头像
-			}else 
+			}else {
 				return false;//未设置头像
+			}
 		}
 		return false;
-		
+		/*if(clientinfo.getIDPicture()!=null){
+			return true;
+		}
+		else{
+			return false;
+		}
+		*/
 	}
 	/**
 	 * 获取账户状态
@@ -254,9 +262,9 @@ public class ClientServiceImpl implements ClientService{
 		//设置文件位置 
 		clientinfo1.setIDPicture(fileLocation);
 		clientDao.update(clientinfo1);// 保存实体
-		Userinfo userInfo = userinfoDao.get(Userinfo.class, clientId);
-		userInfo.setHeadIcon("已设置");
-		userinfoDao.update(userInfo);//保存头像状态
+		Userinfo userinfo=userinfoDao.get(Userinfo.class,clientinfo1.getId());
+		userinfo.setHeadIcon("已设置");
+		userinfoDao.update(userinfo);//保存头像状态
 
 		return true;
 	}

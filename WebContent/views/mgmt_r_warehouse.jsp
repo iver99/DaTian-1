@@ -121,33 +121,7 @@
                    </thead>
                    <tbody id="result_body">
                    
-                   </tbody>
-                    <%-- <c:forEach var="warehouse" items="${warehouseList }">
-                    <tr>
-                        <td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
-                        <td class="td_mgmt_right3_td1"><a href="warehousedetail?warehouseId=${warehouse.id }&carrierId=0&flag=1" hidefocus="true">${warehouse.name }</a></td>
-                        <td class="td_mgmt_right3_td1">${warehouse.city }</td>
-                        <td class="td_mgmt_right3_td1">${warehouse.type }</td>
-                        <td class="td_mgmt_right3_td1">${warehouse.houseArea }</td>
-                        <td class="td_mgmt_right3_td1">${warehouse.relDate }</td>
-                        <td class="td_mgmt_right3_td3">
-                            <div id="handlebox" style="z-index:203;">
-                                <ul class="quickmenu">
-                                    <li class="menuitem">
-                                        <div class="menu">
-                                            <a href="warehousedetail?warehouseId=${warehouse.id }&carrierId=0&flag=2" class="menuhd" hidefocus="true">更新</a>
-                                            <div class="menubd">
-                                                <div class="menubdpanel">
-                                                    <a href="warehousedelete?id=${warehouse.id }" class="a_top3" hidefocus="true">删除</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    </c:forEach> --%>
+                   </tbody>       
                 </table>
 				<table border="0" cellpadding="0" cellspacing="0" class="table_recordnumber">
                     <tr>

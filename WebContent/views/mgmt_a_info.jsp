@@ -118,7 +118,7 @@
 							<td height="60" class="td_mgmt_right3_td1d">&nbsp;</td>
 							<td class="td_mgmt_right3_td1">用户头像</td>
 							<c:choose>
-								<c:when test="${headCheck==true }">
+								<c:when test="${headCheck==true}">
 									<td class="td_mgmt_right3_td3"><img
 										src="images/btn_hint1.png" />&nbsp;已设置</td>
 									<td class="td_mgmt_right3_td3">

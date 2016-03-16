@@ -40,7 +40,7 @@ public interface ClientService {
 	 * @return
 	 */
 	public Clientinfo getUserPicture(HttpSession session);
-	public boolean checkHeadIconStatus(String userId);
+	public boolean checkHeadIconStatus(String clientId);
 	
 	public String getStatus(String userId);
 	

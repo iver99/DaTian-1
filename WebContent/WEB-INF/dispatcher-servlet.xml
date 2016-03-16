@@ -20,6 +20,7 @@
 	<!-- 对静态资源的处理 -->
 	 <mvc:resources location="/views/images/" mapping="/images/**"/><!-- /images/**的请求都会到/views/images/下去找，下面的类似 -->
 	<mvc:resources location="/views/css/" mapping="/css/**"/>
+	<mvc:resources location="/views/userpicutre/" mapping="/userpicture/**"/>
 	<mvc:resources location="/views/js/" mapping="/js/**"/>
 	<mvc:resources location="/views/" mapping="/views/**"/>
 	<mvc:resources location="/" mapping="/**"/>

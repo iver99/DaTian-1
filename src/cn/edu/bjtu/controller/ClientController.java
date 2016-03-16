@@ -51,13 +51,15 @@ public class ClientController {
 			mv.setViewName("login");
 			return mv;
 		}
+		else{
 		//int userKind=(Integer)request.getSession().getAttribute("userKind");
-		boolean flag = clientService.checkHeadIconStatus(userId);
+		boolean headCheck = clientService.checkHeadIconStatus(userId);
 		String status = clientService.getStatus(userId);
 		mv.addObject("status", status);
-		mv.addObject("headCheck", flag);
+		mv.addObject("headCheck", headCheck);
 		mv.setViewName("mgmt_a_info");
 		return mv;
+		}
 	}
 
 	/**
@@ -86,7 +88,8 @@ public class ClientController {
 		Clientinfo clientinfo = clientService.getUserPicture(session);
 		mv.addObject("clientinfo", clientinfo);
 		String userPicture=clientinfo.getIDPicture();
-		mv.addObject("userpicture",userPicture);
+		String pictureName = userPicture.substring(54); //截取头像文件名,服务器端从54位开始截取，本地50
+		mv.addObject("pictureName",pictureName);
 		mv.setViewName("mgmt_a_info5a");
 		return mv;
 	}
@@ -223,8 +226,15 @@ public class ClientController {
 	@RequestMapping(value = "insertuseridpicture", method = RequestMethod.POST)
 	public ModelAndView insertUserIDPicture(Clientinfo clientinfo,HttpServletRequest request,MultipartFile file) {
 		clientService.insertUserIdPicture(clientinfo,request,file);
+		String userId = (String) request.getSession().getAttribute(Constant.USER_ID);
+		boolean headCheck = clientService.checkHeadIconStatus(userId);
+		String status = clientService.getStatus(userId);
+		mv.addObject("status", status);
+		mv.addObject("headCheck", headCheck);
+		mv.addObject("clientinfo", clientinfo);
 		mv.setViewName("mgmt_a_info");
 		return mv;
+		
 		
 	}
 
