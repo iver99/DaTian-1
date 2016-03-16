@@ -88,7 +88,7 @@ public class ClientController {
 		Clientinfo clientinfo = clientService.getUserPicture(session);
 		mv.addObject("clientinfo", clientinfo);
 		String userPicture=clientinfo.getIDPicture();
-		String pictureName = userPicture.substring(54); //截取头像文件名,服务器端从54位开始截取，本地50
+		String pictureName = userPicture.substring(56); //截取头像文件名,服务器端从56位开始截取，本地50
 		mv.addObject("pictureName",pictureName);
 		mv.setViewName("mgmt_a_info5a");
 		return mv;
