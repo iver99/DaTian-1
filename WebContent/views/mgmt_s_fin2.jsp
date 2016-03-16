@@ -201,7 +201,7 @@
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].orderNum+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceType+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceName+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].clientName+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].companyName+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+renderTimeFull(data[i].submitTime)+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].actualPrice+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].insurance+"</td>";
