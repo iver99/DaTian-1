@@ -259,14 +259,15 @@ function getUserOrderResource(display,currentPage,orderNum){
 							}
                         
 						else if(data[i].state == '待收货'){
-							var str="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 202;\">";
+							/* var str="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 202;\">";
 							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
 							str+="<div class=\"menu\">";
 							str+="<a href=\"getSignBillForm?orderid="+data[i].id+"\" class=\"menuhd\" hidefocus=\"true\">签单上传</a>";
 							str+="<div class=\"menubd\">";
 							str+="<div class=\"menubdpanel\">";
 							str+="<a href=\"getOrderDetailWaitToReceive?orderid="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">查看</a>";
-							str+="</div></div></div></li></ul></div></td>";
+							str+="</div></div></div></li></ul></div></td>"; */
+							var str="<td class=\"td_mgmt_right3_td3\"><a href=\"getOrderDetailWaitToReceive?orderid="+data[i].id+"\" hidefocus=\"true\">查看</a></td>";
 							body.append(str);
 						}
 						else if(data[i].state == '待确认'){
