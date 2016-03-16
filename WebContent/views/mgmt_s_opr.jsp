@@ -194,7 +194,7 @@
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].transportAccuracy+"%</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].accurateIntention+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].totalIntention+"</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"OperationDetailsPage2a?date="+data[i].date+"\" hidefocus=\"true\">查看</a></td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"OperationDetailsPage2a?date="+renderTime(data[i].date)+"\" hidefocus=\"true\">查看</a></td>";
 					str+="</tr>";
 				}
 				body.append(str);

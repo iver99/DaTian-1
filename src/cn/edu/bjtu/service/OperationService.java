@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import cn.edu.bjtu.bean.page.OperationBean;
+import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.util.PageUtil;
-import cn.edu.bjtu.vo.Orderform;
 
 public interface OperationService {
 	
@@ -48,7 +48,7 @@ public interface OperationService {
 	 * @param date
 	 * @return
 	 */
-	public List<Orderform> viewOperationDetails(HttpSession session,OperationBean operationBean,PageUtil pageUtil);
+	public List<OrderBean> viewOperationDetails(HttpSession session,OperationBean operationBean,PageUtil pageUtil);
 	
 	/**
 	 * 获取莫一天的所有订单的总记录数

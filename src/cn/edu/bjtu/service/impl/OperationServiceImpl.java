@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -139,7 +140,7 @@ public class OperationServiceImpl implements OperationService{
 	 * 查看某一天 所有订单
 	 */
 	@Override
-	public List<Orderform> viewOperationDetails(HttpSession session,OperationBean operationBean,PageUtil pageUtil) {
+	public List<OrderBean> viewOperationDetails(HttpSession session,OperationBean operationBean,PageUtil pageUtil) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		Map<String,Object> params=new HashMap<String,Object>();
 		String hql="from Orderform t "+whereHql(userId,operationBean,params);
@@ -147,8 +148,38 @@ public class OperationServiceImpl implements OperationService{
 		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
 		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
 		List<Orderform> list=orderDao.find(hql, params,page,display);
+		List<OrderBean> orderList = new ArrayList<OrderBean>();
+		for(int i=0;i<list.size();i++){
+			OrderBean orderBean = new OrderBean();
+			Orderform order = list.get(i);
+			orderBean.setOrderNum(order.getOrderNum());
+			orderBean.setResourceType(order.getResourceType());
+			orderBean.setResourceName(order.getResourceName());
+			orderBean.setCompanyName(order.getCompanyName());
+			orderBean.setSubmitTime(order.getSubmitTime());
+			orderBean.setOnwayTime(order.getOnwayTime());
+			long submitTimems = order.getSubmitTime().getTime();
+			if(order.getState().equals("已完成")||order.getState().equals("待评价")){				
+			    long finishTimems = order.getFinishTime().getTime();
+			    long actualOnwaytimems = finishTimems - submitTimems;
+			    if(actualOnwaytimems<=order.getOnwayTime()*60*60*1000){
+			    	
+				    orderBean.setStrisOntime("是");
+			    }else{
+				    orderBean.setStrisOntime("否");
+			    }
+			NumberFormat numberFormat = NumberFormat.getInstance();
+	    	numberFormat.setMinimumFractionDigits(1);
+	    	String actualOnwaytimeh = numberFormat.format(actualOnwaytimems/1000.0/60.0/60.0);
+			orderBean.setActualonwayTime(actualOnwaytimeh);
+			}else{
+				orderBean.setStrisOntime("正在运输");
+				orderBean.setActualonwayTime("正在运输");
+			}
+			orderList.add(orderBean);
+		}
 		
-		return list;
+		return orderList;
 		
 	}
 	/**
@@ -188,6 +219,7 @@ public class OperationServiceImpl implements OperationService{
 			wherehql+=" and date(t.submitTime)=:submitTime ";
 			params.put("submitTime", operationBean.getDate());
 		}
+		wherehql+=" and t.resourceType!='落地配' ";
 		
 		return wherehql;
 	}

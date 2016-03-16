@@ -236,6 +236,7 @@ public class OrderServiceImpl implements OrderService {
 		Orderform order=orderDao.get(Orderform.class, orderId);
 		order.setCancelReason(cancelReason);
 		order.setState("ÒÑÈ¡Ïû");
+		order.setFinishTime(new Date());
 		
 		orderDao.update(order);
 		return true;

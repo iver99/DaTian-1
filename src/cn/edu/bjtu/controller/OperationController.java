@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.bjtu.bean.page.OperationBean;
+import cn.edu.bjtu.bean.page.OrderBean;
 import cn.edu.bjtu.service.OperationService;
 import cn.edu.bjtu.util.PageUtil;
-import cn.edu.bjtu.vo.Orderform;
 
 /**
  * 统计分析-运营指标相关
@@ -122,7 +122,7 @@ public class OperationController {
 	 */
 	@RequestMapping("viewOperationDetailsAjax")
 	@ResponseBody
-	public List<Orderform> viewFinancialDetailsPage(HttpSession session,OperationBean operationBean,PageUtil pageUtil){
+	public List<OrderBean> viewFinancialDetailsPage(HttpSession session,OperationBean operationBean,PageUtil pageUtil){
 		return operationService.viewOperationDetails(session, operationBean,pageUtil);
 	}
 	

@@ -65,7 +65,35 @@ public class OrderBean {
 	private String lesstruckloadId;
 	
 	private int onwayTime;
+	private String strisOntime;
+	private String actualonwayTime;
 	
+	
+	
+	/**
+	 * @return strisOntime
+	 */
+	public String getStrisOntime() {
+		return strisOntime;
+	}
+	/**
+	 * @param strisOntime 要设置的 strisOntime
+	 */
+	public void setStrisOntime(String strisOntime) {
+		this.strisOntime = strisOntime;
+	}
+	/**
+	 * @return actualonwayTime
+	 */
+	public String getActualonwayTime() {
+		return actualonwayTime;
+	}
+	/**
+	 * @param actualonwayTime 要设置的 actualonwayTime
+	 */
+	public void setActualonwayTime(String actualonwayTime) {
+		this.actualonwayTime = actualonwayTime;
+	}
 	/**
 	 * @return onwayTime
 	 */
