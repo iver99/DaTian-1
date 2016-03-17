@@ -206,7 +206,7 @@
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].onwayTime+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].actualonwayTime+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].strisOntime+"</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"javascript:;\" class=\"a_top3\" hidefocus=\"true\">查看</a></td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"getOrderDetailFinish?orderid="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">查看</a></td>";
 					str+="</tr>";
 				}
 				body.append(str);

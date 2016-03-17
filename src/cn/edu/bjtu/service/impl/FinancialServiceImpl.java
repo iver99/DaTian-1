@@ -75,6 +75,8 @@ public class FinancialServiceImpl implements FinancialService{
 			params.put("endDate", financialBean.getEndDate());
 		}
 		
+		wheresql+=" and t.state='已完成'";
+		
 		return wheresql;
 	}
 	/**
@@ -152,13 +154,8 @@ public class FinancialServiceImpl implements FinancialService{
 			wherehql+=" and date(t.submitTime)=:submitTime ";
 			params.put("submitTime", financialBean.getDate());
 		}
+		wherehql+=" and t.state='已完成'";
 		
 		return wherehql;
 	}
-	
-	
-	
-	
-	
-
 }

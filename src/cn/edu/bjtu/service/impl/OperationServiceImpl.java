@@ -49,7 +49,7 @@ public class OperationServiceImpl implements OperationService{
 	    if(!"1970-01-01".equals(endDate)){
 	    	sql+="and submitTime<='"+endDate+"' ";
 	    }
-	    sql+="and resourceType !='落地配' group by date(submitTime)";
+	    sql+="and state='已完成' and resourceType !='落地配' group by date(submitTime)";
 	    List list = orderDao.find(sql,params,page,display);
 	    List<OperationBean> opList=new ArrayList<OperationBean>();
 	    for(int i=0;i<list.size();i++){
@@ -104,6 +104,7 @@ public class OperationServiceImpl implements OperationService{
 			whereHql+=" and t.submitTime<=:endDate ";
 			params.put("endDate", operationBean.getEndDate());
 		}
+		whereHql+=" and t.resourceType!='落地配' and t.state='已完成'";
 		return whereHql;
 	}
 
@@ -152,6 +153,7 @@ public class OperationServiceImpl implements OperationService{
 		for(int i=0;i<list.size();i++){
 			OrderBean orderBean = new OrderBean();
 			Orderform order = list.get(i);
+			orderBean.setId(order.getId());
 			orderBean.setOrderNum(order.getOrderNum());
 			orderBean.setResourceType(order.getResourceType());
 			orderBean.setResourceName(order.getResourceName());
@@ -168,8 +170,8 @@ public class OperationServiceImpl implements OperationService{
 			    }else{
 				    orderBean.setStrisOntime("否");
 			    }
-			NumberFormat numberFormat = NumberFormat.getInstance();
-	    	numberFormat.setMinimumFractionDigits(1);
+			NumberFormat numberFormat = NumberFormat.getNumberInstance();
+	    	numberFormat.setMaximumFractionDigits(0);
 	    	String actualOnwaytimeh = numberFormat.format(actualOnwaytimems/1000.0/60.0/60.0);
 			orderBean.setActualonwayTime(actualOnwaytimeh);
 			}else{
@@ -219,7 +221,7 @@ public class OperationServiceImpl implements OperationService{
 			wherehql+=" and date(t.submitTime)=:submitTime ";
 			params.put("submitTime", operationBean.getDate());
 		}
-		wherehql+=" and t.resourceType!='落地配' ";
+		wherehql+=" and t.state='已完成' and t.resourceType!='落地配'";
 		
 		return wherehql;
 	}
