@@ -120,9 +120,6 @@ public class FullTruckLoadServiceImpl implements FullTruckLoadService {
 			truckBean1.setResourceType((String)obj[16]);
 			truckBean1.setStatus((String)obj[17]);
 			fulltruckloadList.add(truckBean1);
-			/*if((truckBean1.getResourceType()).equals("Õû³µ")){
-			     
-			}*/
 		}
 		
 		for(int i=0;i<fulltruckloadList.size();i++){
