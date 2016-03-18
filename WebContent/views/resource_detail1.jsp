@@ -127,13 +127,13 @@
                                 <div class="div_rating_left1" id="avgRating">综合：</div>
                                 <div class="div_rating_left1">服务态度</div>
                        			    <div id="rating1" class="div_rating_right1" data-score="0"></div>
-                                	<input type="hidden" value="" id="rate1"/> 
+                                	<input type="hidden" value="" id="rate1"/>
                                 <div class="div_rating_left1">运输时效</div>
-                                	 <div id="rating2" class="div_rating_right1"	data-score="0"></div>
+                                	 <div id="rating2" class="div_rating_right1" data-score="0"></div>
                                 	<input type="hidden" value="" id="rate2"/> 
                                 <div class="div_rating_left1">货物安全</div>
                                 	 <div id="rating3" class="div_rating_right1" data-score="0"></div>
-                                	<input type="hidden" value="" id="rate3"/> 
+                                	<input type="hidden" value="" id="rate3"/>
                                 <div class="div_rating_left1">总体费用</div>
                                 	 <div id="rating4" class="div_rating_right1" data-score="0"></div>
                                 	<input type="hidden" value="" id="rate4"/>   
@@ -217,7 +217,6 @@ function loadXMLDoc(id){
 }
 //加星星评论
 function setStar(){
-	//var serviceAttitude="${comment.serviceAttitude}";
 	var serviceAttitude="${avgComment.serviceAttitude}";
 	var transportEfficiency="${avgComment.transportEfficiency}";
 	var cargoSafety="${avgComment.cargoSafety}";
