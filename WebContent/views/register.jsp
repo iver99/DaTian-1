@@ -185,9 +185,6 @@ function loadXMLDoc(flag)
 		   url: curWwwPath.substring(0,pos) + "/DaTian/usercheck",//请求的后台地址
 		   data: "username=" + document.getElementById("username").value,//前台传给后台的参数
 		   success: function(msg){//msg:返回值
-			   /* if(flag == 0 || (flag == 1 && msg == "false")){
-				   alert("该用户名可以使用~");
-			   } */
 			   if(flag ==0 && msg == "true"){
 				   alert("该用户名可以使用");
 			   }else if(msg == "null"){

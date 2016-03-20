@@ -130,7 +130,6 @@
 <script type="text/javascript">
 	function OnLoad() {
 		loadFocus();
-		/* alert("${userpicture}") */
 	}
 </script>
 </html>
