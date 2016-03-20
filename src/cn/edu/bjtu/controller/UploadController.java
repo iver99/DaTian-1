@@ -14,7 +14,6 @@ import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.TrackService;
 import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.util.IdCreator;
-import cn.edu.bjtu.vo.Orderform;
 import cn.edu.bjtu.vo.WayBill;
 
 @Controller
@@ -60,10 +59,10 @@ public class UploadController {
 		String id = IdCreator.createTrackId();
 		Double locLatitude = Double.parseDouble(latitude);
 		Double locLongtitude = Double.parseDouble(longtitude);
+		//获取订单号和订单ID
 		WayBill waybill = waybillService.getWayBillBywaybillNum(waybillNum);
-		Orderform order = orderService.getOrderByOrderNum(waybill.getOrderNum());
 		String orderNum = waybill.getOrderNum();
-		String orderId = order.getId();
+		String orderId = waybill.getOrderId();
 		
 		trackService.createNewTrack(id, orderId,orderNum, carNum, event,locLongtitude, locLatitude, time, address,waybillNum);	
 	}
