@@ -99,8 +99,8 @@ public class LesstruckloadServiceImpl implements LesstruckloadService {
 				truckBean1.setStartCity((String)obj[1]);
 				truckBean1.setEndCity((String)obj[2]);
 				truckBean1.setOnwayTime(((Integer)obj[3]).toString());
-				truckBean1.setCarType((String)obj[4]);
-				truckBean1.setCarLength(((Float)obj[5]).toString());
+				//truckBean1.setCarType((String)obj[4]);
+				//truckBean1.setCarLength(((Float)obj[5]).toString());
 				truckBean1.setStanPrice1((Float)obj[6]);
 				truckBean1.setStanPrice2((Float)obj[7]);
 				truckBean1.setPickFee((Float)obj[8]);
