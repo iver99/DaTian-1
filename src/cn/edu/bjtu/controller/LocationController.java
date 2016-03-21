@@ -15,7 +15,6 @@ import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.TrackService;
 import cn.edu.bjtu.service.WayBillService;
 import cn.edu.bjtu.vo.Track;
-import cn.edu.bjtu.vo.WayBill;
 import net.sf.json.JSONArray;
 
 @Controller
