@@ -117,7 +117,7 @@
 								    <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
 								      <label for="upload-file">上传图像</label>
 								      </a>
-								      <input type="file" class="" name="file" id="upload-file" />
+								      <input type="file" class="" name="file" id="upload-file" required/>
 								    </div>
 								    <input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切">
 								    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
