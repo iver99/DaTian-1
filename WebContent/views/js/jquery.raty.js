@@ -443,7 +443,7 @@
     click         : undefined,
     half          : false,
     halfShow      : true,
-    hints         : ['bad', 'poor', 'regular', 'good', 'gorgeous'],
+    hints         : ['很差', '差', '一般', '好', '很好'],
     iconRange     : undefined,
     mouseout      : undefined,
     mouseover     : undefined,
