@@ -149,22 +149,6 @@
                                     <td height="40" class="td_mgmt_right3_td1b">冷藏：</td>
                                     <td>${carInfo.storage }</td>
                                 </tr>
-                                <%-- <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">司机姓名：</td>
-                                    <td>${driverInfo.driverName }</td>
-                                </tr> --%>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">司机电话：</td>
-                                    <td>${driverInfo.phone }</td>
-                                </tr>
-                                <%-- <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运营线路：</td>
-                                    <td>${carInfo.startPlace }←→${carInfo.endPlace }</td>
-                                </tr> --%>
-                                <%-- <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">经停城市：</td>
-                                    <td>${carInfo.stopPlace }</td>
-                                </tr> --%>
                             </table>
                         </td>
                     </tr>
