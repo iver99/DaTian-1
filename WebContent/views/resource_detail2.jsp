@@ -45,7 +45,7 @@
 		<tr>
 			<td width="320" class="td_leftnav_top"><img src="images/illust_2b.jpg" /></td>
 			<td class="td_detail_top">
-            	网络名称：<span class="text_detail_title1">${citylineInfo.cityName }</span>
+            	配送城市：<span class="text_detail_title1">${citylineInfo.cityName }</span>
                 <br />
                 标准报价：<span class="text_detail_title2">${citylineInfo.standPrice1 }元/吨、${citylineInfo.standPrice2 }元/方</span>
                 <br />

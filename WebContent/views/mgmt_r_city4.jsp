@@ -103,13 +103,9 @@
                     <tr>
                         <td class="td_mgmt_right3_td1a"> 
                             <br />   	          
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0">            
                                 <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">网络名称：</td>
-                                    <td>${citylineInfo.name }</td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">配送城市：</td>
+                                    <td width="120" height="40" class="td_mgmt_right3_td1b">配送城市：</td>
                                     <td>${citylineInfo.cityName }</td>
                                 </tr>
                                 <tr>

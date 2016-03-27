@@ -107,10 +107,6 @@
                             <form action="insertCityLine" method="post" name="insertCityLine" id="insertCityLine" enctype="multipart/form-data">         
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">网络名称：</td>
-                                    <td><input type="text" class="input_mgmt1" style="width:300px;" id="name" name="name" required/></td>
-                                </tr>
-                                <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">配送城市：</td>
                                     <td id="cityselector">
                                     	<input id="city1" type="text" value="" class="input_city1" name="cityName" required/>
@@ -151,7 +147,7 @@
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">送货费：</td>
                                     <td><input type="text" class="input_mgmt1" style="width:300px;" id="deliveryFee" name="deliveryFee" required/>
-                                    (元/kg)</td>
+                                    (元)</td>
                                 </tr>
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
