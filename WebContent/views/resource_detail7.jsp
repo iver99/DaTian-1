@@ -49,7 +49,7 @@
                 <br />
                 报价：<span class="text_detail_title2">M：${airlineInfo.price1 }元、N：${airlineInfo.price2 }元/公斤、+100：${airlineInfo.price3 }元/公斤、+300：${airlineInfo.price4 }元/公斤、+500：${airlineInfo.price5 }元/公斤</span>
                 <br />
-                提货费：<span class="text_detail_title2">${airlineInfo.pickFee }元/方</span>
+                提货费：<span class="text_detail_title2">${airlineInfo.pickFee }元</span>
                 <br />
                 送货费：<span class="text_detail_title2">${airlineInfo.deliveryFee }元</span>
                 <br />
