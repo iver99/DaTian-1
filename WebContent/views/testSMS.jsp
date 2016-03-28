@@ -12,12 +12,12 @@
 <title>短信测试页面</title>
 </head>
 <body>
-<!-- <h1>短信测试接口</h1>
+<h1>短信测试接口</h1>
 <h3>step1：注册序列号</h3>
 <button onclick="regSN();">注册SN</button>
 <h3>step2：注册企业信息</h3>
 <button onclick="regEnterpriseInfo();">注册企业信息</button>
-<h3>step3：发送短信</h3> -->
+<h3>step3：发送短信</h3>
 <form  method="POST">
 	手机号<input type="text" name="phone" id="phone"/>
 	<br/>
