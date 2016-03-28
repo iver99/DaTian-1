@@ -93,6 +93,7 @@
                     <tr>
                     	<td>
                         	<span class="span_mgmt_right2_text1"><a href="getTransportAccuracyPage" hidefocus="true">运输准时率</a>&nbsp;&nbsp;/&nbsp;&nbsp;客户满意度</a></span>
+                        	<span class="span_mgmt_right2_text2"><a href="javascript:history.go(-1);" hidefocus="true"><img src="images/btn_back1.png" class="span_mgmt_right2_pic1" title="返回" /></a></span>
                             <div class="div_mgmt_s1">
                                 <input type="text" id="startDate" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" value="意向开始时间" readonly="readonly" title="点击选择" />
                                 &nbsp;&nbsp;至&nbsp;&nbsp;
