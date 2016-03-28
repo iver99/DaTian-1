@@ -21,7 +21,7 @@ function additem() {  //确认意向时的动态添加信息
 
 	var inputTxt2a = document.createElement("span");  //section-输入框
 		inputTxt2a.className = 'span_mgmt_dynamic1';
-		inputTxt2a.innerHTML = '&nbsp;--&nbsp;';
+		inputTxt2a.innerHTML = '--';
 
 	var inputTxt3 = document.createElement("select");  //section-输入框
 		inputTxt3.options[0] = new Option("选择随车司机", "");
@@ -35,7 +35,7 @@ function additem() {  //确认意向时的动态添加信息
     
 	var inputTxt3a = document.createElement("span");  //section-输入框
 		inputTxt3a.className = 'span_mgmt_dynamic1';
-		inputTxt3a.innerHTML = '&nbsp;--&nbsp;';
+		inputTxt3a.innerHTML = '--';
 		
 	var inputTxt4 = document.createElement("input");  //section-输入框
 		inputTxt4.type = 'text';

@@ -118,7 +118,7 @@
 											   <option value="${car.carNum }">${car.carNum }</option>
 											</c:forEach>
                                         </select>
-                                        <span class="span_mgmt_dynamic1">--</span>
+                                        <span class="span_mgmt_dynamic1" style="width: 12px;">--</span>
                                         <input type="hidden" value="${drivers }" id="driversString" >
                                         <select class="input_mgmt2a" name="driver1" id="driver1" required="true">
 											<option value="" selected="selected">选择随车司机</option>
@@ -127,7 +127,7 @@
 											</c:forEach>
                                         </select>
 
-                                        <span class="span_mgmt_dynamic1">--</span>
+                                        <span class="span_mgmt_dynamic1" style="width: 12px;">--</span>
                                         <input type="text" class="input_mgmt2" name="waybillNum1" id="waybillNum1" placeholder="请输入运单号" required="true"/>
                                         <img src="images/btn_add2.png" hidefocus="true" style="cursor:pointer;" title="添加" onclick="additem();" />
                                     </td>
