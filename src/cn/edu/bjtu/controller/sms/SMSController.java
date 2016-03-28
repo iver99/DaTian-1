@@ -169,7 +169,8 @@ public class SMSController {
 		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		String vCode=VCodeCreator.getVCode();
 		try {
-			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
+			/*int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码*/			
+			int i=0;
 			if(i==0){
 				//FIXME
 				//存储验证码

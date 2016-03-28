@@ -86,6 +86,43 @@ public class ClientSecurityController {
 			return mv;
 		}
 	}
+	
+	/**
+	 * 跳转修改绑定手机页面
+	 * @return
+	 */
+	@RequestMapping("removephone")
+	public ModelAndView removePhonePage(HttpSession session) {
+		String userId = (String) session.getAttribute(Constant.USER_ID);
+		Userinfo userinfo = clientSecurityService.getUserById(userId);
+		String phone=userinfo.getPhone();
+		String phonehide = phone.substring(0,phone.length()-(phone.substring(3)).length())+"****"+phone.substring(7);
+		mv.addObject("phonehide", phonehide);
+		mv.addObject("phone", phone);
+		mv.setViewName("mgmt_a_security3");
+		return mv;
+	}
+	/**
+	 * 跳转绑定新手机号页面
+	 * @return
+	 */
+	@RequestMapping("gotochangephone")
+	public ModelAndView gotoChangePhonePage(HttpSession session) {
+		mv.setViewName("mgmt_a_security3a");
+		return mv;
+	}
+	
+	/**
+	 * 绑定成功，返回安全设置界面
+	 * @return
+	 */
+	@RequestMapping("changephone")
+	public String changePhone(HttpSession session, String phone,
+			HttpServletRequest request, HttpServletResponse response) {
+		clientSecurityService.changePhone(phone, session);
+		return "redirect:mysecurity";
+
+	}
 
 	/**
 	 * 绑定邮箱页面

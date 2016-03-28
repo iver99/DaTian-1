@@ -77,6 +77,19 @@ public class ClientSecurityServiceImpl implements ClientSecurityService{
 		return true;
 	}
 	
+	/**
+	 * 绑定新手机
+	 */
+	@Override
+	public boolean changePhone(String phone,HttpSession session){
+		String userId=(String)session.getAttribute(Constant.USER_ID);
+		Userinfo userinfo = userinfoDao.get(Userinfo.class, userId);
+		userinfo.setPhone(phone);
+		userinfoDao.save(userinfo);
+		return true;
+	}
+	
+	
 	@Override
 	public Userinfo getUserById(String userId) {
 		
