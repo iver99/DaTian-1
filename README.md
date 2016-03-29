@@ -6,12 +6,13 @@
 		前端:JSP，Javascript，Jquery
 		后台:Spring MVC+Hibernate
 		测试：junit4
-		数据库:Mysql5.5
+		数据库:Mysql5.5,Redis
 		服务器:Tomcat7
 		JDK：1.7
 		本地开发环境：eclipse-jee-luna-R-win32-x86_64
 		线上服务器：CentOS
 		安全、权限框架：Shiro
+		
 
 【短信接口】：
 ------
