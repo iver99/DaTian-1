@@ -39,6 +39,7 @@ public class Constant {
 	public static final String SMS_WARNING="WARNING";//警告
 	public static final String SMS_INFO="INFO";//其他类型的短信信息
 	
-	
+	//短信验证码过期时间 单位为秒
+	public static final Integer SMS_EXPIRE_TIME=60 * 5;
 
 }

@@ -22,5 +22,12 @@ public interface SmsService {
 	 * @return
 	 */
 	public List<SmsLog> getSmsLog();
+	
+	/**
+	 * 检查用户填写验证码是否正确
+	 * @return
+	 */
+	public boolean checkVCode(String vCode);
+		
 
 }

@@ -3,12 +3,15 @@ package cn.edu.bjtu.service.sms.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.dao.sms.SmsLogDao;
 import cn.edu.bjtu.service.sms.SmsService;
+import cn.edu.bjtu.util.RedisUtil;
 import cn.edu.bjtu.vo.sms.SmsLog;
 /**
  * 短信接口相关
@@ -21,6 +24,8 @@ public class SmsServiceImpl implements SmsService{
 
 	@Autowired
 	SmsLogDao smsLogDao;
+	@Resource(name="redisUtil")
+	RedisUtil redisUtil;
 	/**
 	 * 短信操作日志到数据库
 	 */
@@ -49,6 +54,15 @@ public class SmsServiceImpl implements SmsService{
 		
 		return logList;
 	}
+	/**
+	 * 检查用户填写验证码是否正确
+	 */
+	@Override
+	public boolean checkVCode(String vCode) {
+		return redisUtil.exists(vCode);
+	}
+	
+	
 	
 	
 

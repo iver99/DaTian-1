@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.b2m.eucp.example.SingletonClient;
 import cn.edu.bjtu.service.sms.SmsService;
 import cn.edu.bjtu.util.Constant;
-import cn.edu.bjtu.util.DataSourceContextHolder;
+import cn.edu.bjtu.util.RedisUtil;
 import cn.edu.bjtu.util.VCodeCreator;
 import cn.edu.bjtu.vo.sms.SmsLog;
 /**
@@ -38,6 +40,8 @@ public class SMSController {
 	
 	@Autowired
 	SmsService smsService;
+	@Resource(name="redisUtil")
+	RedisUtil redisUtil;
 	
 	
 	
@@ -172,10 +176,11 @@ public class SMSController {
 			/*int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码*/			
 			int i=0;
 			if(i==0){
-				//FIXME
 				//存储验证码
 				smsHisLogger.info("【PC】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
 				smsService.log(phone, vCode, Constant.SMS_VCODE,Constant.SMS_PC_TERM,Constant.SMS_SUCCESS);
+				//将验证码存入redis，并添加短信的过期时间
+				redisUtil.set(vCode, vCode,Constant.SMS_EXPIRE_TIME);
 			}else{
 				smsHisLogger.info("【PC】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
 				smsService.log(phone, "【PC】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!", Constant.SMS_WARNING,Constant.SMS_PC_TERM,Constant.SMS_FAIL);
@@ -206,6 +211,8 @@ public class SMSController {
 				//存储验证码
 				smsHisLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
 				smsService.log(phone, vCode, Constant.SMS_VCODE,Constant.SMS_ANDROID_TERM,Constant.SMS_SUCCESS);
+				//将验证码存入redis，并添加短信的过期时间
+				redisUtil.set(vCode, vCode,Constant.SMS_EXPIRE_TIME);
 				json.put("vcode", vCode);
 			}else{
 				smsHisLogger.info("【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
@@ -230,5 +237,21 @@ public class SMSController {
 		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		return smsService.getSmsLog();
 		
+	}
+	
+	/**
+	 * 此接口为检查收到的短信验证码是否正确，如果正确会返回true，如果不正确或者验证码过期会返回false
+	 * 
+	 * 原理是发送验证码时会将验证码存入Redis，如果用户输入验证码时发送回系统之后，验证码过期或者验证码错误都会返回false
+	 * 验证码过期时间在Constant中设置，暂时设置为60 * 5 秒
+	 * 
+	 * 注：这个url供测试使用，如果要正式使用这个功能，再别的方法里直接使用service层checkVcode方法即可，没必要调用这个url
+	 * @param vCode
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("checkVcode")
+	public boolean checkVcode(String vCode){
+		return smsService.checkVCode(vCode);
 	}
 }
