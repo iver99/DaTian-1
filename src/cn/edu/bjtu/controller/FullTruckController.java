@@ -106,10 +106,10 @@ public class FullTruckController {
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List focusList = focusService.getFocusList(clientId,"fulltruckload");
 		mv.addObject("focusList", focusList);
-		mv.addObject("truckInfo", truckInfo);
 		if (flag == 0) {
 			Carrierinfo carrierInfo = companyService.getCompanyById(carrierId);
 			List<Comment> commentList=commentService.getCompanyComment(carrierId);
+			mv.addObject("truckInfo", truckInfo);
 			mv.addObject("commentList",commentList);
 			mv.addObject("carrierInfo", carrierInfo);
 			//需要获取资源对应的公司的评价平均数bean
@@ -117,8 +117,17 @@ public class FullTruckController {
 			mv.addObject("avgComment", comment);
 			mv.setViewName("resource_detail1");// 资源栏点击详情的页面
 		} else if (flag == 1) {// 详情
+			mv.addObject("truckInfo", truckInfo);
 			mv.setViewName("mgmt_r_line4");
 		} else if (flag == 2) {// 更新
+			/*String temp = clientId + "_";
+			if(truckInfo.getPicture().indexOf(temp)!=-1){
+				String[] s = truckInfo.getPicture().split(temp);
+				truckInfo.setPicture(s[1]);
+				}else{
+					truckInfo.setPicture("请上传文件...");
+				}*/
+			mv.addObject("truckInfo", truckInfo);
 			mv.setViewName("mgmt_r_line3");
 			}
 		return mv;
