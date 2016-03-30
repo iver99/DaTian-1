@@ -59,51 +59,14 @@ public class CarController {
 	FocusService focusService;
 
 	ModelAndView mv = new ModelAndView();
-
-	/**
-	 * 资源栏-车辆信息
-	 * @return
-	 */
-	@RequestMapping(value="/car",params="flag=0")
-	public String getAllCar() {
-		return "resource_list3";
-	}
-	
 	/**
 	 * 获取我的信息-车辆信息
 	 * @return
 	 */
 	@RequestMapping(value="car",params="flag=1")
 	public String getMyInfoCar(HttpServletRequest request){
-		return "mgmt_r_car";
-		
-	}
-	
-	/**
-	 * 资源栏获取筛选后的车辆信息
-	 * @return
-	 */
-	@RequestMapping(value="getSelectedCarAjax",produces = "text/html;charset=UTF-8")
-	@ResponseBody
-	public String getCarSelected(CarSearchBean carBean,PageUtil pageUtil,HttpSession session){
-		
-		JSONArray jsonArray = carService.getSelectedCarNew(carBean, pageUtil,
-				session);
-		
-		return jsonArray.toString();
-	}
-	
-	/**
-	 * 返回资源-车辆筛选记录总条数
-	 * @return
-	 */
-	@RequestMapping(value="getSelectedCarTotalRowsAjax",method = RequestMethod.POST)
-	@ResponseBody
-	public Integer getSelectedCarTotalRows(CarSearchBean carBean){
-		Integer count=carService.getSelectedCarTotalRows(carBean);
-		return count;
-	}
-
+		return "mgmt_r_car";		
+	}	
 	/**
 	 * 获取特定的车辆信息
 	 * 同时返回公司和车辆两个表的信息
