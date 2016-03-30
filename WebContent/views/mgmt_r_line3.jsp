@@ -283,7 +283,7 @@
 					minlength : 1
 				}, */
 				file : {
-					required : false,
+					required : true,
 				},
 				remarks :{ 
 					required : false,
