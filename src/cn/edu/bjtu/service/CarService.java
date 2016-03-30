@@ -21,23 +21,6 @@ public interface CarService {
 	public boolean updateNewCar(Carinfo car,HttpServletRequest request);
 	
 	public boolean deleteCar(String id);
-	
-	/**
-	 * 获取资源栏筛选car
-	 * @param carbean
-	 * @param pageUtil
-	 * @param session
-	 * @return
-	 */
-	public JSONArray getSelectedCarNew(CarSearchBean carbean,PageUtil pageUtil,HttpSession session);
-	
-	/**
-	 * 获取资源栏-车辆筛选记录总条数
-	 * @param carBean
-	 * @return
-	 */
-	public Integer getSelectedCarTotalRows(CarSearchBean carBean);
-	
 	/**
 	 * 获取公司车队姓名列表
 	 * @Title: getCompanyCarteamList 

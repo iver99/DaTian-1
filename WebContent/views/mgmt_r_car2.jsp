@@ -127,18 +127,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">定位方式：</td>
-                                    <td>
-                                        <select id="locationType" style="width:120px;" onchange="change_position();" name="locationType" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="GPS">GPS</option>
-                                            <option value="手机">手机</option>
-                                            <option value="无">无</option>
-                                        </select>
-                                        <div id="pos_detail_1" style="display:none;">
-                                            <input type="text" class="input_mgmt1" style="width:176px;" placeholder="请输入终端设备编码..." name="terminalId"/>
-                                        </div>
-                                    </td>
+                                    <td height="40" class="td_mgmt_right3_td1b">GPS设备ID：</td>
+                                    <td><input type="text" id="GPSID" name="GPSID" class="input_mgmt1" style="width:300px;" required/></td>                                                   
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">车型：</td>
@@ -215,31 +205,12 @@
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">购置日期：</td>
                                     <td><input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" readonly="readonly" title="点击此处选择" id="purchaseTime" name="purchaseTime" required/></td>
-                                </tr>           
+                                </tr>                  
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">司机姓名：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">运营范围：</td>
                                     <td>
-                                        <select style="width:120px;" id="driverId" name="driverId" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <c:forEach var="driverList" items="${driverList }">
-                                            <option value="${driverList.id }">${driverList.driverName }</option>
-                                            </c:forEach>
-                                        </select>
+                                    	<textarea id="opRange" name="opRange" class="textarea_rating" placeholder="请输入内容..." required></textarea>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运营线路：</td>
-                                    <td id="cityselector">
-                                    <div>
-                                        <input id="city1" type="text" value="" class="input_city1" name="startPlace" required/>
-                                        &nbsp;&nbsp;至&nbsp;&nbsp;
-                                        <input id="city2" type="text" value="" class="input_city1" name="endPlace" required/>
-                                    </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">经停城市：</td>
-                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${carInfo.stopPlace }" id="stopPlace" name="stopPlace" required/>
                                 </tr>
                                 <tr>
                                     <td height="1"></td>
@@ -283,14 +254,10 @@
 			rules : {
 				carNum : "required",
 				carTeam : "required",
-				locationType : "required",
 				carBase : "required",
 				carBrand : "required",
 				carUse : "required",
-				city1: "required",
-				city2 : "required",
 				storage : "required",
-				driverId : "required",
 				purchaseTime : "required",
 				carLength : {
 					required : true,

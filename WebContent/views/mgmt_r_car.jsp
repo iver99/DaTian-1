@@ -114,12 +114,12 @@
                      <tr>
                         <td width="20" height="40" class="td_mgmt_right3_head1">&nbsp;</td>
                         <td width="120" class="td_mgmt_right3_head">牌照号码</td>
-                        <td width="60" class="td_mgmt_right3_head">所属车队</td>
+                        <td class="td_mgmt_right3_head">所属车队</td>
                         <td width="60" class="td_mgmt_right3_head">用途</td>
+                        <td width="60" class="td_mgmt_right3_head">车型</td>
+                        <td width="60" class="td_mgmt_right3_head">厢型</td>
                         <td width="60" class="td_mgmt_right3_head">车长(米)</td>
-                        <td width="60" class="td_mgmt_right3_head">载重(吨)</td>
-                        <td width="60" class="td_mgmt_right3_head">状态</td>
-                        <td class="td_mgmt_right3_head">当前位置</td>
+                        <td width="60" class="td_mgmt_right3_head">载重(吨)</td>    
                         <td width="80" class="td_mgmt_right3_head">发布日期</td>
                         <td width="80" class="td_mgmt_right3_head">操作</td>
                     </tr>
@@ -185,30 +185,22 @@
 				  for(var i =0;i<data.length;i++){
 					  var str="<tr>";
 					  str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
-					  str+="<td class=\"td_mgmt_right3_td1\"><a href=\"cardetail?carId="+data[i].id+"&carrierId=0&linetransportId="+data[i].linetransportId+"&flag=1\" hidefocus=\"true\">"+data[i].carNum+"</a></td>";
+					  str+="<td class=\"td_mgmt_right3_td1\"><a href=\"cardetail?carId="+data[i].id+"&flag=1\" hidefocus=\"true\">"+data[i].carNum+"</a></td>";
 					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carTeam+"</td>";
 					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carUse+"</td>";
+					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carType+"</td>";
+					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carBase+"</td>";
 					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carLength+"</td>";
 					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carWeight+"</td>";
-					  str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carState+"</td>";
-					  if(data[i].carLocation == undefined){
-					  	str+="<td class=\"td_mgmt_right3_td1\">--</td>";
-					  }else{
-					 	str+="<td class=\"td_mgmt_right3_td1\">"+data[i].carLocation+"</td>";
-					  }
 					  str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>";
-					  if(data[i].carState == '在途'){
-						  str+="<td class=\"td_mgmt_right3_td3\"><a href=\"cardetail?carId="+data[i].id+"&carrierId=0&linetransportId="+data[i].linetransportId+"&flag=1\" hidefocus=\"true\">查看</a></td>";
-					  }else{
-						  str+="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 203;\">";
-						  str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"cardetail?carId="+data[i].id+"&carrierId="+data[i].carrierId+"&linetransportId="+data[i].linetransportId+"&flag=2\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"cardelete?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
-							str+="</div></div></div></li></ul></div></td>";
-					  }
+					  str+="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 203;\">";
+					  str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
+					  str+="<div class=\"menu\">";
+					  str+="<a href=\"cardetail?carId="+data[i].id+"&flag=2\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
+					  str+="<div class=\"menubd\">";
+					  str+="<div class=\"menubdpanel\">";
+					  str+="<a href=\"cardelete?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">删除</a>";
+					  str+="</div></div></div></li></ul></div></td>";
 					  str+="</tr>";
 					  body.append(str);
 				}  
