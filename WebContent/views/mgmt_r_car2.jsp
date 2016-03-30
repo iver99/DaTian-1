@@ -188,6 +188,16 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b" >冷藏：</td>
+                                    <td>
+                                        <select style="width:120px;" name="storage" id="storage" required>
+                                            <option value="" selected="selected">请选择</option>
+                                            <option value="冷藏">是</option>
+                                            <option value="非冷藏">否</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">规格：</td>
                                     <td>
                                     长&nbsp;<input type="text" class="input_mgmt1" style="width:46px;" id="carLength"name="carLength" required/>
@@ -205,17 +215,7 @@
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">购置日期：</td>
                                     <td><input type="text" class="input_date1" onclick="SelectDate(this,'yyyy-MM-dd')" readonly="readonly" title="点击此处选择" id="purchaseTime" name="purchaseTime" required/></td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b" >冷藏：</td>
-                                    <td>
-                                        <select style="width:120px;" name="storage" id="storage" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="冷藏">是</option>
-                                            <option value="非冷藏">否</option>
-                                        </select>
-                                    </td>
-                                </tr>
+                                </tr>           
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">司机姓名：</td>
                                     <td>
