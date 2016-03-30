@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.edu.bjtu.service.RegisterService;
+import cn.edu.bjtu.service.sms.SmsService;
 import cn.edu.bjtu.util.Encrypt;
 /**
  * 注册控制器
@@ -68,5 +70,23 @@ public class RegisterController {
 			response.getWriter().print("false");
 		}
 		return null;
+	}
+	
+	@Resource
+	SmsService smsService;
+	
+	/**
+	 * 检测验证码是否正确
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="vcodecheckAjax")
+	@ResponseBody
+	public boolean vcodeCheck(HttpServletRequest request) {
+		String vCode = request.getParameter("validationkey");
+		boolean vcodeCheck = smsService.checkVCode(vCode);
+		return vcodeCheck;
 	}
 }

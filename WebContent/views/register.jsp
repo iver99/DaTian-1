@@ -59,7 +59,7 @@
             	<input type="text" class="input_mgmt1" style="width:150px;" placeholder="填写本人手机号码" name="phone" id="phone" required="true"/>
                 <input type="text" id="validationkey" class="input_mgmt1" style="width:48px;" name="validationkey" required/>
                 <input type="button" id="btn_t" value="获取验证码" onclick="doclick;" hidefocus="true" class="btn_register_t" />
-                <input id="vcode" type="hidden"  class="btn_register_t" />
+                <input id="vcode" name="vcode" type="hidden"  class="btn_register_t" />
                 <script type="text/javascript">
 					var wait=60;
 					var time=function time(t) {
@@ -94,6 +94,7 @@
 							type:"post",
 							success:function(data,status){
 								$("#vcode").val(data);
+								alert($("#vcode").val());
 							}
 						});
 					}
@@ -144,6 +145,7 @@
 	function OnLoad() {
 		loadFocus();
 		formValidate();//表单验证
+		//vcodeCheck();
 		
 	}
 </script>
@@ -192,25 +194,29 @@ function loadXMLDoc(flag)
 				   alert("该用户名已被使用！");
 			   }
 			   if(flag == 1 && msg == "true"){
-				   
-				   var validationkey=$("#validationkey").val();
-				   var vcode=$("#vcode").val();
-				   
-				   if(validationkey==vcode){ 
-					
-					$("#register_form").submit();
-					
-				   }
-				    else{
-					   alert("验证码错误，请重新输入");
-				   } 
+				   		   vcodeCheck();
 			   }
-		   }   
-		});
+		   }
+	});
 }
-
-
-
-
+function vcodeCheck()
+{
+	var url="vcodecheckAjax";//请求的后台地址	
+	var validationkey=$("#validationkey").val();
+	$.ajax({
+			type : "GET",
+			url : url,
+			data:{
+				validationkey:validationkey
+			},
+			success : function(msg) {
+				if (msg) {
+					$("#register_form").submit();
+				} else {
+					alert("验证码错误，请重新输入");
+				}
+			}
+		});
+	}
 </script>
 </html>
