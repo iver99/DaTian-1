@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -285,116 +286,119 @@
 </body>
 <script type="text/javascript">
 	function OnLoad() {
-		loadFocus();
-		
-		//set comment star
+		loadFocus();	
 		setStar();
 	}
-	//加载评论星形效果
+</script>
+
+<script type="text/javascript">
 	function setStar(){
-		//var serviceAttitude="${comment.serviceAttitude}";
-		var serviceAttitude="${avgComment.serviceAttitude}";
-		var transportEfficiency="${avgComment.transportEfficiency}";
-		var cargoSafety="${avgComment.cargoSafety}";
-		var totalMoney="${avgComment.totalMoney}";
-		 if(serviceAttitude == '很好'){
-			  $("#rating1").attr("data-score","5");
-		}else if(serviceAttitude =='好'){
-			 $("#rating1").attr("data-score","4");
-		}else if(serviceAttitude == '一般'){
-			 $("#rating1").attr("data-score","3");
-		}else if(serviceAttitude =='差'){
-			 $("#rating1").attr("data-score","2");
-		}else{
-			 $("#rating1").attr("data-score","1");
-		}  
-		//rating1();
-		//$('#rating1').attr('data-score',3);
-		if(transportEfficiency == '很好'){
-			 $("#rating2").attr("data-score","5");
-		}else if(transportEfficiency =='好'){
-			 $("#rating2").attr("data-score","4");
-		}else if(transportEfficiency == '一般'){
-			 $("#rating2").attr("data-score","3");
-		}else if(transportEfficiency =='差'){
-			 $("#rating2").attr("data-score","2");
-		}else{
-			 $("#rating2").attr("data-score","1");
-		}
-		//rating2();
-		//评价三
-		 if(cargoSafety == '很好'){
-			 $("#rating3").attr("data-score","5");
-		}else if(cargoSafety =='好'){
-			$("#rating3").attr("data-score","4");
-		}else if(cargoSafety == '一般'){
-			$("#rating3").attr("data-score","3");
-		}else if(cargoSafety =='差'){
-			$("#rating3").attr("data-score","2");
-		}else{
-			$("#rating3").attr("data-score","1");
-		}
-		//rating3();
-		//评价四
-		if(totalMoney == '很好'){
-			$("#rating4").attr("data-score","5");
-		}else if(totalMoney =='好'){
-			$("#rating4").attr("data-score","4");
-		}else if(totalMoney == '一般'){
-			$("#rating4").attr("data-score","3");
-		}else if(totalMoney =='差'){
-			$("#rating4").attr("data-score","2");
-		}else{
-			$("#rating4").attr("data-score","1");
-		} 
-		//rating4();
-		$('#rating1').raty({
-			half     : false,
-			size     : 16,
-			starOff  : 'images/star-off-small.png',
-			starOn   : 'images/star-on-small.png',
-			targetKeep: true,
-			score: function() { 
-			    return $("#rating1").attr('data-score');
-			}
-		  });
-		  
-		  $('#rating2').raty({
-			half     : false,
-			size     : 16,
-			starOff  : 'images/star-off-small.png',
-			starOn   : 'images/star-on-small.png',
-			starHalf : 'images/star-half-small.png',
-			targetKeep: true,
-			score: function() {
-			    return $("#rating2").attr('data-score');
-			}
-		  });
-		  $('#rating3').raty({
-			half     : false,
-			size     : 16,
-			starOff  : 'images/star-off-small.png',
-			starOn   : 'images/star-on-small.png',
-			starHalf : 'images/star-half-small.png',
-			targetKeep: true,
-			score: function() { 
-			    return $("#rating3").attr('data-score');
-			}
-		  });
-		  $('#rating4').raty({
-			half     : false,
-			size     : 16,
-			starOff  : 'images/star-off-small.png',
-			starOn   : 'images/star-on-small.png',
-			targetKeep: true,
-			score: function() { 
-			    return $("#rating4").attr('data-score');
-			}
-		  });
-		  $("#rating1").raty("readOnly",true);
-		  $("#rating2").raty("readOnly",true);
-		  $("#rating3").raty("readOnly",true);
-		  $("#rating4").raty("readOnly",true);
+	var serviceAttitude="${comment.serviceAttitude}";
+	var transportEfficiency="${comment.transportEfficiency}";
+	var cargoSafety="${comment.cargoSafety}";
+	var totalMoney="${comment.totalMoney}";
+
+	 if(serviceAttitude == '很好'){
+		  $("#rating1").attr("data-score","5");
+	}else if(serviceAttitude =='好'){
+		 $("#rating1").attr("data-score","4");
+	}else if(serviceAttitude == '一般'){
+		 $("#rating1").attr("data-score","3");
+	}else if(serviceAttitude =='差'){
+		 $("#rating1").attr("data-score","2");
+	}else{
+		 $("#rating1").attr("data-score","1");
+	}  
+	//rating1();
+	//$('#rating1').attr('data-score',3);
+	if(transportEfficiency == '很好'){
+		 $("#rating2").attr("data-score","5");
+	}else if(transportEfficiency =='好'){
+		 $("#rating2").attr("data-score","4");
+	}else if(transportEfficiency == '一般'){
+		 $("#rating2").attr("data-score","3");
+	}else if(transportEfficiency =='差'){
+		 $("#rating2").attr("data-score","2");
+	}else{
+		 $("#rating2").attr("data-score","1");
 	}
+	//rating2();
+	//评价三
+	 if(cargoSafety == '很好'){
+		 $("#rating3").attr("data-score","5");
+	}else if(cargoSafety =='好'){
+		$("#rating3").attr("data-score","4");
+	}else if(cargoSafety == '一般'){
+		$("#rating3").attr("data-score","3");
+	}else if(cargoSafety =='差'){
+		$("#rating3").attr("data-score","2");
+	}else{
+		$("#rating3").attr("data-score","1");
+	}
+	//rating3();
+	//评价四
+	if(totalMoney == '很好'){
+		$("#rating4").attr("data-score","5");
+	}else if(totalMoney =='好'){
+		$("#rating4").attr("data-score","4");
+	}else if(totalMoney == '一般'){
+		$("#rating4").attr("data-score","3");
+	}else if(totalMoney =='差'){
+		$("#rating4").attr("data-score","2");
+	}else{
+		$("#rating4").attr("data-score","1");
+	} 
+	//rating4();
+	  $('#rating1').raty({
+		half     : false,
+		size     : 16,
+		starOff  : 'images/star-off-small.png',
+		starOn   : 'images/star-on-small.png',
+		targetKeep: true,
+		score: function() { 
+		    return $("#rating1").attr('data-score');
+		}
+	  });
+	  
+	  $('#rating2').raty({
+		half     : false,
+		size     : 16,
+		starOff  : 'images/star-off-small.png',
+		starOn   : 'images/star-on-small.png',
+		starHalf : 'images/star-half-small.png',
+		targetKeep: true,
+		score: function() {
+		    return $("#rating2").attr('data-score');
+		}
+	  });
+	  
+	  $('#rating3').raty({
+		half     : false,
+		size     : 16,
+		starOff  : 'images/star-off-small.png',
+		starOn   : 'images/star-on-small.png',
+		starHalf : 'images/star-half-small.png',
+		targetKeep: true,
+		score: function() { 
+		    return $("#rating3").attr('data-score');
+		}
+	  });
+	  
+	  $('#rating4').raty({
+		half     : false,
+		size     : 16,
+		starOff  : 'images/star-off-small.png',
+		starOn   : 'images/star-on-small.png',
+		targetKeep: true,
+		score: function() { 
+		    return $("#rating4").attr('data-score');
+		}
+	  });
+	  
+	  $("#rating1").raty("readOnly",true);
+	  $("#rating2").raty("readOnly",true);
+	  $("#rating3").raty("readOnly",true);
+	  $("#rating4").raty("readOnly",true);
+}
 </script>
 </html>
