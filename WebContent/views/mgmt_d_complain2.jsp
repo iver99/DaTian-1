@@ -128,7 +128,7 @@
                                     </td>
 								</tr>
 								<tr>
-									<td height="40" class="td_mgmt_right3_td1b">订单编号：</td>
+									<td height="40" class="td_mgmt_right3_td1b">意向编号：</td>
 									<td><input type="text" class="input_mgmt1" style="width:300px;" value="" id="orderNum" name="orderNum"/> (非必填项)</td>
 								</tr>
 								<tr>
@@ -137,7 +137,7 @@
                                     	<div style="position:relative;">
                                         	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="" />
                                         	<input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />
-      										<input id="file" type="file" name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" required/>
+      										<input id="file" type="file" name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" />
                                         </div>
                                     </td>
 								</tr>
@@ -176,7 +176,6 @@
 				type : "required",
 				theme : "required",
 				content : "required",
-				file:"required"
 				
 
 			}
