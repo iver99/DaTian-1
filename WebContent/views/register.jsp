@@ -94,7 +94,7 @@
 							type:"post",
 							success:function(data,status){
 								$("#vcode").val(data);
-								alert($("#vcode").val());
+								/* alert($("#vcode").val()); */
 							}
 						});
 					}
