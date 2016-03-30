@@ -127,7 +127,7 @@
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">提供回程：</td>
                                     <td>
-                                        <select id="" name="offerReturn" style="width:120px;" required>
+                                        <select id="offerReturn" name="offerReturn" style="width:120px;" required>
                                             <option value="" selected="selected">请选择</option>
                                             <option value="有">有</option>
                                             <option value="无">无</option>
@@ -137,14 +137,26 @@
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">增值服务：</td>
                                     <td>
+                                        <c:if test="${truckInfo.extraService=='没有' }">
                                         <select id="valueadd" style="width:120px;" onchange="change1();">
-                                            <option value="">请选择</option>
-                                            <option value="A">有</option>
-                                            <option value="B" selected="selected">无</option>
+                                            <option value="" >请选择</option>
+                                            <option value="有">有</option>
+                                            <option value="无" selected="selected">无</option>
                                         </select>
                                         <div id="v_detail" style="display:none;">
                                             <input type="text" name="extraService" class="input_mgmt1" style="width:176px;" placeholder="请输入内容..." />
                                         </div>
+                                     </c:if>
+                                     <c:if test="${truckInfo.extraService!='没有' }">
+                                        <select id="valueadd" style="width:120px;" onchange="change1();">
+                                            <option value="" >请选择</option>
+                                            <option value="有" selected="selected">有</option>
+                                            <option value="无">无</option>
+                                        </select>
+                                        <div id="v_detail" style="display:inline;">
+                                            <input type="text" name="extraService" class="input_mgmt1" style="width:176px;" value="${truckInfo.extraService }" />
+                                        </div>
+                                     </c:if>
                                     </td>
                                 </tr>
                                <tr>
@@ -211,7 +223,7 @@
 		loadFocus();
 		
 		//设置页面字段值（checkbox）
-		//setPageValue();
+		setData();
 	}
 	//设置页面字段值
 	/* function setPageValue(){
@@ -227,5 +239,8 @@
 			$("type2").attr("checked",true);
 		} 
 	} */
+	function setData(){
+		$("#offerReturn").attr("value","${truckInfo.offerReturn}");
+	}
 </script>
 </html>

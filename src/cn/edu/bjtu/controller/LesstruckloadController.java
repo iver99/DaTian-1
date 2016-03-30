@@ -103,10 +103,10 @@ public class LesstruckloadController {
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List focusList = focusService.getFocusList(clientId,"lesstruckload");
 		mv.addObject("focusList", focusList);
-		mv.addObject("truckInfo", truckInfo);
 		if (flag == 0) {
 			Carrierinfo carrierInfo = companyService.getCompanyById(carrierId);
 			List<Comment> commentList=commentService.getCompanyComment(carrierId);
+			mv.addObject("truckInfo", truckInfo);
 			mv.addObject("commentList",commentList);
 			mv.addObject("carrierInfo", carrierInfo);
 			//需要获取资源对应的公司的评价平均数bean
@@ -114,8 +114,10 @@ public class LesstruckloadController {
 			mv.addObject("avgComment", comment);
 			mv.setViewName("resource_detail3");// 资源栏点击详情的页面
 		} else if (flag == 1) {// 详情
+			mv.addObject("truckInfo", truckInfo);
 			mv.setViewName("mgmt_r_ltl4");
 		} else if (flag == 2) {// 更新
+			mv.addObject("truckInfo", truckInfo);
 			mv.setViewName("mgmt_r_ltl3");
 			}
 		return mv;
