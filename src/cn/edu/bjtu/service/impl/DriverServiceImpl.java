@@ -23,7 +23,6 @@ import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.util.UploadFile;
-import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Driverinfo;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -63,18 +62,6 @@ public class DriverServiceImpl implements DriverService{
 				
 				return driverDao.get(hql, params);
 	}
-	
-	@Override
-	/**
-	 * 通过carid找到driverinfo
-	 */
-	public Driverinfo getDriverByCarId(String carId) {
-		
-		String driverId = carDao.get(Carinfo.class, carId).getDriverId();
-
-		return driverDao.get(Driverinfo.class,driverId);
-	}
-
 	@Override
 	/**
 	 * 获取所有的司机姓名，更新车辆页面使用

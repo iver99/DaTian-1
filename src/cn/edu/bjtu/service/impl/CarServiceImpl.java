@@ -195,8 +195,6 @@ public class CarServiceImpl implements CarService {
 
 		Carinfo carInstance = carDao.get(Carinfo.class,car.getId());
 		carInstance.setCarTeam(car.getCarTeam());
-		carInstance.setLocationType(car.getLocationType());
-		carInstance.setTerminalId(car.getTerminalId());
 		carInstance.setCarType(car.getCarType());
 		carInstance.setCarBase(car.getCarBase());
 		carInstance.setCarBrand(car.getCarBrand());
@@ -207,12 +205,6 @@ public class CarServiceImpl implements CarService {
 		carInstance.setCarWeight(car.getCarWeight());
 		carInstance.setPurchaseTime(car.getPurchaseTime());
 		carInstance.setStorage(car.getStorage());
-		carInstance.setDriverId(car.getDriverId());
-		carInstance.setStopPlace(car.getStopPlace());
-		carInstance.setStartPlace(car.getStartPlace());
-		carInstance.setEndPlace(car.getEndPlace());
-		
-
 		//¸üÐÂ
 		carDao.update(carInstance);
 		return true;

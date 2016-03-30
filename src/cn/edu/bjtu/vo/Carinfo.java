@@ -21,30 +21,22 @@ public class Carinfo implements java.io.Serializable {
 	private String carNum;
 	private String carTeam;
 	private String carUse;
-	private Double carLength;
-	private Double carWidth;
-	private Double carHeight;
-	private Double carWeight;
+	private Float carLength;
+	private Float carWidth;
+	private Float carHeight;
+	private Float carWeight;
 	private String carBase;
-	private String terminalId;
+	private String GPSID;
 
 	private String carState;
-	private String carLocation;
-	private Date relDate;
 	private String carType;
-	private String linetransportId;
-	private Double locLongitude;
-	private Double locLatitude;
-	private String locationType;
+	private Date relDate;
 	@DateTimeFormat( pattern = "yyyy-MM-dd" )
 	private Date purchaseTime;
-	private String driverId;
 	private String carBrand;
 	private String storage;
 	private String carrierId;
-	private String stopPlace;
-	private String startPlace;
-	private String endPlace;
+	private String opRange;
 
 	public Carinfo() {
 	}
@@ -52,18 +44,29 @@ public class Carinfo implements java.io.Serializable {
 	public Carinfo(String id) {
 		this.id = id;
 	}
-	
-	
 
-
-	public Carinfo(String id, String carNum, String carTeam, String carUse,
-			Double carLength, Double carWidth, Double carHeight,
-			Double carWeight, String carBase, String terminalId,
-			String carState, String carLocation, Date relDate, String carType,
-			String linetransportId, Double locLongitude, Double locLatitude,
-			String locationType, Date purchaseTime, String driverId,
-			String carBrand, String storage, String carrierId, String stopPlace,
-			String startPlace, String endPlace) {
+	/**
+	 * @param id
+	 * @param carNum
+	 * @param carTeam
+	 * @param carUse
+	 * @param carLength
+	 * @param carWidth
+	 * @param carHeight
+	 * @param carWeight
+	 * @param carBase
+	 * @param gPSID
+	 * @param carState
+	 * @param carType
+	 * @param purchaseTime
+	 * @param carBrand
+	 * @param storage
+	 * @param carrierId
+	 * @param opRange
+	 */
+	public Carinfo(String id, String carNum, String carTeam, String carUse, Float carLength, Float carWidth,
+			Float carHeight, Float carWeight, String carBase, String gPSID, String carState, String carType,
+			Date purchaseTime, String carBrand, String storage, String carrierId, String opRange) {
 		super();
 		this.id = id;
 		this.carNum = carNum;
@@ -74,234 +77,266 @@ public class Carinfo implements java.io.Serializable {
 		this.carHeight = carHeight;
 		this.carWeight = carWeight;
 		this.carBase = carBase;
-		this.terminalId = terminalId;
+		GPSID = gPSID;
 		this.carState = carState;
-		this.carLocation = carLocation;
-		this.relDate = relDate;
 		this.carType = carType;
-		this.linetransportId = linetransportId;
-		this.locLongitude = locLongitude;
-		this.locLatitude = locLatitude;
-		this.locationType = locationType;
 		this.purchaseTime = purchaseTime;
-		this.driverId = driverId;
 		this.carBrand = carBrand;
 		this.storage = storage;
 		this.carrierId = carrierId;
-		this.stopPlace = stopPlace;
-		this.startPlace = startPlace;
-		this.endPlace = endPlace;
-	}
-	
-	public String getStartPlace() {
-		return startPlace;
+		this.opRange = opRange;
 	}
 
-	public void setStartPlace(String startPlace) {
-		this.startPlace = startPlace;
-	}
-	
-	public String getEndPlace() {
-		return endPlace;
-	}
-
-	public void setEndPlace(String endPlace) {
-		this.endPlace = endPlace;
-	}
-	
-	public String getStopPlace() {
-		return stopPlace;
-	}
-
-	public void setStopPlace(String stopPlace) {
-		this.stopPlace = stopPlace;
-	}
-
-	public String getCarBase() {
-		return carBase;
-	}
-
-	public void setCarBase(String carBase) {
-		this.carBase = carBase;
-	}
-	
-	public Double getCarLength() {
-		return carLength;
-	}
-
-	public void setCarLength(Double carLength) {
-		this.carLength = carLength;
-	}
-
-	public Double getCarWidth() {
-		return carWidth;
-	}
-
-	public void setCarWidth(Double carWidth) {
-		this.carWidth = carWidth;
-	}
-
-	public Double getCarHeight() {
-		return carHeight;
-	}
-
-	public void setCarHeight(Double carHeight) {
-		this.carHeight = carHeight;
-	}
-
+	/**
+	 * @return id
+	 */
 	public String getId() {
-		return this.id;
+		return id;
 	}
 
+	/**
+	 * @param id 要设置的 id
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return carNum
+	 */
 	public String getCarNum() {
-		return this.carNum;
+		return carNum;
 	}
 
+	/**
+	 * @param carNum 要设置的 carNum
+	 */
 	public void setCarNum(String carNum) {
 		this.carNum = carNum;
 	}
 
+	/**
+	 * @return carTeam
+	 */
 	public String getCarTeam() {
-		return this.carTeam;
+		return carTeam;
 	}
 
+	/**
+	 * @param carTeam 要设置的 carTeam
+	 */
 	public void setCarTeam(String carTeam) {
 		this.carTeam = carTeam;
 	}
 
+	/**
+	 * @return carUse
+	 */
 	public String getCarUse() {
-		return this.carUse;
+		return carUse;
 	}
 
+	/**
+	 * @param carUse 要设置的 carUse
+	 */
 	public void setCarUse(String carUse) {
 		this.carUse = carUse;
 	}
 
-	
+	/**
+	 * @return carLength
+	 */
+	public Float getCarLength() {
+		return carLength;
+	}
 
-	public Double getCarWeight() {
+	/**
+	 * @param carLength 要设置的 carLength
+	 */
+	public void setCarLength(Float carLength) {
+		this.carLength = carLength;
+	}
+
+	/**
+	 * @return carWidth
+	 */
+	public Float getCarWidth() {
+		return carWidth;
+	}
+
+	/**
+	 * @param carWidth 要设置的 carWidth
+	 */
+	public void setCarWidth(Float carWidth) {
+		this.carWidth = carWidth;
+	}
+
+	/**
+	 * @return carHeight
+	 */
+	public Float getCarHeight() {
+		return carHeight;
+	}
+
+	/**
+	 * @param carHeight 要设置的 carHeight
+	 */
+	public void setCarHeight(Float carHeight) {
+		this.carHeight = carHeight;
+	}
+
+	/**
+	 * @return carWeight
+	 */
+	public Float getCarWeight() {
 		return carWeight;
 	}
 
-	public void setCarWeight(Double carWeight) {
+	/**
+	 * @param carWeight 要设置的 carWeight
+	 */
+	public void setCarWeight(Float carWeight) {
 		this.carWeight = carWeight;
 	}
 
-	public String getCarState() {
-		return this.carState;
+	/**
+	 * @return carBase
+	 */
+	public String getCarBase() {
+		return carBase;
 	}
 
+	/**
+	 * @param carBase 要设置的 carBase
+	 */
+	public void setCarBase(String carBase) {
+		this.carBase = carBase;
+	}
+
+	/**
+	 * @return gPSID
+	 */
+	public String getGPSID() {
+		return GPSID;
+	}
+
+	/**
+	 * @param gPSID 要设置的 gPSID
+	 */
+	public void setGPSID(String gPSID) {
+		GPSID = gPSID;
+	}
+
+	/**
+	 * @return carState
+	 */
+	public String getCarState() {
+		return carState;
+	}
+
+	/**
+	 * @param carState 要设置的 carState
+	 */
 	public void setCarState(String carState) {
 		this.carState = carState;
 	}
 
-	public String getCarLocation() {
-		return this.carLocation;
-	}
-
-	public void setCarLocation(String carLocation) {
-		this.carLocation = carLocation;
-	}
-
-	public Date getRelDate() {
-		return this.relDate;
-	}
-
-	public void setRelDate(Date relDate) {
-		this.relDate = relDate;
-	}
-
+	/**
+	 * @return carType
+	 */
 	public String getCarType() {
-		return this.carType;
+		return carType;
 	}
 
+	/**
+	 * @param carType 要设置的 carType
+	 */
 	public void setCarType(String carType) {
 		this.carType = carType;
 	}
 
-	public String getLinetransportId() {
-		return this.linetransportId;
-	}
-
-	public void setLinetransportId(String linetransportId) {
-		this.linetransportId = linetransportId;
-	}
-
-	public Double getLocLongitude() {
-		return this.locLongitude;
-	}
-
-	public void setLocLongitude(Double locLongitude) {
-		this.locLongitude = locLongitude;
-	}
-
-	public Double getLocLatitude() {
-		return this.locLatitude;
-	}
-
-	public void setLocLatitude(Double locLatitude) {
-		this.locLatitude = locLatitude;
-	}
-
-	public String getLocationType() {
-		return this.locationType;
-	}
-
-	public void setLocationType(String locationType) {
-		this.locationType = locationType;
-	}
-
+	/**
+	 * @return purchaseTime
+	 */
 	public Date getPurchaseTime() {
-		return this.purchaseTime;
+		return purchaseTime;
 	}
 
+	/**
+	 * @param purchaseTime 要设置的 purchaseTime
+	 */
 	public void setPurchaseTime(Date purchaseTime) {
 		this.purchaseTime = purchaseTime;
 	}
 
-	public String getDriverId() {
-		return this.driverId;
-	}
-
-	public void setDriverId(String driverId) {
-		this.driverId = driverId;
-	}
-
+	/**
+	 * @return carBrand
+	 */
 	public String getCarBrand() {
-		return this.carBrand;
+		return carBrand;
 	}
 
+	/**
+	 * @param carBrand 要设置的 carBrand
+	 */
 	public void setCarBrand(String carBrand) {
 		this.carBrand = carBrand;
 	}
 
+	/**
+	 * @return storage
+	 */
 	public String getStorage() {
-		return this.storage;
+		return storage;
 	}
 
+	/**
+	 * @param storage 要设置的 storage
+	 */
 	public void setStorage(String storage) {
 		this.storage = storage;
 	}
 
+	/**
+	 * @return carrierId
+	 */
 	public String getCarrierId() {
-		return this.carrierId;
+		return carrierId;
 	}
 
+	/**
+	 * @param carrierId 要设置的 carrierId
+	 */
 	public void setCarrierId(String carrierId) {
 		this.carrierId = carrierId;
 	}
 
-	public String getTerminalId() {
-		return terminalId;
+	/**
+	 * @return opRange
+	 */
+	public String getOpRange() {
+		return opRange;
 	}
 
-	public void setTerminalId(String terminalId) {
-		this.terminalId = terminalId;
+	/**
+	 * @param opRange 要设置的 opRange
+	 */
+	public void setOpRange(String opRange) {
+		this.opRange = opRange;
 	}
 
+	/**
+	 * @return relDate
+	 */
+	public Date getRelDate() {
+		return relDate;
+	}
+
+	/**
+	 * @param relDate 要设置的 relDate
+	 */
+	public void setRelDate(Date relDate) {
+		this.relDate = relDate;
+	}
 	
 }

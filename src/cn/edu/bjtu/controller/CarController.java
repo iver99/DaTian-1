@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.edu.bjtu.bean.search.CarSearchBean;
 import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.CarTeamService;
 import cn.edu.bjtu.service.CommentService;
@@ -27,7 +26,6 @@ import cn.edu.bjtu.service.LinetransportService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
-import cn.edu.bjtu.util.UploadPath;
 import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Carteam;
@@ -99,15 +97,10 @@ public class CarController {
 			mv.setViewName("resource_detail3");
 		} else if (flag == 1)// 对应我的信息列车辆信息
 		{
-			// 需要司机信息
-			Driverinfo driverinfo = driverService.getDriverByCarId(carId);
-			mv.addObject("driverInfo", driverinfo);
 			mv.setViewName("mgmt_r_car4");
 		} else if (flag == 2)// 对应我的信息-车辆-更新
 		{
 			// 需要司机信息
-			Driverinfo driverinfo = driverService.getDriverByCarId(carId);
-			mv.addObject("driverInfo", driverinfo);
 			List driverList = driverService.getAllDriver(carrierId);
 			mv.addObject("driverList", driverList);
 			mv.setViewName("mgmt_r_car3");
