@@ -112,6 +112,7 @@
                                <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">意向编号：</td>
                                     <td>${orderInfo.orderNum }</td>
+                                    <input type="hidden" name="id" value="${orderInfo.id }" />
                                 </tr>
                                 <%-- <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">所属客户：</td>
