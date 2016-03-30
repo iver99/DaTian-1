@@ -111,8 +111,14 @@
                                     <td>${citylineInfo.cityName }</td>
                                 </tr>
                                 <tr>
+                                <c:if test="${citylineInfo.VIPService=='有' }">
+                                    <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
+                                    <td>${citylineInfo.VIPDetail }</td>
+                                </c:if>
+                                <c:if test="${citylineInfo.VIPService=='无' }">
                                     <td height="40" class="td_mgmt_right3_td1b">增值服务：</td>
                                     <td>${citylineInfo.VIPService }</td>
+                                </c:if>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">标准报价：</td>
