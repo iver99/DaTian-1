@@ -68,7 +68,22 @@ public class Orderform implements java.io.Serializable {
 	private int flag;//数值为1,用于统计分析
 	private int onwayTime;//运输时限
 	
+	private String satisfaction;//用户满意度
 	
+	
+	
+	/**
+	 * @return satisfaction
+	 */
+	public String getSatisfaction() {
+		return satisfaction;
+	}
+	/**
+	 * @param satisfaction 要设置的 satisfaction
+	 */
+	public void setSatisfaction(String satisfaction) {
+		this.satisfaction = satisfaction;
+	}
 	/**
 	 * @return onwayTime
 	 */

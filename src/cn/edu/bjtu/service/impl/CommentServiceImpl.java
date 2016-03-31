@@ -59,8 +59,14 @@ public class CommentServiceImpl implements CommentService{
 		comment.setOrderId(order.getId());
 		
 		if(order!= null){
+			//设置订单状态
 			order.setState("已完成");
 			order.setCommentId(comment.getId());
+			//计算并设置用户满意度，服务态度，运输时效，货物安全的权重分别为25%，50%，75%
+			int cargo = mark(comment.getCargoSafety());
+			int transport = mark(comment.getTransportEfficiency());
+			int service = mark(comment.getServiceAttitude());
+			order.setSatisfaction(((cargo*75/100+transport*50/100+service*25/100)*100/150)+"%");
 			orderDao.update(order);
 		}
 		
@@ -69,51 +75,22 @@ public class CommentServiceImpl implements CommentService{
 		
 		return true;
 	}
-
-	/*@Override
-	*//**
-	 *根据公司id和干线id得到评价
-	 *//*
-	public List<Comment> getLinetransportCommentById(String linetransportId,String userId) {
-		
-		Map<String,Object> params=new HashMap<String,Object>();
-		String hql="from Comment where linetransportId=:linetransportId and carrierId=:carrierId";
-		params.put("linetransportId", linetransportId);
-		params.put("carrierId", userId);
-		return commentDao.find(hql, params);
+	/*
+	 * 根据评价，返回对应的数值，很差，差，一般，好，很好分别对应20,40,60,80,100
+	 */
+	public int mark(String rate){
+		if(rate.equals("很差")){
+			return 20;
+		}else if(rate.equals("差")){
+			return 40;
+		}else if(rate.equals("一般")){
+			return 60;
+		}else if(rate.equals("好")){
+			return 80;
+		}else{
+			return 100;
+		}
 	}
-
-	@Override
-	public List<Comment> getCitylineCommentById(String citylineId, String userId) {
-		
-		Map<String,Object> params=new HashMap<String,Object>();
-		String hql="from Comment where citylineId=:citylineId and carrierId=:carrierId";
-		params.put("citylineId", citylineId);
-		params.put("carrierId", userId);
-		return commentDao.find(hql, params);
-	}
-
-	@Override
-	public List<Comment> getCarCommentById(String carId, String userId) {
-		
-		Map<String,Object> params=new HashMap<String,Object>();
-		String hql="from Comment where carId=:carId and carrierId=:carrierId";
-		params.put("carId", carId);
-		params.put("carrierId", userId);
-		return commentDao.find(hql, params);
-	}
-
-	@Override
-	public List<Comment> getWarehouseCommentById(String warehouseid,
-			String userId) {
-		
-		Map<String,Object> params=new HashMap<String,Object>();
-		String hql="from Comment where warehouseid=:warehouseid and carrierId=:carrierId";
-		params.put("warehouseid", warehouseid);
-		params.put("carrierId", userId);
-		return commentDao.find(hql, params);
-	}*/
-
 	/**
 	 * 根据订单id得到订单评价
 	 */
