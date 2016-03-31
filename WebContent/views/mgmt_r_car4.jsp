@@ -112,13 +112,9 @@
                                     <td>${carInfo.carNum }</td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">定位方式：</td>
-                                    <td>${carInfo.locationType } (终端ID：${carInfo.terminalId })</td>
-                                </tr>
-                               <%--  <tr>
-                                    <td width="120" height="40" class="td_mgmt_right3_td1b">当前位置：</td>
-                                    <td>${carInfo.carLocation } &nbsp;&nbsp;<a href="javascript:;" hidefocus="true" title="刷新轨迹"><img src="images/btn_refresh1.png" />&nbsp;刷新</a>&nbsp;&nbsp;&nbsp;<a href="mgmt_r_car5.htm" hidefocus="true" title="查看地图"><img src="images/btn_map4.png" />查看</a></td>
-                                </tr> --%>
+                                    <td height="40" class="td_mgmt_right3_td1b">GPS设备ID：</td>
+                                    <td>${carInfo.GPSID }</td>
+                                </tr>            
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">车型：</td>
                                     <td>${carInfo.carType } </td>
@@ -136,6 +132,10 @@
                                     <td>${carInfo.carUse }</td>
                                 </tr>
                                 <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">冷藏：</td>
+                                    <td>${carInfo.storage }</td>
+                                </tr>
+                                <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">规格：</td>
                                     <td>长${carInfo.carLength } × 宽 ${carInfo.carWidth } × 高 ${carInfo.carHeight } (米)</td>
                                 </tr>
@@ -148,9 +148,9 @@
                                     <td><fmt:formatDate value ="${carInfo.purchaseTime }" pattern= "yyyy-MM-dd" /></td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">冷藏：</td>
-                                    <td>${carInfo.storage }</td>
-                                </tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">运营范围：</td>
+                                    <td>${carInfo.opRange }</td>
+                                </tr>       
                             </table>
                         </td>
                     </tr>

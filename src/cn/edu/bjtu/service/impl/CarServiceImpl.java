@@ -77,6 +77,7 @@ public class CarServiceImpl implements CarService {
 		carInstance.setCarWeight(car.getCarWeight());
 		carInstance.setPurchaseTime(car.getPurchaseTime());
 		carInstance.setStorage(car.getStorage());
+		carInstance.setOpRange(car.getOpRange());
 		//¸üÐÂ
 		carDao.update(carInstance);
 		return true;

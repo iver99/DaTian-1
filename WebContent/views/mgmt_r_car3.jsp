@@ -111,8 +111,7 @@
                     <tr>
                         <td class="td_mgmt_right3_td1a"> 
                             <br />   
-                              <form action="updateCar?id=${carInfo.id }" method="post">	   
-                                     
+                            <form action="updateCar?id=${carInfo.id }" method="post">	             
                             <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">牌照号码：</td>
@@ -122,26 +121,13 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">所属车队：</td>
                                     <td>
                                         <select style="width:120px;" name="carTeam" id="carTeam" required>
-                                            <option value="" selected="selected">请选择</option>
-                                           <!--  <option value="北京车队" >北京车队</option>
-                                            <option value="天津车队">天津车队</option>
-                                            <option value="上海车队">上海车队</option> -->
+                                            <option value="" selected="selected">请选择</option> 
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">定位方式：</td>
-                                    <td>
-                                    	<select id="locationType" style="width:120px;" onchange="change_position();" name="locationType" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="GPS" >GPS</option>
-                                            <option value="手机">手机</option>
-                                            <option value="无">无</option>
-                                        </select>
-                                        <div id="pos_detail_1" style="display:none;">
-                                            <input type="text" class="input_mgmt1" style="width:176px;" value="${carInfo.terminalId }" placeholder="请输入终端设备编码..." name="terminalId"/>
-                                        </div>
-                                    </td>
+                                    <td height="40" class="td_mgmt_right3_td1b">GPS设备ID：</td>
+                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${carInfo.GPSID }" name="GPSID" required/></td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">车型：</td>
@@ -191,6 +177,16 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td height="40" class="td_mgmt_right3_td1b">冷藏：</td>
+                                    <td>
+                                    	<select style="width:120px;" name="storage" id="storage" required>
+                                            <option value="" selected="selected">请选择</option>
+                                            <option value="冷藏" >是</option>
+                                            <option value="非冷藏">否</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">规格：</td>
                                     <td>
                                     长&nbsp;<input type="text" class="input_mgmt1" style="width:46px;" value="${carInfo.carLength }" name="carLength" required/>
@@ -207,42 +203,13 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">购置日期：</td>
-                                    <td><input type="text" class="input_date1" title="点击此处选择" onclick="SelectDate(this,'yyyy-MM-dd')" value="<fmt:formatDate value ="${carInfo.purchaseTime }" pattern= "yyyy-MM-dd" />" readonly="readonly" name="carPurTime" required/></td>
-                                </tr>
+                                    <td><input type="text" class="input_date1" title="点击此处选择" onclick="SelectDate(this,'yyyy-MM-dd')" value="<fmt:formatDate value ="${carInfo.purchaseTime }" pattern= "yyyy-MM-dd" />" readonly="readonly" name="purchaseTime" required/></td>
+                                </tr>                                          
                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">冷藏：</td>
+                                    <td height="40" class="td_mgmt_right3_td1b">运营范围：</td>
                                     <td>
-                                    	<select style="width:120px;" name="storage" id="storage" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <option value="冷藏" >是</option>
-                                            <option value="非冷藏">否</option>
-                                        </select>
+                                    	<textarea id="opRange" name="opRange" class="textarea_rating" required>${carInfo.opRange } </textarea>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">司机姓名：</td>
-                                    <td>
-                                        <select style="width:120px;" name="driverId" required>
-                                            <option value="" selected="selected">请选择</option>
-                                            <d:forEach var="driverList" items="${driverList }">
-                                            <option value="${driverList.id }">${driverList.driverName }</option>
-                                            </d:forEach>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">运营线路：</td>
-                                    <td id="cityselector">
-                                    <div>
-                                        <input id="city1" type="text" value="${carInfo.startPlace }" class="input_city1" name="startPlace" required/>
-                                        &nbsp;&nbsp;至&nbsp;&nbsp;
-                                        <input id="city2" type="text" value="${carInfo.endPlace }" class="input_city1" name="endPlace" required/>
-                                    </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">经停城市：</td>
-                                    <td><input type="text" class="input_mgmt1" style="width:300px;" value="${carInfo.stopPlace }" name="stopPlace" required/>
                                 </tr>
                                 <tr>
                                     <td height="1"></td>
@@ -280,12 +247,10 @@
 		
 		//设置数据
 		setData();
-		//$("#locationType").attr('value','GPS');
 	}
 	//设置数据
 	function setData(){
-		//alert("${carInfo.startPlace}");
-		$("#locationType").attr("value","${carInfo.locationType}");
+		$("#carTeam").attr("value","${carInfo.carTeam}");
 		$("#carBase").attr("value","${carInfo.carBase}");
 		$("#carUse").attr("value","${carInfo.carUse}");
 		$("#carType").attr("value","${carInfo.carType}");
@@ -297,16 +262,19 @@
 	 //获取公司车队列表
 	function getCompanyCarteamList(){
 		var url="getCompanyCarteamList";
-		
+		var team = "${carInfo.carTeam }";
 		$.ajax({
 			url:url,
 			cache:false,
 			dataType:"json",
 			success:function(data,status){
-				//alert(data);
 				var carteam=$("#carTeam");
-				for(var i=0;i<data.length;i++){
-					var option=$("<option>").text(data[i].teamName).val(data[i].teamName);
+				for(var i=0;i<data.length;i++){	
+					if(team == data[i].teamName){
+					    var option=$("<option>").text(data[i].teamName).val(data[i].teamName).attr("selected",true);
+					}else{
+						var option=$("<option>").text(data[i].teamName).val(data[i].teamName);
+					}
 					carteam.append(option);
 				}
 			}

@@ -73,36 +73,15 @@ public class CarController {
 	 */
 	@RequestMapping(value = "/cardetail", method = RequestMethod.GET)
 	public ModelAndView getCarInfo(@RequestParam("carId") String carId,
-			@RequestParam("carrierId") String carrierId,
-			@RequestParam("linetransportId") String linetransportId,
 			@RequestParam("flag") int flag, HttpServletRequest request) {
 		Carinfo carInfo = carService.getCarInfo(carId);// 车辆信息
 		mv.addObject("carInfo", carInfo);
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
-		List focusList = focusService.getFocusList(clientId,"car");
-		Linetransport line = linetransportService
-				.getLinetransportInfo(linetransportId);// 干线信息
-		mv.addObject("focusList", focusList);
-		mv.addObject("linetransportInfo", line);
-		if (flag == 0) {// 对应资源栏车辆详情
-			Carrierinfo carrierInfo = companyService.getCompanyById(carrierId);
-			List<Comment> commentList=commentService.getCompanyComment(carrierId);
-			//需要获取资源对应的公司的评价平均数bean
-			Comment comment=commentService.getCompanyAverageCommentRate(carrierId);
-			mv.addObject("avgComment", comment);
-			mv.addObject("commentList",commentList);
-			
-			mv.addObject("carrierInfo", carrierInfo);
-
-			mv.setViewName("resource_detail3");
-		} else if (flag == 1)// 对应我的信息列车辆信息
+		if (flag == 1)// 对应我的信息列车辆信息
 		{
 			mv.setViewName("mgmt_r_car4");
 		} else if (flag == 2)// 对应我的信息-车辆-更新
 		{
-			// 需要司机信息
-			List driverList = driverService.getAllDriver(carrierId);
-			mv.addObject("driverList", driverList);
 			mv.setViewName("mgmt_r_car3");
 		}
 		return mv;
