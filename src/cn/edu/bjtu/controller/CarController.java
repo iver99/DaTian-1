@@ -27,12 +27,8 @@ import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.DownloadFile;
 import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carinfo;
-import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Carteam;
-import cn.edu.bjtu.vo.Comment;
 import cn.edu.bjtu.vo.Driverinfo;
-import cn.edu.bjtu.vo.Linetransport;
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -143,6 +139,7 @@ public class CarController {
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		// String carrierId = "C-0002";// 删除
 		List<Carteam> carteamList = carTeamService.getCarteam(carrierId);
+		
 		mv.addObject("carteamList", carteamList);
 		mv.setViewName("mgmt_r_car_fleet");
 
@@ -155,9 +152,9 @@ public class CarController {
 	 * @return
 	 */
 	@RequestMapping(value = "/carteamdetail", method = RequestMethod.GET)
-	public ModelAndView getCarteamDetail(@RequestParam String id,
-			@RequestParam("flag") int flag, HttpServletRequest request) {
+	public ModelAndView getCarteamDetail(@RequestParam String id,@RequestParam("flag") int flag, HttpServletRequest request) {
 		Carteam carteaminfo = carTeamService.getCarteamInfo(id);// 车队信息
+		carteaminfo.setCarCount(carService.getCarTeamCars(carteaminfo.getTeamName(), carteaminfo.getCarrierId())+"");
 		mv.addObject("carteaminfo", carteaminfo);
 		if (flag == 1)// 对应车队信息查看
 		{
@@ -172,11 +169,9 @@ public class CarController {
 	/**
 	 */
 	@RequestMapping(value = "insertcarteam", method = RequestMethod.POST)
-	public String insertCarteam(@RequestParam String teamName,
-			@RequestParam String carCount, @RequestParam String chief,
-			@RequestParam String phone, @RequestParam String explaination,
-			HttpServletRequest request, HttpServletResponse response) {
+	public String insertCarteam(@RequestParam String teamName, @RequestParam String chief,@RequestParam String phone, @RequestParam String explaination,HttpServletRequest request, HttpServletResponse response) {
 		String carrierId = (String) request.getSession().getAttribute(Constant.USER_ID);
+		String carCount = "";
 		boolean flag = carTeamService.insertCarteam(teamName, carCount, chief, phone, explaination, carrierId);
 		return "redirect:carteam";
 	}
@@ -195,10 +190,10 @@ public class CarController {
 
 	@RequestMapping(value = "updatecarteam", method = RequestMethod.POST)
 	public String updateCarteam(@RequestParam String id,
-			@RequestParam String teamName, @RequestParam String carCount,
-			@RequestParam String chief, @RequestParam String phone,
+			@RequestParam String teamName, @RequestParam String chief, @RequestParam String phone,
 			@RequestParam String explaination, HttpServletRequest request,
 			HttpServletResponse response) {
+		String carCount = "";
 		carTeamService.updateCarteam(id, teamName, carCount, chief,
 				phone, explaination);
 		return "redirect:carteam";
@@ -319,7 +314,7 @@ public class CarController {
 	}
 	
 	/**
-	 * 我的资源-车辆信息-车队i信息
+	 * 我的资源-车辆信息-车队信息
 	 * @Title: getUserCarTeamResource 
 	 *  
 	 * @param: @param session

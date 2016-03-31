@@ -108,11 +108,7 @@
 			                    <tr>
 			                        <td width="120" height="40" class="td_mgmt_right3_td1b">车队名称：</td>
 			                        <td><input type="text" class="input_mgmt1" style="width:300px;" value="${carteaminfo.teamName }" name="teamName" required/></td>
-		                        </tr>
-		                        <tr>
-			                        <td width="120" height="40" class="td_mgmt_right3_td1b">数量(辆)：</td>
-			                        <td><input type="text" class="input_mgmt1" style="width:300px;" value="${carteaminfo.carCount }" name="carCount" required/></td>
-		                        </tr>
+		                        </tr>	                        
 			                    <tr>
 			                        <td height="40" class="td_mgmt_right3_td1b">车队负责人：</td>
 			                        <td><input type="text" class="input_mgmt1" style="width:300px;" value="${carteaminfo.chief }" name="chief" required/></td>

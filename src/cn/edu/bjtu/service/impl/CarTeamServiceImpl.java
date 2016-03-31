@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.bjtu.dao.CarTeamDao;
+import cn.edu.bjtu.service.CarService;
 import cn.edu.bjtu.service.CarTeamService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
@@ -27,6 +28,8 @@ public class CarTeamServiceImpl implements CarTeamService{
 	
 	@Autowired
 	CarTeamDao carTeamDao;
+	@Autowired
+	CarService carService;
 
 	@Override
 	public List<Carteam> getCarteam(String carrierId) {
@@ -99,6 +102,11 @@ public class CarTeamServiceImpl implements CarTeamService{
 		params.put("carrierId", carrierId);
 		
 		List<Carteam> carTeamList=carTeamDao.find(hql, params);
+		for(int i=0;i<carTeamList.size();i++){
+			Carteam carteam =(Carteam)carTeamList.get(i);
+			carteam.setCarCount((carService.getCarTeamCars(carteam.getTeamName(), carrierId))+"");
+			carTeamList.set(i, carteam);
+		}
 		JSONArray jsonArray=new JSONArray();
 		for(Carteam carteam:carTeamList){
 			JSONObject jsonObject=(JSONObject)JSONObject.toJSON(carteam);

@@ -21,6 +21,10 @@ public interface CarService {
 	public boolean updateNewCar(Carinfo car,HttpServletRequest request);
 	
 	public boolean deleteCar(String id);
+	/*
+	 * 获取某公司某车队总的车辆数目
+	 */
+	public int getCarTeamCars(String carTeam,String carrierId);
 	/**
 	 * 获取公司车队姓名列表
 	 * @Title: getCompanyCarteamList 

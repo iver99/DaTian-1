@@ -205,6 +205,17 @@ public class CarServiceImpl implements CarService {
 		carDao.update(carinfo);
 		return true;
 	}
+
+	@Override
+	public int getCarTeamCars(String carTeam, String carrierId) {
+		String hql="select count(*) from Carinfo where carrierId=:carrierId and carTeam=:carTeam";
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("carrierId", carrierId);
+		params.put("carTeam", carTeam);
+		
+        Long count=carDao.count(hql, params);
+		return count.intValue();
+	}
 	
 	
 	
