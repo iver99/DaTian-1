@@ -18,8 +18,8 @@
 		<script type="text/javascript" src="js/resource_select.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="js/citylist.js"></script>
 		<script type="text/javascript" src="js/cityquery.js"></script>
-		<script type="text/javascript" src="js/jquery.tablesorter.pack.js"></script>
-		<script type="text/javascript" src="js/table_sort.js"></script>
+<!-- 		<script type="text/javascript" src="js/jquery.tablesorter.pack.js"></script> -->
+<!-- 		<script type="text/javascript" src="js/table_sort.js"></script> -->
 		<script type="text/javascript" src="js/popup.js"></script>
 		<script type="text/javascript" src="js/backtop.js"></script>
 		<script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
