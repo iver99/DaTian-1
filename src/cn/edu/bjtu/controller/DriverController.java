@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.edu.bjtu.service.DriverService;
+import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.vo.Driverinfo;
 
 /**
@@ -42,14 +43,25 @@ public class DriverController {
 	 * @return
 	 */
 	@RequestMapping("driverdetail")
-	public ModelAndView getDriverInfo(@RequestParam String driverId,
+	public ModelAndView getDriverInfo(@RequestParam String driverId,HttpServletRequest request,
 			@RequestParam int flag) {
+		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		Driverinfo driver = driverService.getDriverInfo(driverId);
-		mv.addObject("driver", driver);
 		if (flag == 1) {// 对应司机详情
+			mv.addObject("driver", driver);
 			mv.setViewName("mgmt_r_driver4");
 		} else if (flag == 2)// 对应司机更新
 		{
+			String temp = clientId + "_";
+			if(driver.getIdscans()!=null){
+			    if(driver.getIdscans().indexOf(temp)!=-1){
+			    	String[] s = driver.getIdscans().split(temp);
+			    	driver.setIdscans(s[1]);
+			    	}else{
+			    		driver.setIdscans("请上传文件...");
+				}
+			}
+			mv.addObject("driver", driver);
 			mv.setViewName("mgmt_r_driver3");
 		}
 
