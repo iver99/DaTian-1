@@ -120,13 +120,15 @@ public class FullTruckController {
 			mv.addObject("truckInfo", truckInfo);
 			mv.setViewName("mgmt_r_line4");
 		} else if (flag == 2) {// 更新
-			/*String temp = clientId + "_";
-			if(truckInfo.getPicture().indexOf(temp)!=-1){
-				String[] s = truckInfo.getPicture().split(temp);
-				truckInfo.setPicture(s[1]);
-				}else{
-					truckInfo.setPicture("请上传文件...");
-				}*/
+			String temp = clientId + "_";
+			if(truckInfo.getPicture()!=null){
+			    if(truckInfo.getPicture().indexOf(temp)!=-1){
+			    	String[] s = truckInfo.getPicture().split(temp);
+			    	truckInfo.setPicture(s[1]);
+			    	}else{
+			    		truckInfo.setPicture("请上传文件...");
+				}
+			}
 			mv.addObject("truckInfo", truckInfo);
 			mv.setViewName("mgmt_r_line3");
 			}
