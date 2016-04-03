@@ -118,7 +118,6 @@ public class CitylineController {
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List focusList = focusService.getFocusList(clientId,"cityline");
 		mv.addObject("focusList", focusList);
-		mv.addObject("citylineInfo", citylineInfo);
 		if (flag == 0) {
 			Carrierinfo carrierInfo = companyService.getCompanyById(carrierId);
 			List<Comment> commentList=commentService.getCompanyComment(carrierId);
@@ -126,14 +125,30 @@ public class CitylineController {
 			mv.addObject("carrierInfo", carrierInfo);
 			//需要获取资源对应的公司的评价平均数bean
 			Comment comment=commentService.getCompanyAverageCommentRate(carrierId);
+			mv.addObject("citylineInfo", citylineInfo);
 			mv.addObject("avgComment", comment);
 			mv.setViewName("resource_detail2");// 资源栏点击详情的页面
-		} else if (flag == 1)
-			mv.setViewName("mgmt_r_city");// 3是有更新和删除操作的页面
-		else if (flag == 2)
-			mv.setViewName("mgmt_r_city4");// 4是点击详情的页面
-		else if (flag == 3)
-			mv.setViewName("mgmt_r_city3");// 点击更新 的页面
+		} else if (flag == 1){
+			mv.addObject("citylineInfo", citylineInfo);
+			mv.setViewName("mgmt_r_city");
+		}// 3是有更新和删除操作的页面
+		else if (flag == 2){
+			mv.addObject("citylineInfo", citylineInfo);
+			mv.setViewName("mgmt_r_city4");
+		}// 4是点击详情的页面
+		else if (flag == 3){
+			String temp = clientId + "_";
+			if(citylineInfo.getDetailPrice()!=null){
+			    if(citylineInfo.getDetailPrice().indexOf(temp)!=-1){
+			    	String[] s = citylineInfo.getDetailPrice().split(temp);
+			    	citylineInfo.setDetailPrice(s[1]);
+			    	}else{
+			    		citylineInfo.setDetailPrice("请上传文件...");
+				}
+			}
+			mv.addObject("citylineInfo", citylineInfo);
+			mv.setViewName("mgmt_r_city3");
+			}// 点击更新 的页面
 		return mv;
 	}
 
