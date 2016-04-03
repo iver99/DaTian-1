@@ -101,22 +101,32 @@ public class WarehouseController {
 			@RequestParam("carrierId") String carrierId,
 			@RequestParam("flag") int flag,
 			HttpServletRequest request) {
-		Warehouse warehouseInfo = warehouseService
-				.getWarehouseInfo(warehouseid);
+		Warehouse warehouseInfo = warehouseService.getWarehouseInfo(warehouseid);
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List focusList = focusService.getFocusList(clientId,"warehouse");
 		mv.addObject("focusList", focusList);
-		mv.addObject("warehouseInfo", warehouseInfo);
 		if (flag == 0) {// 对应资源栏仓库详情
 			Carrierinfo carrierInfo = companyService.getCompanyById(carrierId);
 			//List<Comment> commentList=commentService.getWarehouseCommentById(warehouseid,carrierId);
 			//mv.addObject("commentList",commentList);
+			mv.addObject("warehouseInfo", warehouseInfo);
 			mv.addObject("carrierInfo", carrierInfo);
 			mv.setViewName("resource_detail4");
-		} else if (flag == 1)// 对应我的信息栏仓库详情
+		} else if (flag == 1){// 对应我的信息栏仓库详情
+			mv.addObject("warehouseInfo", warehouseInfo);
 			mv.setViewName("mgmt_r_warehouse4");
-		else if (flag == 2){
+		}else if (flag == 2){
 			// 我的信息栏仓库更新
+			String temp = clientId + "_";
+			if(warehouseInfo.getDetailPrice()!=null){
+			    if(warehouseInfo.getDetailPrice().indexOf(temp)!=-1){
+			    	String[] s = warehouseInfo.getDetailPrice().split(temp);
+			    	warehouseInfo.setDetailPrice(s[1]);
+			    	}else{
+			    		warehouseInfo.setDetailPrice("请上传文件...");
+				}
+			}
+			mv.addObject("warehouseInfo", warehouseInfo);
 			mv.setViewName("mgmt_r_warehouse3");
 		}
 		return mv;
