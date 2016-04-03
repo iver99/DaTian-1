@@ -157,30 +157,34 @@ function cancel(id){
     </table>
 </div>
 
-<%@ include  file="popup1.jsp"%>
+<%-- <%@ include  file="popup1.jsp"%> --%>
 
 <div id="popup2" style="display:none;">
+<form action="doCancel" method="post">
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td width="510"><div class="div_popup_title1">取消意向的原因</div></td>
             <td>
-                <div id="close2" style="cursor:pointer;"><img src="images/btn_cancel1.png" title="关闭本窗口" /></div>
+                <div id="close2" style="cursor:pointer;" onclick="hideid('popup2');">
+                <img src="images/btn_cancel1.png" title="关闭本窗口" /></div>
             </td>
         </tr>
     </table>
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td width="540">
-            	<textarea name="explainReason" class="textarea_popup1" placeholder="请输入内容..."></textarea>
+            	<textarea id="cancelReason" name="cancelReason" class="textarea_popup1" placeholder="请输入内容..."></textarea>
+            	<input type="hidden" name="orderid" id="orderid-hidden">
             </td>
         </tr>
         <tr>
             <td class="td_popup1">
-                <input type="button" id="btn1" value="提交" class="btn_mgmt1" hidefocus="true" /><input type="reset" id="btn1" value="重填" class="btn_mgmt2" hidefocus="true" />
+                <input type="submit" id="btn1" value="提交" class="btn_mgmt1" hidefocus="true" />
+                <input type="reset" id="btn1" value="重填" onclick="reset();" class="btn_mgmt2" hidefocus="true" />
             </td>
         </tr>
      </table>
-    
+   </form> 
 </div>
 
 <div id="footer_frame">
@@ -236,7 +240,7 @@ function getUserOrderResource(display,currentPage,orderNum){
 							str+="<a href=\"updateOrder?orderid="+data[i].id+"\" class=\"menuhd\" hidefocus=\"true\">更新</a>";
 							str+="<div class=\"menubd\">";
 							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"cancelOrder?orderid="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消</a>";
+							str+="<a href=\"javascript:void(0);\" onclick=\"test('"+data[i].id+"');showid('popup2');return false;\" class=\"a_top3\" hidefocus=\"true\">取消</a>";
 							str+="</div></div></div></li></ul></div></td>";
 							body.append(str);
 							}
@@ -310,6 +314,13 @@ function changeDisplay(){
 		var orderNum=$("#orderNum").val();
 		getUserOrderResource(display,currentPage,orderNum);
 		getUserOrderResourceTotalRows(display,currentPage,orderNum);
+}
+function test(orderid){
+	window.id=orderid;
+	$("#orderid-hidden").val(id);	
+}
+function reset(){
+	$("#cancelReason").val("");
 }
 </script>
 </html>
