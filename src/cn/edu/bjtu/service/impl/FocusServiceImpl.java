@@ -25,7 +25,9 @@ import cn.edu.bjtu.dao.impl.BaseDaoImpl;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
+import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.AirLine;
+import cn.edu.bjtu.vo.Carinfo;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Cityline;
 import cn.edu.bjtu.vo.Focus;
@@ -115,13 +117,15 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	 * ËÑË÷¹Ø×¢
 	 */
 	@Override
-	public JSONArray searchFocus(FocusBean bean, HttpSession session) {
+	public JSONArray searchFocus(FocusBean bean, HttpSession session,PageUtil pageUtil) {
 		
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		String hql="from Focus t where t.clientId=:clientId order by t.focusType asc ";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("clientId", userId);
-		List<Focus> focusList=focusDao.find(hql, params);
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Focus> focusList=focusDao.find(hql, params,page,display);
 		List<FocusBean> focusBeanList=new ArrayList<FocusBean>();
 		String search_content=bean.getSearch_content();
 			for(Focus focus:focusList){

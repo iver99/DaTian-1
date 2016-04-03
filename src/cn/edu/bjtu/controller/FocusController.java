@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.edu.bjtu.bean.page.FocusBean;
 import cn.edu.bjtu.service.FocusService;
 import cn.edu.bjtu.util.Constant;
+import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Focus;
 
 import com.alibaba.fastjson.JSONArray;
@@ -109,8 +110,8 @@ public class FocusController {
 	 */
 	@RequestMapping(value="getUserFocusAjax",produces="text/html;charset=UTF-8")
 	@ResponseBody
-	public String searchFocus(FocusBean focusBean,HttpSession session){
-		JSONArray jsonArray=focusService.searchFocus(focusBean,session);
+	public String searchFocus(FocusBean focusBean,HttpSession session,PageUtil pageUtil){
+		JSONArray jsonArray=focusService.searchFocus(focusBean,session,pageUtil);
 		
 		return jsonArray.toString();
 	}

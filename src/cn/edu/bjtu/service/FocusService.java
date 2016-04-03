@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.edu.bjtu.bean.page.FocusBean;
 import cn.edu.bjtu.dao.BaseDao;
+import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Focus;
 
 import com.alibaba.fastjson.JSONArray;
@@ -29,7 +30,7 @@ public interface FocusService extends BaseDao<Focus>{
 	 * @author: chendonghao 
 	 * @date: 2015年7月6日 下午12:20:37
 	 */
-	public JSONArray searchFocus(FocusBean focusBean,HttpSession session);
+	public JSONArray searchFocus(FocusBean focusBean,HttpSession session,PageUtil pageUtil);
 	
 	/**
 	 * 关注总记录数 
