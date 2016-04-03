@@ -118,7 +118,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	public JSONArray searchFocus(FocusBean bean, HttpSession session) {
 		
 		String userId=(String)session.getAttribute(Constant.USER_ID);
-		String hql="from Focus t where t.clientId=:clientId ";
+		String hql="from Focus t where t.clientId=:clientId order by t.focusType asc ";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("clientId", userId);
 		List<Focus> focusList=focusDao.find(hql, params);
