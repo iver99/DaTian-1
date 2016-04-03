@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String date=(String)request.getParameter("date");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -146,6 +149,7 @@
 	function OnLoad() {
 		loadFocus();
 		//var search_content=$("#search_focus").val();
+		var date="<%=date %>";
 		var startDate=$("#startDate").val();
 		var endDate=$("#endDate").val();
 		if(startDate == '意向开始时间'){
@@ -157,17 +161,18 @@
 
 		var display=$("#display").val();
 		var currentPage=$("#currentPage").val();
-		viewOperationDetailsAjax(startDate,endDate,display,currentPage);
+		viewOperationDetailsAjax(date,startDate,endDate,display,currentPage);
 		//总数
-		viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage);
+		viewOperationDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage);
 	}
 	
 	//获取运营指标
-	function viewOperationDetailsAjax(startDate,endDate,display,currentPage){
+	function viewOperationDetailsAjax(date,startDate,endDate,display,currentPage){
 		var url="viewOperationDetailsAjax";
 		$.ajax({
 			url:url,
 			data:{
+				date:date,
 				startDate:startDate,
 				endDate:endDate,
 				display:display,
@@ -197,10 +202,10 @@
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].orderNum+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceType+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].resourceName+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].clientName+"</td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].companyName+"</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].submitTime)+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">"+"+用户综合评价"+"</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"javascript:;\" class=\"a_top3\" hidefocus=\"true\">查看</a></td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].satisfaction+"</td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"getOrderDetailFinish?orderid="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">查看</a></td>";
 					str+="</tr>";
 				}
 				body.append(str);
@@ -210,11 +215,12 @@
 		});
 	}
 	//总记录数
-	function viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage){
+	function viewOperationDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage){
 		var url="viewOperationDetailsTotalRowsAjax";
 		$.ajax({
 			url:url,
 			data:{
+				date:date,
 				startDate:startDate,
 				endDate:endDate,
 				display:display,
@@ -248,9 +254,9 @@
 	
 			var display=$("#display").val();
 			var currentPage=$("#currentPage").val();
-			viewOperationDetailsAjax(startDate,endDate,display,currentPage);
+			viewOperationDetailsAjax(date,startDate,endDate,display,currentPage);
 			//总数
-			viewOperationDetailsTotalRowsAjax(startDate,endDate,display,currentPage);
+			viewOperationDetailsTotalRowsAjax(date,startDate,endDate,display,currentPage);
 	}
 </script>
 </html>

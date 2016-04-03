@@ -201,8 +201,8 @@
 					str+="<tr>";
 					str+="<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>";
 					str+="<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].date)+"</td>";
-					str+="<td class=\"td_mgmt_right3_td1\">no data</td>";
-					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"OperationDetailsPage2b?date="+data[i].date+"\" hidefocus=\"true\">查看</a></td>";
+					str+="<td class=\"td_mgmt_right3_td1\">"+data[i].clientConsentRate+"</td>";
+					str+="<td class=\"td_mgmt_right3_td3\"><a href=\"OperationDetailsPage2b?date="+renderTime(data[i].date)+"\" hidefocus=\"true\">查看</a></td>";
 					str+=" </tr>";
 					
 				}

@@ -118,9 +118,33 @@ public class OperationServiceImpl implements OperationService{
 	@Override
 	public List<OperationBean> getClientConsentList(
 			OperationBean operationBean, HttpSession session, PageUtil pageUtil) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+	    String userId=(String)session.getAttribute(Constant.USER_ID);
+	    String sql = "from Orderform where "
+	    		+ "carrierId='"+userId+"' ";
+	    String startDate = operationBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getStartDate());
+	    String endDate = operationBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getEndDate());
+	    if(!"1970-01-01".equals(startDate)){
+	    	sql+="and submitTime>='"+startDate+"' ";
+	    }
+	    if(!"1970-01-01".equals(endDate)){
+	    	sql+="and submitTime<='"+endDate+"' ";
+	    }
+	    sql+="and state='已完成' and resourceType !='落地配' group by date(submitTime)";
+	    List<Orderform> orderlist = orderDao.find(sql,params,page,display);
+	    List<OperationBean> opList=new ArrayList<OperationBean>();
+	    for(int i=0;i<orderlist.size();i++){
+	    	OperationBean opBean = new OperationBean();
+	    	Orderform order = orderlist.get(i);
+	    	opBean.setDate(order.getSubmitTime());
+	    	opBean.setClientConsentRate(order.getSatisfaction());
+	    	opList.add(opBean);
+	    }
 
 		//目前和运输准确率逻辑一样，故直接调用
-		return getTransportAccuracyList(operationBean,session,pageUtil);
+		return opList;
 	}
 
 	/**
@@ -154,6 +178,7 @@ public class OperationServiceImpl implements OperationService{
 			OrderBean orderBean = new OrderBean();
 			Orderform order = list.get(i);
 			orderBean.setId(order.getId());
+			orderBean.setSatisfaction(order.getSatisfaction());
 			orderBean.setOrderNum(order.getOrderNum());
 			orderBean.setResourceType(order.getResourceType());
 			orderBean.setResourceName(order.getResourceName());

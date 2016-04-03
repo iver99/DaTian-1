@@ -67,9 +67,22 @@ public class OrderBean {
 	private int onwayTime;
 	private String strisOntime;
 	private String actualonwayTime;
+	private String satisfaction;
 	
 	
 	
+	/**
+	 * @return satisfaction
+	 */
+	public String getSatisfaction() {
+		return satisfaction;
+	}
+	/**
+	 * @param satisfaction ÒªÉèÖÃµÄ satisfaction
+	 */
+	public void setSatisfaction(String satisfaction) {
+		this.satisfaction = satisfaction;
+	}
 	/**
 	 * @return strisOntime
 	 */
