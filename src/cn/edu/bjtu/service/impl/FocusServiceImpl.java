@@ -172,7 +172,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
-						focusBean.setName(cityline.getName());
+						focusBean.setName(cityline.getCityName());
 						focusBean.setRelDate(cityline.getRelDate());
 						focusBean.setResourceId(cityline.getId());
 						focusBean.setCarrierId(cityline.getCarrierId());
