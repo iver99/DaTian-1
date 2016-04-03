@@ -500,8 +500,9 @@ public class OrderServiceImpl implements OrderService {
 		String hql="from Orderform t "+whereHql(order,params);
 		hql+=" and t.carrierId=:carrierId order by t.submitTime desc";
 		params.put("carrierId", userId);
-		
-		List<Orderform> orderList=orderDao.find(hql,params);
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Orderform> orderList=orderDao.find(hql,params,page,display);
 		List<OrderBean> beanList=new ArrayList<OrderBean>();
 		for(Orderform orderIns:orderList){
 			OrderBean bean=new OrderBean();
