@@ -51,7 +51,8 @@ public class Orderform implements java.io.Serializable {
 	private String confirm;
 	private String commentId;
 	private String cancelReason;	
-	private String settlementState;
+	private String settlementState;//用户是否导出
+	private String settlementStateCompany;//公司用户是否导出
 	// add by RussWest0 at 2015年5月31日,下午11:34:05 
 	private String isLinkToClientWayBill;
 	private String clientWayBillNum;
@@ -72,6 +73,18 @@ public class Orderform implements java.io.Serializable {
 	
 	
 	
+	/**
+	 * @return settlementStateCompany
+	 */
+	public String getSettlementStateCompany() {
+		return settlementStateCompany;
+	}
+	/**
+	 * @param settlementStateCompany 要设置的 settlementStateCompany
+	 */
+	public void setSettlementStateCompany(String settlementStateCompany) {
+		this.settlementStateCompany = settlementStateCompany;
+	}
 	/**
 	 * @return satisfaction
 	 */

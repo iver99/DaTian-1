@@ -24,6 +24,7 @@ public class SettlementCarrierView {
 	private String contractId;
 	private Date submitTime;
 	private String settlementState;
+	private String settlementStateCompany;
 	private Float actualPrice;
 	private Float expectedPrice;
 	private String carrierId;
@@ -35,6 +36,18 @@ public class SettlementCarrierView {
 	private String state;
 	
 	
+	/**
+	 * @return settlementStateCompany
+	 */
+	public String getSettlementStateCompany() {
+		return settlementStateCompany;
+	}
+	/**
+	 * @param settlementStateCompany ÒªÉèÖÃµÄ settlementStateCompany
+	 */
+	public void setSettlementStateCompany(String settlementStateCompany) {
+		this.settlementStateCompany = settlementStateCompany;
+	}
 	public String getState() {
 		return state;
 	}

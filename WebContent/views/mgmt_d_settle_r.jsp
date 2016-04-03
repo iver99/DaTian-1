@@ -190,8 +190,8 @@ function getUserSettleSResource(display,currentPage,name){
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].submitTime)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].expectedPrice+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].actualPrice+"</td>");
-						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].settlementState+"</td>");
-						if(data[i].settlementState == '已生成'){
+						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].settlementStateCompany+"</td>");
+						if(data[i].settlementStateCompany == '已生成'){
 							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"viewSettlementRecord?orderNum="+data[i].orderNum+"\" hidefocus=\"true\">查看记录</a></td>");
 						}
 						else{

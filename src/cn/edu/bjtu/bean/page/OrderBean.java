@@ -25,6 +25,19 @@ public class OrderBean {
 	//add by RussWest0 at 2015年7月8日,下午4:55:33 
 	private Date submitTime;
 	private String settlementState;
+	private String settlementStateCompany;
+	/**
+	 * @return settlementStateCompany
+	 */
+	public String getSettlementStateCompany() {
+		return settlementStateCompany;
+	}
+	/**
+	 * @param settlementStateCompany 要设置的 settlementStateCompany
+	 */
+	public void setSettlementStateCompany(String settlementStateCompany) {
+		this.settlementStateCompany = settlementStateCompany;
+	}
 	private Float actualPrice;
 	private String clientId;
 	private String state;

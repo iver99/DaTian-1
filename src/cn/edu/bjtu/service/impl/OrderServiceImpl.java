@@ -317,6 +317,7 @@ public class OrderServiceImpl implements OrderService {
 		orderInstance.setSubmitTime(new Date());
 		orderInstance.setClientId(userId);
 		orderInstance.setSettlementState("未生成");
+		orderInstance.setSettlementStateCompany("未生成");
 		orderInstance.setIsOntime(0);
 		orderInstance.setFlag(1);
 		

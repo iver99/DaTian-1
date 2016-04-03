@@ -46,9 +46,13 @@ public class SettlementRecordServiceImpl implements SettlementRecordService{
 	public boolean finishSettlement(String orderNum, HttpSession session) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		String username=(String)session.getAttribute(Constant.USER_NAME);
+		String userKind = (Integer)session.getAttribute(Constant.USER_KIND)+"";
 		Orderform order=orderService.getOrderByOrderNum(orderNum);
-		
-		order.setSettlementState("已生成");
+		if(userKind.equals("2")){ //个人用户
+			order.setSettlementState("已生成");
+		}else if(userKind.equals("3")){//公司用户
+			order.setSettlementStateCompany("已生成");
+		}
 		Settlement settlement=new Settlement();
 		settlement.setId(IdCreator.createSettlementId());
 		settlement.setOrderNum(orderNum);
