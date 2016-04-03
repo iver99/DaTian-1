@@ -112,7 +112,6 @@ public class AirLineController {
 		String clientId = (String) request.getSession().getAttribute(Constant.USER_ID);
 		List focusList = focusService.getFocusList(clientId,"airline");
 		mv.addObject("focusList", focusList);
-		mv.addObject("airlineInfo", airlineInfo);
 		if (flag == 0) {
 			Carrierinfo carrierInfo = companyService.getCompanyById(carrierId);
 			List<Comment> commentList=commentService.getCompanyComment(carrierId);
@@ -120,11 +119,23 @@ public class AirLineController {
 			mv.addObject("carrierInfo", carrierInfo);
 			//需要获取资源对应的公司的评价平均数bean
 			Comment comment=commentService.getCompanyAverageCommentRate(carrierId);
+			mv.addObject("airlineInfo", airlineInfo);
 			mv.addObject("avgComment", comment);
 			mv.setViewName("resource_detail7");// 资源栏点击详情的页面
 		} else if (flag == 1) {// 详情
+			mv.addObject("airlineInfo", airlineInfo);
 			mv.setViewName("mgmt_r_airline4");
 		} else if (flag == 2) {// 更新
+			String temp = clientId + "_";
+			if(airlineInfo.getPicture()!=null){
+			    if(airlineInfo.getPicture().indexOf(temp)!=-1){
+			    	String[] s = airlineInfo.getPicture().split(temp);
+			    	airlineInfo.setPicture(s[1]);
+			    	}else{
+			    		airlineInfo.setPicture("请上传文件...");
+				}
+			}
+			mv.addObject("airlineInfo", airlineInfo);
 			mv.setViewName("mgmt_r_airline3");
 			}
 		return mv;

@@ -206,16 +206,16 @@
 									<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
 									<td>
                                     	<div style="position:relative;">
-                                        	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="请上传文件..." />
+                                        	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="${airlineInfo.picture }" />
                                         	<input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />
-     									    <input id="upload_btn4" type="file"  name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" required/>
+     									    <input id="upload_btn4" type="file"  name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" accept="image/*" required/>
                                         </div>
                                     </td>
 								</tr>
 								<tr>
 									<td height="40" class="td_mgmt_right3_td1b">补充信息：</td>
 									<td>
-                                    	<textarea class="textarea_rating" id="remarks" name="remarks" placeholder="请输入内容..." required>${airlineInfo.remarks }</textarea>
+                                    	<textarea class="textarea_rating" id="remarks" name="remarks" placeholder="请输入内容..." >${airlineInfo.remarks }</textarea>
                                     </td>
 								</tr>
                                 <tr>
