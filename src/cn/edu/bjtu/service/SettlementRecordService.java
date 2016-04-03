@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Settlement;
 
 import com.alibaba.fastjson.JSONArray;
@@ -34,7 +35,7 @@ public interface SettlementRecordService {
 	 * @param session
 	 * @return
 	 */
-	public JSONArray getUserSettlement(HttpSession session,String name);
+	public JSONArray getUserSettlement(HttpSession session,String name,PageUtil pageUtil);
 	
 	/**
 	 * 我的结算-总记录条数 

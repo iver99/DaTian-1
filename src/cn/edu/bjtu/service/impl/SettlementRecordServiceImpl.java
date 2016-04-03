@@ -21,6 +21,7 @@ import cn.edu.bjtu.service.OrderService;
 import cn.edu.bjtu.service.SettlementRecordService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.IdCreator;
+import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Carrierinfo;
 import cn.edu.bjtu.vo.Orderform;
 import cn.edu.bjtu.vo.Settlement;
@@ -84,7 +85,7 @@ public class SettlementRecordServiceImpl implements SettlementRecordService{
 	 * 我的结算(与settlement表无关，由订单表得到)
 	 */
 	@Override
-	public JSONArray getUserSettlement(HttpSession session,String name) {
+	public JSONArray getUserSettlement(HttpSession session,String name,PageUtil pageUtil) {
 		Map<String,Object> params=new HashMap<String,Object>();
 		String userId=(String)session.getAttribute(Constant.USER_ID);
 		Integer userKind=(Integer)session.getAttribute(Constant.USER_KIND);
@@ -99,8 +100,9 @@ public class SettlementRecordServiceImpl implements SettlementRecordService{
 		}
 		
 		hql+=" order by t.submitTime desc";
-		
-		List<Orderform> orderList=orderDao.find(hql, params);
+		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
+		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
+		List<Orderform> orderList=orderDao.find(hql, params,page,display);
 		List<OrderBean> beanList=new ArrayList<OrderBean>();
 		for(Orderform order:orderList){
 			OrderBean bean=new OrderBean();

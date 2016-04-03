@@ -20,6 +20,7 @@ import cn.edu.bjtu.service.SettlementRecordService;
 import cn.edu.bjtu.service.SettlementService;
 import cn.edu.bjtu.util.Constant;
 import cn.edu.bjtu.util.ExcelCreator;
+import cn.edu.bjtu.util.PageUtil;
 import cn.edu.bjtu.vo.Settlement;
 import cn.edu.bjtu.vo.SettlementCarrierView;
 
@@ -62,9 +63,9 @@ public class SettlementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="getUserSettlementAjax",produces="text/html;charset=UTF-8")
-	public String getUserSettlement(HttpSession session,String name){
+	public String getUserSettlement(HttpSession session,String name,PageUtil pageUtil){
 		
-		JSONArray jsonArray=settlementRecordService.getUserSettlement(session,name);
+		JSONArray jsonArray=settlementRecordService.getUserSettlement(session,name,pageUtil);
 		
 		return jsonArray.toString();
 	}
