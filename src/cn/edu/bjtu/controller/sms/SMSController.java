@@ -174,7 +174,7 @@ public class SMSController {
 		String vCode=VCodeCreator.getVCode();
 		try {
 			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码*/			
-			/*int i=0;*/
+			//int i=0;
 			if(i==0){
 				//存储验证码
 				smsHisLogger.info("【PC】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");

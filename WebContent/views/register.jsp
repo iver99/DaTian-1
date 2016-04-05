@@ -94,7 +94,7 @@
 							type:"post",
 							success:function(data,status){
 								$("#vcode").val(data);
-								/* alert($("#vcode").val()); */
+								/* alert($("#vcode").val()); */ 
 							}
 						});
 					}
@@ -175,8 +175,43 @@ function formValidate() {
 		}
 	});
 }
-
+//暂时无验证码过期功能
 function loadXMLDoc(flag)
+{
+	var curWwwPath=window.document.location.href;
+    var pathName=window.document.location.pathname;
+    var pos=curWwwPath.indexOf(pathName);
+	$.ajax({
+		   type: "GET",
+		   url: curWwwPath.substring(0,pos) + "/DaTian/usercheck",//请求的后台地址
+		   data: "username=" + document.getElementById("username").value,//前台传给后台的参数
+		   success: function(msg){//msg:返回值
+			   if(flag ==0 && msg == "true"){
+				   alert("该用户名可以使用");
+			   }else if(msg == "null"){
+				   alert("用户名不能为空");  
+			   }else if(msg == "false"){
+				   alert("该用户名已被使用！");
+			   }
+			   if(flag == 1 && msg == "true"){
+				   
+				   var validationkey=$("#validationkey").val();
+				   var vcode=$("#vcode").val();
+				   
+				   if(validationkey==vcode){ 
+					
+					$("#register_form").submit();
+					
+				   }
+				    else{
+					   alert("验证码错误，请重新输入");
+				   } 
+			   }
+		   }   
+		});
+}
+//验证码检测功能，radis接口暂不可用
+/* function loadXMLDoc(flag)
 {
 	var curWwwPath=window.document.location.href;
     var pathName=window.document.location.pathname;
@@ -217,6 +252,6 @@ function vcodeCheck()
 				}
 			}
 		});
-	}
+	} */
 </script>
 </html>

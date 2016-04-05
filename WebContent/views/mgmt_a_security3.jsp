@@ -151,7 +151,7 @@
                     							type:"post",
                     							success:function(data,status){
                     								$("#vcode").val(data);
-                                					alert($("#vcode").val());
+                                					/* alert($("#vcode").val()); */
                     							}
                     						});
                     					}
@@ -208,7 +208,22 @@
 			   $("#validationkey").val("");
 			});
 	}
-	function validationCheck(){
+	 function validationCheck(){
+		 var validationkey=$("#validationkey").val();
+	 	 var vcode=$("#vcode").val();
+	 	 if(vcode==null||vcode==""){
+	 		 alert("请获取验证码");
+	 	 }
+	 	 else{
+				if (validationkey==vcode) {
+					$("#removephone").submit();
+				} else {
+					alert("验证码错误，请重新输入");
+				}
+		 }
+	} 
+	//radis接口暂未调用成功
+	/* function validationCheck(){
 		 var validationkey=$("#validationkey").val();
 	 	 var vcode=$("#vcode").val();
 	 	 var url="vcodecheckAjax";
@@ -231,6 +246,6 @@
 				}
 			});
 	 	 }
-	} 
+	}  */
 </script>
 </html>
