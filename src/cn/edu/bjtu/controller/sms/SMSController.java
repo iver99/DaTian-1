@@ -180,7 +180,7 @@ public class SMSController {
 				smsHisLogger.info("【PC】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
 				smsService.log(phone, vCode, Constant.SMS_VCODE,Constant.SMS_PC_TERM,Constant.SMS_SUCCESS);
 				//将验证码存入redis，并添加短信的过期时间
-				redisUtil.set(vCode, vCode,Constant.SMS_EXPIRE_TIME);
+				//redisUtil.set(vCode, vCode,Constant.SMS_EXPIRE_TIME);
 			}else{
 				smsHisLogger.info("【PC】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
 				smsService.log(phone, "【PC】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!", Constant.SMS_WARNING,Constant.SMS_PC_TERM,Constant.SMS_FAIL);
@@ -203,7 +203,7 @@ public class SMSController {
 		JSONObject json = new JSONObject(); 
 		try {
 			String vCode=VCodeCreator.getVCode();
-			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
+		    int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
 			//方便测试暂时注释掉发短信功能
 			/*int i =0;*/
 			if(i==0){
@@ -212,7 +212,7 @@ public class SMSController {
 				smsHisLogger.info("【安卓】发送短信成功,接收手机号为【"+phone+"】"+",验证码为【"+vCode+"】");
 				smsService.log(phone, vCode, Constant.SMS_VCODE,Constant.SMS_ANDROID_TERM,Constant.SMS_SUCCESS);
 				//将验证码存入redis，并添加短信的过期时间
-				redisUtil.set(vCode, vCode,Constant.SMS_EXPIRE_TIME);
+				//redisUtil.set(vCode, vCode,Constant.SMS_EXPIRE_TIME);
 				json.put("vcode", vCode);
 			}else{
 				smsHisLogger.info("【安卓】发送短信失败,返回值为:"+i+",请查看短信接口说明文档查看原因!");
