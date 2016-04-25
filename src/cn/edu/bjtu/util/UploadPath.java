@@ -179,7 +179,7 @@ public class UploadPath {
 		else//linux系统 (未测试)
 		{
 			//如果文件夹不存在情况没有处理
-			String path= "/usr/local/tomcat7_v2/webapps/DaTian/views/userpicture";
+			String path= "/usr/local/hcd/apache-tomcat-7.0.68/webapps/DaTian/views/userpicture";
 			file=new File(path);
 			file.mkdirs();//防止文件夹不存在
 			return path;
