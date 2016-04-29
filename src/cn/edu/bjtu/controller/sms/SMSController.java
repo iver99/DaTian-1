@@ -118,9 +118,13 @@ public class SMSController {
 	}
 	/**
 	 * 发送即时短信
+	 * 
+	 * 
+	 * 处于安全考虑暂时屏蔽这个接口
 	 */
-	@RequestMapping("sendSMSAjax")
+	//@RequestMapping("sendSMSAjax")
 	@ResponseBody
+	@Deprecated
 	public String sendSMS(String phone,String smsContent){
 		//切换数据源
 		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
