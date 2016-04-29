@@ -12,7 +12,7 @@
 <title>短信测试页面</title>
 </head>
 <body>
-<h1>短信测试接口</h1>
+<!-- <h1>短信测试接口</h1>
 <h3>step1：注册序列号</h3>
 <button onclick="regSN();">注册SN</button>
 <h3>step2：注册企业信息</h3>
@@ -27,7 +27,7 @@
 </form>
 <h3>【注意】</h3>
 短信内容不要出现“测试”，“移动”，“联通”，“电信”以及其它敏感词汇<br/>
-<h1 id="balance"></h1>
+<h1 id="balance"></h1> -->
 <br/><br/>
 <h2>【安卓】端短信接口url：http://123.56.143.59:8585/DaTian/sendVcodeToPhoneAjax?phone=15000000000</h2>
 <h2><a href="<%=ctxPath %>/views/smsLog.jsp">短信日志</a></h2>
