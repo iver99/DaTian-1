@@ -128,6 +128,7 @@
                                     <td width="120" height="40" class="td_mgmt_right3_td1b">对应资源：</td>
                                     <td><a class="link1" hidefocus="true" target="_blank" href="citylinedetail?citylineId=${citylineInfo.id }&carrierId=${citylineInfo.carrierId }&flag=0">（落地配）${citylineInfo.name }</a></td>
                                     <td><input name="resourceType" type="hidden" value="落地配"/></td>
+                                    <td><input name="citylineId" type="hidden" value="${citylineInfo.id }"/></td>
                                     <td><input name="resourceName" type="hidden" value="${citylineInfo.name }"/></td>
                                 </tr>
 			                    </c:when>
