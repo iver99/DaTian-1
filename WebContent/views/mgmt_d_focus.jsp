@@ -119,6 +119,7 @@
                         <td width="30" height="40" class="td_mgmt_right3_head1"><!-- <input type="checkbox" id="f1_all" onClick="selectall();" /> --></td>
 						<td width="60" class="td_mgmt_right3_head">类别</td>
                         <td class="td_mgmt_right3_head">名称</td>
+                        <td width="80" class="td_mgmt_right3_head">关注日期</td>
                         <td width="80" class="td_mgmt_right3_head">发布日期</td>
                         <td width="60" class="td_mgmt_right3_head">状态</td>
                         <td width="80" class="td_mgmt_right3_head">操作</td>
@@ -188,21 +189,13 @@
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"fulltruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
-						body.append(str);	
+						body.append(str);
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].time)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
 						
 						if(data[i].status == '有效'){
-							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
-							str+="<td class=\"td_mgmt_right3_td3\">";
-							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
-							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=1&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交意向</a> ";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
-							str+="</div></div></div></li></ul></div></td>";
-							body.append(str);
+							body.append("<td class=\"td_mgmt_right3_td1\">有效</td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
 							}
 						else if(data[i].status == '失效'){
 							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
@@ -217,21 +210,13 @@
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"lesstruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"lesstruckloaddetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
-						body.append(str);	
+						body.append(str);
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].time)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
 						
 						if(data[i].status == '有效'){
-							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
-							str+="<td class=\"td_mgmt_right3_td3\">";
-							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
-							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=5&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交意向</a> ";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
-							str+="</div></div></div></li></ul></div></td>";
-							body.append(str);
+							body.append("<td class=\"td_mgmt_right3_td1\">有效</td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
 							}
 						else if(data[i].status == '失效'){
 							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
@@ -246,21 +231,13 @@
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"citylinedetail?citylineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"</a>"+"<br>"+"<a href=\"citylinedetail?citylineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
-						body.append(str);	
+						body.append(str);
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].time)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
 						
 						if(data[i].status == '有效'){
-							var str="<td class=\"td_mgmt_right3_td1\">有效</td>";
-							str+="<td class=\"td_mgmt_right3_td3\">";
-							str+="<div id=\"handlebox\" style=\"z-index:205;\">";
-							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
-							str+="<div class=\"menu\">";
-							str+="<a href=\"getneworderform?carrierid="+data[i].carrierId+"&flag=2&resourceId="+data[i].resourceId+"\" class=\"menuhd\" hidefocus=\"true\">提交意向</a> ";
-							str+="<div class=\"menubd\">";
-							str+="<div class=\"menubdpanel\">";
-							str+="<a href=\"deletefocus?id="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">取消关注</a>";
-							str+="</div></div></div></li></ul></div></td>";
-							body.append(str);
+							body.append("<td class=\"td_mgmt_right3_td1\">有效</td>");
+							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"deletefocus?id="+data[i].id+"\" hidefocus=\"true\">取消关注</a></td>");
 							}
 						else if(data[i].status == '失效'){
 							body.append("<td class=\"td_mgmt_right3_td1\"><span class=\"span_mgmt_right3_text3\">失效</span></td>");
@@ -276,7 +253,8 @@
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"warehousedetail?warehouseId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].name+"</a>"+"<br>"+"<a href=\"warehousedetail?warehouseId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
-						body.append(str);	
+						body.append(str);
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].time)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
 						
 						if(data[i].status == '有效'){
@@ -296,7 +274,8 @@
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"goodsdetail?id="+data[i].resourceId+"\" hidefocus=\"true\">"+data[i].name+"</a>";
 						str+="</td>";
-						body.append(str);	
+						body.append(str);
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].time)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
 						
 						if(data[i].status == '有效'){
@@ -316,7 +295,8 @@
 						var str="<td class=\"td_mgmt_right3_td1\">";
 						str+="<a href=\"airlinedetail?airlineId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" hidefocus=\"true\">"+data[i].startPlace+"→"+data[i].endPlace+"</a>"+"<br>"+"<a href=\"airlinedetail?truckId="+data[i].resourceId+"&carrierId="+data[i].carrierId+"&flag=0\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"&nbsp;<img src=\"images/btn_level1a.png\" /></a>";
 						str+="</td>";
-						body.append(str);	
+						body.append(str);
+						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].time)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].relDate)+"</td>");
 						
 						if(data[i].status == '有效'){

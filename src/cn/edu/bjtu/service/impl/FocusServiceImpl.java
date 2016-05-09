@@ -1,6 +1,7 @@
 package cn.edu.bjtu.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 		focus.setFocusType(foucsType);
 		focus.setFocusId(foucsId);
 		focus.setStatus("ÓÐÐ§");
+		focus.setTime(new Date());
 		focusDao.save(focus);
 		return true;
 	}
@@ -107,9 +109,9 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	public List getFocusList(String clientId,String focusType) {
 		
 		if(focusType != "")
-			return this.find("from Focus where clientId='"+clientId+"' and focusType='"+focusType+"'");
+			return this.find("from Focus where clientId='"+clientId+"' and focusType='"+focusType+"' order by time desc");
 		else
-			return this.find("from Focus where clientId='"+clientId+"'");
+			return this.find("from Focus where clientId='"+clientId+"' order by time desc");
 	}
 	
 	
@@ -120,7 +122,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 	public JSONArray searchFocus(FocusBean bean, HttpSession session,PageUtil pageUtil) {
 		
 		String userId=(String)session.getAttribute(Constant.USER_ID);
-		String hql="from Focus t where t.clientId=:clientId order by t.focusType asc ";
+		String hql="from Focus t where t.clientId=:clientId order by t.time desc ";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("clientId", userId);
 		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
@@ -139,6 +141,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setStartPlace(truck.getStartCity());
 						focusBean.setEndPlace(truck.getEndCity());
 						focusBean.setRelDate(truck.getRelDate());
+						focusBean.setTime(focus.getTime());
 						focusBean.setResourceId(truck.getId());
 						focusBean.setCarrierId(truck.getCarrierId());
 						focusBean.setCompanyName(company.getCompanyName());
@@ -156,6 +159,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setFocusType(focus.getFocusType());
 						focusBean.setStartPlace(truck.getStartCity());
 						focusBean.setEndPlace(truck.getEndCity());
+						focusBean.setTime(focus.getTime());
 						focusBean.setRelDate(truck.getRelDate());
 						focusBean.setResourceId(truck.getId());
 						focusBean.setCarrierId(truck.getCarrierId());
@@ -173,6 +177,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
 						focusBean.setName(cityline.getCityName());
+						focusBean.setTime(focus.getTime());
 						focusBean.setRelDate(cityline.getRelDate());
 						focusBean.setResourceId(cityline.getId());
 						focusBean.setCarrierId(cityline.getCarrierId());
@@ -187,6 +192,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
+						focusBean.setTime(focus.getTime());
 						focusBean.setRelDate(warehouse.getRelDate());
 						focusBean.setName(warehouse.getName());
 						focusBean.setResourceId(warehouse.getId());
@@ -201,6 +207,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
+						focusBean.setTime(focus.getTime());
 						focusBean.setRelDate(goods.getRelDate());
 						focusBean.setName(goods.getName());
 						focusBean.setResourceId(goods.getId());
@@ -216,6 +223,7 @@ public class FocusServiceImpl extends BaseDaoImpl<Focus> implements FocusService
 						focusBean.setId(focus.getId());
 						focusBean.setStatus(focus.getStatus());
 						focusBean.setFocusType(focus.getFocusType());
+						focusBean.setTime(focus.getTime());
 						focusBean.setRelDate(airline.getRelDate());
 						focusBean.setStartPlace(airline.getStartCity());
 						focusBean.setEndPlace(airline.getEndCity());
