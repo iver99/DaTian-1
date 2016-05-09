@@ -155,7 +155,8 @@
 								<tr>
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${companyName }</td>
-                                    <td><input name="carrierId" value="${carrierId }" type="hidden"/> </td>
+                                    <td><input name="companyName" value="${companyName }" type="hidden"/></td>
+                                    <td><input name="carrierId" value="${carrierId }" type="hidden"/></td>
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">联系人：</td>
