@@ -113,10 +113,6 @@
                                     <td height="40" class="td_mgmt_right3_td1b">承运方：</td>
                                     <td>${orderInfo.carrierName }</td>
                                 </tr>
-<%--                                 <tr>
-                                    <td height="40" class="td_mgmt_right3_td1b">承运方合同：</td>
-                                    <td>${orderInfo.hasCarrierContract }</td>
-                                </tr> --%>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源分类：</td>
 									<td>${orderInfo.resourceType }</td>
