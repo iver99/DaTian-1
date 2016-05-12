@@ -192,7 +192,16 @@ function getUserSettleSResource(display,currentPage,name){
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].actualPrice+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].settlementStateCompany+"</td>");
 						if(data[i].settlementStateCompany == '已生成'){
-							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"viewSettlementRecord?orderNum="+data[i].orderNum+"\" hidefocus=\"true\">查看记录</a></td>");
+							//body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"viewSettlementRecord?orderNum="+data[i].orderNum+"\" hidefocus=\"true\">查看记录</a></td>");
+							var str="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 204;\">";
+							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
+							str+="<div class=\"menu\">";
+							str+="<a href=\"viewSettlementRecord?orderNum="+data[i].orderNum+"\" class=\"menuhd\" hidefocus=\"true\">查看记录</a>";
+							str+="<div class=\"menubd\">";
+							str+="<div class=\"menubdpanel\">";
+							str+="<a href=\"/DaTian/createSingleStatement?orderNum="+data[i].orderNum+"\" class=\"a_top3\" hidefocus=\"true\">生成对账单</a>";
+							str+="</div></div></div></li></ul></div></td>";
+							body.append(str);
 						}
 						else{
 							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"/DaTian/createSingleStatement?orderNum="+data[i].orderNum+"\" hidefocus=\"true\">生成对账单</a></td>");
