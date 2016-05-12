@@ -110,7 +110,7 @@ public class SettlementController {
 	    /*RequestDispatcher dispatcher=request.getRequestDispatcher("mysettlement");
 	    dispatcher.forward(request, response);*/
 	    
-	    return "redirect:mysettlement";
+	    return "mgmt_d_settle_s";
 	}
 	
 	@RequestMapping("/createMultipleStatement")
