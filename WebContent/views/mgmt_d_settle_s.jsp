@@ -191,15 +191,22 @@ function getUserSettleSResource(display,currentPage,name){
 				body.append("<tr>");
 				body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\"><input type=\"checkbox\" name=\"f1\" id=\"f1a\" value=\""+data[i].orderNum+"\"></td>");
                			body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"getOrderDetail?orderid="+data[i].id+"\" hidefocus=\"true\">"+data[i].orderNum+"</a></td>");
-						/* body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\" hidefocus=\"true\">"+data[i].clientName+"</a></td>"); */
 						body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"</a></td>");
-						/* body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\">"+data[i].contractId+"</a></td>"); */
 						body.append("<td class=\"td_mgmt_right3_td1\">"+renderTime(data[i].submitTime)+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].expectedPrice+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].actualPrice+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].settlementState+"</td>");
 						if(data[i].settlementState == '已生成'){
-							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"viewSettlementRecord?orderNum="+data[i].orderNum+"\" hidefocus=\"true\">查看记录</a></td>");
+							//body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"viewSettlementRecord?orderNum="+data[i].orderNum+"\" hidefocus=\"true\">查看记录</a></td>");
+							var str="<td class=\"td_mgmt_right3_td3\"><div id=\"handlebox\" style=\"z-index: 204;\">";
+							str+="<ul class=\"quickmenu\"><li class=\"menuitem\">";
+							str+="<div class=\"menu\">";
+							str+="<a href=\"viewSettlementRecord?orderNum="+data[i].orderNum+"\" class=\"menuhd\" hidefocus=\"true\">查看记录</a>";
+							str+="<div class=\"menubd\">";
+							str+="<div class=\"menubdpanel\">";
+							str+="<a href=\"/DaTian/createSingleStatement?orderNum="+data[i].orderNum+"\" class=\"a_top3\" hidefocus=\"true\">生成对账单</a>";
+							str+="</div></div></div></li></ul></div></td>";
+							body.append(str);
 						}
 						else{
 							body.append("<td class=\"td_mgmt_right3_td3\"><a href=\"/DaTian/createSingleStatement?orderNum="+data[i].orderNum+"\" hidefocus=\"true\">生成对账单</a></td>");
