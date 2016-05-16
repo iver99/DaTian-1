@@ -1,8 +1,8 @@
 var count = 1; /*从id为1开始动态增加*/
 
 function additem() {  //确认意向时的动态添加信息
-	count += 1;
-	if(count<=10){
+	if(count<=9){
+		count += 1;
 	var carNums = $("#carNumsString").val();
 	var drivers = $("#driversString").val();
     var carNum = carNums.split(",");
@@ -45,20 +45,21 @@ function additem() {  //确认意向时的动态添加信息
 		inputTxt4.className = 'input_mgmt2';
 		inputTxt4.placeholder = '请输入运单号...';
 		inputTxt4.required = 'true';
+	}
 		
 	var del = document.createElement("img"); //section-删除
 		del.src = "images/btn_cancel2.png";
 		del.className = "img_citydel";
 		del.alt = "删除";
 		del.onclick = function() { //删除后效果，包括计数
+			count -= 1;
 			this.parentNode.parentNode.removeChild(this.parentNode);
 			var n = citylist.getElementsByTagName("div");
 			for(var k=0; k<n.length; k++) {
 				n[k].firstChild.nodeValue = k+1;
 			}
-			count -= 1;
+			
 		}
-	}
 
 //页面显示内容的控制
 div.appendChild(inputTxt2);
