@@ -2,6 +2,7 @@ var count = 1; /*从id为1开始动态增加*/
 
 function additem() {  //确认意向时的动态添加信息
 	count += 1;
+	if(count<=10){
 	var carNums = $("#carNumsString").val();
 	var drivers = $("#driversString").val();
     var carNum = carNums.split(",");
@@ -57,6 +58,7 @@ function additem() {  //确认意向时的动态添加信息
 			}
 			count -= 1;
 		}
+	}
 
 //页面显示内容的控制
 div.appendChild(inputTxt2);
