@@ -108,16 +108,17 @@
                         <td class="td_mgmt_right3_td1a">
                         <div class="span_mgmt_right3_text4">物流信息</div>
                         	<c:forEach var="carNum" items="${carNums }">
-                                <c:if test="${length!=0 }">
+                                <%-- <c:if test="${length!=0 }">
                                      <div class="span_mgmt_right3_text4"></div>
-                                </c:if>
+                                </c:if> --%>
                                 <c:forEach var="track" items="${loc }">
                                     <c:if test="${carNum==track.carNum }">
                                      <table width="90%" border="0" cellspacing="0" cellpadding="0" style="clear:both; margin-left:24px;">
-                                        <c:if test="${track.event=='已接受任务' }">
+                                        <c:if test="${track.event=='已接受任务' }">      
                                            <tr>
                                                <td width="120" height="35" class="td_mgmt_right3_td1b">${track.time }</td>
                                                <td>${track.event }，车牌号：${track.carNum }<img src="images/btn_map3a.png" alt="GPS定位" /></td>
+                                               <td>运单号：${track.waybillNum }，司机：${track.driver }</td>
                                            </tr>
                                         </c:if>
                                         <c:if test="${track.event=='已取件' }">

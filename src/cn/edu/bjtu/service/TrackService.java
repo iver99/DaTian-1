@@ -2,6 +2,7 @@ package cn.edu.bjtu.service;
 
 import java.util.List;
 
+import cn.edu.bjtu.bean.page.TrackBean;
 import cn.edu.bjtu.vo.Track;
 
 public interface TrackService {
@@ -9,4 +10,5 @@ public interface TrackService {
 	public List<Track> getTrackByOrderIdDesc(String orderId);
 	public List<Track> getTrackByOrderIdAsc(String orderId);
 	public List<Track> getTrackByWayBillNumDesc(String waybillNum);
+	public List<TrackBean> getTrackBeanByOrderIdAsc(String orderId);
 }

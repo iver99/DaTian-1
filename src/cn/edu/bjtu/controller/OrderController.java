@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.edu.bjtu.bean.page.AcceptOrderBean;
 import cn.edu.bjtu.bean.page.OrderBean;
+import cn.edu.bjtu.bean.page.TrackBean;
 import cn.edu.bjtu.dao.CompanyDao;
 import cn.edu.bjtu.service.AirLineService;
 import cn.edu.bjtu.service.CarService;
@@ -645,7 +646,7 @@ public class OrderController {
 	public ModelAndView getOrderDetailFinish(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
-		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		List<TrackBean> loc = trackService.getTrackBeanByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
 		int length = loc.size();
 		mv.addObject("length", length);
