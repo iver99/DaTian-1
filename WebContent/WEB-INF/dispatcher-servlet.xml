@@ -59,8 +59,8 @@
 			<value>UTF-8</value>
 		</property>
 		<property name="maxUploadSize">
-		<!-- 设置最大 20M 20*1024*1024   （文件上传最大值,以 byte为单位） -->
-			<value>20971520</value>
+		<!-- 设置最大 5M 5*1024*1024   （文件上传最大值,以 byte为单位） -->
+			<value>5242800</value>
 		</property>
 		<property name="maxInMemorySize">
 			<value>4096</value>

@@ -185,7 +185,7 @@
                                     	<div style="position:relative;">
                                         	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="${driver.idscans }" />
                                         	<input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />
-     										<input id="upload_btn4" type="file" name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" accept="application/x-zip-compressed" required/>
+     										<input id="upload_btn4" type="file" name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0];fileChangeZipOnly(/[^\\]+\.\w+$/.exec(this.value)[0]);" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" accept="application/x-zip-compressed" required/>
                                         </div>
                                     </td>
 								</tr>
