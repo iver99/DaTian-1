@@ -623,7 +623,7 @@ public class OrderController {
 	public ModelAndView getOrderDetailWaitToConfirm(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
-		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		List<TrackBean> loc = trackService.getTrackBeanByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
 		int length = loc.size();
 		List<WayBill> waybills = waybillService.getAllWayBillNumsPictureByOrderId(orderid);
