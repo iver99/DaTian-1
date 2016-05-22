@@ -261,18 +261,21 @@
                                   <div class="div_rating_sub">
                                		 <div class="div_rating_left1">服务态度</div>
                        			     <div id="rating1" class="div_rating_right1" data-score="0"></div>
-                                	 <input type="hidden" value="" id="rate1"/> </br>
-                                  </div>
+                                	 <input type="hidden" value="" id="rate1"/> 
+									 <input id="hint1" type="text" value="${comment.serviceAttitude }" class="input_rating" />
+								  </div>
                                   <div class="div_rating_sub">
                                      <div class="div_rating_left1">运输时效</div>
                                 	 <div id="rating2" class="div_rating_right1"	data-score="0"></div>
-                                	 <input type="hidden" value="" id="rate2"/> </br>
-                                  </div>
+                                	 <input type="hidden" value="" id="rate2"/> 
+									 <input id="hint2" type="text" value="${comment.transportEfficiency }" class="input_rating" />
+								  </div>
                                   <div class="div_rating_sub">
                                      <div class="div_rating_left1">货物安全</div>
                                 	 <div id="rating3" class="div_rating_right1" data-score="0"></div>
-                                	 <input type="hidden" value="" id="rate3"/> </br>
-                                  </div>  
+                                	 <input type="hidden" value="" id="rate3"/> 
+          							 <input id="hint3" type="text" value="${comment.cargoSafety }" class="input_rating" />
+          						  </div>
                                 <div class="div_rating_sub">
                                 	补充：${comment.comment }
                                 </div>
