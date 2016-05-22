@@ -602,7 +602,7 @@ public class OrderController {
 	public ModelAndView getOrderDetailWaitToReceive(HttpServletRequest request,
 			HttpServletResponse response, String orderid) {
 		OrderCarrierView orderInfo = orderService.getOrderByOrderId(orderid);
-		List<Track> loc = trackService.getTrackByOrderIdAsc(orderid);
+		List<TrackBean> loc = trackService.getTrackBeanByOrderIdAsc(orderid);
 		String[] carNums = (orderInfo.getCarNum()).split(",");
 		int length = loc.size();
 		mv.addObject("length", length);
