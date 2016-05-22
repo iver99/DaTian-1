@@ -66,3 +66,15 @@ function fileChangeDocOnly(value){
 	alert("文件格式不正确，只能上传zip,doc,docx,txt,xls格式！");
     return false;
 }
+
+function fileChangeZipOnly(value){
+	ext=value.split(".")[1];
+	if( ext== "zip"){
+		return true;
+	}
+	//格式不符合，清空文件信息并提示用户
+	$("#upload_btn4").val(undefined);
+	$("#apply_attachment1").val("");
+	alert("文件格式不正确，只能上传zip格式！");
+    return false;
+}
