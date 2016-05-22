@@ -18,4 +18,6 @@
 <script type="text/javascript" src="js/renderTime.js"></script>
 <!-- 选择日期控件 -->
 <script type="text/javascript" src="js/calendar.js"></script>
+<!-- 文件上传检查 -->
+<script type="text/javascript" src="js/uploadFileCheck.js"></script>
 

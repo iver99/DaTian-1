@@ -207,9 +207,10 @@
 									<td height="40" class="td_mgmt_right3_td1b">图片展示：</td>
 									<td>
                                     	<div style="position:relative;">
+                                    		<img id="tempimg" dynsrc="" src="" style="display:none" />
                                         	<input id="apply_attachment1" type="text" class="input_attachment1" style="width:230px;" value="${truckInfo.picture }" />
                                         	<input id="upload_btn3" type="button" value="添加" class="input_attachment_btn1" style="width:60px; margin-left:10px;" />
-     									    <input id="upload_btn4" type="file"  name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0]" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" accept="image/*" required/>
+     									    <input id="upload_btn4" type="file"  name="file" onchange="document.getElementById('apply_attachment1').value=/[^\\]+\.\w+$/.exec(this.value)[0];fileChange(/[^\\]+\.\w+$/.exec(this.value)[0]);" class="input_attachment_btn1_hidden" style="width:300px;" hidefocus="true" accept="image/*" required/>
                                         </div>
                                     </td>
 								</tr>
@@ -221,7 +222,7 @@
 								</tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">&nbsp;</td>
-                                    <td><input type="submit" id="btn1" value="提交" class="btn_mgmt1" hidefocus="true" />
+                                    <td><input type="submit" id="btn1" value="提交" class="btn_mgmt1" hidefocus="true"  />
                                     <input type="reset" id="btn1" value="重填" class="btn_mgmt2" hidefocus="true" /></td>
                                 </tr>
 							</table>
@@ -249,6 +250,8 @@
 		//设置页面字段值（checkbox）
 		setData();
 	}
+	
+	
 	function formValidate() {
 		$("#updatefulltruckload").validate({
 			rules : {
