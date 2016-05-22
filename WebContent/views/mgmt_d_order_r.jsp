@@ -218,7 +218,7 @@ function getUserOrderResource(display,currentPage,orderNum){
 			  for(var i =0;i<data.length;i++){
 				body.append("<tr>");
 				body.append("<td height=\"60\" class=\"td_mgmt_right3_td1d\">&nbsp;</td>");
-						body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"getOrderDetail?orderid="+data[i].id+"\" hidefocus=\"true\">"+data[i].orderNum+"</a></td>");
+						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].orderNum+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\">"+data[i].resourceType+"</td>");
 						body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\" hidefocus=\"true\">"+data[i].resourceName+"</a></td>");
 						body.append("<td class=\"td_mgmt_right3_td1\"><a href=\"javascript:;\" class=\"link1\" hidefocus=\"true\">"+data[i].companyName+"</a></td>");
@@ -239,6 +239,7 @@ function getUserOrderResource(display,currentPage,orderNum){
 							str+="<div class=\"menubd\">";
 							str+="<div class=\"menubdpanel\">";
 							str+="<a href=\"javascript:void(0);\" onclick=\"test('"+data[i].id+"');showid('popup2');return false;\" class=\"a_top3\" hidefocus=\"true\">取消</a>";
+							str+="<a href=\"getOrderDetail?orderid="+data[i].id+"\" class=\"a_top3\" hidefocus=\"true\">查看</a>";
 
 							str+="</div></div></div></li></ul></div></td>";
 							body.append(str);

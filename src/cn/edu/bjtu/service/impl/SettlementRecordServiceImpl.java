@@ -74,7 +74,7 @@ public class SettlementRecordServiceImpl implements SettlementRecordService{
 	@Override
 	public List<Settlement> getSettlementRecordByOrderNum(String orderNum) {
 		
-		String hql="from Settlement t where t.orderNum=:orderNum";
+		String hql="from Settlement t where t.orderNum=:orderNum order by createTime desc";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("orderNum", orderNum);
 		
