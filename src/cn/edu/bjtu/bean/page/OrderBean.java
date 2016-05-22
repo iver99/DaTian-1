@@ -76,6 +76,7 @@ public class OrderBean {
 	
 	private String fulltruckloadId;
 	private String lesstruckloadId;
+	private String citylineId;
 	
 	private int onwayTime;
 	private String strisOntime;
@@ -84,6 +85,18 @@ public class OrderBean {
 	
 	
 	
+	/**
+	 * @return citylineId
+	 */
+	public String getCitylineId() {
+		return citylineId;
+	}
+	/**
+	 * @param citylineId ÒªÉèÖÃµÄ citylineId
+	 */
+	public void setCitylineId(String citylineId) {
+		this.citylineId = citylineId;
+	}
 	/**
 	 * @return satisfaction
 	 */

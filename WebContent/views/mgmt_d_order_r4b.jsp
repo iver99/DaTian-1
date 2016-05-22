@@ -158,7 +158,15 @@
                                 </tr>
                                 <tr>
                                     <td height="40" class="td_mgmt_right3_td1b">资源名称：</td>
-									<td>${orderInfo.resourceName }</td>
+									<c:if test="${orderInfo.resourceType=='落地配' }">
+                                            <td><a href="citylinedetail?citylineId=${orderInfo.citylineId }&carrierId=${orderInfo.carrierId }&flag=0">${orderInfo.resourceName }</a></td>
+                                    </c:if>
+                                    <c:if test="${orderInfo.resourceType=='整车' }">
+                                            <td><a href="fulltruckloaddetail?truckId=${orderInfo.fulltruckloadId }&carrierId=${orderInfo.carrierId }&flag=0">${orderInfo.resourceName }</a></td>
+                                    </c:if>
+                                    <c:if test="${orderInfo.resourceType=='零担' }">
+                                            <td><a href="lesstruckloaddetail?truckId=${orderInfo.lesstruckloadId }&carrierId=${orderInfo.carrierId }&flag=0">${orderInfo.resourceName }</a></td>
+                                    </c:if>
                                 </tr>
                             </table>
                         	<div class="span_mgmt_right3_text4">货物信息</div>      	          

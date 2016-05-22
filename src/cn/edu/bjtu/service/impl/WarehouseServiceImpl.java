@@ -120,10 +120,12 @@ public class WarehouseServiceImpl implements WarehouseService {
 				+ "t1.carrierId,"
 				+ "t1.name,"
 				+ "t1.companyName,"
-				+ "t1.fireRate,"
+				+ "t1.kind,"
 				+ "t1.type,"
 				+ "t1.houseArea,"
+				+ "t1.standPrice,"
 				+ "t1.relDate,"
+				+ "t1.city,"
 				+ "t3.status "
 				+ " from warehouse_carrier_view t1 "
 				+ "left join ("
@@ -152,11 +154,13 @@ public class WarehouseServiceImpl implements WarehouseService {
 			instanceBean.setCarrierId((String)obj[1]);
 			instanceBean.setName((String)obj[2]);;
 			instanceBean.setCompanyName((String)obj[3]);;
-			instanceBean.setFireRate((String)obj[4]);
+			instanceBean.setKind((String)obj[4]);
 			instanceBean.setType((String)obj[5]);
 			instanceBean.setHouseArea((Float)obj[6]+"");
-			instanceBean.setRelDate((Date)obj[7]);;
-			instanceBean.setStatus((String)obj[8]);
+			instanceBean.setStandPrice(((Float)obj[7]).toString());
+			instanceBean.setRelDate((Date)obj[8]);
+			instanceBean.setCity((String)obj[9]);
+			instanceBean.setStatus((String)obj[10]);
 			warehouseList.add(instanceBean);
 		}
 		

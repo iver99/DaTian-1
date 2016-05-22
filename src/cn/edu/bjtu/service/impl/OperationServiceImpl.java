@@ -82,7 +82,7 @@ public class OperationServiceImpl implements OperationService{
 			HttpSession session) {
 		Map<String,Object> params=new HashMap<String,Object>();
 		//hql不支持嵌套查询，所以采用sql查询
-		String sql="select * from (select count(*) from (select * from Orderform t "+whereHql(operationBean,session,params);
+		String sql="select * from (select count(*) from (select * from orderform t "+whereHql(operationBean,session,params);
 		sql+=" group by date(t.submitTime) order by t.submitTime desc) as t2) as t3";
 		return orderDao.countBySql(sql, params);
 		
@@ -91,8 +91,8 @@ public class OperationServiceImpl implements OperationService{
 	private String whereHql(OperationBean operationBean,
 			HttpSession session, Map<String,Object> params){
 		String userId=(String)session.getAttribute(Constant.USER_ID);
-		String whereHql=" where t.carrierId=:carrierId ";
-		params.put("carrierId", userId);
+		String whereHql=" where t.carrierId='"+userId+"' ";
+		//params.put("carrierId", userId);
 		String startDate=operationBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getStartDate());
 		String endDate=operationBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(operationBean.getEndDate());
 		if(!"1970-01-01".equals(startDate)){

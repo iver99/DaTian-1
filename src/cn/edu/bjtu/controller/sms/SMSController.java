@@ -118,14 +118,18 @@ public class SMSController {
 	}
 	/**
 	 * 发送即时短信
+	 * 
+	 * 
+	 * 处于安全考虑暂时屏蔽这个接口
 	 */
-	@RequestMapping("sendSMSAjax")
+	//@RequestMapping("sendSMSAjax")
 	@ResponseBody
+	@Deprecated
 	public String sendSMS(String phone,String smsContent){
 		//切换数据源
 		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		try {
-			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】"+smsContent, "",5);// 带扩展码
+			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田物流资源平台】"+smsContent, "",5);// 带扩展码
 			//发送成功记录日志
 			if(i==0){
 				smsHisLogger.info("手机号:【"+phone+"】=====短信内容:【"+smsContent+"】");
@@ -173,7 +177,7 @@ public class SMSController {
 		//DataSourceContextHolder.setDataSourceType(Constant.DATA_SOURCE_SMS);
 		String vCode=VCodeCreator.getVCode();
 		try {
-			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码*/			
+			int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田物流资源平台】您好，您的验证码为"+vCode, "",5);// 带扩展码*/			
 			//int i=0;
 			if(i==0){
 				//存储验证码
@@ -203,7 +207,7 @@ public class SMSController {
 		JSONObject json = new JSONObject(); 
 		try {
 			String vCode=VCodeCreator.getVCode();
-		    int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田集团资源供应链管理平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
+		    int i = SingletonClient.getClient().sendSMS(new String[] { phone }, "【大田物流资源平台】您好，您的验证码为"+vCode, "",5);// 带扩展码
 			//方便测试暂时注释掉发短信功能
 			/*int i =0;*/
 			if(i==0){

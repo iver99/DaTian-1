@@ -127,7 +127,7 @@ public class IdCreator {
 	
 	public static String createOrderNum()
 	{
-		return "y"+(int)(Math.random()*100000000);
+		return "Y"+(int)(Math.random()*100000000);
 	}
 	
 	/**

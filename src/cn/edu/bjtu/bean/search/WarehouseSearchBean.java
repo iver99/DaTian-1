@@ -14,7 +14,7 @@ public class WarehouseSearchBean {
 	private String carrierId;
 	private String city;
 	private String type;//仓库类型
-//	private String kind;
+    private String kind;
 	private String storageForm;//保管形态
 	private String houseArea;//仓库面积 
 	private String status;//关注状态  
@@ -25,6 +25,23 @@ public class WarehouseSearchBean {
 	private String companyName;
 	private String fireRate;
 	private Date relDate;
+
+
+	
+	/**
+	 * @return kind
+	 */
+	public String getKind() {
+		return kind;
+	}
+
+
+	/**
+	 * @param kind 要设置的 kind
+	 */
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
 
 
 	/**

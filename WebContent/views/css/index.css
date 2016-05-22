@@ -787,7 +787,7 @@ table.table_main_list thead tr .headerSortDown {
 	background:#f7f7f7;
 	font-weight:bold;
 	height:40px;
-	line-height:40px;
+	line-height:16px;
 	}
 .td_main_list_content {
 	height:75px;

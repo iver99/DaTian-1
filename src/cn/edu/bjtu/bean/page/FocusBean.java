@@ -21,9 +21,24 @@ public class FocusBean {
 	private Date relDate;
 	private String name;//城市配送的name,或者仓库 name，或者货物名
 	private String carNum;//车牌
+	private Date time;
 	
 	
 	
+	
+	
+	/**
+	 * @return time
+	 */
+	public Date getTime() {
+		return time;
+	}
+	/**
+	 * @param time 要设置的 time
+	 */
+	public void setTime(Date time) {
+		this.time = time;
+	}
 	private String search_content;//供搜索使用 
 	
 	

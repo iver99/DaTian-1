@@ -1,5 +1,7 @@
 package cn.edu.bjtu.vo;
 
+import java.util.Date;
+
 // Generated 2015-1-31 22:44:34 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Entity;
@@ -18,6 +20,7 @@ public class Focus implements java.io.Serializable {
 	private String focusType;//关注的资源类型
 	private String focusId;//资源id
 	private String status;//关注状态
+	private Date time;//关注时间
 
 	public Focus() {
 	}
@@ -74,5 +77,20 @@ public class Focus implements java.io.Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	/**
+	 * @return time
+	 */
+	public Date getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time 要设置的 time
+	 */
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	
 
 }
