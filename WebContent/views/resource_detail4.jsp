@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -75,7 +74,7 @@
 				</script>
 				<c:choose>
                      <c:when test="${sessionScope.username!=null }">
-                         <input type="button" id="btn2" value="查看联系方式" class="input_detail2" hidefocus="true" onclick="viewContact('view_contact');">
+                         <input type="button" id="btn2" value="查看联系方式" class="input_detail2" hidefocus="true" onclick="showid('popup1');">
                      </c:when>
                      <c:otherwise>
                          <input type="button" id="btn2" value="登陆后查看联系方式" class="input_detail2" hidefocus="true" onclick="window.location.href='login'" />
@@ -124,14 +123,16 @@
     </table>
 </div>
 
-<%@ include  file="popup1.jsp"%>
+<%-- <%@ include  file="popup1.jsp"%> --%>
 <!-- 查看联系人详情 -->
-<div id="view_contact" class="popup">
+<div id="popup1" class="popup" style="display:none;">
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td width="510"><div class="div_popup_title1">联系方式</div></td>
             <td>
-                <div style="cursor:pointer;" onclick="hideContact('view_contact');"><img src="images/btn_cancel1.png" title="关闭本窗口" /></div>
+                <div style="cursor:pointer;" onclick="hideid('popup1');">
+                    <img src="images/btn_cancel1.png" title="关闭本窗口" />
+                </div>
             </td>
         </tr>
     </table>
@@ -147,7 +148,9 @@
     </table>
     <table width="540" border="0" cellpadding="0" cellspacing="0">
         <tr>
-            <td height="10"></td>
+            <td height="100" align="center">
+                <input type="button" id="btn2" value="提交意向" class="input_detail2a" hidefocus="true" onclick="window.location.href='getneworderform?carrierid=${truckInfo.carrierId}&flag=1&resourceId=${truckInfo.id}'" />
+            </td>
         </tr>
     </table>
 </div>
