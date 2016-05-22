@@ -26,29 +26,69 @@ public class Comment implements java.io.Serializable {
 	private String totalMoney;
 	private String comment;
 	// add by RussWest0 at 2015年5月30日,上午9:42:38 
-	private String linetransportId;
+	//private String linetransportId;
 	private String citylineId;
-	private String carId;
-	private String warehouseId;
+	//private String warehouseId;
+	private String fulltruckloadId;
+	private String lesstruckloadId;
+	private String username;
 	
 	private String carrierId;//add by haochendong 
+	
+	
+
+	/**
+	 * @return fulltruckloadId
+	 */
+	public String getFulltruckloadId() {
+		return fulltruckloadId;
+	}
+
+	/**
+	 * @param fulltruckloadId 要设置的 fulltruckloadId
+	 */
+	public void setFulltruckloadId(String fulltruckloadId) {
+		this.fulltruckloadId = fulltruckloadId;
+	}
+
+	/**
+	 * @return lesstruckloadId
+	 */
+	public String getLesstruckloadId() {
+		return lesstruckloadId;
+	}
+
+	/**
+	 * @param lesstruckloadId 要设置的 lesstruckloadId
+	 */
+	public void setLesstruckloadId(String lesstruckloadId) {
+		this.lesstruckloadId = lesstruckloadId;
+	}
+
+	/**
+	 * @return username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username 要设置的 username
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public Comment() {
 	}
 	
-	
-
 	public String getOrderNum() {
 		return orderNum;
 	}
 
-
-
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
-
-
 
 	public String getCarrierId() {
 		return carrierId;
@@ -57,8 +97,6 @@ public class Comment implements java.io.Serializable {
 	public void setCarrierId(String carrierId) {
 		this.carrierId = carrierId;
 	}
-
-
 
 	public Comment(String id) {
 		this.id = id;
@@ -96,55 +134,37 @@ public class Comment implements java.io.Serializable {
 		this.orderId = orderId;
 	}
 
-	
-
 	public String getServiceAttitude() {
 		return serviceAttitude;
 	}
-
-
 
 	public void setServiceAttitude(String serviceAttitude) {
 		this.serviceAttitude = serviceAttitude;
 	}
 
-
-
 	public String getTransportEfficiency() {
 		return transportEfficiency;
 	}
-
-
 
 	public void setTransportEfficiency(String transportEfficiency) {
 		this.transportEfficiency = transportEfficiency;
 	}
 
-
-
 	public String getCargoSafety() {
 		return cargoSafety;
 	}
-
-
 
 	public void setCargoSafety(String cargoSafety) {
 		this.cargoSafety = cargoSafety;
 	}
 
-
-
 	public String getTotalMoney() {
 		return totalMoney;
 	}
 
-
-
 	public void setTotalMoney(String totalMoney) {
 		this.totalMoney = totalMoney;
 	}
-
-
 
 	public String getComment() {
 		return this.comment;
@@ -154,56 +174,11 @@ public class Comment implements java.io.Serializable {
 		this.comment = comment;
 	}
 
-
-
-	public String getLinetransportId() {
-		return linetransportId;
-	}
-
-
-
-	public void setLinetransportId(String linetransportId) {
-		this.linetransportId = linetransportId;
-	}
-
-
-
 	public String getCitylineId() {
 		return citylineId;
 	}
 
-
-
 	public void setCitylineId(String citylineId) {
 		this.citylineId = citylineId;
 	}
-
-
-
-	public String getCarId() {
-		return carId;
-	}
-
-
-
-	public void setCarId(String carId) {
-		this.carId = carId;
-	}
-
-
-
-	public String getWarehouseId() {
-		return warehouseId;
-	}
-
-
-
-	public void setWarehouseId(String warehouseId) {
-		this.warehouseId = warehouseId;
-	}
-
-	
-
-	
-
 }

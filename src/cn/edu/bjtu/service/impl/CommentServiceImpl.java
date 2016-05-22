@@ -52,8 +52,6 @@ public class CommentServiceImpl implements CommentService{
 		
 		//add by RussWest0 at 2015年6月7日,下午4:25:06 
 		Orderform order=orderDao.get(Orderform.class, orderid);
-		comment.setLinetransportId(order.getLinetransportId());
-		comment.setWarehouseId(order.getWarehouseId());
 		comment.setCarrierId(order.getCarrierId());
 		comment.setCitylineId(order.getCitylineId());
 		comment.setOrderId(order.getId());

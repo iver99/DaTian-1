@@ -361,6 +361,8 @@ public class OrderController {
 	 */
 	public ModelAndView getCommentForm(String orderid,String ordernum)
 	{
+		OrderCarrierView order = orderService.getOrderByOrderId(orderid);
+		mv.addObject("order",order);
 
 		mv.addObject("orderId", orderid);
 		mv.addObject("orderNum", ordernum);
