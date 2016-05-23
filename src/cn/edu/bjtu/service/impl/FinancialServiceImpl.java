@@ -32,12 +32,13 @@ public class FinancialServiceImpl implements FinancialService{
 	@Override
 	public List<FinancialBean> getAccountFinancialInfo(FinancialBean financialBean,PageUtil pageUtil,HttpSession session) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
+		String userKind = (Integer)session.getAttribute(Constant.USER_KIND) + "";
 		//按天计算 
 		Map<String,Object> params=new HashMap<String,Object>();
 		String sql="select * from (select date(t.submitTime) as date,"
 				+ "sum(t.actualPrice) as transportFee,"
 				+ "sum(t.insurance) as totalInsurance"
-				+ " from orderform t "+whereSql(userId,financialBean,params);
+				+ " from orderform t "+whereSql(userId,financialBean,params,userKind);
 		sql+=" group by date(t.submitTime) order by date(t.submitTime) desc ) as t2";
 		int page=pageUtil.getCurrentPage()==0?1:pageUtil.getCurrentPage();
 		int display=pageUtil.getDisplay()==0?10:pageUtil.getDisplay();
@@ -59,10 +60,15 @@ public class FinancialServiceImpl implements FinancialService{
 		}
 		return beanList;
 	}
-	private String whereSql(String userId,FinancialBean financialBean,Map<String,Object> params){
-		
-		String wheresql="where t.carrierId=:userId ";
-		params.put("userId", userId);
+	private String whereSql(String userId,FinancialBean financialBean,Map<String,Object> params,String userKind){
+		String wheresql = "";
+		if(userKind.equals("3")){
+			wheresql+="where t.carrierId=:userId ";
+			params.put("userId", userId);
+		}else{
+			wheresql+="where t.clientId=:userId ";
+			params.put("userId", userId);
+		}
 		String startDate=financialBean.getStartDate()==null?"1970-01-01":ParseDate.DateToString(financialBean.getStartDate());
 		String endDate=financialBean.getEndDate()==null?"1970-01-01":ParseDate.DateToString(financialBean.getStartDate());
 		if(!"1970-01-01".equals(startDate)){
@@ -85,6 +91,7 @@ public class FinancialServiceImpl implements FinancialService{
 	@Override
 	public Long getAccountFinancialInfoTotalRows(FinancialBean financialBean,HttpSession session) {
 		String userId=(String)session.getAttribute(Constant.USER_ID);
+		String userKind = (Integer)session.getAttribute(Constant.USER_KIND) + "";
 		//按天计算
 		/**不使用这么多层的嵌套查询，报
 		 * [DaTian]org.hibernate.util.JDBCExceptionReporter WARN   - SQL Error: 0, SQLState: S0022
@@ -95,7 +102,7 @@ public class FinancialServiceImpl implements FinancialService{
 		String sql="select * from (select count(*) from (select date(t.submitTime) as date,"
 				+ "sum(t.actualPrice) as transportFee,"
 				+ "sum(t.insurance) as totalInsurance"
-				+ " from orderform t "+whereSql(userId,financialBean,params);
+				+ " from orderform t "+whereSql(userId,financialBean,params,userKind);
 		sql+=" group by date(t.submitTime) order by date(t.submitTime) desc ) as t2) as t3";
 		
 		Long count=orderDao.countBySql(sql, params);

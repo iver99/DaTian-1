@@ -74,7 +74,7 @@
                     <span id="mgmt_nav_switch4b" class="span_mgmt_nav2" title="展开" onclick="mgmt_nav_switch4b();">统计分析</span>
                     <div id="mgmt_nav4" >
                     <% if((Integer)session.getAttribute("userKind") ==3) {%>
-                        <a href="getTransportAccuracyPage" class="a_mgmt_leftnav" hidefocus="true">运营指标</a>
+                        <a href="getTransportAccuracyPage" class="a_mgmt_leftnav1" hidefocus="true">运营指标</a>
                     <% } %>
                         <a href="getFinancialInfoPage" class="a_mgmt_leftnav" hidefocus="true">财务指标</a>
                     </div>
