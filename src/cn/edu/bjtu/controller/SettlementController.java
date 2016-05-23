@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -166,9 +165,9 @@ public class SettlementController {
 	}
 	
 	@RequestMapping(value="viewSettlementRecord",produces="text/html;charset=UTF-8")
-	public ModelAndView viewSettlementRecord(String orderNum){
-		
-		List<Settlement> settlmentList =settlementRecordService.getSettlementRecordByOrderNum(orderNum);
+	public ModelAndView viewSettlementRecord(HttpSession session,String orderNum){
+		String userId = (String)session.getAttribute(Constant.USER_ID);
+		List<Settlement> settlmentList =settlementRecordService.getSettlementRecordByOrderNum(userId,orderNum);
 		
 		mv.addObject("settlementList", settlmentList);
 		mv.setViewName("mgmt_d_settle_s2");

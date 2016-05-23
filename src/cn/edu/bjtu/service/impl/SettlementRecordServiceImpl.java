@@ -72,11 +72,12 @@ public class SettlementRecordServiceImpl implements SettlementRecordService{
 	 * 根据订单号获取结算生成记录
 	 */
 	@Override
-	public List<Settlement> getSettlementRecordByOrderNum(String orderNum) {
+	public List<Settlement> getSettlementRecordByOrderNum(String userId,String orderNum) {
 		
-		String hql="from Settlement t where t.orderNum=:orderNum order by createTime desc";
+		String hql="from Settlement t where t.orderNum=:orderNum and t.userId=:userId order by createTime desc";
 		Map<String,Object> params=new HashMap<String,Object>();
 		params.put("orderNum", orderNum);
+		params.put("userId", userId);
 		
 		return settlementRecordDao.find(hql, params);
 	}

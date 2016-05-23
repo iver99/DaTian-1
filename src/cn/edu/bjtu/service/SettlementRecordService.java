@@ -28,7 +28,7 @@ public interface SettlementRecordService {
 	 * @param orderNum
 	 * @return
 	 */
-	public List<Settlement> getSettlementRecordByOrderNum(String orderNum);
+	public List<Settlement> getSettlementRecordByOrderNum(String userId,String orderNum);
 	
 	/**
 	 * ÎÒµÄ½áËã
