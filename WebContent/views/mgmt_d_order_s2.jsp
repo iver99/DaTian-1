@@ -244,7 +244,7 @@
 								<tr>
 									<td width="120" height="40" class="td_mgmt_right3_td1b">备注：</td>
 									<td>
-                                    	<textarea class="textarea_rating" placeholder="请输入内容..." name="remarks" required></textarea>
+                                    	<textarea class="textarea_rating" placeholder="请输入内容..." name="remarks" ></textarea>
                                     </td>
 								</tr>
                                 <tr>
@@ -398,7 +398,7 @@
 				},
 				deliveryAddr : "required",
 				recieverAddr : "required",
-				remarks : "required",
+				/* remarks : "required", */
 
 			}
 		});
