@@ -256,9 +256,17 @@
 	}
 	//设置数据
 	function setData(){
+		var serviceContent = "${warehouseInfo.serviceContent}";
+		var storageForm = "${warehouseInfo.storageForm}";
 		$("#type").attr("value","${warehouseInfo.type}");
 		$("#kind").attr("value","${warehouseInfo.kind}");
 		$("#fireRate").attr("value","${warehouseInfo.fireRate}");
+		$('input:checkbox').each(function() {
+			var value = $(this).val();
+			if(((serviceContent.indexOf(value))>=0)||((storageForm.indexOf(value))>=0)){
+				$(this).attr('checked', true);
+			}	  	        
+	});
 		
 	}
 </script>
