@@ -243,27 +243,19 @@
 </body>
 <script type="text/javascript">
 	function OnLoad() {
-		loadFocus();
-		
+		loadFocus();		
 		//设置页面字段值（checkbox）
 		setData();
 	}
-	//设置页面字段值
-	/* function setPageValue(){
-		debugger;
-		var c=$("#checkbox");
-		var type="${linetransportInfo.type}";
-		//$("#type1").attr("checked",true);
-		//c[1].attr("checked",true);
-		 if(type.indexOf('整车')>=0){
-			$("#checkbox[name='type1']").attr("checked",true);
-		}
-		if(type.indexOf("零担")>=0){
-			$("type2").attr("checked",true);
-		} 
-	} */
 	function setData(){
+		var airCycle = "${airlineInfo.airCycle}";
 		$("#onwayTime").attr("value","${airlineInfo.onwayTime}");
+		$('input:checkbox').each(function() {
+			var value = $(this).val();
+			if(airCycle.indexOf(value)>=0){
+				$(this).attr('checked', true);
+			}
+		});
 	}
 </script>
 </html>

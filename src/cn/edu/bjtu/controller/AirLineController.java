@@ -135,6 +135,9 @@ public class AirLineController {
 			    		airlineInfo.setPicture("请上传文件...");
 				}
 			}
+			if(airlineInfo.getAirCycle().equals("每天")){
+				airlineInfo.setAirCycle("周一二三四五六日");
+			}
 			mv.addObject("airlineInfo", airlineInfo);
 			mv.setViewName("mgmt_r_airline3");
 			}
