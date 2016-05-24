@@ -117,16 +117,16 @@
 								  <div class="action"> 
 								    <!-- <input type="file" id="file" style=" width: 200px">-->
 								    <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
-								      <label for="upload-file">上传图像</label>
+								      <label for="upload-file" class="Btnsty_upload">添加图像</label>
 								      </a>
 								      <input type="file" class="" name="file" id="upload-file" required/>
 								    </div>
-								    <input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切">
+								    <!-- <input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切">
 								    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
-								    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
+								    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" > -->
 								    <input type="submit" id="upload" align="middle" class="Btnsty_upload" value="上传" >
+								    <!-- <input type="submit" id="upload" align="middle" class="Btnsty_upload" value="上传" > -->
 								  </div>
-								  <div class="cropped"></div>
 								</div> 
 							</div>
 							</form>      
